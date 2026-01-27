@@ -1,6 +1,0 @@
-want to add:
--thicker border
--div for bottom
--url links to different pages
--outline text w diff color
--link to public domain
