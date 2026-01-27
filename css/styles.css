@@ -11847,7 +11847,7 @@ html {
 
 .profile-line{
   display: grid;
-  grid-template-columns: 26px 70px 1fr;
+  grid-template-columns: 26px 70px minmax(0, 1fr); /* key change */
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 0.85rem;
@@ -11859,6 +11859,25 @@ html {
   color: inherit;
 }
 
+.profile-label,
+.profile-value{
+  min-width: 0; /* allows the grid items to shrink instead of overflowing */
+}
+
+.profile-value{
+  font-weight: 700;
+  overflow-wrap: anywhere; /* allows email to wrap on small screens */
+  word-break: break-word;
+}
+@media (max-width: 420px){
+  .profile-line{
+    grid-template-columns: 26px 60px minmax(0, 1fr);
+    gap: 0.6rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .profile-name{ font-size: 1.05rem; }
+  .profile-subtitle{ font-size: 0.85rem; }
+}
 .profile-icon{
   display: grid;
   place-items: center;
