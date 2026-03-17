@@ -11760,6 +11760,21 @@ html {
   transform: translateY(-2px);
 }
 
+.navbar .collapse:not(.show) {
+  display: none !important;
+}
+
+.navbar .navbar-toggler {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.navbar .navbar-collapse {
+  flex-basis: 100%;
+}
+
 /* Strong glow while menu is open */
 .navbar .navbar-toggler[aria-expanded="true"] {
   box-shadow: 0 0 0 4px rgba(255, 69, 0, 0.40),
