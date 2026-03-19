@@ -783,7 +783,13 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/dual-hand.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">This project was focused on creating a prosthetic device for children. Specifically, my partner Rebecca and I, created a functional hand that allows the user to grasp light-weight objects, as well as, utilize other motor functions they may currently be lacking. The reason for focusing the device towards children, is due to the fact that when a child requires a prosthetic the duration in which the device is created is greater than the growing rate of the child. This results in a device that would be created for an individual, which will most likely no longer fit when ready. The 3D printed version we created is easier, less costly, and quicker to make. This allows for a product that, although not functionally superior to a normal prosthetic, gives children the opportunity to gain more mobility earlier on.</p>
+                                    <div class="nav project-section-tabs" id="prostheticHandTabs" role="tablist" aria-label="Prosthetic hand sections">
+                                        <button class="project-section-tab active" id="prosthetic-project-tab" data-bs-toggle="tab" data-bs-target="#prosthetic-project-pane" type="button" role="tab" aria-controls="prosthetic-project-pane" aria-selected="true">Project</button>
+                                        <button class="project-section-tab" id="prosthetic-review-tab" data-bs-toggle="tab" data-bs-target="#prosthetic-review-pane" type="button" role="tab" aria-controls="prosthetic-review-pane" aria-selected="false">Dicrections Review</button>
+                                    </div>
+                                    <div class="tab-content project-tab-content" id="prostheticHandTabsContent">
+                                    <div class="tab-pane fade show active" id="prosthetic-project-pane" role="tabpanel" aria-labelledby="prosthetic-project-tab" tabindex="0">
+                                    <p class="mb-4">This project was focused on creating a prosthetic device for children. Specifically, my partner Rebecca and I, created a functional hand that allows the user to grasp light-weight objects, as well as, utilize other motor functions they may currently be lacking. The reason for focusing the device towards children, is due to the fact that when a child requires a prosthetic the duration in which the device is created is greater than the growing rate of the child. This results in a device that would be created for an individual, which will most likely no longer fit when ready. The 3D printed version we created is easier, less costly, and quicker to make. This allows for a product that, although not functionally superior to a normal prosthetic, gives children the opportunity to gain more mobility earlier on. Prior to reading on, it is important to note that ALL prints associated with the creation of the hand itself, not the additions, should be printed at 150% scale from the original files in the resources at the end.</p>
 
                                     <a href="assets/img/portfolio/digits-sliced.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/digits-sliced.png" alt="..." />
@@ -847,9 +853,32 @@
 <p><b>Print Notes:</b></p>
 
 <p>The palm required supports to hold up the cavity where you would insert your appendage. The support was unlike the normal "tree" supports and was a box, which made the removal of supports relatively seamless; not the case with the added raft. We added a raft to the base, similar to the digits, however, it proved unnecessary and even problematic. The raft connected too well to palm which left a lot of jagged edges when removing. We removed these with an exact-o knife, but it added a significant amount of time. To conclude, I would suggest not using a raft for the palm. With the palm, we also printed a bar to go across the inner cavity so my partner and I could test the product. Although, the best way to really test a product, especially one such as a mobility device, is to allow a user with a disability relevant to the device to use it for a while a deliver feedback. Unfortunately, due to time constraints we could not outsource testing, therefore used the crossbar to attempt to use the device.</p>
-                            <a href="assets/img/portfolio/wrist-gaurd.png" target="_blank">
-  <img class="img-fluid rounded mb-3" src="assets/img/portfolio/wrist-gaurd.png" alt="..." />
-</a>
+                            <div id="wristGuardCarousel" class="carousel slide wrist-guard-carousel mb-3" data-bs-interval="false" data-bs-touch="true">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="assets/img/portfolio/wrist-gaurd.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/wrist-gaurd.png" alt="Wrist guard photo 1" />
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="assets/img/portfolio/heat.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/heat.png" alt="Wrist guard photo 2" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev wrist-guard-carousel-control" type="button" data-bs-target="#wristGuardCarousel" data-bs-slide="prev" aria-label="Previous wrist guard photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10094;</span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next wrist-guard-carousel-control" type="button" data-bs-target="#wristGuardCarousel" data-bs-slide="next" aria-label="Next wrist guard photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10095;</span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <div class="carousel-indicators wrist-guard-carousel-indicators">
+                                    <button type="button" data-bs-target="#wristGuardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="View wrist guard photo 1"></button>
+                                    <button type="button" data-bs-target="#wristGuardCarousel" data-bs-slide-to="1" aria-label="View wrist guard photo 2"></button>
+                                </div>
+                            </div>
 <a>
         <p class="fullscreen-hint"><a><b>Figure 6.3 </b>
          </a>(Click the image to view fullscreen)
@@ -876,7 +905,7 @@
                                         </li>
                             </p>
                         <p><b>Print Notes:</b></p>
-                                                      <p>The palm, pins, and digits are more or less self explanatory in purpose, however when discussing the assembly I will go into further detail about how they operate. The wrist guard and tension block are a bit more complex. The tension block is designed to provide the necessary resistance for the device to function properly. The pins shown on the print plate, are used to anchor the wires, in our case we used string. The pins are secured in the block, and wires ran through the hand. Below is a more in-depth description of the assembly process.</p>
+     <p>The palm, pins, and digits are more or less self explanatory in purpose, however when discussing the assembly I will go into further detail about how they operate. The wrist guard and tension block are a bit less intuitive. The tension block is designed to provide the necessary resistance for the device to function properly, acting as an anchor for the wiring. The pins are secured in the block, and wires ran through the hand. In our case, we used string. Obvious from the slicer photo, the guard is not yet properly shaped. In order to form the piece into a proper shape, we used a reflow station attached to a heat gun; shaping the object manually (seen by scrolling through Figure 6.3). This allowed for more customizability, as well as, a cleaner look on the overall print. Shaping after printing also avoids required supports for floating edges, saving time.  </p>
   <p>                                                    
  <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Assembly Process</h2>
 </p>
@@ -909,31 +938,112 @@
                                         <b>Grocery/Bag Hook and Wire Management</b>
                                                        </p>
                            <p> 
-                            We added three additions to the original design. The first two are exact copies of one another at different scales. The larger hook, mounted on the top of the hand, will provide the user with the ability to freely hold shopping bags and even heavy bottles with a hook to ease the strain on the fingers. The identical hook on the side of the hand provides cable management for the final addition we made. The second hook, was actually a "mistake," in the sense that we did not properly scale the object prior to printing. However, this ended up being a happy accident as we still found a use case for the smaller hook.                             
+                            We added three additions to the original design. The first two are exact copies of one another at different scales. The larger hook, mounted on the top of the hand, will provide the user with the ability to freely hold shopping bags and even heavy bottles with a hook to ease the strain on the fingers. The identical hook on the side of the hand provides cable management for the final addition we made. The second hook, was actually a "mistake," in the sense that we did not properly scale the object prior to printing. However, this ended up being a happy accident as we still found a use case for the smaller hook. The main addition can be seen below in Figure 6.6. To avoid cluttering this portion of my description, I added the file for the hook below and a photo to view print settings in Figure 6.6. For scaling purposes, the larger hook is 200% larger than the smaller. 
                             </p>
-                            <a href="assets/img/portfolio/bag-hook.png" target="_blank">
-  <img class="img-fluid rounded mb-3" src="assets/img/portfolio/bag-hook.png" alt="..." />
-</a>
-<p><b>Print Notes:</b></p>
+                                          <p><a href="assets/Hook-Addition.3mf" download>Download Hook Addition.3mf</a></p>
 
-<p>The palm required supports to hold up the cavity where you would insert your appendage. The support was unlike the normal "tree" supports and was a box, which made the removal relatively seemless. We added a raft to the base, similiar to the digits, however, it proved unnecessary and even problematic. The raft connected too well to palm which left a lot of jagged edges when removing. We removed these with an exacto knife, but it added a significant amount of time. To conclude, I would suggest not using a raft for the palm.</p>
-       
-<a>
-<img class="img-fluid rounded mb-3" src="assets/img/portfolio/finished-assist.png" alt="..." />
-                                    <p class="fullscreen-hint">Figure 3.5</p>
+                            <div id="bagHookCarousel" class="carousel slide wrist-guard-carousel mb-3" data-bs-interval="false" data-bs-touch="true">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="assets/img/portfolio/bag-hook.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/bag-hook.png" alt="Bag hook photo 1" />
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="assets/img/portfolio/hook-sett.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/hook-sett.png" alt="Bag hook photo 2" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev wrist-guard-carousel-control" type="button" data-bs-target="#bagHookCarousel" data-bs-slide="prev" aria-label="Previous bag hook photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10094;</span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next wrist-guard-carousel-control" type="button" data-bs-target="#bagHookCarousel" data-bs-slide="next" aria-label="Next bag hook photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10095;</span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <div class="carousel-indicators wrist-guard-carousel-indicators">
+                                    <button type="button" data-bs-target="#bagHookCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="View bag hook photo 1"></button>
+                                    <button type="button" data-bs-target="#bagHookCarousel" data-bs-slide-to="1" aria-label="View bag hook photo 2"></button>
+                                </div>
+                            </div>
+<p><b>Figure 6.6 (Click the images to view fullscreen)</b></p>
+
+<p>                                                    
+ <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">E.T. Addition</h2>
+</p>
+
+<p>For the final addition we were looking more at the process of combining an electronic with our 3D-print, rather than solving a mobility issue. However, the nature of this addition does solve another problem. We imported one of the fingers into onshape and removed the interior, where the print would be. Then, after extruding a small canal under the region where the strings are, we had a cavity to insert a LED and run a wire through the top of the hand. After two iterations we finally decided on the finger in Figure 6.7. I Included a screenshot of the print settings below, as well as, the file. This was a great way to integrate electronics with our 3D-printed components; given the target audience is children, a "fun" feature such as a light can make the device more enjoyable, and therefore, more likely to be used.
+       <p><a href="assets/fingertip-light.3mf" download>Download Fingertip Light.3mf</a></p>
+                            <div id="wireHandCarousel" class="carousel slide wrist-guard-carousel mb-3" data-bs-interval="false" data-bs-touch="true">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a href="assets/img/portfolio/light.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/light.png" alt="Wire hand photo 1" />
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="assets/img/portfolio/wire-hand.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/wire-hand.png" alt="Wire hand photo 2" />
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href="assets/img/portfolio/finger-sett.png" target="_blank">
+                                            <img class="img-fluid" src="assets/img/portfolio/finger-sett.png" alt="Wire hand photo 3" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev wrist-guard-carousel-control" type="button" data-bs-target="#wireHandCarousel" data-bs-slide="prev" aria-label="Previous wire hand photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10094;</span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next wrist-guard-carousel-control" type="button" data-bs-target="#wireHandCarousel" data-bs-slide="next" aria-label="Next wire hand photo">
+                                    <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10095;</span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <div class="carousel-indicators wrist-guard-carousel-indicators">
+                                    <button type="button" data-bs-target="#wireHandCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="View wire hand photo 1"></button>
+                                    <button type="button" data-bs-target="#wireHandCarousel" data-bs-slide-to="1" aria-label="View wire hand photo 2"></button>
+                                    <button type="button" data-bs-target="#wireHandCarousel" data-bs-slide-to="2" aria-label="View wire hand photo 3"></button>
+                                </div>
+                            </div>
+                                    <p class="fullscreen-hint"><b>Figure 6.7 (Click to view fullscreen)</b></p>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">The completed product (Figure 3.5) requires about 2-5 minutes of manual assembly, where I was required to insert two M3 x 20mm screws into the sides. For the clamp that holds the pen, I also inserted another M3 x 20mm screw. The final build is sturdy and easy to move around on most traditional desktop surfaces. The size of the pen that the device can hold varries, but in general fits any writing utensil without a grip. Overall, my hopes are that this can help those struggling to grasp a thin object like a pen, as well as, create a stronger anchor point when writing.</p>
 
 <!-- Portfolio Modal - Title-->
                 <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
                 </h2>
-                                    <p class="mb-4">The left and right sides of the device had virtually no printing issues whatsoever. The only distortion was a slight fold in the area which the user would insert a screw. However, given the function of the hole, this should not be a major issue. When creating the center of the device I came across a much greater problem. When printing, the print began with a very thin layer of the base of the object but then was trapped in a loop moving from a point A to a point B over and over. This happened twice, until I replaced the (.bgcode). After that the print functioned normally. The cause of this issue seemed to be within the code I uploaded to the machine. I say this after a series of trial-and-error. I first examined the filament, which was properly aligned, I then ensured the plate was of correct height and the nozzle not clogged in anyway. After switching to a second printer, and having the same exact issue I deduced it was an issue with the file. After recreating and reuploading the file, the print succeeded. It is important to note that the filament could have been broken at a certain point when fed into the machine. This is unlikely though, given the same issue occurred on separate machines. However, moving forwards a slight "bend-test" prior to inserting the filament can ensure it has not accumulated too much water.</p>
+                                    <p class="mb-4">
+
+
+                                      PENDING...............
+
+
+
+
+                                    </p>
                                     <p><b>Links and Resources:</b></p>
                                     
                                     <p><b>Model used for fingers, pins, wrist guard and tension block components:</b> BioVisUser123. Human Heart Model. Version 2.1, NIH 3D, 2024. <a href=" https://3d.nih.gov/entries/3DPX-012345" target="_blank"> https://3d.nih.gov/entries/3DPX-012345. </a> https://doi.org/10.xxxxx/3dpx/xxxx.x</p>
 
                                     <p><a href="https://www.thingiverse.com/thing:1674320" target="_blank">X-ray Wire Guide</a></p>
-                                    
+
+                                    </div>
+                                    <div class="tab-pane fade" id="prosthetic-review-pane" role="tabpanel" aria-labelledby="prosthetic-review-tab" tabindex="0">
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Directions Review</p>
+                                            <p class="mb-0">At the bottom of the projects page I listed the resources we used to assemble the hand. Throughout our assembly there were various times when we felt there could be improvements on the instructions. Starting with the screws necessary for assembly. There was not clear mention of which screws to use and after scaling up 1.5x neither an M3 nor an M4 screw fit properly. However, using a little bit of force, you can fit an M4 screw. When trying to find the proper tension for the strings, it was more or less a guessing game. Ideally, you want the thumb and pointer to get as close as possible, while allowing to be fully at rest when not in a grip. Again, there was no mention of this in the instructions, however, it was not difficult to figure out.</p>
+
+                                            <p>One main issue with the instructions, was the fact that there was no mention of how to assemble this item if you are actually disabled. Although this being a prototype, specifically for anyone to test, someone who may use a finished product in the future would benefit a lot from understanding how to fix or assemble the hand if necessary. </p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Peer Review</p>
+                                            <p class="mb-0">Use this section to record feedback from another person reviewing the project. You can summarize what they understood easily, what confused them, what they thought should be redesigned, and whether their feedback changed the final directions or the device itself.</p>
+                                        </section>
+                                    </div>
+                                    </div>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
