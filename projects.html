@@ -813,6 +813,7 @@
                                     <div class="nav project-section-tabs" id="prostheticHandTabs" role="tablist" aria-label="Prosthetic hand sections">
                                         <button class="project-section-tab active" id="prosthetic-project-tab" data-bs-toggle="tab" data-bs-target="#prosthetic-project-pane" type="button" role="tab" aria-controls="prosthetic-project-pane" aria-selected="true">Project</button>
                                         <button class="project-section-tab" id="prosthetic-review-tab" data-bs-toggle="tab" data-bs-target="#prosthetic-review-pane" type="button" role="tab" aria-controls="prosthetic-review-pane" aria-selected="false">Dicrections Review</button>
+                                        <button class="project-section-tab" id="prosthetic-revised-tab" data-bs-toggle="tab" data-bs-target="#prosthetic-revised-pane" type="button" role="tab" aria-controls="prosthetic-revised-pane" aria-selected="false">Directions Revised</button>
                                     </div>
                                     <div class="tab-content project-tab-content" id="prostheticHandTabsContent">
                                     <div class="tab-pane fade show active" id="prosthetic-project-pane" role="tabpanel" aria-labelledby="prosthetic-project-tab" tabindex="0">
@@ -1084,6 +1085,44 @@
 
                                             Third, the explanation of threading string through the palm using wire stood out as especially useful because it gives a simple, realistic trick that makes assembly easier. We used an alan key and tweezers, which although worked relatively well, a wire will be able to pass through the channels more easily. Overall, I highly suggest reviewing their .pdf prior to even printing. Thank you Ben and Maria!</p>
                                             <p><a href="assets/Ben and Maria Instructions.pdf" download>FAQs by Ben and Maria</a></p>
+                                        </section>
+                                    </div>
+                                    <div class="tab-pane fade" id="prosthetic-revised-pane" role="tabpanel" aria-labelledby="prosthetic-revised-tab" tabindex="0">
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Directions Revised</p>
+                                            <p class="mb-0">This revised direction set is based on the issues we ran into during printing and assembly, along with the strongest strategies we found while completing the hand. The goal is to save future makers time, reduce failed prints, and give back to the community by addressing these issues. Allthough, "Directions Review" touches on some issues, here I more directly mention steps to be most successful.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Files and Scale</p>
+                                            <p class="mb-0">Use the Phoenix Hand V2 palm with the V3 fingers, pins, wrist guard, and tension block. Print the full hand at 150% scale. If the connector pins fit too loosely after scaling, reprint only the pins at roughly 155%-158% for better fit.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Print Setup</p>
+                                            <p class="mb-0">Print the fingers and pins with a raft because the smaller parts are more likely to disconnect from the plate when the printer is moving. Do not use a raft for the palm, crossbar, wrist guard, or tension block unless absolutely necessary (most likely is not). The palm may still need supports for the inner cavity, but adding a raft there created rough edges, more cleanup, and unnecessary extra time.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Prep Before Assembly</p>
+                                            <p class="mb-0">Lay out all printed parts before starting assembly and compare them to a reference image, such as the one I show in Figure 6.4. Use the X-ray wire guide to understand the internal string path and use the parts layout image to identify the major printed components. Videos can be helpful, but in general the X-ray image gives the greatest detail. Before connecting anything, remove leftover raft material and clean rough edges so the joints can move more freely and the device is comfortable to wear.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Pins, Screws, and Fit</p>
+                                            <p class="mb-0">Test fit every pin before final assembly. The original hardware guidance was unclear. In our build, an M4 screw fit with some force after the 150% scaling. It is worth checking fit early so you do not need to disassemble later.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">String Routing and Tension</p>
+                                            <p class="mb-0">Use a thin wire or similar guide to help thread the string through the palm channels. Tie the string to the fingers first, then work backward toward the tension block. Do not fully tighten everything at once. Instead, adjust the tension gradually and test the hand after each added string. The goal is for the thumb and pointer to move close together during grip while still returning to a relaxed position at rest.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Wrist Guard Shaping</p>
+                                            <p class="mb-0">After printing, the wrist guard may still need shaping. We used a heat gun attached to a reflow station to manually form the piece into a better curve. I suggest paying close attention to the connection points on the guard to ensure they line up parallel to the palm. This improved the fit and also allowed the part to keep a cleaner look than if we had relied on extra supports during printing. This also allows for post production customizability.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">Troubleshooting</p>
+                                            <p class="mb-0">If the hand does not return to rest, reduce the string tension slightly. If the grip is too weak, compare the routing to the X-ray guide and tighten in small increments. If finger motion feels blocked, check for rough pin holes, excess raft residue, loose pins, or too much tension. If the palm or crossbar is damaged during raft removal, trim and clean the area first before assuming a full reprint is necessary. You can clean up any jagged edges, but ideally less edges will result in a more comfortable fit.</p>
+                                        </section>
+                                        <section class="project-review-card">
+                                            <p class="project-review-label">User Focus</p>
+                                            <p class="mb-0">One final revision to the directions is keeping the intended user visible throughout the entire process. The instructions should not only explain how to print and assemble the device, but also why certain adjustments matter for comfort, function, and accessibility for the person who may eventually rely on the hand.</p>
                                         </section>
                                     </div>
                                     </div>
