@@ -6,7 +6,6 @@
 window.addEventListener("DOMContentLoaded", function () {
     var root = document.documentElement;
     var body = document.body;
-    var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (body && body.classList.contains("home-page") && root.classList.contains("home-intro-first")) {
         window.requestAnimationFrame(function () {
@@ -25,10 +24,4 @@ window.addEventListener("DOMContentLoaded", function () {
             // Ignore storage availability issues and allow the page to render normally.
         }
     }
-
-    if (prefersReducedMotion) {
-        return;
-    }
-
-    // Project card spin effect removed per latest design direction.
 });
