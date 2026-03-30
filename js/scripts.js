@@ -154,10 +154,10 @@ window.addEventListener("DOMContentLoaded", function () {
 
             connectors.forEach(function (connector, index) {
                 var branch = branches[index];
-                var line = connector.querySelector(".projects-connector-line");
+                var lines = Array.prototype.slice.call(connector.querySelectorAll(".projects-connector-line"));
                 var pad = connector.querySelector(".projects-connector-pad-core");
 
-                if (!branch || !line || !pad) {
+                if (!branch || !lines.length || !pad) {
                     return;
                 }
 
@@ -196,7 +196,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
                 pad.setAttribute("cx", end.x.toFixed(2));
                 pad.setAttribute("cy", end.y.toFixed(2));
-                line.setAttribute("d", conduitCurve.d);
+                lines.forEach(function (line) {
+                    line.setAttribute("d", conduitCurve.d);
+                });
             });
         }
 
