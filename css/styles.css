@@ -14312,7 +14312,7 @@ body.home-page::after {
 
 .home-page .hero-actions .btn {
   --hero-btn-cut: 1.1rem;
-  --hero-btn-frame-opacity: 0.84;
+  --hero-btn-frame-opacity: 0.5;
   --hero-btn-border: rgba(127, 214, 244, 0.16);
   --hero-btn-panel-top: rgba(9, 18, 29, 0.74);
   --hero-btn-panel-mid: rgba(8, 15, 24, 0.58);
@@ -14397,14 +14397,14 @@ body.home-page::after {
     0 calc(var(--hero-btn-cut) * 0.7)
   );
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0 10%, rgba(255, 255, 255, 0) 10% 90%, rgba(255, 255, 255, 0.06) 90% 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0 12%, rgba(255, 255, 255, 0.02) 12% 28%, rgba(255, 255, 255, 0) 28% 72%, rgba(255, 255, 255, 0.02) 72% 88%, rgba(255, 255, 255, 0.08) 88% 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 9%, rgba(255, 255, 255, 0) 9% 91%, rgba(255, 255, 255, 0.028) 91% 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.036) 0 11%, rgba(255, 255, 255, 0.01) 11% 30%, rgba(255, 255, 255, 0) 30% 70%, rgba(255, 255, 255, 0.01) 70% 89%, rgba(255, 255, 255, 0.036) 89% 100%);
   border: 1px solid var(--hero-btn-frame-edge);
   box-shadow:
-    inset 0 0 0 1px var(--hero-btn-frame-shadow),
-    inset 0 0 14px rgba(7, 19, 29, 0.14),
-    0 0 0 1px rgba(var(--hero-btn-glow-rgb), 0.08);
-  opacity: 0.68;
+    inset 0 0 0 1px rgba(20, 43, 60, 0.26),
+    inset 0 0 10px rgba(7, 19, 29, 0.08),
+    0 0 0 1px rgba(var(--hero-btn-glow-rgb), 0.03);
+  opacity: 0.42;
   animation: homeHeroPanelPulse 6.4s ease-in-out infinite;
 }
 
@@ -14494,16 +14494,16 @@ body.home-page::after {
 @keyframes homeHeroPanelPulse {
   0%,
   100% {
-    opacity: var(--hero-btn-frame-opacity, 0.84);
-    transform: scale(0.996);
+    opacity: var(--hero-btn-frame-opacity, 0.5);
+    transform: scale(0.9985);
     filter: drop-shadow(0 0 0 rgba(var(--hero-btn-glow-rgb, 122, 241, 255), 0));
   }
   50% {
-    opacity: 1;
-    transform: scale(1.004);
+    opacity: 0.62;
+    transform: scale(1.0015);
     filter:
-      drop-shadow(0 0 10px rgba(var(--hero-btn-glow-rgb, 122, 241, 255), 0.12))
-      drop-shadow(0 0 18px rgba(var(--hero-btn-glow-rgb, 122, 241, 255), 0.08));
+      drop-shadow(0 0 5px rgba(var(--hero-btn-glow-rgb, 122, 241, 255), 0.07))
+      drop-shadow(0 0 10px rgba(var(--hero-btn-glow-rgb, 122, 241, 255), 0.04));
   }
 }
 
@@ -15774,8 +15774,10 @@ body.site-page:not(.home-page)::after {
       rgba(255, 214, 126, 0) 320deg 360deg
     );
   filter: blur(5px);
-  opacity: 0.72;
-  animation: coreRayRotate 18s linear infinite;
+  opacity: 0;
+  animation:
+    coreHaloReveal 0.7s ease-out 1.18s forwards,
+    coreRayRotate 18s linear infinite 1.88s;
 }
 
 .projects-page .projects-network-core::after {
@@ -15794,8 +15796,11 @@ body.site-page:not(.home-page)::after {
       rgba(255, 229, 164, 0) 318deg 360deg
     );
   filter: blur(9px);
-  opacity: 0.52;
-  animation: coreRayRotateReverse 24s linear infinite, coreRayPulse 7s ease-in-out infinite;
+  opacity: 0;
+  animation:
+    coreHaloReveal 0.7s ease-out 1.26s forwards,
+    coreRayRotateReverse 24s linear infinite 1.96s,
+    coreRayPulse 7s ease-in-out infinite 1.96s;
 }
 
 .projects-page .projects-network-core-rings,
@@ -16892,6 +16897,15 @@ body.site-page:not(.home-page)::after {
   }
 }
 
+@keyframes coreHaloReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.72;
+  }
+}
+
 @keyframes plasmaConduitPulse {
   0%,
   100% {
@@ -17308,11 +17322,12 @@ body.site-page:not(.home-page)::after {
 .projects-page .projects-network-spokes {
   opacity: 1;
   clip-path: circle(0% at 50% 50%);
-  animation: projectSpokeConnect 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.55s forwards;
+  animation: projectSpokeConnect 2.6s cubic-bezier(0.16, 1, 0.3, 1) 1.55s forwards;
 }
 
 .projects-page.projects-wire-reveal-complete .projects-network-spokes {
   opacity: 1;
+  clip-path: circle(86% at 50% 50%);
   animation: none;
 }
 

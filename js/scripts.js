@@ -211,7 +211,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
         if (svg) {
             svg.addEventListener("animationend", function (event) {
-                if (event.animationName === "projectWireReveal") {
+                if (event.animationName === "projectSpokeConnect") {
                     lockWireReveal();
                 }
             });
@@ -226,6 +226,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         scheduleNetworkUpdate();
         triggerCoreStartup();
-        window.setTimeout(lockWireReveal, 2400);
+        window.setTimeout(lockWireReveal, 4400);
     }
 });
