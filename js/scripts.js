@@ -16,13 +16,7 @@ window.addEventListener("DOMContentLoaded", function () {
             root.classList.remove("home-intro-first");
             root.classList.remove("home-intro-animate");
             root.classList.add("home-intro-seen");
-        }, 1200);
-
-        try {
-            sessionStorage.setItem("gruss-home-intro-seen", "1");
-        } catch (error) {
-            // Ignore storage availability issues and allow the page to render normally.
-        }
+        }, 3200);
     }
 
     if (body && body.classList.contains("projects-page")) {

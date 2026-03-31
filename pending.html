@@ -13,6 +13,395 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <link href="css/styles1.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .pending-page {
+                --pending-accent: #8fc6f0;
+                --pending-accent-strong: #5f95c0;
+                --pending-accent-soft: rgba(143, 198, 240, 0.14);
+                --pending-accent-line: rgba(143, 198, 240, 0.5);
+                --pending-accent-text: #dff2ff;
+            }
+
+            .pending-deliverable {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .pending-deliverable-section,
+            .pending-deliverable-intro {
+                padding: 1.4rem 1.5rem;
+                border: 1px solid rgba(255, 238, 209, 0.08);
+                border-radius: 1.25rem;
+                background: rgba(255, 255, 255, 0.03);
+                box-shadow: inset 0 1px 0 rgba(255, 247, 230, 0.04);
+            }
+
+            .pending-deliverable h3,
+            .pending-deliverable h4 {
+                color: #fff4de;
+            }
+
+            .pending-deliverable h3 {
+                margin-bottom: 0.85rem;
+                font-size: 1.35rem;
+            }
+
+            .pending-deliverable h4 {
+                margin-top: 1.2rem;
+                margin-bottom: 0.55rem;
+                font-size: 1rem;
+                letter-spacing: 0.02em;
+            }
+
+            .pending-deliverable p:last-child,
+            .pending-deliverable ul:last-child,
+            .pending-deliverable ol:last-child {
+                margin-bottom: 0;
+            }
+
+            .pending-deliverable ul,
+            .pending-deliverable ol {
+                padding-left: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .pending-deliverable li + li {
+                margin-top: 0.55rem;
+            }
+
+            .pending-deliverable-note {
+                margin-top: 1rem;
+                padding: 0.95rem 1rem;
+                border-left: 3px solid var(--pending-accent-line);
+                border-radius: 0.85rem;
+                background: rgba(255, 255, 255, 0.025);
+            }
+
+            .pending-deliverable-label {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.35rem 0.7rem;
+                border-radius: 999px;
+                background: var(--pending-accent-soft);
+                color: var(--pending-accent-text);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .pending-deliverable-figure {
+                margin: 0;
+            }
+
+            .pending-deliverable-figure img {
+                width: 100%;
+                max-height: 22rem;
+                object-fit: cover;
+            }
+
+            .pending-deliverable-figure-contain img {
+                max-height: 34rem;
+                object-fit: contain;
+                background: rgba(10, 14, 20, 0.7);
+            }
+
+            .pending-deliverable-figure figcaption {
+                margin-top: 0.6rem;
+                color: rgba(218, 208, 191, 0.82);
+                font-size: 0.92rem;
+            }
+
+            .pending-deliverable-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+
+            .pending-deliverable-card {
+                padding: 1rem;
+                border: 1px solid rgba(255, 238, 209, 0.08);
+                border-radius: 1rem;
+                background: rgba(255, 255, 255, 0.025);
+            }
+
+            .pending-deliverable-card h4 {
+                margin-top: 0;
+            }
+
+            .pending-deliverable-status {
+                font-weight: 700;
+                color: var(--pending-accent-text);
+            }
+
+            .pending-hero-panel {
+                max-width: min(52rem, 100%);
+                padding: clamp(1.5rem, 3vw, 2.25rem) !important;
+                border-color: rgba(143, 198, 240, 0.1);
+                background:
+                    linear-gradient(145deg, rgba(8, 16, 24, 0.86) 0%, rgba(15, 23, 34, 0.72) 46%, rgba(11, 20, 30, 0.58) 100%);
+                box-shadow:
+                    0 34px 70px rgba(0, 0, 0, 0.32),
+                    inset 0 1px 0 rgba(215, 241, 255, 0.06);
+            }
+
+            .pending-hero-copy {
+                position: relative;
+                z-index: 1;
+                max-width: 34rem;
+            }
+
+            .pending-hero-copy::after {
+                content: "";
+                display: block;
+                width: 6rem;
+                height: 1px;
+                margin-top: 1.15rem;
+                background: linear-gradient(90deg, rgba(143, 198, 240, 0.9) 0%, rgba(143, 198, 240, 0) 100%);
+            }
+
+            .pending-hero .badge {
+                margin-bottom: 1rem !important;
+                border: 1px solid rgba(143, 198, 240, 0.18);
+                background: linear-gradient(135deg, rgba(56, 90, 119, 0.92) 0%, rgba(98, 140, 178, 0.66) 100%) !important;
+                box-shadow: 0 14px 32px rgba(7, 16, 24, 0.22);
+            }
+
+            .pending-hero-title {
+                margin-bottom: 0.75rem;
+                font-size: clamp(2.35rem, 5vw, 3.8rem);
+                letter-spacing: -0.05em;
+            }
+
+            .pending-hero-title .text-gradient,
+            .pending-showcase-card .text-gradient,
+            .pending-page .text-gradient {
+                background: linear-gradient(135deg, #f4fbff 0%, #b4dcff 48%, #6ea8d8 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .pending-hero-summary {
+                margin: 0;
+                max-width: 32rem;
+                color: rgba(225, 238, 248, 0.9);
+                font-size: 1rem;
+                line-height: 1.75;
+            }
+
+            .pending-showcase-col {
+                display: flex;
+            }
+
+            .pending-showcase-card {
+                aspect-ratio: 16 / 8.6 !important;
+                border-radius: 1rem !important;
+                border-color: rgba(143, 198, 240, 0.26) !important;
+                box-shadow:
+                    0 26px 60px rgba(5, 7, 10, 0.4),
+                    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+                    0 0 32px rgba(143, 198, 240, 0.1);
+            }
+
+            .pending-showcase-card::after {
+                background:
+                    radial-gradient(circle at 78% 22%, rgba(188, 232, 255, 0.16), transparent 24%),
+                    radial-gradient(circle at 12% 100%, rgba(121, 182, 234, 0.18), transparent 32%),
+                    linear-gradient(180deg, rgba(7, 11, 15, 0.06) 0%, rgba(7, 11, 15, 0.2) 42%, rgba(7, 11, 15, 0.56) 100%);
+            }
+
+            .pending-showcase-card img {
+                object-position: center center;
+                filter: saturate(0.92) contrast(1.04) brightness(0.5);
+            }
+
+            .pending-showcase-caption {
+                max-width: 28rem;
+            }
+
+            .pending-showcase-kicker {
+                display: inline-flex;
+                align-items: center;
+                margin-bottom: 0.85rem;
+                padding: 0.35rem 0.7rem;
+                border-radius: 999px;
+                background: rgba(143, 198, 240, 0.16);
+                color: var(--pending-accent-text);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .pending-showcase-card .portfolio-item-caption h2 {
+                margin-bottom: 0.55rem;
+                font-size: clamp(1.85rem, 3vw, 2.7rem);
+                line-height: 0.98;
+                transform: none;
+                opacity: 1;
+            }
+
+            .pending-showcase-summary {
+                margin: 0;
+                color: rgba(228, 238, 246, 0.94);
+                font-size: 1rem;
+                line-height: 1.72;
+                max-width: 26rem;
+            }
+
+            .pending-showcase-action {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55rem;
+                margin-top: 1rem;
+                color: var(--pending-accent-text);
+                font-size: 0.92rem;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+            }
+
+            .pending-showcase-card .portfolio-item-caption {
+                padding: 1.5rem;
+                opacity: 1 !important;
+                align-items: flex-end !important;
+                justify-content: flex-start !important;
+                background: linear-gradient(180deg, rgba(5, 10, 15, 0.03) 0%, rgba(5, 10, 15, 0.24) 38%, rgba(5, 10, 15, 0.9) 100%) !important;
+            }
+
+            .pending-showcase-card:hover .portfolio-item-caption,
+            .pending-showcase-card:focus-visible .portfolio-item-caption {
+                background: linear-gradient(180deg, rgba(5, 10, 15, 0.04) 0%, rgba(5, 10, 15, 0.26) 38%, rgba(5, 10, 15, 0.92) 100%) !important;
+            }
+
+            .pending-page .site-cta {
+                background: linear-gradient(135deg, #15293b 0%, #274862 52%, #35658c 100%) !important;
+            }
+
+            .pending-page .site-cta .site-cta-button:hover,
+            .pending-page .site-cta .site-cta-button:focus {
+                box-shadow: 0 0 0 1px rgba(143, 198, 240, 0.35), 0 22px 42px rgba(8, 18, 28, 0.34);
+            }
+
+            .pending-page .site-quote-band .text-gradient {
+                background: linear-gradient(135deg, #f4fbff 0%, #b4dcff 52%, #6ea8d8 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .pending-page .navbar,
+            .pending-page .pending-hero-panel,
+            .pending-page .pending-showcase-col,
+            .pending-page .site-cta,
+            .pending-page .site-quote-band,
+            .pending-page .site-footer {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: pendingPageRise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            }
+
+            .pending-page .navbar {
+                animation-delay: 0.04s;
+            }
+
+            .pending-page .pending-hero-panel {
+                animation-delay: 0.14s;
+            }
+
+            .pending-page .pending-hero-copy > * {
+                opacity: 0;
+                transform: translateY(18px);
+                animation: pendingPageRise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            }
+
+            .pending-page .pending-hero-copy > *:nth-child(1) {
+                animation-delay: 0.26s;
+            }
+
+            .pending-page .pending-hero-copy > *:nth-child(2) {
+                animation-delay: 0.36s;
+            }
+
+            .pending-page .pending-hero-copy > *:nth-child(3) {
+                animation-delay: 0.48s;
+            }
+
+            .pending-page .pending-showcase-col {
+                animation-delay: 0.58s;
+            }
+
+            .pending-page .site-cta {
+                animation-delay: 0.74s;
+            }
+
+            .pending-page .site-quote-band {
+                animation-delay: 0.86s;
+            }
+
+            .pending-page .site-footer {
+                animation-delay: 0.98s;
+            }
+
+            @keyframes pendingPageRise {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 767.98px) {
+                .pending-deliverable-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .pending-deliverable-section,
+                .pending-deliverable-intro {
+                    padding: 1.15rem;
+                }
+
+                .pending-hero-panel {
+                    padding: 1.35rem !important;
+                }
+
+                .pending-hero-title {
+                    font-size: clamp(2rem, 10vw, 2.9rem);
+                }
+
+                .pending-showcase-card {
+                    aspect-ratio: 5 / 5.4 !important;
+                }
+
+                .pending-showcase-card .portfolio-item-caption {
+                    padding: 1.1rem;
+                }
+
+                .pending-showcase-card .portfolio-item-caption h2 {
+                    font-size: clamp(1.55rem, 8vw, 2.15rem);
+                }
+
+                .pending-showcase-summary {
+                    font-size: 0.95rem;
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .pending-page .navbar,
+                .pending-page .pending-hero-panel,
+                .pending-page .pending-showcase-col,
+                .pending-page .site-cta,
+                .pending-page .site-quote-band,
+                .pending-page .site-footer,
+                .pending-page .pending-hero-copy > * {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    animation: none !important;
+                }
+            }
+        </style>
     </head>
     <body class="d-flex flex-column h-100 bg-light site-page pending-page">
         <main class="flex-shrink-0">
@@ -38,322 +427,199 @@
             <header class="py-5 projects-hero pending-hero">
                 <div class="container px-5">
                     <div class="projects-hero-panel pending-hero-panel">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-lg-7">
-                            <div class="text-center text-lg-start">
-                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
-                                    <div class="text-uppercase">In Progress Ideas &middot; Upcoming Builds</div>
-                                </div>
-                                <h1 class="display-5 fw-bolder mb-3"><span class="text-gradient d-inline">Pending Projects</span></h1>
-                               
+                        <div class="pending-hero-copy text-center text-lg-start">
+                            <div class="badge bg-gradient-primary-to-secondary text-white">
+                                <div class="text-uppercase">In Progress Ideas &middot; Upcoming Builds</div>
                             </div>
+                            <h1 class="pending-hero-title fw-bolder"><span class="text-gradient d-inline">Pending Projects</span></h1>
+                            <p class="pending-hero-summary">One classroom-focused build currently moving from concept development toward fabrication.</p>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="bg-white rounded-4 shadow border-0 p-4 mt-4 mt-lg-0">
-                                <h2 class="h4 fw-bolder mb-3"><span class="text-gradient d-inline">Current Focus</span></h2>
-                                <div class="d-flex flex-column gap-3">
-                                    <div class="rounded-4 bg-light p-3">
-                                        <div class="small text-uppercase text-primary fw-bolder mb-1">Primary Focus</div>
-                                        <div class="fw-semibold">pending...</div>
-                                    </div>
-                                    <div class="rounded-4 bg-light p-3">
-                                        <div class="small text-uppercase text-primary fw-bolder mb-1">Secondary Focus</div>
-                                        <div class="fw-semibold">pending...</div>
-                                    </div>
-                                    <div class="rounded-4 bg-light p-3">
-                                        <div class="small text-uppercase text-primary fw-bolder mb-1">Future</div>
-                                        <div class="fw-semibold">pending...</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </header>
             <section class="page-section portfolio freelancer-scope" id="portfolio">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                        <div class="col-lg-10 col-xl-9 mb-4 pending-showcase-col">
+                            <div class="portfolio-item pending-showcase-card mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                                 <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                     <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">........</span>
-                                    </h2>
+                                    <div class="pending-showcase-caption">
+                                        <span class="pending-showcase-kicker">Pending Project 1</span>
+                                        <h2 class="text-center display-4 fw-bolder">
+                                            <span class="text-gradient d-inline">Cloud Chamber</span>
+                                        </h2>
+                                        <p class="pending-showcase-summary">Coming soon: a classroom cloud chamber focused on making abstract particle physics concepts feel more concrete through direct observation.</p>
+                                        <span class="pending-showcase-action">Open project notes <i class="bi bi-arrow-up-right"></i></span>
+                                    </div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Cup revision placeholder render" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">.........</span>
-                                    </h2>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Calibration series placeholder render" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-5">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">.........</span>
-                                    </h2>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Assistive device placeholder render" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">.........</span>
-                                    </h2>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Sensor car placeholder render" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">.........</span>
-                                    </h2>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Modular chassis placeholder render" />
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <h2 class="text-center display-4 fw-bolder">
-                                        <span class="text-gradient d-inline">.........</span>
-                                    </h2>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/cali-cat.png" alt="Hand refinement placeholder render" />
+                                <img class="img-fluid" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
+            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Title" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                         <div class="modal-body pb-5">
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Cup Revision</h2>
+                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="portfolioModal1Title">Cloud Chamber Design Project Deliverables</h2>
                                         <div class="divider-custom">
                                             <div class="divider-custom-line"></div>
                                             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                             <div class="divider-custom-line"></div>
                                         </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Cup revision placeholder render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 1.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">...........</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Geometry update:</span> refine the upper edge and reduce excess material in the body.</li>
-                                            <li class="mb-2"><span class="fw-bold">Print testing:</span> compare one fast prototype against one higher-finish version.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> sketching the next print profile and dimensions before slicing.</li>
-                                        </ul>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                        <div class="pending-deliverable">
+                                            <div class="pending-deliverable-intro">
+                                                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-3">
+                                                    <span class="pending-deliverable-label">Pending Project 1</span>
+                                                    
+                                                </div>
+                                                <figure class="pending-deliverable-figure">
+                                                    <a href="assets/img/portfolio/gargamelle.jpg" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 5.1</b> (Click the image to view fullscreen)</p>
+                                                <div class="pending-deliverable-note">
+                                                    <p><span class="pending-deliverable-status">Current status:</span> Fabrication Stage</p>
+                                                </div>
+                                            </div>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Calibration Series</h2>
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                            <div class="divider-custom-line"></div>
-                                        </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Calibration series concept render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 2.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">This pending section is reserved for a more systematic calibration run instead of a single benchmark print. The goal is to compare bridge quality, overhang quality, and repeatability across a few small reference models.</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Machine comparison:</span> record results from multiple slicer and printer settings.</li>
-                                            <li class="mb-2"><span class="fw-bold">Evaluation:</span> document where failures start instead of only noting final success.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> selecting a small set of repeatable test pieces for the first round.</li>
-                                        </ul>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                            <section class="pending-deliverable-section">
+                                                <h3>1. Project Overview</h3>
+                                                <p>This project focuses on a Peltier-cooled diffusion cloud chamber intended to function as an educational teaching tool. Rather than serving only as a device demonstration, the chamber is meant to create a classroom experience in which students can directly observe evidence of ionizing radiation and connect that observation to a physical reality.</p>
+                                                <p>My team and I chose this direction because particle physics can feel unintuitive, uninteresting, and difficult to access when students are asked to imagine a phenomenon they cannot normally sense. Making radiation tracks visible to the human eye offers a more concrete way to introduce the topic and gives students a reason to observe, question, and discuss what they are seeing. The overall hope is that it inspires students to explore the fascinating world of particle physics further.</p>
+                                            </section>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Assistive Device V2</h2>
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                            <div class="divider-custom-line"></div>
-                                        </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Assistive device placeholder render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 3.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">The next assistive writing build is planned as an iteration rather than a restart. The priority is improving comfort, simplifying the assembly, and tightening how the hand rests in the support area.</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Ergonomics:</span> revise the contact points around the palm and wrist.</li>
-                                            <li class="mb-2"><span class="fw-bold">Assembly:</span> reduce parts that can shift or loosen during use.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> reviewing dimensions from the first build before starting a revised model.</li>
-                                        </ul>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                            <section class="pending-deliverable-section">
+                                                <h3>2. Research &amp; Problem Framing</h3>
+                                                <h4>Problem Statement</h4>
+                                                <p>This project addresses a common issue regarding certain academia, being the lack of a compact, consistent, and educationally valuable way to help students visualize non-intuitive topics. This can range from a topic within anthropology to that of our focus, physics. Our project will visualize the passage of ionizing radiation in the atmosphere, here, on Brandeis's campus. The goal is to develop a device, electron cloud chamber, that makes an invisible phenomenon visible. We hope to make this topic more accessible by presenting it in a form that supports classroom teaching, discussion, and conceptual understanding.</p>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Sensor Car Upgrade</h2>
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                            <div class="divider-custom-line"></div>
-                                        </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Sensor car placeholder render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 4.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">This project holds the next round of changes for the tracking car. The intended follow-up is better cable management, a cleaner chassis layout, and more controlled testing of how the sensors react on tighter turns.</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Control behavior:</span> test line tracking on sharper curves and uneven lighting.</li>
-                                            <li class="mb-2"><span class="fw-bold">Packaging:</span> reorganize the layout so the electronics and shell feel more integrated.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> outlining what should change in the board placement before a new chassis pass.</li>
-                                        </ul>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                <h4>Background Framing</h4>
+                                                <p>Our approach for the project is framed around the diffusion cloud chamber, rather than around detection alone. The chamber works by creating a supersaturated alcohol vapor to flood the enclosed atmosphere. Within the chamber will be a great temperature differential between the top and surface of the base. That temperature gradient creates the sensitive region where particle tracks become visible. In general, the idea is about visualization, but for those interested in the physical phenomena;the trails are visible because a charged particle passes through a supersaturated alcohol vapor in the cloud chamber and ionizes the gas along its path. The vapor then condenses onto those ions, forming tiny droplets. Those droplets line up where the particle traveled, so you can see a visible trail of exactly that particle's path. For the basic educational demonstration, natural background radiation should be enough to create visible trails, meaning nothing special needs to be placed inside the chamber for the core effect to appear. However, I have included an image below, which is a representation of what happens when something of greater emission is placed inside the chamber.</p>
+                                                <p>The emphasis is on the chamber as an educational system rather than as an isolated piece of hardware. The value of the demonstration comes from allowing students to see direct visual proof that atmospheric radiation exists, notice that different particle tracks may appear different, and begin asking what is visible, what can be inferred, and what still cannot be directly seen. This can give rise to questions regarding how we can alter these paths, how to induce a longer path, as well as, the limitations of the device. That is how we plan to balance educational value with consistency, accessibility, and usability.</p>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Modular Chassis</h2>
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                            <div class="divider-custom-line"></div>
-                                        </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Modular chassis placeholder render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 5.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">The modular chassis page is reserved for a build that compares laser-cut and printed parts within one design language. The idea is to make a chassis that can swap panels or test pieces without rebuilding the whole structure.</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Hybrid fabrication:</span> combine printed geometry with flat-pack structural pieces.</li>
-                                            <li class="mb-2"><span class="fw-bold">Iteration speed:</span> create removable sections to test parts one at a time.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> defining a shared scale and connection method before modeling starts.</li>
-                                        </ul>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                                <h4>User / Customer Profile</h4>
+                                                <ul>
+                                                    <li>The primary users are a physics instructor or professor who is struggling to introduce students to ionizing radiation in a way that feels concrete rather than purely abstract. As well as, the students themselves, as the idea is that they can come to conclusions and form hypotheses about this abstract concept independently using the device.</li>
+                                                    <li>The secondary users are physics' majors. Although, they could benefit from the demonstration, this is mainly a focus on helping those who cannot visualize the invisible, therefore a physics major studying these concepts might already have a good idea of the abstract in a concrete form. However, as mentioned the device can still benefit these individuals as they, too, cannot often see this phenomena with the human eye.</li>
+                                                    <li>The educational goal is to help students see, ask questions, build interest, and connect what they observe to physical reality.</li>
+                                                    <li>The chamber will teach students to make observations of the now visible particles and convert those observations into understanding, rather than overwhelm users with engineering details and the complex underlying quantum mechanics.</li>
+                                                </ul>
+                                            </section>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                        <div class="modal-body pb-5">
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Hand Refinement</h2>
-                                        <div class="divider-custom">
-                                            <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                            <div class="divider-custom-line"></div>
+                                            <section class="pending-deliverable-section">
+                                                <h3>3. Problem Definition &amp; Brainstorming</h3>
+                                                <h4>Thematic Design Tensions and Themes</h4>
+                                                <ul>
+                                                    <li>One major challenge is creating interest in something that students cannot normally sense and connecting this topic to the idea of accessibility for all users.</li>
+                                                    <li>The project has to balance functionality, portability, consistency, aesthetics, and educational value.</li>
+                                                    <li>Another hurdle is the balance between system autonomy and the amount of interaction users should have. Ideally, we want the users focus to be on the chamber not the controls. Our plan is to build the device with a simply plug and play interface.</li>
+                                                    <li>The chamber also raises the question of showing versus explaining. Although, we want to show the user this phenomena, they will not always understanding what the importance is. As the builders we will add an interface that briefly introduces the user to the concepts we hope to convey.</li>
+                                                    <li>Mathematics and physical law both need to be incorporated in a way that feels meaningful rather than forced. In general, we can approach this from a fabrication stand point alone with zero quantitative analysis. On the flip side we can also calculate the amount of voltage necessary, coupled with the efficiency of the heat sink, without forgetting the impact of density of saturation...and very quickly we lose sight of our original intent. This fine line between over-explaining and educational substance will have to be addressed carefully and presented with the user in mind being someone not currently familiar with the concepts.</li>
+                                                   
+                                                </ul>
+                                                <div class="pending-deliverable-note">
+                                                    <p><span class="pending-deliverable-status">Design Themes Summary:</span> Broader themes I mentioned that will be present in the project include accessibility to the invisible, educational value, portability, consistency within the device, autonomy balanced with user interaction, and deeper scientific explanation beyond spectacle without over-explaining to a uninformed audience.</p>
+                                                </div>
+
+                                                <h4>Insight Statements about Design</h4>
+                                                <ul>
+                                                    <li>Students struggle to engage with ionizing radiation because it is normally invisible and difficult to connect to everyday experience.</li>
+                                                    <li>A successful classroom cloud chamber must do more than function physically; it must also balance cooling performance with portability, consistency, and educational clarity.</li>
+                                                    <li>Too much automation may reduce learning, while too much user control may reduce reliability.</li>
+                                                    <li>The educational power of the chamber comes not only from showing tracks, but from helping students ask better questions about what those tracks mean.</li>
+                                                    <li>The chamber is strong as a teaching tool as it connects direct visual experience to broader academic clarity.</li>
+                                                </ul>
+
+                                                <h4>Focused Questions</h4>
+                                                <ul>
+                                                    <li>How can we make ionizing radiation visible in a way that feels concrete and captivating to students?</li>
+                                                    <li>How might we design a cloud chamber that is compact and portable without sacrificing track visibility and consistency? How does design effect who can use it? Why?</li>
+                                                    <li>How might we balance automation with user interaction so the system is reliable but still educational?</li>
+                                                    <li>How might we use the chamber not just to show tracks, but to prompt deeper discussion of physics concepts and limitations? How do we move students past the "Whoa! Cool" stage, into forming hypotheses?</li>
+                                                </ul>
+
+                                                <h4>Selected Design Direction</h4>
+                                                <p>The selected direction is a Peltier-cooled diffusion cloud chamber designed as an educational teaching tool. I chose this approach because it supports the core goal of making invisible radiation visible, while also allowing the project to be built around usability, safety explanation, and conceptual accessibility rather than engineering spectacle alone. At this stage, this should be read as the current direction rather than as a fully finalized design.</p>
+                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
+                                                    <a href="assets/img/portfolio/story-board.jpg" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/story-board.jpg" alt="Storyboard sketch showing brainstorming themes, insight statements, and questions for the physics education concept" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 5.2</b> (Click the image to view fullscreen)</p>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>4. Storyboard</h3>
+                                                <ol>
+                                                    <p><i>Our story begins with a classroom problem: a physics professor wants to introduce students to ionizing radiation, but the concept is difficult to make concrete because students cannot directly sense it.</i></p>
+                                                    <li>The cloud chamber then acts as the bridge between that invisible idea and the perceivable physical world, allowing the lesson to begin with observation rather than abstraction alone.</li>
+                                                    <li>The next step is explaining that the device is a diffusion chamber, which creates a supersaturated vapor by keeping the bottom very cold while the top remains warmer. It's crucial to begin the explanation post demonstration as we are focused on the connection not this specific phenomena necessarily.</li>
+                                                    <li>Once the chamber reaches that sensitive state and proper temperature differential, charged particles passing through the region leave visible condensation tracks, which the user will now see.</li>
+                                                    <li>At that point, students will begin asking questions about what they are seeing, why some tracks may appear different, and what can actually be concluded from the demonstration. And the most common, "is this safe?" Of course, the particles are there whether we visualize them or not, that is our whole point! Success!</li>
+                                                    <li>The instructor can then use the chamber to connect those visible trails to larger physics concepts instead of treating the demonstration as spectacle alone.</li>
+                                                    <li>The chamber's components can also become part of the explanation, since the build itself helps show how the conditions for visibility are created and give a brief introduction to circuitry.</li>
+                                                    <li>From there, the demonstration can lead into broader real-world or scientific visualizations and show that the classroom experience connects outward to larger contexts.</li>
+                                                    <li>The instructor also has an opportunity to address safety and misconceptions surrounding radiation, electricity, and the chamber's hot and cold components.</li>
+                                                    <li>The experience ultimately opens the door to deeper learning, including equations, interpretation, and broader particle physics ideas that grow out of what students have already observed.</li>
+                                                    <li>Finally, the last step the student will take is that when they tell all their classmates how incredible ionizing radiation can look! On a more serious note, the user can now express something that was once invisible, using concrete observations. Our hopes are that this promotes a welcoming introduction to less intuitive concepts</li>
+                                                </ol>
+                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
+                                                    <a href="assets/img/portfolio/using-chamber.png" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/using-chamber.png" alt="Storyboard sequence showing the cloud chamber being prepared, cooled, and observed as particle trails become visible" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 5.3</b> (Click the image to view fullscreen)</p>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>5. Current Design Direction</h3>
+                                                <p>Our design direction is a Peltier-cooled diffusion cloud chamber. A similar approach has been taken using dry ice, however that is not user friendly. In the present system logic, stacked Peltier modules create the cold side needed for the chamber, an aluminum plate is part of the cold-side design, and the hot side must be actively cooled with a heat sink and CPU fan. A buck converter has also been discussed as one option for setting the Peltier voltage and keeping it stable, however, proved unnecessary. Overall, the design is trying to balance cooling performance, a stable atmosphere, and classroom usability.</p>
+                                                <p>The list below reflects the current documented direction rather than a locked final bill of materials. In general, the design will remain consistent but some parts may be removed or changed:</p>
+
+                                                <figure class="pending-deliverable-figure mb-4">
+                                                    <a href="assets/img/portfolio/construction.png" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/construction.png" alt="Repeated placeholder image for the current design direction section" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 5.4</b> (Click the image to view fullscreen)</p>
+
+                                                <div class="pending-deliverable-grid">
+                                                   
+                                                    <div class="pending-deliverable-card">
+                                                        <h4>Current Documented Parts</h4>
+                                                        <ul>
+                                                        
+                                                        
+                                                            <li>DC PSU</li>
+                                                            <li>CPU fan / heat sink</li>
+                                                            <li>stacked Peltier modules (pre-stackedd)</li>
+                                                            <li>aluminum plate 60mm diameter x 3mm height</li>
+                                                            <li>thermal paste</li>
+                                                            <li>temperature gauge</li>
+                                                        
+                                                            <li>wires</li>
+                                                            <li>fuse (undecided if needed)</li>
+                                                            <li>silicone insulation</li>
+                                                            
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>6. Closing Reflection</h3>
+                                                <p>The larger goal of this project is to make an abstract concept feel more concrete. Particle physics can be difficult to understand when students are asked to imagine a phenomenon they cannot normally see, so the cloud chamber gives them a more direct way to connect observation to the underlying physics. By making ionizing radiation visible in a classroom setting, the project can help turn a difficult topic into something more accessible, discussable, and real.</p>
+                                            </section>
                                         </div>
-                                        <a href="assets/img/portfolio/cali-cat.png" target="_blank">
-                                            <img class="img-fluid rounded mb-3" src="assets/img/portfolio/cali-cat.png" alt="Hand refinement placeholder render" />
-                                        </a>
-                                        <p class="fullscreen-hint"><b>Concept 6.1</b> (Click the image to view fullscreen)</p>
-                                        <p class="mb-4">This pending project is the next refinement pass for the prosthetic hand work. The goal is to improve articulation ideas, tidy the overall shape, and document which parts should prioritize strength versus motion.</p>
-                                        <p><b><i>Planned focus:</i></b></p>
-                                        <ul class="mb-4 ps-3">
-                                            <li class="mb-2"><span class="fw-bold">Mechanical revision:</span> evaluate where the current geometry limits movement or durability.</li>
-                                            <li class="mb-2"><span class="fw-bold">Presentation:</span> build a cleaner visual sequence for concept, print, and assembly stages.</li>
-                                            <li class="mb-0"><span class="fw-bold">Status:</span> collecting measurements and deciding which joints deserve the next redesign effort.</li>
-                                        </ul>
                                         <button class="btn btn-primary" data-bs-dismiss="modal">
                                             <i class="fas fa-xmark fa-fw"></i>
                                             Close Window
