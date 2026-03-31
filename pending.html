@@ -213,7 +213,9 @@
 
             .pending-showcase-card img {
                 object-position: center center;
-                filter: saturate(0.92) contrast(1.04) brightness(0.5);
+                filter: none !important;
+                animation: none !important;
+                transform: none !important;
             }
 
             .pending-showcase-caption {
@@ -261,17 +263,25 @@
                 letter-spacing: 0.03em;
             }
 
-            .pending-showcase-card .portfolio-item-caption {
+            .site-page.pending-page .pending-showcase-card .portfolio-item-caption {
                 padding: 1.5rem;
                 opacity: 1 !important;
                 align-items: flex-end !important;
                 justify-content: flex-start !important;
                 background: linear-gradient(180deg, rgba(5, 10, 15, 0.03) 0%, rgba(5, 10, 15, 0.24) 38%, rgba(5, 10, 15, 0.9) 100%) !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
             }
 
-            .pending-showcase-card:hover .portfolio-item-caption,
-            .pending-showcase-card:focus-visible .portfolio-item-caption {
+            .site-page.pending-page .pending-showcase-card:hover .portfolio-item-caption,
+            .site-page.pending-page .pending-showcase-card:focus-visible .portfolio-item-caption {
                 background: linear-gradient(180deg, rgba(5, 10, 15, 0.04) 0%, rgba(5, 10, 15, 0.26) 38%, rgba(5, 10, 15, 0.92) 100%) !important;
+            }
+
+            .site-page.pending-page .pending-showcase-card:hover img,
+            .site-page.pending-page .pending-showcase-card:focus-visible img {
+                filter: none !important;
+                transform: none !important;
             }
 
             .pending-page .site-cta {
