@@ -29,6 +29,7 @@ window.addEventListener("DOMContentLoaded", function () {
         var resizeFrame = 0;
         var startupFrame = 0;
         var startupTriggered = false;
+        var wireRevealLocked = false;
 
         function clamp(value, min, max) {
             return Math.min(Math.max(value, min), max);
@@ -196,8 +197,25 @@ window.addEventListener("DOMContentLoaded", function () {
             });
         }
 
+        function lockWireReveal() {
+            if (wireRevealLocked) {
+                return;
+            }
+
+            wireRevealLocked = true;
+            body.classList.add("projects-wire-reveal-complete");
+        }
+
         window.addEventListener("resize", scheduleNetworkUpdate);
         window.addEventListener("load", scheduleNetworkUpdate);
+
+        if (svg) {
+            svg.addEventListener("animationend", function (event) {
+                if (event.animationName === "projectWireReveal") {
+                    lockWireReveal();
+                }
+            });
+        }
 
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(function () {
@@ -208,5 +226,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
         scheduleNetworkUpdate();
         triggerCoreStartup();
+        window.setTimeout(lockWireReveal, 2400);
     }
 });
