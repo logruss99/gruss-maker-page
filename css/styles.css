@@ -12647,7 +12647,7 @@ html {
 
 .resume-page .resume-intro-label {
   margin-bottom: 0.9rem;
-  color: rgba(242, 198, 147, 0.9);
+  color: #ffffff;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -12840,7 +12840,7 @@ html {
 }
 
 .projects-page .projects-hero-word-accent {
-  color: rgba(242, 206, 129, 0.96);
+  color: #ffffff;
   text-shadow:
     0 0 18px rgba(255, 214, 120, 0.2),
     0 1px 0 rgba(255, 247, 229, 0.12);
@@ -14477,19 +14477,7 @@ body.home-page::after {
 
 .home-page .hero-actions .btn {
   --hero-btn-cut: 1.1rem;
-  --hero-btn-frame-opacity: 0.5;
-  --hero-btn-border: rgba(127, 214, 244, 0.13);
-  --hero-btn-panel-top: rgba(9, 18, 29, 0.2);
-  --hero-btn-panel-mid: rgba(8, 15, 24, 0.08);
-  --hero-btn-panel-bottom: rgba(4, 10, 16, 0.14);
-  --hero-btn-radial: rgba(168, 239, 255, 0.08);
-  --hero-btn-corner-glow: rgba(138, 207, 230, 0.025);
-  --hero-btn-frame-line: rgba(219, 239, 248, 0.1);
-  --hero-btn-frame-edge: rgba(175, 189, 199, 0.08);
-  --hero-btn-frame-shadow: rgba(18, 39, 55, 0.16);
-  --hero-btn-scan: rgba(255, 255, 255, 0.045);
   --hero-btn-glow-rgb: 255, 214, 120;
-  --module-glow-max: 0.18;
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -14502,7 +14490,7 @@ body.home-page::after {
   color: rgba(239, 251, 255, 0.92);
   text-align: center;
   font-weight: 800;
-  border: 1px solid var(--hero-btn-border);
+  border: 1px solid rgba(127, 214, 244, 0.13);
   border-radius: 0;
   clip-path: polygon(
     var(--hero-btn-cut) 0,
@@ -14514,13 +14502,11 @@ body.home-page::after {
     0 calc(100% - var(--hero-btn-cut)),
     0 var(--hero-btn-cut)
   );
-  background-color: #10161d;
+  background-color: transparent;
   background-image:
-    linear-gradient(180deg, var(--hero-btn-panel-top) 0%, var(--hero-btn-panel-mid) 34%, var(--hero-btn-panel-bottom) 100%),
-    radial-gradient(circle at 18% 16%, var(--hero-btn-radial) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
-    linear-gradient(135deg, var(--hero-btn-corner-glow) 0%, rgba(138, 207, 230, 0) 34%);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%);
   box-shadow:
     0 0 0 1px rgba(255, 214, 120, 0.04),
     0 20px 34px rgba(0, 0, 0, 0.14),
@@ -14554,24 +14540,21 @@ body.home-page::after {
 }
 
 .home-page .hero-actions .btn::after {
-  inset: 0.68rem;
+  inset: clamp(0.2rem, 0.52cqw, 0.54rem);
   z-index: 0;
   clip-path: polygon(
-    calc(var(--hero-btn-cut) * 0.72) 0,
-    calc(100% - calc(var(--hero-btn-cut) * 0.72)) 0,
-    100% calc(var(--hero-btn-cut) * 0.72),
-    100% calc(100% - calc(var(--hero-btn-cut) * 0.72)),
-    calc(100% - calc(var(--hero-btn-cut) * 0.72)) 100%,
-    calc(var(--hero-btn-cut) * 0.72) 100%,
-    0 calc(100% - calc(var(--hero-btn-cut) * 0.72)),
-    0 calc(var(--hero-btn-cut) * 0.72)
+    calc(var(--hero-btn-cut) * 0.78) 0,
+    calc(100% - calc(var(--hero-btn-cut) * 0.78)) 0,
+    100% calc(var(--hero-btn-cut) * 0.78),
+    100% calc(100% - calc(var(--hero-btn-cut) * 0.78)),
+    calc(100% - calc(var(--hero-btn-cut) * 0.78)) 100%,
+    calc(var(--hero-btn-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--hero-btn-cut) * 0.78)),
+    0 calc(var(--hero-btn-cut) * 0.78)
   );
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 9%, rgba(255, 255, 255, 0) 9% 91%, rgba(255, 255, 255, 0.028) 91% 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.036) 0 11%, rgba(255, 255, 255, 0.01) 11% 30%, rgba(255, 255, 255, 0) 30% 70%, rgba(255, 255, 255, 0.01) 70% 89%, rgba(255, 255, 255, 0.036) 89% 100%);
   border: 1px solid rgba(175, 189, 199, 0.08);
   box-shadow:
-    inset 0 0 0 1px rgba(20, 43, 60, 0.26),
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
     inset 0 0 10px rgba(7, 19, 29, 0.05),
     0 0 0 1px rgba(255, 214, 120, 0.03);
   opacity: 0.42;
@@ -14601,7 +14584,13 @@ body.home-page::after {
 .home-page .hero-actions .btn:hover,
 .home-page .hero-actions .btn:focus {
   transform: translateY(-2px);
-  filter: saturate(1.03);
+  filter:
+    brightness(1.08)
+    saturate(1.08)
+    drop-shadow(0 0 10px rgba(255, 230, 155, 0.72))
+    drop-shadow(0 0 22px rgba(255, 198, 94, 0.52))
+    drop-shadow(0 0 36px rgba(255, 166, 64, 0.34));
+  border-color: rgba(255, 221, 146, 0.7);
   box-shadow:
     0 0 0 1px rgba(255, 214, 120, 0.04),
     0 24px 38px rgba(0, 0, 0, 0.18),
@@ -14631,7 +14620,7 @@ body.home-page::after {
   .home-page .hero-actions .btn-outline-dark {
     border-radius: 0 !important;
     border: 1px solid rgba(127, 214, 244, 0.13) !important;
-    background-color: #10161d !important;
+    background-color: transparent !important;
     background-image:
       linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
       radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
@@ -14680,12 +14669,18 @@ body.home-page::after {
   .home-page .hero-actions .btn-outline-dark:focus,
   .home-page .hero-actions .btn:hover,
   .home-page .hero-actions .btn:focus {
-    border-color: rgba(127, 214, 244, 0.13) !important;
-    background-color: #10161d !important;
+    border-color: rgba(255, 221, 146, 0.7) !important;
+    background-color: transparent !important;
     background-image:
       linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
       radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
       linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%) !important;
+    filter:
+      brightness(1.08)
+      saturate(1.08)
+      drop-shadow(0 0 10px rgba(255, 230, 155, 0.72))
+      drop-shadow(0 0 22px rgba(255, 198, 94, 0.52))
+      drop-shadow(0 0 36px rgba(255, 166, 64, 0.34)) !important;
     box-shadow:
       0 0 0 1px rgba(255, 214, 120, 0.04),
       0 24px 38px rgba(0, 0, 0, 0.18),

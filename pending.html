@@ -136,14 +136,67 @@
             }
 
             .pending-hero-panel {
+                --pending-hero-cut: clamp(1.1rem, 2vw, 1.75rem);
+                position: relative;
+                isolation: isolate;
+                overflow: hidden;
                 max-width: min(52rem, 100%);
-                padding: clamp(1.5rem, 3vw, 2.25rem) !important;
-                border-color: rgba(143, 198, 240, 0.1);
+                padding: clamp(1.7rem, 3vw, 2.45rem) !important;
+                border: 1px solid rgba(127, 214, 244, 0.13);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--pending-hero-cut) 0,
+                    calc(100% - var(--pending-hero-cut)) 0,
+                    100% var(--pending-hero-cut),
+                    100% calc(100% - var(--pending-hero-cut)),
+                    calc(100% - var(--pending-hero-cut)) 100%,
+                    var(--pending-hero-cut) 100%,
+                    0 calc(100% - var(--pending-hero-cut)),
+                    0 var(--pending-hero-cut)
+                );
                 background:
-                    linear-gradient(145deg, rgba(8, 16, 24, 0.86) 0%, rgba(15, 23, 34, 0.72) 46%, rgba(11, 20, 30, 0.58) 100%);
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.26) 0%, rgba(8, 15, 24, 0.12) 34%, rgba(4, 10, 16, 0.18) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.09) 0%, rgba(168, 239, 255, 0.02) 16%, rgba(168, 239, 255, 0) 34%),
+                    linear-gradient(135deg, rgba(138, 207, 230, 0.03) 0%, rgba(138, 207, 230, 0) 34%);
                 box-shadow:
-                    0 34px 70px rgba(0, 0, 0, 0.32),
-                    inset 0 1px 0 rgba(215, 241, 255, 0.06);
+                    0 0 0 1px rgba(255, 214, 120, 0.04),
+                    0 34px 70px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+            }
+
+            .pending-hero-panel::before,
+            .pending-hero-panel::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .pending-hero-panel::before {
+                inset: 0;
+                clip-path: inherit;
+                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.07) 0%, rgba(122, 241, 255, 0.018) 20%, rgba(122, 241, 255, 0) 42%);
+                opacity: 0.28;
+            }
+
+            .pending-hero-panel::after {
+                inset: clamp(0.45rem, 1vw, 0.8rem);
+                clip-path: polygon(
+                    calc(var(--pending-hero-cut) * 0.78) 0,
+                    calc(100% - calc(var(--pending-hero-cut) * 0.78)) 0,
+                    100% calc(var(--pending-hero-cut) * 0.78),
+                    100% calc(100% - calc(var(--pending-hero-cut) * 0.78)),
+                    calc(100% - calc(var(--pending-hero-cut) * 0.78)) 100%,
+                    calc(var(--pending-hero-cut) * 0.78) 100%,
+                    0 calc(100% - calc(var(--pending-hero-cut) * 0.78)),
+                    0 calc(var(--pending-hero-cut) * 0.78)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    inset 0 0 10px rgba(7, 19, 29, 0.05),
+                    0 0 0 1px rgba(255, 214, 120, 0.03);
+                opacity: 0.42;
             }
 
             .pending-hero-copy {
@@ -162,10 +215,35 @@
             }
 
             .pending-hero .badge {
+                position: relative;
+                display: inline-flex;
+                align-items: center;
                 margin-bottom: 1rem !important;
-                border: 1px solid rgba(143, 198, 240, 0.18);
-                background: linear-gradient(135deg, rgba(56, 90, 119, 0.92) 0%, rgba(98, 140, 178, 0.66) 100%) !important;
-                box-shadow: 0 14px 32px rgba(7, 16, 24, 0.22);
+                padding: 0.45rem 0.9rem;
+                border: 1px solid rgba(127, 214, 244, 0.16);
+                border-radius: 0;
+                clip-path: polygon(
+                    0.55rem 0,
+                    calc(100% - 0.55rem) 0,
+                    100% 0.55rem,
+                    100% calc(100% - 0.55rem),
+                    calc(100% - 0.55rem) 100%,
+                    0.55rem 100%,
+                    0 calc(100% - 0.55rem),
+                    0 0.55rem
+                );
+                background:
+                    linear-gradient(180deg, rgba(17, 42, 61, 0.84) 0%, rgba(9, 24, 36, 0.72) 100%) !important;
+                box-shadow:
+                    0 0 0 1px rgba(255, 214, 120, 0.03),
+                    0 14px 32px rgba(7, 16, 24, 0.22),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.08);
+            }
+
+            .pending-hero .badge .text-uppercase {
+                position: relative;
+                z-index: 1;
+                letter-spacing: 0.08em;
             }
 
             .pending-hero-title {
@@ -374,6 +452,7 @@
                 }
 
                 .pending-hero-panel {
+                    --pending-hero-cut: 0.9rem;
                     padding: 1.35rem !important;
                 }
 
@@ -437,9 +516,6 @@
                 <div class="container px-5">
                     <div class="projects-hero-panel pending-hero-panel">
                         <div class="pending-hero-copy text-center text-lg-start">
-                            <div class="badge bg-gradient-primary-to-secondary text-white">
-                                <div class="text-uppercase">In Progress Ideas &middot; Upcoming Builds</div>
-                            </div>
                             <h1 class="pending-hero-title fw-bolder"><span class="text-gradient d-inline">Pending Projects</span></h1>
                             <p class="pending-hero-summary">One classroom-focused build currently moving from concept development toward fabrication.</p>
                         </div>
