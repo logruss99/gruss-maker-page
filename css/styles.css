@@ -15159,7 +15159,7 @@ body.site-page:not(.home-page)::after {
 }
 
 .site-page:not(.home-page) .site-cta::before {
-  content: "";
+  content: none;
   position: absolute;
   inset: -10% auto auto 8%;
   width: min(28rem, 46vw);
@@ -15170,7 +15170,7 @@ body.site-page:not(.home-page)::after {
 }
 
 .site-page:not(.home-page) .site-cta::after {
-  content: "";
+  content: none;
   position: absolute;
   inset: auto 4% -40% auto;
   width: min(22rem, 34vw);
