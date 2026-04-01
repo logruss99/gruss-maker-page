@@ -12576,18 +12576,34 @@ html {
 }
 
 .resume-page .resume-hero {
+  --resume-hero-cut: clamp(1.1rem, 2vw, 1.6rem);
   position: relative;
   max-width: min(44rem, 100%);
   margin: 0 auto clamp(2.5rem, 6vw, 4rem);
   padding: clamp(2rem, 4vw, 2.8rem);
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  border: 1px solid rgba(127, 214, 244, 0.13);
+  clip-path: polygon(
+    var(--resume-hero-cut) 0,
+    calc(100% - var(--resume-hero-cut)) 0,
+    100% var(--resume-hero-cut),
+    100% calc(100% - var(--resume-hero-cut)),
+    calc(100% - var(--resume-hero-cut)) 100%,
+    var(--resume-hero-cut) 100%,
+    0 calc(100% - var(--resume-hero-cut)),
+    0 var(--resume-hero-cut)
+  );
   background:
-    linear-gradient(145deg, rgba(14, 20, 27, 0.82) 0%, rgba(24, 31, 40, 0.62) 46%, rgba(30, 39, 49, 0.46) 100%);
+    linear-gradient(180deg, rgba(9, 18, 29, 0.24) 0%, rgba(8, 15, 24, 0.1) 34%, rgba(4, 10, 16, 0.16) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%);
   box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.04),
     0 34px 70px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .resume-page .resume-hero::before,
@@ -12598,24 +12614,31 @@ html {
 }
 
 .resume-page .resume-hero::before {
-  inset: -10% auto auto -8%;
-  width: min(24rem, 46vw);
-  height: min(24rem, 46vw);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 202, 215, 0.12) 0%, rgba(184, 202, 215, 0.05) 28%, rgba(184, 202, 215, 0) 68%);
-  filter: blur(8px);
+  inset: 0;
+  clip-path: inherit;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+  opacity: 0.24;
   animation: resumeSignalPulse 10s ease-in-out infinite;
 }
 
 .resume-page .resume-hero::after {
-  inset: auto -10% -34% 44%;
-  height: 20rem;
-  border-radius: 999px;
-  border: 1px solid rgba(185, 199, 212, 0.12);
+  inset: clamp(0.5rem, 1vw, 0.8rem);
+  clip-path: polygon(
+    calc(var(--resume-hero-cut) * 0.78) 0,
+    calc(100% - calc(var(--resume-hero-cut) * 0.78)) 0,
+    100% calc(var(--resume-hero-cut) * 0.78),
+    100% calc(100% - calc(var(--resume-hero-cut) * 0.78)),
+    calc(100% - calc(var(--resume-hero-cut) * 0.78)) 100%,
+    calc(var(--resume-hero-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--resume-hero-cut) * 0.78)),
+    0 calc(var(--resume-hero-cut) * 0.78)
+  );
+  border: 1px solid rgba(175, 189, 199, 0.08);
   box-shadow:
-    0 0 0 68px rgba(185, 199, 212, 0.04),
-    0 0 0 136px rgba(185, 199, 212, 0.025);
-  transform: rotate(-16deg);
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    inset 0 0 10px rgba(7, 19, 29, 0.05),
+    0 0 0 1px rgba(255, 214, 120, 0.03);
+  opacity: 0.42;
 }
 
 .resume-page .resume-hero .display-5 {
@@ -12629,6 +12652,103 @@ html {
   position: relative;
   z-index: 1;
   margin-top: 1.75rem;
+}
+
+.resume-page .resume-hero-actions .btn {
+  --resume-hero-btn-cut: 1rem;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: 14rem;
+  min-height: 4.35rem;
+  padding: 0.95rem 2rem !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(127, 214, 244, 0.13) !important;
+  clip-path: polygon(
+    var(--resume-hero-btn-cut) 0,
+    calc(100% - var(--resume-hero-btn-cut)) 0,
+    100% var(--resume-hero-btn-cut),
+    100% calc(100% - var(--resume-hero-btn-cut)),
+    calc(100% - var(--resume-hero-btn-cut)) 100%,
+    var(--resume-hero-btn-cut) 100%,
+    0 calc(100% - var(--resume-hero-btn-cut)),
+    0 var(--resume-hero-btn-cut)
+  );
+  background-color: transparent !important;
+  background-image:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.04),
+    0 20px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2) !important;
+  color: rgba(242, 206, 129, 0.96) !important;
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 0 18px rgba(255, 214, 120, 0.18),
+    0 1px 0 rgba(255, 247, 229, 0.12);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.resume-page .resume-hero-actions .btn::before,
+.resume-page .resume-hero-actions .btn::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.resume-page .resume-hero-actions .btn::before {
+  inset: 0;
+  clip-path: inherit;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+  opacity: 0.24;
+}
+
+.resume-page .resume-hero-actions .btn::after {
+  inset: 0.58rem;
+  clip-path: polygon(
+    calc(var(--resume-hero-btn-cut) * 0.78) 0,
+    calc(100% - calc(var(--resume-hero-btn-cut) * 0.78)) 0,
+    100% calc(var(--resume-hero-btn-cut) * 0.78),
+    100% calc(100% - calc(var(--resume-hero-btn-cut) * 0.78)),
+    calc(100% - calc(var(--resume-hero-btn-cut) * 0.78)) 100%,
+    calc(var(--resume-hero-btn-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--resume-hero-btn-cut) * 0.78)),
+    0 calc(var(--resume-hero-btn-cut) * 0.78)
+  );
+  border: 1px solid rgba(175, 189, 199, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    inset 0 0 10px rgba(7, 19, 29, 0.05),
+    0 0 0 1px rgba(255, 214, 120, 0.03);
+  opacity: 0.42;
+}
+
+.resume-page .resume-hero-actions .btn:hover,
+.resume-page .resume-hero-actions .btn:focus {
+  color: rgba(250, 224, 161, 0.98) !important;
+  border-color: rgba(255, 221, 146, 0.7) !important;
+  background-color: transparent !important;
+  background-image:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%) !important;
+  filter:
+    brightness(1.08)
+    saturate(1.08)
+    drop-shadow(0 0 10px rgba(255, 230, 155, 0.72))
+    drop-shadow(0 0 22px rgba(255, 198, 94, 0.52))
+    drop-shadow(0 0 36px rgba(255, 166, 64, 0.34));
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.04),
+    0 24px 38px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.22) !important;
 }
 
 .resume-page .resume-intro-panel {
@@ -12890,12 +13010,12 @@ html {
   content: "";
   flex: 1 1 auto;
   height: 1px;
-  background: linear-gradient(90deg, rgba(255, 106, 42, 0.32), rgba(160, 175, 187, 0.12));
+  background: linear-gradient(90deg, rgba(143, 198, 240, 0.34), rgba(255, 214, 120, 0.14), rgba(160, 175, 187, 0.08));
 }
 
 .resume-page section h2.text-secondary,
 .pending-page .text-secondary {
-  color: #5b463e !important;
+  color: rgba(242, 233, 216, 0.92) !important;
 }
 
 .resume-page .resume-entry-card,
@@ -12912,7 +13032,7 @@ html {
 .resume-page .resume-entry-card:hover,
 .resume-page .resume-skills-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 106, 42, 0.18) !important;
+  border-color: rgba(127, 214, 244, 0.18) !important;
   box-shadow: 0 34px 62px rgba(5, 11, 18, 0.2) !important;
 }
 
@@ -12928,7 +13048,7 @@ html {
   position: absolute;
   inset: 0 auto 0 0;
   width: 6px;
-  background: linear-gradient(180deg, rgba(255, 106, 42, 0.95), rgba(118, 132, 146, 0.72));
+  background: linear-gradient(180deg, rgba(143, 198, 240, 0.9), rgba(255, 214, 120, 0.62), rgba(118, 132, 146, 0.54));
   opacity: 0.92;
 }
 
@@ -12993,7 +13113,7 @@ html {
   bottom: 0;
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255, 106, 42, 0.72), rgba(118, 132, 146, 0.42));
+  background: linear-gradient(90deg, rgba(143, 198, 240, 0.68), rgba(255, 214, 120, 0.42), rgba(118, 132, 146, 0.24));
 }
 
 .resume-page .resume-entry-meta .text-primary,
@@ -13013,8 +13133,8 @@ html {
   width: 0.55rem;
   height: 0.55rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 106, 42, 0.95), rgba(118, 132, 146, 0.8));
-  box-shadow: 0 0 0 0.18rem rgba(255, 106, 42, 0.12);
+  background: linear-gradient(135deg, rgba(143, 198, 240, 0.92), rgba(255, 214, 120, 0.78));
+  box-shadow: 0 0 0 0.18rem rgba(143, 198, 240, 0.12);
 }
 
 .resume-page .resume-entry-content {
@@ -13030,7 +13150,7 @@ html {
   width: min(9rem, 32%);
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(255, 106, 42, 0.78), rgba(118, 132, 146, 0.24));
+  background: linear-gradient(90deg, rgba(143, 198, 240, 0.78), rgba(255, 214, 120, 0.28), rgba(118, 132, 146, 0.16));
 }
 
 .resume-page .resume-entry-content > div,
@@ -13090,7 +13210,7 @@ html {
 }
 
 .resume-page .card li::marker {
-  color: #c36a41;
+  color: rgba(242, 206, 129, 0.88);
 }
 
 .resume-page .card .bg-light,
@@ -13126,7 +13246,7 @@ html {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  box-shadow: 0 16px 28px rgba(255, 106, 42, 0.16);
+  box-shadow: 0 16px 28px rgba(143, 198, 240, 0.14);
 }
 
 @keyframes resumeSignalPulse {
@@ -13253,8 +13373,8 @@ html {
   width: 0.7rem;
   height: 0.7rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff6a2a, #c07f61);
-  box-shadow: 0 0 0 0.2rem rgba(255, 106, 42, 0.14);
+  background: linear-gradient(135deg, rgba(143, 198, 240, 0.96), rgba(255, 214, 120, 0.82));
+  box-shadow: 0 0 0 0.2rem rgba(143, 198, 240, 0.14);
 }
 
 .resume-page .resume-record-role {
@@ -13306,7 +13426,7 @@ html {
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
-  background: #d2774c;
+  background: rgba(242, 206, 129, 0.9);
 }
 
 .resume-page .resume-record-points li:last-child {
@@ -13334,7 +13454,7 @@ html {
   bottom: 0.2rem;
   width: 2px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 106, 42, 0.7), rgba(134, 148, 160, 0.22));
+  background: linear-gradient(180deg, rgba(143, 198, 240, 0.72), rgba(255, 214, 120, 0.36), rgba(134, 148, 160, 0.16));
 }
 
 .resume-page .resume-section-education {
@@ -13345,11 +13465,11 @@ html {
   margin-bottom: 1.7rem !important;
   font-size: clamp(1.9rem, 4vw, 2.8rem);
   letter-spacing: -0.03em;
-  color: #8f684f !important;
+  color: rgba(242, 233, 216, 0.92) !important;
 }
 
 .resume-page .resume-section-education .resume-section-heading::after {
-  background: linear-gradient(90deg, rgba(210, 119, 76, 0.42), rgba(134, 148, 160, 0.12));
+  background: linear-gradient(90deg, rgba(143, 198, 240, 0.34), rgba(255, 214, 120, 0.14), rgba(134, 148, 160, 0.08));
 }
 
 .resume-page .resume-record-education .resume-record-role {
@@ -13433,8 +13553,45 @@ html.home-intro-first.home-intro-animate body.home-page .hero-visual {
 }
 
 @media (max-width: 991.98px) {
+  .site-page .navbar .container,
+  .home-page .navbar .container {
+    position: relative;
+  }
+
+  .site-page .navbar .navbar-collapse,
+  .home-page .navbar .navbar-collapse {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    left: auto;
+    z-index: 40;
+    width: min(18rem, calc(100vw - 2rem));
+    flex-basis: auto;
+    margin-top: 0;
+    padding: 0.5rem;
+    border: 1px solid rgba(127, 214, 244, 0.14);
+    background:
+      linear-gradient(180deg, rgba(9, 18, 29, 0.88) 0%, rgba(8, 15, 24, 0.78) 34%, rgba(4, 10, 16, 0.84) 100%),
+      radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.06) 0%, rgba(168, 239, 255, 0.016) 16%, rgba(168, 239, 255, 0) 34%);
+    box-shadow:
+      0 0 0 1px rgba(255, 214, 120, 0.04),
+      0 24px 38px rgba(0, 0, 0, 0.26),
+      inset 0 1px 0 rgba(228, 248, 255, 0.06),
+      inset 0 0 0 1px rgba(40, 85, 113, 0.18);
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+  }
+
+  .site-page .navbar .navbar-collapse.show,
+  .site-page .navbar .navbar-collapse.collapsing,
+  .home-page .navbar .navbar-collapse.show,
+  .home-page .navbar .navbar-collapse.collapsing {
+    display: block !important;
+  }
+
   .site-page .navbar .navbar-nav {
-    padding-top: 0.85rem !important;
+    align-items: stretch;
+    padding-top: 0 !important;
   }
 
   .home-page .display-3 {
@@ -13455,7 +13612,8 @@ html.home-intro-first.home-intro-animate body.home-page .hero-visual {
     padding: 0.75rem 1rem;
   }
 
-  .site-page .navbar .navbar-nav .nav-link {
+  .site-page .navbar .navbar-nav .nav-link,
+  .home-page .navbar .navbar-nav .nav-link {
     width: 100%;
   }
 }
@@ -15401,27 +15559,92 @@ body.site-page:not(.home-page)::after {
 }
 
 .site-page .navbar .navbar-nav .nav-link {
+  --nav-link-cut: 0.8rem;
   position: relative;
   display: inline-block;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid transparent;
-  border-radius: 1rem;
+  border-radius: 0;
+  clip-path: polygon(
+    var(--nav-link-cut) 0,
+    calc(100% - var(--nav-link-cut)) 0,
+    100% var(--nav-link-cut),
+    100% calc(100% - var(--nav-link-cut)),
+    calc(100% - var(--nav-link-cut)) 100%,
+    var(--nav-link-cut) 100%,
+    0 calc(100% - var(--nav-link-cut)),
+    0 var(--nav-link-cut)
+  );
   transition:
     color 0.2s ease-in-out,
     background-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
+    transform 0.2s ease-in-out,
+    filter 0.2s ease-in-out;
+}
+
+.site-page .navbar .navbar-nav .nav-link::before,
+.site-page .navbar .navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.site-page .navbar .navbar-nav .nav-link::before {
+  inset: 0;
+  clip-path: inherit;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+}
+
+.site-page .navbar .navbar-nav .nav-link::after {
+  inset: 0.42rem;
+  clip-path: polygon(
+    calc(var(--nav-link-cut) * 0.78) 0,
+    calc(100% - calc(var(--nav-link-cut) * 0.78)) 0,
+    100% calc(var(--nav-link-cut) * 0.78),
+    100% calc(100% - calc(var(--nav-link-cut) * 0.78)),
+    calc(100% - calc(var(--nav-link-cut) * 0.78)) 100%,
+    calc(var(--nav-link-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--nav-link-cut) * 0.78)),
+    0 calc(var(--nav-link-cut) * 0.78)
+  );
+  border: 1px solid rgba(175, 189, 199, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    inset 0 0 10px rgba(7, 19, 29, 0.05),
+    0 0 0 1px rgba(255, 214, 120, 0.03);
 }
 
 .site-page .navbar .navbar-nav .nav-link:hover,
 .site-page .navbar .navbar-nav .nav-link:focus {
   color: #fff8eb !important;
-  border-color: rgba(214, 232, 246, 0.18);
-  background: rgba(214, 232, 246, 0.08) !important;
+  border-color: rgba(127, 214, 244, 0.13);
+  background-color: transparent !important;
+  background-image:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%) !important;
   box-shadow:
-    0 0 0 1px rgba(214, 232, 246, 0.08),
-    0 12px 24px rgba(10, 18, 28, 0.2);
+    0 0 0 1px rgba(255, 214, 120, 0.04),
+    0 20px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+  filter: saturate(1.03);
   transform: translateY(-1px);
+}
+
+.site-page .navbar .navbar-nav .nav-link:hover::before,
+.site-page .navbar .navbar-nav .nav-link:focus::before {
+  opacity: 0.24;
+}
+
+.site-page .navbar .navbar-nav .nav-link:hover::after,
+.site-page .navbar .navbar-nav .nav-link:focus::after {
+  opacity: 0.42;
 }
 
 .resume-page .navbar,
@@ -15817,6 +16040,93 @@ body.site-page:not(.home-page)::after {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 238, 209, 0.07) !important;
   box-shadow: inset 0 1px 0 rgba(255, 247, 230, 0.04);
+}
+
+.resume-page .resume-intro-panel,
+.resume-page .resume-record,
+.resume-page .resume-record-side,
+.resume-page .resume-skills-card,
+.resume-page .resume-skill-pill {
+  --resume-module-cut: clamp(0.9rem, 1.2vw, 1.2rem);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 0 !important;
+  clip-path: polygon(
+    var(--resume-module-cut) 0,
+    calc(100% - var(--resume-module-cut)) 0,
+    100% var(--resume-module-cut),
+    100% calc(100% - var(--resume-module-cut)),
+    calc(100% - var(--resume-module-cut)) 100%,
+    var(--resume-module-cut) 100%,
+    0 calc(100% - var(--resume-module-cut)),
+    0 var(--resume-module-cut)
+  );
+}
+
+.resume-page .resume-skill-pill {
+  --resume-module-cut: 0.75rem;
+}
+
+.resume-page .resume-intro-panel::before,
+.resume-page .resume-intro-panel::after,
+.resume-page .resume-record::before,
+.resume-page .resume-record::after,
+.resume-page .resume-record-side::before,
+.resume-page .resume-record-side::after,
+.resume-page .resume-skills-card::before,
+.resume-page .resume-skills-card::after,
+.resume-page .resume-skill-pill::before,
+.resume-page .resume-skill-pill::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.resume-page .resume-intro-panel::before,
+.resume-page .resume-record::before,
+.resume-page .resume-record-side::before,
+.resume-page .resume-skills-card::before,
+.resume-page .resume-skill-pill::before {
+  inset: 0;
+  z-index: 0;
+  clip-path: inherit;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+  opacity: 0.24;
+}
+
+.resume-page .resume-intro-panel::after,
+.resume-page .resume-record::after,
+.resume-page .resume-record-side::after,
+.resume-page .resume-skills-card::after,
+.resume-page .resume-skill-pill::after {
+  inset: clamp(0.42rem, 0.85vw, 0.72rem);
+  z-index: 0;
+  clip-path: polygon(
+    calc(var(--resume-module-cut) * 0.78) 0,
+    calc(100% - calc(var(--resume-module-cut) * 0.78)) 0,
+    100% calc(var(--resume-module-cut) * 0.78),
+    100% calc(100% - calc(var(--resume-module-cut) * 0.78)),
+    calc(100% - calc(var(--resume-module-cut) * 0.78)) 100%,
+    calc(var(--resume-module-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--resume-module-cut) * 0.78)),
+    0 calc(var(--resume-module-cut) * 0.78)
+  );
+  border: 1px solid rgba(175, 189, 199, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    inset 0 0 10px rgba(7, 19, 29, 0.05),
+    0 0 0 1px rgba(255, 214, 120, 0.03);
+  opacity: 0.42;
+}
+
+.resume-page .resume-intro-panel > *,
+.resume-page .resume-record > *,
+.resume-page .resume-record-side > *,
+.resume-page .resume-skills-card > *,
+.resume-page .resume-skill-pill > * {
+  position: relative;
+  z-index: 1;
 }
 
 .site-page:not(.home-page) .resume-record-date,

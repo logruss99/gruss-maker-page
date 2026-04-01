@@ -141,6 +141,7 @@
                 isolation: isolate;
                 overflow: hidden;
                 max-width: min(52rem, 100%);
+                min-height: clamp(15rem, 34vw, 19rem);
                 padding: clamp(1.7rem, 3vw, 2.45rem) !important;
                 border: 1px solid rgba(127, 214, 244, 0.13);
                 border-radius: 0;
@@ -484,7 +485,8 @@
                 .pending-page .site-cta,
                 .pending-page .site-quote-band,
                 .pending-page .site-footer,
-                .pending-page .pending-hero-copy > * {
+                .pending-page .pending-hero-copy > *,
+                .pending-hero-build-canvas {
                     opacity: 1 !important;
                     transform: none !important;
                     animation: none !important;
