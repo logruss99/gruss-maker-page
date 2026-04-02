@@ -12648,6 +12648,112 @@ html {
   letter-spacing: -0.05em;
 }
 
+.resume-page .resume-title {
+  width: min(100%, 40rem);
+  margin-inline: auto;
+}
+
+.resume-page .resume-title-shell {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(0.22rem, 0.7vw, 0.52rem) 0;
+  container-type: inline-size;
+  isolation: isolate;
+}
+
+.resume-page .resume-title-track {
+  --resume-title-gap: clamp(0.18rem, 1.15cqw, 0.72rem);
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: var(--resume-title-gap);
+  flex-wrap: nowrap;
+}
+
+.resume-page .resume-title-glyph {
+  --resume-title-cut: clamp(0.62rem, 1.55cqw, 1.32rem);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  inline-size: min(5.8rem, calc((100% - (5 * var(--resume-title-gap))) / 6));
+  min-inline-size: 0;
+  aspect-ratio: 1 / 1;
+  padding: clamp(0.18rem, 0.72cqw, 0.52rem);
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(0.86rem, 6cqw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: rgba(224, 182, 92, 0.92);
+  border: 1px solid rgba(127, 214, 244, 0.13);
+  border-radius: 0;
+  clip-path: polygon(
+    var(--resume-title-cut) 0,
+    calc(100% - var(--resume-title-cut)) 0,
+    100% var(--resume-title-cut),
+    100% calc(100% - var(--resume-title-cut)),
+    calc(100% - var(--resume-title-cut)) 100%,
+    var(--resume-title-cut) 100%,
+    0 calc(100% - var(--resume-title-cut)),
+    0 var(--resume-title-cut)
+  );
+  background:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%);
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.04),
+    0 20px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+  isolation: isolate;
+  text-shadow:
+    0 0 6px rgba(255, 214, 120, 0.08),
+    0 0 12px rgba(255, 214, 120, 0.04),
+    0 1px 0 rgba(255, 247, 229, 0.08);
+  animation: homeTitleGoldFlicker 9.6s steps(1, end) infinite;
+}
+
+.resume-page .resume-title-glyph::before,
+.resume-page .resume-title-glyph::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.resume-page .resume-title-glyph::before {
+  inset: 0;
+  z-index: 0;
+  clip-path: inherit;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+  opacity: 0.24;
+}
+
+.resume-page .resume-title-glyph::after {
+  inset: clamp(0.2rem, 0.52cqw, 0.52rem);
+  z-index: 0;
+  clip-path: polygon(
+    calc(var(--resume-title-cut) * 0.78) 0,
+    calc(100% - calc(var(--resume-title-cut) * 0.78)) 0,
+    100% calc(var(--resume-title-cut) * 0.78),
+    100% calc(100% - calc(var(--resume-title-cut) * 0.78)),
+    calc(100% - calc(var(--resume-title-cut) * 0.78)) 100%,
+    calc(var(--resume-title-cut) * 0.78) 100%,
+    0 calc(100% - calc(var(--resume-title-cut) * 0.78)),
+    0 calc(var(--resume-title-cut) * 0.78)
+  );
+  border: 1px solid rgba(175, 189, 199, 0.08);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    inset 0 0 10px rgba(7, 19, 29, 0.05),
+    0 0 0 1px rgba(255, 214, 120, 0.03);
+  opacity: 0.42;
+}
+
 .resume-page .resume-hero-actions {
   position: relative;
   z-index: 1;
@@ -12859,6 +12965,16 @@ html {
 .projects-page .projects-hero-panel::before,
 .projects-page .projects-hero-panel::after {
   display: none;
+}
+
+.projects-page .projects-hero-copy {
+  max-width: min(54rem, 100%);
+  margin-inline: auto;
+}
+
+.projects-page .projects-hero-copy > div {
+  position: relative;
+  z-index: 1;
 }
 
 .projects-page .projects-hero-panel > div,
@@ -13276,6 +13392,10 @@ html {
     padding: 1.75rem;
   }
 
+  .resume-page .resume-title {
+    width: min(100%, 34rem);
+  }
+
   .resume-page .resume-entry-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
@@ -13310,6 +13430,26 @@ html {
   .resume-page .resume-entry-card,
   .resume-page .resume-skills-card {
     border-radius: 1.45rem !important;
+  }
+
+  .resume-page .resume-title-shell {
+    width: min(100%, 92vw);
+    padding: 0.12rem 0;
+  }
+
+  .resume-page .resume-title-track {
+    --resume-title-gap: clamp(0.12rem, 0.86cqw, 0.3rem);
+  }
+
+  .resume-page .resume-title-glyph {
+    --resume-title-cut: clamp(0.34rem, 1.08cqw, 0.68rem);
+    padding: clamp(0.12rem, 0.58cqw, 0.22rem);
+    font-size: clamp(0.6rem, 6.1cqw, 1.16rem);
+    text-shadow: 0 0 10px rgba(255, 214, 120, 0.08);
+  }
+
+  .resume-page .resume-title-glyph::after {
+    inset: clamp(0.14rem, 0.48cqw, 0.28rem);
   }
 
   .resume-page .resume-entry-card::after,
@@ -16045,6 +16185,24 @@ body.site-page:not(.home-page)::after {
   z-index: 1;
 }
 
+.projects-page .projects-hero-panel,
+.projects-page .projects-hero-copy {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.projects-page .projects-hero-panel::before,
+.projects-page .projects-hero-panel::after {
+  content: none !important;
+  display: none !important;
+}
+
 .resume-page .resume-record {
   gap: 1.35rem;
 }
@@ -17974,7 +18132,7 @@ body.site-page:not(.home-page)::after {
   animation: projectsPageRise 0.72s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
 }
 
-.projects-page .projects-hero-panel {
+.projects-page .projects-hero-copy {
   opacity: 0;
   transform: translateY(22px);
   animation: projectsPageRise 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards;
@@ -18148,7 +18306,7 @@ body.site-page:not(.home-page)::after {
 
 @media (prefers-reduced-motion: reduce) {
   .projects-page .navbar,
-  .projects-page .projects-hero-panel,
+  .projects-page .projects-hero-copy,
   .projects-page .project-orbit-shell::before,
   .projects-page .project-branch,
   .projects-page .projects-network-core-rings,
