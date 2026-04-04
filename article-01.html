@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="First Article — Draft in progress by Logan Gruss" />
+        <meta name="author" content="Logan Gruss" />
+        <title>Gruss: First Article</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&amp;family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            /* ── Article page styles ─────────────────────────────────── */
+            .article-post-page .article-post-wrap {
+                position: relative;
+                padding-top: clamp(2rem, 5vw, 3.5rem);
+                padding-bottom: clamp(3rem, 7vw, 5.5rem);
+            }
+
+            /* Back link */
+            .article-post-back {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem 0.5rem 0.75rem;
+                margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
+                border: 1px solid rgba(195, 158, 45, 0.2);
+                border-radius: 999px;
+                background: rgba(195, 158, 45, 0.06);
+                color: rgba(195, 158, 45, 0.82);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                text-decoration: none;
+                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+            }
+            .article-post-back:hover {
+                background: rgba(195, 158, 45, 0.12);
+                border-color: rgba(195, 158, 45, 0.36);
+                color: rgba(228, 196, 108, 0.96);
+            }
+            .article-post-back .bi { font-size: 0.88rem; }
+
+            /* Hero panel */
+            .article-post-hero {
+                --cut: clamp(0.9rem, 1.8vw, 1.4rem);
+                position: relative;
+                max-width: min(56rem, 100%);
+                margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+                padding: clamp(2rem, 5vw, 3.2rem) clamp(1.8rem, 5vw, 3.5rem);
+                border: 1px solid rgba(195, 158, 45, 0.18);
+                clip-path: polygon(
+                    var(--cut) 0,
+                    calc(100% - var(--cut)) 0,
+                    100% var(--cut),
+                    100% calc(100% - var(--cut)),
+                    calc(100% - var(--cut)) 100%,
+                    var(--cut) 100%,
+                    0 calc(100% - var(--cut)),
+                    0 var(--cut)
+                );
+                background:
+                    radial-gradient(circle at 20% 30%, rgba(195, 158, 45, 0.07) 0%, transparent 50%),
+                    linear-gradient(180deg, rgba(14, 12, 8, 0.88) 0%, rgba(10, 8, 5, 0.92) 100%);
+                text-align: center;
+            }
+
+            .article-post-hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                clip-path: inherit;
+                background: linear-gradient(180deg, rgba(195, 158, 45, 0.05) 0%, transparent 40%);
+                pointer-events: none;
+            }
+
+            .article-post-meta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                margin-bottom: 1.4rem;
+                flex-wrap: wrap;
+            }
+
+            .article-post-tag {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.28rem 0.72rem;
+                border-radius: 999px;
+                border: 1px solid rgba(195, 158, 45, 0.24);
+                background: rgba(195, 158, 45, 0.1);
+                font-size: 0.62rem;
+                font-weight: 800;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: rgba(220, 176, 66, 0.9);
+            }
+
+            .article-post-tag-draft {
+                border-color: rgba(180, 80, 60, 0.28);
+                background: rgba(180, 80, 60, 0.1);
+                color: rgba(220, 120, 90, 0.88);
+            }
+
+            .article-post-date {
+                font-size: 0.68rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                color: rgba(195, 158, 45, 0.5);
+                text-transform: uppercase;
+            }
+
+            .article-post-title {
+                margin: 0 0 0.9rem;
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(1.6rem, 4vw + 0.4rem, 2.8rem);
+                font-weight: 800;
+                line-height: 1.06;
+                letter-spacing: -0.02em;
+                text-transform: uppercase;
+                color: rgba(232, 196, 112, 0.97);
+            }
+
+            .article-post-subtitle {
+                font-size: clamp(0.9rem, 1.2vw + 0.3rem, 1.08rem);
+                font-weight: 400;
+                color: rgba(200, 182, 140, 0.72);
+                max-width: 36rem;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+
+            .article-post-divider {
+                width: 3rem;
+                height: 2px;
+                margin: 2rem auto 0;
+                background: linear-gradient(90deg, transparent, rgba(195, 158, 45, 0.6), transparent);
+                border: none;
+            }
+
+            /* Content panel */
+            .article-post-body {
+                max-width: min(48rem, 100%);
+                margin: 0 auto;
+            }
+
+            .article-post-panel {
+                position: relative;
+                padding: clamp(2rem, 4vw, 3rem) clamp(1.6rem, 4vw, 3rem);
+                border: 1px solid rgba(195, 158, 45, 0.12);
+                border-radius: 1.5rem;
+                background:
+                    radial-gradient(circle at 80% 10%, rgba(195, 158, 45, 0.04) 0%, transparent 48%),
+                    linear-gradient(180deg, rgba(13, 11, 8, 0.9) 0%, rgba(9, 7, 5, 0.94) 100%);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+            }
+
+            .article-post-panel::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: clamp(2rem, 5%, 3.5rem);
+                right: clamp(2rem, 5%, 3.5rem);
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(195, 158, 45, 0.28), transparent);
+            }
+
+            .article-post-status {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 1.1rem 1.4rem;
+                margin-bottom: 2rem;
+                border-radius: 0.9rem;
+                border: 1px solid rgba(195, 158, 45, 0.16);
+                background: rgba(195, 158, 45, 0.05);
+                font-size: 0.82rem;
+                color: rgba(195, 158, 45, 0.74);
+                font-weight: 500;
+                line-height: 1.6;
+            }
+
+            .article-post-status .bi {
+                font-size: 1.1rem;
+                color: rgba(195, 158, 45, 0.7);
+                flex-shrink: 0;
+            }
+
+            .article-post-content h2 {
+                margin: 2.2rem 0 0.9rem;
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(1rem, 1.4vw + 0.2rem, 1.3rem);
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                color: rgba(224, 186, 100, 0.92);
+            }
+
+            .article-post-content h2:first-child {
+                margin-top: 0;
+            }
+
+            .article-post-content p {
+                margin: 0 0 1.2rem;
+                font-size: clamp(0.9rem, 1vw + 0.2rem, 1.02rem);
+                font-weight: 400;
+                line-height: 1.82;
+                color: rgba(210, 198, 170, 0.78);
+            }
+
+            .article-post-content p:last-child {
+                margin-bottom: 0;
+            }
+
+            .article-post-content ul {
+                margin: 0 0 1.2rem;
+                padding-left: 0;
+                list-style: none;
+            }
+
+            .article-post-content ul li {
+                position: relative;
+                padding-left: 1.4rem;
+                margin-bottom: 0.6rem;
+                font-size: 0.96rem;
+                line-height: 1.7;
+                color: rgba(210, 198, 170, 0.74);
+            }
+
+            .article-post-content ul li::before {
+                content: "—";
+                position: absolute;
+                left: 0;
+                color: rgba(195, 158, 45, 0.5);
+            }
+
+            .article-post-placeholder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                padding: 3rem 1.5rem;
+                text-align: center;
+                color: rgba(195, 158, 45, 0.4);
+            }
+
+            .article-post-placeholder .bi {
+                font-size: 2.4rem;
+                opacity: 0.5;
+            }
+
+            .article-post-placeholder p {
+                font-size: 0.9rem;
+                font-style: italic;
+                color: rgba(195, 158, 45, 0.4) !important;
+            }
+
+            /* Footer nav */
+            .article-post-footer-nav {
+                margin-top: clamp(2rem, 4vw, 3rem);
+                display: flex;
+                justify-content: center;
+            }
+
+            .article-post-footer-back {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.55rem;
+                padding: 0.75rem 1.6rem;
+                border: 1px solid rgba(195, 158, 45, 0.22);
+                border-radius: 999px;
+                background: rgba(195, 158, 45, 0.07);
+                color: rgba(195, 158, 45, 0.84);
+                font-size: 0.8rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                text-decoration: none;
+                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+            }
+
+            .article-post-footer-back:hover {
+                background: rgba(195, 158, 45, 0.13);
+                border-color: rgba(195, 158, 45, 0.38);
+                color: rgba(228, 196, 108, 0.96);
+                transform: translateY(-1px);
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100 bg-light site-page resume-page article-post-page">
+        <main class="flex-shrink-0">
+            <nav class="navbar navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand home-brand" href="index.html">
+                        <img class="home-brand-logo" src="assets/profile.png" alt="" aria-hidden="true" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder pt-3 pt-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="resume.html">About Me</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="pending.html">Pending Projects</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="articles.html">Articles</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="resume-page-wrap py-5 article-post-wrap">
+                <div class="container px-5">
+
+                    <a href="articles.html" class="article-post-back">
+                        <i class="bi bi-arrow-left"></i>
+                        Back to Library
+                    </a>
+
+                    <!-- Hero -->
+                    <div class="article-post-hero">
+                        <div class="article-post-meta">
+                            <span class="article-post-tag">Article 01</span>
+                            <span class="article-post-tag article-post-tag-draft">Draft</span>
+                            <span class="article-post-date">In progress — 2026</span>
+                        </div>
+                        <h1 class="article-post-title">First Article</h1>
+                        <p class="article-post-subtitle">A placeholder for the first article in this growing library. The full piece is being written.</p>
+                        <hr class="article-post-divider" />
+                    </div>
+
+                    <!-- Body -->
+                    <div class="article-post-body">
+                        <div class="article-post-panel">
+                            <div class="article-post-status">
+                                <i class="bi bi-pencil-square"></i>
+                                <span>This article is currently a <strong>draft in progress</strong>. The section below is a placeholder outlining the planned scope and early notes. Content will be filled in as the piece develops.</span>
+                            </div>
+
+                            <div class="article-post-content">
+                                <h2>What this article will cover</h2>
+                                <p>This space is reserved for the first article in the library. Once written, it will appear here in full — covering ideas, observations, and findings that have come out of ongoing project work.</p>
+
+                                <h2>Planned topics</h2>
+                                <ul>
+                                    <li>The thinking behind the idea</li>
+                                    <li>How it connects to the broader project work</li>
+                                    <li>What was discovered or built along the way</li>
+                                    <li>Notes for future reference</li>
+                                </ul>
+
+                                <div class="article-post-placeholder">
+                                    <i class="bi bi-book"></i>
+                                    <p>Full content coming soon. Check back as the library grows.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-post-footer-nav">
+                            <a href="articles.html" class="article-post-footer-back">
+                                <i class="bi bi-journal-richtext"></i>
+                                Return to Library
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0"><i>Copyright &copy; Logan Gruss 2026</i></div></div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

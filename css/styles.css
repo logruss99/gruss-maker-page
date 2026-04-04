@@ -18524,3 +18524,379 @@ body.site-page:not(.home-page)::after {
     animation: none !important;
   }
 }
+
+.articles-page .resume-title {
+  width: min(100%, 50rem);
+}
+
+.articles-page .resume-title-track {
+  --resume-title-gap: clamp(0.16rem, 0.95cqw, 0.58rem);
+}
+
+.articles-page .resume-title-glyph {
+  inline-size: min(4.4rem, calc((100% - (7 * var(--resume-title-gap))) / 8));
+  color: rgba(240, 246, 255, 0.94);
+  text-shadow:
+    0 0 12px rgba(180, 212, 244, 0.18),
+    0 0 20px rgba(255, 214, 120, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.articles-page .articles-library-section {
+  margin-top: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+/* ── Library shell: octagon panel matching site tiles ─────────── */
+.articles-page .articles-library-shell {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.2rem, 3vw, 1.9rem);
+  border: 1px solid rgba(127, 214, 244, 0.1);
+  clip-path: polygon(
+    1.4rem 0, calc(100% - 1.4rem) 0,
+    100% 1.4rem, 100% calc(100% - 1.4rem),
+    calc(100% - 1.4rem) 100%, 1.4rem 100%,
+    0 calc(100% - 1.4rem), 0 1.4rem
+  );
+  background:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.34) 0%, rgba(8, 15, 24, 0.2) 100%),
+    radial-gradient(circle at 16% 14%, rgba(168, 239, 255, 0.06) 0%, rgba(168, 239, 255, 0) 32%);
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.03),
+    0 22px 42px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.16);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.articles-page .articles-library-copy {
+  max-width: 44rem;
+  color: rgba(232, 222, 207, 0.88);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ── Bookshelf: octagon panel, matches site hero panels ─────── */
+.articles-page .articles-bookshelf {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  border: 1px solid rgba(127, 214, 244, 0.13);
+  clip-path: polygon(
+    1rem 0, calc(100% - 1rem) 0,
+    100% 1rem, 100% calc(100% - 1rem),
+    calc(100% - 1rem) 100%, 1rem 100%,
+    0 calc(100% - 1rem), 0 1rem
+  );
+  background:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.22) 0%, rgba(8, 15, 24, 0.1) 38%, rgba(4, 10, 16, 0.16) 100%),
+    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.07) 0%, rgba(168, 239, 255, 0) 36%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.02) 0%, rgba(138, 207, 230, 0) 36%);
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 120, 0.04),
+    0 28px 52px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.18);
+}
+
+.articles-page .articles-bookshelf::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.04) 0%, rgba(122, 241, 255, 0.01) 20%, rgba(122, 241, 255, 0) 44%);
+}
+
+/* ── Shelf row: ONE horizontal line of books per shelf ────────── */
+.articles-page .articles-shelf-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding-bottom: 1.1rem;
+  align-items: end;
+}
+
+/* Gold accent line = the "shelf" ──────────────────────────────── */
+.articles-page .articles-shelf-row::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 214, 120, 0.15) 6%,
+    rgba(255, 214, 120, 0.48) 28%,
+    rgba(224, 182, 92, 0.62) 50%,
+    rgba(255, 214, 120, 0.48) 72%,
+    rgba(255, 214, 120, 0.15) 94%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 8px rgba(255, 214, 120, 0.18),
+    0 1px 0 rgba(127, 214, 244, 0.06);
+}
+
+/* ── Shelf slot: uniform height, transparent container ───────── */
+.articles-page .articles-shelf-slot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: clamp(10rem, 22vw, 13rem);
+  padding: 0.3rem 0.2rem 0;
+  min-width: 0;
+}
+
+/* Ghost tile on empty slots — same octagon style as books */
+.articles-page .articles-shelf-slot:empty::before {
+  content: "";
+  display: block;
+  --ghost-cut: 0.44rem;
+  width: min(100%, 6.5rem);
+  height: 100%;
+  clip-path: polygon(
+    var(--ghost-cut) 0, calc(100% - var(--ghost-cut)) 0,
+    100% var(--ghost-cut), 100% calc(100% - var(--ghost-cut)),
+    calc(100% - var(--ghost-cut)) 100%, var(--ghost-cut) 100%,
+    0 calc(100% - var(--ghost-cut)), 0 var(--ghost-cut)
+  );
+  border: 1px solid rgba(127, 214, 244, 0.05);
+  background: rgba(9, 18, 29, 0.1);
+}
+
+/* ── Book link ──────────────────────────────────────────────── */
+.articles-page .article-book-link {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: filter 0.42s ease;
+}
+
+.articles-page .article-book-link:hover {
+  filter:
+    drop-shadow(0 0 14px rgba(255, 214, 120, 0.28))
+    drop-shadow(0 20px 36px rgba(0, 0, 0, 0.48));
+}
+
+/* ── Book: octagon data-card, matches site tile language ──────── */
+.articles-page .article-book {
+  --book-cut: clamp(0.38rem, 0.9vw, 0.58rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: min(100%, 7rem);
+  height: 100%;
+  padding: 1rem 0.8rem 0.9rem 1.1rem;
+  clip-path: polygon(
+    var(--book-cut) 0, calc(100% - var(--book-cut)) 0,
+    100% var(--book-cut), 100% calc(100% - var(--book-cut)),
+    calc(100% - var(--book-cut)) 100%, var(--book-cut) 100%,
+    0 calc(100% - var(--book-cut)), 0 var(--book-cut)
+  );
+  border: 1px solid rgba(127, 214, 244, 0.13);
+  background:
+    linear-gradient(180deg, rgba(9, 18, 29, 0.22) 0%, rgba(8, 15, 24, 0.1) 36%, rgba(4, 10, 16, 0.16) 100%),
+    radial-gradient(circle at 22% 18%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0) 38%),
+    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 38%);
+  box-shadow:
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+  color: rgba(224, 182, 92, 0.92);
+  transform: rotate(-5deg);
+  transform-origin: bottom center;
+  transition:
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+/* Alternating lean on even slots */
+.articles-page .articles-shelf-slot:nth-child(even) .article-book {
+  transform: rotate(4deg);
+}
+
+/* Inner ring — same as site tile ::after pattern */
+.articles-page .article-book::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--book-cut) * 0.7);
+  border: 1px solid rgba(175, 189, 199, 0.07);
+  box-shadow:
+    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+    0 0 0 1px rgba(255, 214, 120, 0.02);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Gold spine: left accent strip */
+.articles-page .article-book::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14%;
+  bottom: 14%;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 214, 120, 0.78) 0%,
+    rgba(224, 182, 92, 0.92) 42%,
+    rgba(195, 152, 54, 0.86) 82%,
+    rgba(160, 116, 24, 0.7) 100%
+  );
+  box-shadow: 0 0 6px rgba(255, 214, 120, 0.16);
+}
+
+/* ── Hover: lift, brighten, border glows ──────────────────────── */
+.articles-page .article-book-link:hover .article-book {
+  transform: rotate(-1deg) translateY(-18px) scale(1.05);
+  border-color: rgba(255, 214, 120, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.28),
+    inset 0 0 20px rgba(255, 214, 120, 0.04);
+}
+
+.articles-page .articles-shelf-slot:nth-child(even) .article-book-link:hover .article-book {
+  transform: rotate(1deg) translateY(-18px) scale(1.05);
+}
+
+/* ── Book text ────────────────────────────────────────────────── */
+.articles-page .article-book-ribbon {
+  position: absolute;
+  top: 0.85rem;
+  right: -0.84rem;
+  padding: 0.18rem 0.88rem;
+  background: linear-gradient(135deg, rgba(224, 182, 92, 0.97) 0%, rgba(155, 112, 20, 0.99) 100%);
+  color: rgba(9, 7, 1, 0.95);
+  font-size: 0.46rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.articles-page .article-book-kicker {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.16rem 0.42rem;
+  border: 1px solid rgba(127, 214, 244, 0.2);
+  background: rgba(127, 214, 244, 0.06);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(143, 198, 240, 0.8);
+}
+
+.articles-page .article-book-title {
+  display: block;
+  margin-top: 0.85rem;
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(0.82rem, 1vw + 0.34rem, 1.02rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: rgba(224, 182, 92, 0.96);
+  text-shadow:
+    0 0 8px rgba(255, 214, 120, 0.14),
+    0 1px 0 rgba(255, 247, 229, 0.08);
+}
+
+.articles-page .article-book-subtitle {
+  display: block;
+  margin-top: 0.42rem;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(143, 198, 240, 0.58);
+}
+
+.articles-page .article-book-author {
+  display: block;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  border-top: 1px solid rgba(127, 214, 244, 0.1);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(224, 182, 92, 0.58);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 991.98px) {
+  .articles-page .articles-shelf-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .articles-page .resume-title-glyph {
+    inline-size: min(2.6rem, calc((100% - (7 * var(--resume-title-gap))) / 8));
+  }
+
+  .articles-page .articles-library-shell {
+    clip-path: polygon(
+      1rem 0, calc(100% - 1rem) 0,
+      100% 1rem, 100% calc(100% - 1rem),
+      calc(100% - 1rem) 100%, 1rem 100%,
+      0 calc(100% - 1rem), 0 1rem
+    );
+  }
+
+  .articles-page .articles-bookshelf {
+    padding: 0.65rem;
+    gap: 1.5rem;
+    clip-path: polygon(
+      0.7rem 0, calc(100% - 0.7rem) 0,
+      100% 0.7rem, 100% calc(100% - 0.7rem),
+      calc(100% - 0.7rem) 100%, 0.7rem 100%,
+      0 calc(100% - 0.7rem), 0 0.7rem
+    );
+  }
+
+  .articles-page .articles-shelf-row {
+    gap: 0.3rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .articles-page .articles-shelf-slot {
+    height: clamp(8.5rem, 44vw, 11rem);
+  }
+
+  .articles-page .article-book {
+    --book-cut: 0.3rem;
+    padding: 0.78rem 0.6rem 0.72rem 0.88rem;
+  }
+
+  .articles-page .article-book-ribbon {
+    right: -0.96rem;
+    font-size: 0.42rem;
+  }
+
+  .articles-page .article-book-title {
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .articles-page .article-book-subtitle,
+  .articles-page .article-book-author {
+    font-size: 0.5rem;
+  }
+}
