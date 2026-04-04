@@ -22,26 +22,37 @@
 
             /* Back link */
             .article-post-back {
+                --back-cut: clamp(0.75rem, 1.6vw, 1rem);
                 display: inline-flex;
                 align-items: center;
                 gap: 0.5rem;
                 padding: 0.5rem 1rem 0.5rem 0.75rem;
                 margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
-                border: 1px solid rgba(195, 158, 45, 0.2);
-                border-radius: 999px;
-                background: rgba(195, 158, 45, 0.06);
-                color: rgba(195, 158, 45, 0.82);
+                border: 1px solid rgba(127, 214, 244, 0.22);
+                clip-path: polygon(
+                    var(--back-cut) 0,
+                    calc(100% - var(--back-cut)) 0,
+                    100% var(--back-cut),
+                    100% calc(100% - var(--back-cut)),
+                    calc(100% - var(--back-cut)) 100%,
+                    var(--back-cut) 100%,
+                    0 calc(100% - var(--back-cut)),
+                    0 var(--back-cut)
+                );
+                background: rgba(9, 18, 29, 0.72);
+                color: rgba(143, 198, 240, 0.9);
                 font-size: 0.78rem;
                 font-weight: 700;
                 letter-spacing: 0.1em;
                 text-transform: uppercase;
                 text-decoration: none;
-                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
             }
             .article-post-back:hover {
-                background: rgba(195, 158, 45, 0.12);
-                border-color: rgba(195, 158, 45, 0.36);
-                color: rgba(228, 196, 108, 0.96);
+                background: rgba(11, 22, 35, 0.84);
+                border-color: rgba(127, 214, 244, 0.38);
+                color: rgba(186, 223, 248, 0.98);
+                transform: translateY(-1px);
             }
             .article-post-back .bi { font-size: 0.88rem; }
 
@@ -49,10 +60,10 @@
             .article-post-hero {
                 --cut: clamp(0.9rem, 1.8vw, 1.4rem);
                 position: relative;
-                max-width: min(56rem, 100%);
-                margin: 0 auto clamp(2.5rem, 6vw, 4rem);
-                padding: clamp(2rem, 5vw, 3.2rem) clamp(1.8rem, 5vw, 3.5rem);
-                border: 1px solid rgba(195, 158, 45, 0.18);
+                max-width: min(66rem, 100%);
+                margin: 0 auto clamp(1.15rem, 2.4vw, 1.6rem);
+                padding: clamp(0.75rem, 1.7vw, 1.05rem) clamp(1rem, 3vw, 1.8rem);
+                border: 1px solid rgba(127, 214, 244, 0.18);
                 clip-path: polygon(
                     var(--cut) 0,
                     calc(100% - var(--cut)) 0,
@@ -64,8 +75,8 @@
                     0 var(--cut)
                 );
                 background:
-                    radial-gradient(circle at 20% 30%, rgba(195, 158, 45, 0.07) 0%, transparent 50%),
-                    linear-gradient(180deg, rgba(14, 12, 8, 0.88) 0%, rgba(10, 8, 5, 0.92) 100%);
+                    radial-gradient(circle at 20% 30%, rgba(122, 241, 255, 0.07) 0%, transparent 50%),
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.7) 0%, rgba(6, 12, 19, 0.76) 100%);
                 text-align: center;
             }
 
@@ -74,7 +85,7 @@
                 position: absolute;
                 inset: 0;
                 clip-path: inherit;
-                background: linear-gradient(180deg, rgba(195, 158, 45, 0.05) 0%, transparent 40%);
+                background: linear-gradient(180deg, rgba(127, 214, 244, 0.06) 0%, transparent 40%);
                 pointer-events: none;
             }
 
@@ -83,7 +94,7 @@
                 align-items: center;
                 justify-content: center;
                 gap: 1rem;
-                margin-bottom: 1.4rem;
+                margin-bottom: 0.55rem;
                 flex-wrap: wrap;
             }
 
@@ -92,13 +103,13 @@
                 align-items: center;
                 padding: 0.28rem 0.72rem;
                 border-radius: 999px;
-                border: 1px solid rgba(195, 158, 45, 0.24);
-                background: rgba(195, 158, 45, 0.1);
+                border: 1px solid rgba(127, 214, 244, 0.24);
+                background: rgba(9, 18, 29, 0.75);
                 font-size: 0.62rem;
                 font-weight: 800;
                 letter-spacing: 0.16em;
                 text-transform: uppercase;
-                color: rgba(220, 176, 66, 0.9);
+                color: rgba(164, 214, 248, 0.92);
             }
 
             .article-post-tag-draft {
@@ -111,19 +122,280 @@
                 font-size: 0.68rem;
                 font-weight: 600;
                 letter-spacing: 0.1em;
-                color: rgba(195, 158, 45, 0.5);
+                color: rgba(143, 198, 240, 0.58);
                 text-transform: uppercase;
             }
 
             .article-post-title {
-                margin: 0 0 0.9rem;
+                margin: 0 0 0.35rem;
                 font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: clamp(1.6rem, 4vw + 0.4rem, 2.8rem);
+                font-size: clamp(0.76rem, 1.05vw + 0.32rem, 1.15rem);
                 font-weight: 800;
-                line-height: 1.06;
+                line-height: 1.02;
                 letter-spacing: -0.02em;
                 text-transform: uppercase;
-                color: rgba(232, 196, 112, 0.97);
+                color: rgba(232, 238, 245, 0.97);
+            }
+
+            .article-post-hero-book-wrap {
+                display: flex;
+                justify-content: center;
+                margin: 0 auto 1.2rem;
+            }
+
+            .article-post-hero-book-link {
+                display: inline-flex;
+                position: relative;
+                text-decoration: none;
+                transition: filter 0.42s ease;
+            }
+
+            .article-post-hero-book-link::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 52%;
+                width: 10.6rem;
+                height: 10.6rem;
+                transform: translate(-50%, -50%) scale(0.92);
+                border-radius: 999px;
+                pointer-events: none;
+                z-index: 0;
+                background: radial-gradient(circle, rgba(122, 241, 255, 0.3) 0%, rgba(122, 241, 255, 0.14) 38%, rgba(122, 241, 255, 0) 74%);
+                filter: blur(18px);
+                opacity: 0.35;
+                transition: transform 0.42s ease, opacity 0.42s ease, filter 0.42s ease;
+            }
+
+            .article-post-hero-book-link::after {
+                --back-cut: clamp(0.34rem, 0.9vw, 0.52rem);
+                content: "";
+                position: absolute;
+                inset: 0;
+                transform: translate(0.44rem, 0.52rem);
+                clip-path: polygon(
+                    var(--back-cut) 0, calc(100% - var(--back-cut)) 0,
+                    100% var(--back-cut), 100% calc(100% - var(--back-cut)),
+                    calc(100% - var(--back-cut)) 100%, var(--back-cut) 100%,
+                    0 calc(100% - var(--back-cut)), 0 var(--back-cut)
+                );
+                border: 1px solid rgba(127, 214, 244, 0.12);
+                background: linear-gradient(180deg, rgba(7, 14, 22, 0.96) 0%, rgba(4, 9, 15, 0.96) 100%);
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.04),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.16),
+                    0 10px 16px rgba(0, 0, 0, 0.34);
+                pointer-events: none;
+                z-index: 1;
+                transition: transform 0.42s ease, box-shadow 0.42s ease, border-color 0.42s ease;
+            }
+
+            .article-post-hero-pages {
+                --page-cut: clamp(0.34rem, 0.9vw, 0.52rem);
+                position: absolute;
+                inset: 0;
+                transform: translate(0.18rem, 0.24rem);
+                clip-path: polygon(
+                    var(--page-cut) 0, calc(100% - var(--page-cut)) 0,
+                    100% var(--page-cut), 100% calc(100% - var(--page-cut)),
+                    calc(100% - var(--page-cut)) 100%, var(--page-cut) 100%,
+                    0 calc(100% - var(--page-cut)), 0 var(--page-cut)
+                );
+                pointer-events: none;
+                z-index: 2;
+                background: linear-gradient(180deg, #f8fbff 0%, #edf3fa 100%);
+                border: 1px solid rgba(168, 186, 204, 0.8);
+                box-shadow:
+                    0 6px 10px rgba(0, 0, 0, 0.2),
+                    inset 0 -1px 0 rgba(150, 170, 190, 0.32);
+            }
+
+            .article-post-hero-pages::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                transform: translate(0.11rem, 0.13rem);
+                clip-path: inherit;
+                border: 1px solid rgba(168, 186, 204, 0.7);
+                background: linear-gradient(180deg, #f4f9ff 0%, #e8eff7 100%);
+                box-shadow: inset 0 -1px 0 rgba(150, 170, 190, 0.24);
+                z-index: -1;
+            }
+
+            .article-post-hero-pages::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                transform: translate(0.22rem, 0.26rem);
+                clip-path: inherit;
+                border: 1px solid rgba(160, 178, 196, 0.62);
+                background: linear-gradient(180deg, #eef5fc 0%, #e3ebf4 100%);
+                box-shadow: 0 5px 8px rgba(0, 0, 0, 0.12);
+                z-index: -2;
+            }
+
+            .article-post-hero-book-link:hover {
+                filter:
+                    drop-shadow(0 0 20px rgba(122, 241, 255, 0.58))
+                    drop-shadow(0 0 36px rgba(122, 241, 255, 0.34))
+                    drop-shadow(0 20px 36px rgba(0, 0, 0, 0.48));
+            }
+
+            .article-post-hero-book-link:hover::before {
+                transform: translate(-50%, -50%) scale(1.12);
+                opacity: 0.95;
+                filter: blur(22px);
+            }
+
+            .article-post-hero-book-link:hover::after {
+                transform: translate(0.52rem, 0.68rem);
+                border-color: rgba(127, 214, 244, 0.2);
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2),
+                    0 14px 20px rgba(0, 0, 0, 0.38);
+            }
+
+            .article-post-hero-book-link:hover .article-post-hero-pages {
+                transform: translate(0.24rem, 0.34rem);
+                box-shadow:
+                    0 9px 14px rgba(0, 0, 0, 0.24),
+                    inset 0 -1px 0 rgba(150, 170, 190, 0.38);
+            }
+
+            .article-post-hero-book {
+                --book-cut: clamp(0.34rem, 0.9vw, 0.52rem);
+                position: relative;
+                z-index: 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: clamp(9.6rem, 23vw, 11.2rem);
+                height: clamp(13.4rem, 34vw, 15.2rem);
+                padding: 1rem 0.98rem 0.9rem 1.04rem;
+                clip-path: polygon(
+                    var(--book-cut) 0, calc(100% - var(--book-cut)) 0,
+                    100% var(--book-cut), 100% calc(100% - var(--book-cut)),
+                    calc(100% - var(--book-cut)) 100%, var(--book-cut) 100%,
+                    0 calc(100% - var(--book-cut)), 0 var(--book-cut)
+                );
+                border: 1px solid rgba(127, 214, 244, 0.16);
+                background:
+                    linear-gradient(180deg, #0b1622 0%, #09131e 36%, #050c15 100%);
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.28),
+                    0 12px 14px -12px rgba(0, 0, 0, 0.8);
+                opacity: 1;
+                transform: none;
+                transition:
+                    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    border-color 0.35s ease;
+                will-change: transform;
+            }
+
+            .article-post-hero-book::before {
+                content: "";
+                position: absolute;
+                inset: calc(var(--book-cut) * 0.7);
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    0 0 0 1px rgba(255, 214, 120, 0.02);
+                opacity: 0.45;
+                pointer-events: none;
+            }
+
+            .article-post-hero-book::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 14%;
+                bottom: 14%;
+                width: 3px;
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 214, 120, 0.78) 0%,
+                    rgba(224, 182, 92, 0.92) 42%,
+                    rgba(195, 152, 54, 0.86) 82%,
+                    rgba(160, 116, 24, 0.7) 100%
+                );
+                box-shadow: 0 0 6px rgba(255, 214, 120, 0.16);
+                opacity: 1;
+            }
+
+            .article-post-hero-book-link:hover .article-post-hero-book {
+                transform: translateY(-10px) scale(1.03);
+                border-color: rgba(255, 214, 120, 0.28);
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.1),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.32),
+                    inset 0 0 16px rgba(255, 214, 120, 0.05);
+                opacity: 1;
+            }
+
+            .article-post-hero-book-ribbon {
+                position: absolute;
+                top: 0.58rem;
+                right: -0.18rem;
+                padding: 0.14rem 0.72rem;
+                background: linear-gradient(135deg, rgba(224, 182, 92, 0.97) 0%, rgba(155, 112, 20, 0.99) 100%);
+                color: rgba(9, 7, 1, 0.95);
+                font-size: 0.4rem;
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                transform: rotate(45deg);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .article-post-hero-book-title {
+                display: block;
+                margin-top: 1.2rem;
+                max-width: calc(100% - 0.5rem);
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: 0.84rem;
+                font-weight: 800;
+                line-height: 1.08;
+                letter-spacing: -0.02em;
+                text-transform: uppercase;
+                color: rgba(224, 182, 92, 0.96);
+                text-shadow:
+                    0 0 8px rgba(255, 214, 120, 0.14),
+                    0 1px 0 rgba(255, 247, 229, 0.08);
+                overflow-wrap: normal;
+                word-break: normal;
+                text-align: left;
+            }
+
+            .article-post-hero-book-subtitle {
+                display: block;
+                margin-top: 0.34rem;
+                max-width: 100%;
+                font-size: 0.58rem;
+                font-weight: 700;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: rgba(143, 198, 240, 0.58);
+                overflow-wrap: normal;
+                word-break: normal;
+                text-align: left;
+            }
+
+            .article-post-hero-book-author {
+                display: block;
+                margin-top: auto;
+                padding-top: 0.5rem;
+                border-top: 1px solid rgba(127, 214, 244, 0.1);
+                max-width: 100%;
+                font-size: 0.62rem;
+                font-weight: 700;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+                color: rgba(224, 182, 92, 0.58);
+                overflow-wrap: normal;
+                word-break: normal;
+                text-align: left;
             }
 
             .article-post-subtitle {
@@ -138,8 +410,8 @@
             .article-post-divider {
                 width: 3rem;
                 height: 2px;
-                margin: 2rem auto 0;
-                background: linear-gradient(90deg, transparent, rgba(195, 158, 45, 0.6), transparent);
+                margin: 0.5rem auto 0;
+                background: linear-gradient(90deg, transparent, rgba(127, 214, 244, 0.55), transparent);
                 border: none;
             }
 
@@ -150,13 +422,23 @@
             }
 
             .article-post-panel {
+                --panel-cut: clamp(0.9rem, 1.8vw, 1.3rem);
                 position: relative;
                 padding: clamp(2rem, 4vw, 3rem) clamp(1.6rem, 4vw, 3rem);
-                border: 1px solid rgba(195, 158, 45, 0.12);
-                border-radius: 1.5rem;
+                border: 1px solid rgba(127, 214, 244, 0.14);
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
                 background:
-                    radial-gradient(circle at 80% 10%, rgba(195, 158, 45, 0.04) 0%, transparent 48%),
-                    linear-gradient(180deg, rgba(13, 11, 8, 0.9) 0%, rgba(9, 7, 5, 0.94) 100%);
+                    radial-gradient(circle at 80% 10%, rgba(122, 241, 255, 0.06) 0%, transparent 48%),
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.74) 0%, rgba(6, 12, 19, 0.82) 100%);
                 backdrop-filter: blur(6px);
                 -webkit-backdrop-filter: blur(6px);
             }
@@ -168,7 +450,7 @@
                 left: clamp(2rem, 5%, 3.5rem);
                 right: clamp(2rem, 5%, 3.5rem);
                 height: 1px;
-                background: linear-gradient(90deg, transparent, rgba(195, 158, 45, 0.28), transparent);
+                background: linear-gradient(90deg, transparent, rgba(127, 214, 244, 0.28), transparent);
             }
 
             .article-post-status {
@@ -178,10 +460,10 @@
                 padding: 1.1rem 1.4rem;
                 margin-bottom: 2rem;
                 border-radius: 0.9rem;
-                border: 1px solid rgba(195, 158, 45, 0.16);
-                background: rgba(195, 158, 45, 0.05);
+                border: 1px solid rgba(127, 214, 244, 0.2);
+                background: rgba(9, 18, 29, 0.93);
                 font-size: 0.82rem;
-                color: rgba(195, 158, 45, 0.74);
+                color: rgba(166, 211, 245, 0.9);
                 font-weight: 500;
                 line-height: 1.6;
                 width: fit-content;
@@ -190,7 +472,7 @@
 
             .article-post-status .bi {
                 font-size: 1.1rem;
-                color: rgba(195, 158, 45, 0.7);
+                color: rgba(143, 198, 240, 0.82);
                 flex-shrink: 0;
             }
 
@@ -201,7 +483,7 @@
                 font-weight: 700;
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
-                color: rgba(224, 186, 100, 0.92);
+                color: rgba(190, 223, 245, 0.94);
             }
 
             .article-post-content h2:first-child {
@@ -239,7 +521,7 @@
                 content: "—";
                 position: absolute;
                 left: 0;
-                color: rgba(195, 158, 45, 0.5);
+                color: rgba(143, 198, 240, 0.54);
             }
 
             .article-post-placeholder {
@@ -249,7 +531,7 @@
                 gap: 1rem;
                 padding: 3rem 1.5rem;
                 text-align: center;
-                color: rgba(195, 158, 45, 0.4);
+                color: rgba(143, 198, 240, 0.44);
             }
 
             .article-post-placeholder .bi {
@@ -260,7 +542,7 @@
             .article-post-placeholder p {
                 font-size: 0.9rem;
                 font-style: italic;
-                color: rgba(195, 158, 45, 0.4) !important;
+                color: rgba(143, 198, 240, 0.44) !important;
             }
 
             /* Footer nav */
@@ -271,14 +553,24 @@
             }
 
             .article-post-footer-back {
+                --btn-cut: clamp(0.75rem, 1.6vw, 1rem);
                 display: inline-flex;
                 align-items: center;
                 gap: 0.55rem;
                 padding: 0.75rem 1.6rem;
-                border: 1px solid rgba(195, 158, 45, 0.22);
-                border-radius: 999px;
-                background: rgba(195, 158, 45, 0.07);
-                color: rgba(195, 158, 45, 0.84);
+                border: 1px solid rgba(127, 214, 244, 0.24);
+                clip-path: polygon(
+                    var(--btn-cut) 0,
+                    calc(100% - var(--btn-cut)) 0,
+                    100% var(--btn-cut),
+                    100% calc(100% - var(--btn-cut)),
+                    calc(100% - var(--btn-cut)) 100%,
+                    var(--btn-cut) 100%,
+                    0 calc(100% - var(--btn-cut)),
+                    0 var(--btn-cut)
+                );
+                background: rgba(9, 18, 29, 0.74);
+                color: rgba(156, 209, 245, 0.9);
                 font-size: 0.8rem;
                 font-weight: 700;
                 letter-spacing: 0.1em;
@@ -288,9 +580,9 @@
             }
 
             .article-post-footer-back:hover {
-                background: rgba(195, 158, 45, 0.13);
-                border-color: rgba(195, 158, 45, 0.38);
-                color: rgba(228, 196, 108, 0.96);
+                background: rgba(12, 24, 38, 0.86);
+                border-color: rgba(127, 214, 244, 0.42);
+                color: rgba(190, 226, 248, 0.98);
                 transform: translateY(-1px);
             }
         </style>
@@ -323,22 +615,36 @@
                         Back to Library
                     </a>
 
+                    <div class="article-post-hero-book-wrap">
+                        <a
+                            class="article-post-hero-book-link"
+                            href="assets/space_dataceneters-Gruss.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open Data Centers...In Space? PDF in a new tab"
+                            >
+                                <span class="article-post-hero-pages" aria-hidden="true"></span>
+                                <article class="article-post-hero-book">
+                                    <span class="article-post-hero-book-title">Data Centers... In Space?</span>
+                                    <span class="article-post-hero-book-subtitle">April 4, 2026</span>
+                                    <span class="article-post-hero-book-author">L. Gruss</span>
+                                </article>
+                        </a>
+                    </div>
+
                     <!-- Hero -->
                     <div class="article-post-hero">
                         <div class="article-post-meta">
-                            <span class="article-post-tag">Article 01</span>
+                            
                         </div>
-                        <h1 class="article-post-title">Data Centers...In Space?</h1>
+                        <h1 class="article-post-title">Click the graphic above to read my completed work.</h1>
                         <hr class="article-post-divider" />
                     </div>
 
                     <!-- Body -->
                     <div class="article-post-body">
                         <div class="article-post-panel">
-                            <div class="article-post-status">
-                                
-                                <span>This article is currently a draft in progress. The abstract is available below.</span>
-                            </div>
+                            
 
                             <div class="article-post-content">
                                 <h2>Abstract</h2>

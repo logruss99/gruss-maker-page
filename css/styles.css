@@ -18703,9 +18703,7 @@ body.site-page:not(.home-page)::after {
   );
   border: 1px solid rgba(127, 214, 244, 0.13);
   background:
-    linear-gradient(180deg, rgba(9, 18, 29, 0.22) 0%, rgba(8, 15, 24, 0.1) 36%, rgba(4, 10, 16, 0.16) 100%),
-    radial-gradient(circle at 22% 18%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0) 38%),
-    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 38%);
+    linear-gradient(180deg, #0b1622 0%, #09131e 36%, #050c15 100%);
   box-shadow:
     inset 0 1px 0 rgba(228, 248, 255, 0.06),
     inset 0 0 0 1px rgba(40, 85, 113, 0.2),
@@ -18803,13 +18801,15 @@ body.site-page:not(.home-page)::after {
 .articles-page .article-book-title {
   display: block;
   margin-top: 1.35rem;
-  max-width: calc(100% - 1.8rem);
+  max-width: calc(100% - 0.5rem);
   font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-  font-size: clamp(0.82rem, 1vw + 0.34rem, 1.02rem);
+  font-size: clamp(0.78rem, 0.9vw + 0.34rem, 0.98rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-transform: uppercase;
   color: rgba(224, 182, 92, 0.96);
   text-shadow:
@@ -18820,11 +18820,13 @@ body.site-page:not(.home-page)::after {
 .articles-page .article-book-subtitle {
   display: block;
   margin-top: 0.42rem;
-  max-width: calc(100% - 1.8rem);
+  max-width: 100%;
   font-size: 0.56rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  overflow-wrap: anywhere;
+  letter-spacing: 0.14em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-transform: uppercase;
   color: rgba(143, 198, 240, 0.58);
 }
@@ -18834,11 +18836,13 @@ body.site-page:not(.home-page)::after {
   margin-top: auto;
   padding-top: 0.55rem;
   border-top: 1px solid rgba(127, 214, 244, 0.1);
-  max-width: calc(100% - 1.8rem);
+  max-width: 100%;
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.13em;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-transform: uppercase;
   color: rgba(224, 182, 92, 0.58);
 }
@@ -18876,7 +18880,7 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-shelf-row {
-    --shelf-slot-height: clamp(8.25rem, 42vw, 10.5rem);
+    --shelf-slot-height: clamp(9.2rem, 46vw, 11.2rem);
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 0.4rem;
     row-gap: 0.95rem;
@@ -18898,12 +18902,12 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-shelf-slot {
-    --article-panel-width: min(100%, 6.25rem);
+    --article-panel-width: min(100%, 7.35rem);
   }
 
   .articles-page .article-book {
     --book-cut: 0.3rem;
-    padding: 0.78rem 0.6rem 0.72rem 0.88rem;
+    padding: 0.8rem 0.72rem 0.72rem 0.9rem;
     transform: translateZ(-6px) rotateX(16deg);
   }
 
@@ -18925,15 +18929,16 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .article-book-title {
-    margin-top: 1.1rem;
-    max-width: calc(100% - 1.5rem);
-    font-size: 0.74rem;
+    margin-top: 1rem;
+    max-width: calc(100% - 0.42rem);
+    font-size: 0.7rem;
     line-height: 1.08;
   }
 
   .articles-page .article-book-subtitle,
   .articles-page .article-book-author {
-    max-width: calc(100% - 1.5rem);
+    max-width: 100%;
     font-size: 0.5rem;
+    letter-spacing: 0.11em;
   }
 }
