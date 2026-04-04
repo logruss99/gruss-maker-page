@@ -18583,7 +18583,7 @@ body.site-page:not(.home-page)::after {
   position: relative;
   display: grid;
   gap: 2rem;
-  padding: clamp(1rem, 2.5vw, 1.6rem);
+  padding: clamp(1.15rem, 3vw, 2rem);
   border: 1px solid rgba(127, 214, 244, 0.13);
   clip-path: polygon(
     1rem 0, calc(100% - 1rem) 0,
@@ -18613,12 +18613,17 @@ body.site-page:not(.home-page)::after {
 
 /* ── Shelf row: ONE horizontal line of books per shelf ────────── */
 .articles-page .articles-shelf-row {
+  --shelf-slot-height: clamp(10.6rem, 24vw, 13.8rem);
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding-inline: clamp(0.9rem, 2.8vw, 1.5rem);
   padding-bottom: 1.1rem;
+  min-height: calc(var(--shelf-slot-height) + 1.1rem);
   align-items: end;
+  perspective: 1200px;
+  perspective-origin: center 82%;
 }
 
 /* Gold accent line = the "shelf" ──────────────────────────────── */
@@ -18646,30 +18651,20 @@ body.site-page:not(.home-page)::after {
 
 /* ── Shelf slot: uniform height, transparent container ───────── */
 .articles-page .articles-shelf-slot {
+  --article-panel-width: min(100%, 6.85rem);
+  --article-panel-cut: clamp(0.38rem, 0.9vw, 0.58rem);
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: clamp(10rem, 22vw, 13rem);
+  height: var(--shelf-slot-height);
   padding: 0.3rem 0.2rem 0;
   min-width: 0;
 }
 
 /* Ghost tile on empty slots — same octagon style as books */
 .articles-page .articles-shelf-slot:empty::before {
-  content: "";
-  display: block;
-  --ghost-cut: 0.44rem;
-  width: min(100%, 6.5rem);
-  height: 100%;
-  clip-path: polygon(
-    var(--ghost-cut) 0, calc(100% - var(--ghost-cut)) 0,
-    100% var(--ghost-cut), 100% calc(100% - var(--ghost-cut)),
-    calc(100% - var(--ghost-cut)) 100%, var(--ghost-cut) 100%,
-    0 calc(100% - var(--ghost-cut)), 0 var(--ghost-cut)
-  );
-  border: 1px solid rgba(127, 214, 244, 0.05);
-  background: rgba(9, 18, 29, 0.1);
+  content: none;
 }
 
 /* ── Book link ──────────────────────────────────────────────── */
@@ -18677,6 +18672,7 @@ body.site-page:not(.home-page)::after {
   display: flex;
   align-items: flex-end;
   height: 100%;
+  transform-style: preserve-3d;
   text-decoration: none;
   position: relative;
   z-index: 1;
@@ -18691,12 +18687,12 @@ body.site-page:not(.home-page)::after {
 
 /* ── Book: octagon data-card, matches site tile language ──────── */
 .articles-page .article-book {
-  --book-cut: clamp(0.38rem, 0.9vw, 0.58rem);
+  --book-cut: var(--article-panel-cut);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: min(100%, 7rem);
+  width: var(--article-panel-width);
   height: 100%;
   padding: 1rem 0.8rem 0.9rem 1.1rem;
   clip-path: polygon(
@@ -18712,9 +18708,11 @@ body.site-page:not(.home-page)::after {
     linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 38%);
   box-shadow:
     inset 0 1px 0 rgba(228, 248, 255, 0.06),
-    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2),
+    0 12px 14px -12px rgba(0, 0, 0, 0.8),
+    0 3px 0 rgba(224, 182, 92, 0.12);
   color: rgba(224, 182, 92, 0.92);
-  transform: rotate(-5deg);
+  transform: translateZ(-10px) rotateX(24deg);
   transform-origin: bottom center;
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -18724,7 +18722,7 @@ body.site-page:not(.home-page)::after {
 
 /* Alternating lean on even slots */
 .articles-page .articles-shelf-slot:nth-child(even) .article-book {
-  transform: rotate(4deg);
+  transform: translateZ(-10px) rotateX(24deg);
 }
 
 /* Inner ring — same as site tile ::after pattern */
@@ -18760,7 +18758,7 @@ body.site-page:not(.home-page)::after {
 
 /* ── Hover: lift, brighten, border glows ──────────────────────── */
 .articles-page .article-book-link:hover .article-book {
-  transform: rotate(-1deg) translateY(-18px) scale(1.05);
+  transform: translateZ(-6px) rotateX(20deg) translateY(-10px) scale(1.03);
   border-color: rgba(255, 214, 120, 0.28);
   box-shadow:
     inset 0 1px 0 rgba(228, 248, 255, 0.08),
@@ -18769,18 +18767,18 @@ body.site-page:not(.home-page)::after {
 }
 
 .articles-page .articles-shelf-slot:nth-child(even) .article-book-link:hover .article-book {
-  transform: rotate(1deg) translateY(-18px) scale(1.05);
+  transform: translateZ(-6px) rotateX(20deg) translateY(-10px) scale(1.03);
 }
 
 /* ── Book text ────────────────────────────────────────────────── */
 .articles-page .article-book-ribbon {
   position: absolute;
-  top: 0.85rem;
-  right: -0.84rem;
-  padding: 0.18rem 0.88rem;
+  top: 0.68rem;
+  right: 0.18rem;
+  padding: 0.14rem 0.72rem;
   background: linear-gradient(135deg, rgba(224, 182, 92, 0.97) 0%, rgba(155, 112, 20, 0.99) 100%);
   color: rgba(9, 7, 1, 0.95);
-  font-size: 0.46rem;
+  font-size: 0.42rem;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -18842,7 +18840,7 @@ body.site-page:not(.home-page)::after {
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 991.98px) {
   .articles-page .articles-shelf-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -18861,7 +18859,7 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-bookshelf {
-    padding: 0.65rem;
+    padding: 0.95rem;
     gap: 1.5rem;
     clip-path: polygon(
       0.7rem 0, calc(100% - 0.7rem) 0,
@@ -18872,22 +18870,52 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-shelf-row {
-    gap: 0.3rem;
+    --shelf-slot-height: clamp(8.25rem, 42vw, 10.5rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.4rem;
+    row-gap: 0.95rem;
+    padding-inline: 1rem;
     padding-bottom: 0.85rem;
+    /* Add a second shelf line for the wrapped mobile row */
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 214, 120, 0.15) 6%,
+        rgba(255, 214, 120, 0.44) 28%,
+        rgba(224, 182, 92, 0.58) 50%,
+        rgba(255, 214, 120, 0.44) 72%,
+        rgba(255, 214, 120, 0.15) 94%,
+        transparent 100%
+      )
+      left calc(var(--shelf-slot-height) + 0.48rem) / 100% 2px no-repeat;
   }
 
   .articles-page .articles-shelf-slot {
-    height: clamp(8.5rem, 44vw, 11rem);
+    --article-panel-width: min(100%, 6.25rem);
   }
 
   .articles-page .article-book {
     --book-cut: 0.3rem;
     padding: 0.78rem 0.6rem 0.72rem 0.88rem;
+    transform: translateZ(-6px) rotateX(16deg);
+  }
+
+  .articles-page .articles-shelf-slot:nth-child(even) .article-book {
+    transform: translateZ(-6px) rotateX(16deg);
+  }
+
+  .articles-page .article-book-link:hover .article-book {
+    transform: translateZ(-3px) rotateX(13deg) translateY(-8px) scale(1.02);
+  }
+
+  .articles-page .articles-shelf-slot:nth-child(even) .article-book-link:hover .article-book {
+    transform: translateZ(-3px) rotateX(13deg) translateY(-8px) scale(1.02);
   }
 
   .articles-page .article-book-ribbon {
-    right: -0.96rem;
-    font-size: 0.42rem;
+    right: 0.14rem;
+    font-size: 0.4rem;
   }
 
   .articles-page .article-book-title {
