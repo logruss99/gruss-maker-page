@@ -18694,7 +18694,7 @@ body.site-page:not(.home-page)::after {
   justify-content: space-between;
   width: var(--article-panel-width);
   height: 100%;
-  padding: 1rem 0.8rem 0.9rem 1.1rem;
+  padding: 1rem 1.1rem 0.9rem 1.1rem;
   clip-path: polygon(
     var(--book-cut) 0, calc(100% - var(--book-cut)) 0,
     100% var(--book-cut), 100% calc(100% - var(--book-cut)),
@@ -18773,8 +18773,8 @@ body.site-page:not(.home-page)::after {
 /* ── Book text ────────────────────────────────────────────────── */
 .articles-page .article-book-ribbon {
   position: absolute;
-  top: 0.68rem;
-  right: 0.18rem;
+  top: 0.58rem;
+  right: -0.18rem;
   padding: 0.14rem 0.72rem;
   background: linear-gradient(135deg, rgba(224, 182, 92, 0.97) 0%, rgba(155, 112, 20, 0.99) 100%);
   color: rgba(9, 7, 1, 0.95);
@@ -18802,12 +18802,14 @@ body.site-page:not(.home-page)::after {
 
 .articles-page .article-book-title {
   display: block;
-  margin-top: 0.85rem;
+  margin-top: 1.35rem;
+  max-width: calc(100% - 1.8rem);
   font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
   font-size: clamp(0.82rem, 1vw + 0.34rem, 1.02rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
   color: rgba(224, 182, 92, 0.96);
   text-shadow:
@@ -18818,9 +18820,11 @@ body.site-page:not(.home-page)::after {
 .articles-page .article-book-subtitle {
   display: block;
   margin-top: 0.42rem;
+  max-width: calc(100% - 1.8rem);
   font-size: 0.56rem;
   font-weight: 700;
   letter-spacing: 0.2em;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
   color: rgba(143, 198, 240, 0.58);
 }
@@ -18830,9 +18834,11 @@ body.site-page:not(.home-page)::after {
   margin-top: auto;
   padding-top: 0.55rem;
   border-top: 1px solid rgba(127, 214, 244, 0.1);
+  max-width: calc(100% - 1.8rem);
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.13em;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
   color: rgba(224, 182, 92, 0.58);
 }
@@ -18914,17 +18920,20 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .article-book-ribbon {
-    right: 0.14rem;
+    right: -0.16rem;
     font-size: 0.4rem;
   }
 
   .articles-page .article-book-title {
-    margin-top: 0.7rem;
-    font-size: 0.8rem;
+    margin-top: 1.1rem;
+    max-width: calc(100% - 1.5rem);
+    font-size: 0.74rem;
+    line-height: 1.08;
   }
 
   .articles-page .article-book-subtitle,
   .articles-page .article-book-author {
+    max-width: calc(100% - 1.5rem);
     font-size: 0.5rem;
   }
 }

@@ -172,7 +172,7 @@
             }
 
             .article-post-status {
-                display: flex;
+                display: inline-flex;
                 align-items: center;
                 gap: 0.75rem;
                 padding: 1.1rem 1.4rem;
@@ -184,6 +184,8 @@
                 color: rgba(195, 158, 45, 0.74);
                 font-weight: 500;
                 line-height: 1.6;
+                width: fit-content;
+                max-width: 100%;
             }
 
             .article-post-status .bi {
@@ -325,11 +327,8 @@
                     <div class="article-post-hero">
                         <div class="article-post-meta">
                             <span class="article-post-tag">Article 01</span>
-                            
-                            <span class="article-post-date">In progress — 2026</span>
                         </div>
                         <h1 class="article-post-title">Data Centers...In Space?</h1>
-                        <p class="article-post-subtitle">A place-holder for the first article in this growing library. The full piece is being written.</p>
                         <hr class="article-post-divider" />
                     </div>
 
@@ -337,26 +336,13 @@
                     <div class="article-post-body">
                         <div class="article-post-panel">
                             <div class="article-post-status">
-                                <i class="bi bi-pencil-square"></i>
-                                <span>This article is currently a <strong>draft in progress</strong>. The section below is a placeholder outlining the planned scope and early notes. Content will be filled in as the piece develops.</span>
+                                
+                                <span>This article is currently a draft in progress. The abstract is available below.</span>
                             </div>
 
                             <div class="article-post-content">
-                                <h2>What this article will cover</h2>
-                                <p>This space is reserved for the first article in the library. Once written, it will appear here in full — covering ideas, observations, and findings that have come out of ongoing project work.</p>
-
-                                <h2>Planned topics</h2>
-                                <ul>
-                                    <li>The thinking behind the idea</li>
-                                    <li>How it connects to the broader project work</li>
-                                    <li>What was discovered or built along the way</li>
-                                    <li>Notes for future reference</li>
-                                </ul>
-
-                                <div class="article-post-placeholder">
-                                    <i class="bi bi-book"></i>
-                                    
-                                </div>
+                                <h2>Abstract</h2>
+                                <p>In this article, I am analyzing whether data centers placed in space could be physically better than data centers on Earth. I focus on the main advantages and limitations by looking at thermodynamics, cooling, solar power, radiation, latency, and launch cost. First, I use Landauer's principle to show that lower temperature lowers the minimum energy required for irreversible computation. Next, I use the Stefan-Boltzmann law to show that a space-based system could reject heat through passive radiation rather than large active cooling systems. After that, I compare solar power in space versus on Earth and show that orbit provides much larger continuous solar input per unit area. However, I then show that radiation in space creates serious problems for normal electronics, and that the speed of light places a strict limit on latency that cannot be engineered away. Finally, I examine launch economics and argue that while ordinary orbital data centers are still heavily constrained, a more specialized system at the Sun-Earth L2 point using RSFQ superconducting logic may represent a physically distinct and much more efficient computing platform. Overall, the physics suggests that space-based computing is not a good replacement for normal terrestrial cloud infrastructure, but it may become a strong option for large, energy-intensive, latency-tolerant workloads.</p>
                             </div>
                         </div>
 
