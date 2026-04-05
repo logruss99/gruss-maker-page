@@ -18718,6 +18718,11 @@ body.site-page:not(.home-page)::after {
   will-change: transform;
 }
 
+.articles-page .article-book.article-book-cover-space-datacenter {
+  background:
+    linear-gradient(180deg, #0b1622 0%, #09131e 36%, #050c15 100%);
+}
+
 /* Alternating lean on even slots */
 .articles-page .articles-shelf-slot:nth-child(even) .article-book {
   transform: translateZ(-10px) rotateX(24deg);
@@ -18734,6 +18739,22 @@ body.site-page:not(.home-page)::after {
     0 0 0 1px rgba(255, 214, 120, 0.02);
   opacity: 0.45;
   pointer-events: none;
+}
+
+.articles-page .article-book.article-book-cover-space-datacenter::before {
+  inset: calc(var(--book-cut) * 0.95);
+  border: 1px solid rgba(175, 189, 199, 0.1);
+  background:
+    linear-gradient(112deg, rgba(2, 10, 20, 0.7) 0%, rgba(2, 10, 20, 0.42) 40%, rgba(2, 10, 20, 0.12) 74%, rgba(2, 10, 20, 0.08) 100%),
+    linear-gradient(180deg, rgba(4, 12, 20, 0.28) 0%, rgba(2, 8, 14, 0.52) 100%),
+    url("../assets/img/orbital-data-center-satellite-ai-compute-leo.jpg") center / cover no-repeat;
+  opacity: 1;
+  z-index: 0;
+}
+
+.articles-page .article-book.article-book-cover-space-datacenter > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Gold spine: left accent strip */
