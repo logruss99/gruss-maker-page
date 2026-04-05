@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="First Article — Draft in progress by Logan Gruss" />
+        <meta name="description" content="First Article by Logan Gruss" />
         <meta name="author" content="Logan Gruss" />
         <title>Gruss: First Article</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -270,9 +270,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: clamp(9.6rem, 23vw, 11.2rem);
-                height: clamp(13.4rem, 34vw, 15.2rem);
-                padding: 1rem 0.98rem 0.9rem 1.04rem;
+                width: clamp(10.2rem, 24vw, 11.8rem);
+                height: clamp(13.8rem, 35vw, 15.6rem);
+                padding: 1.08rem 1rem 0.95rem 1.32rem;
                 clip-path: polygon(
                     var(--book-cut) 0, calc(100% - var(--book-cut)) 0,
                     100% var(--book-cut), 100% calc(100% - var(--book-cut)),
@@ -351,13 +351,13 @@
 
             .article-post-hero-book-title {
                 display: block;
-                margin-top: 1.2rem;
-                max-width: calc(100% - 0.5rem);
+                margin-top: 1.35rem;
+                max-width: 100%;
                 font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: 0.84rem;
+                font-size: clamp(0.82rem, 1.2vw, 0.92rem);
                 font-weight: 800;
-                line-height: 1.08;
-                letter-spacing: -0.02em;
+                line-height: 1.1;
+                letter-spacing: -0.01em;
                 text-transform: uppercase;
                 color: rgba(224, 182, 92, 0.96);
                 text-shadow:
@@ -365,16 +365,17 @@
                     0 1px 0 rgba(255, 247, 229, 0.08);
                 overflow-wrap: normal;
                 word-break: normal;
+                text-wrap: balance;
                 text-align: left;
             }
 
             .article-post-hero-book-subtitle {
                 display: block;
-                margin-top: 0.34rem;
+                margin-top: 0.45rem;
                 max-width: 100%;
                 font-size: 0.58rem;
                 font-weight: 700;
-                letter-spacing: 0.16em;
+                letter-spacing: 0.14em;
                 text-transform: uppercase;
                 color: rgba(143, 198, 240, 0.58);
                 overflow-wrap: normal;
