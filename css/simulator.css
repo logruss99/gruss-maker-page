@@ -1,0 +1,938 @@
+/* ══════════════════════════════════════════════════════════════
+   Moon Base Simulator — Standalone Stylesheet
+   Designed to match the Gruss portfolio design language:
+     • Orbitron headings, Plus Jakarta Sans body
+     • Dark sci-fi panels with clip-path octagons
+     • Cyan / gold accent palette
+     • Translucent glassmorphism cards
+   ══════════════════════════════════════════════════════════════ */
+
+/* ---------- page background ---------- */
+.sim-page {
+    --sim-bg: #080e17;
+    --sim-panel: rgba(9, 18, 29, 0.82);
+    --sim-border: rgba(127, 214, 244, 0.16);
+    --sim-accent: rgba(127, 214, 244, 0.85);
+    --sim-accent-dim: rgba(127, 214, 244, 0.35);
+    --sim-gold: rgba(224, 182, 92, 0.92);
+    --sim-gold-dim: rgba(224, 182, 92, 0.35);
+    --sim-text: rgba(210, 220, 232, 0.92);
+    --sim-text-dim: rgba(170, 184, 200, 0.68);
+    --sim-cut: clamp(0.7rem, 1.4vw, 1.1rem);
+    --sim-radius: 0.6rem;
+    background: var(--sim-bg) !important;
+    color: var(--sim-text);
+}
+
+.sim-page .resume-page-wrap::before,
+.sim-page .resume-page-wrap::after {
+    content: none !important;
+    background: none !important;
+}
+
+body.site-page.sim-page::after {
+    content: none !important;
+    background: none !important;
+    opacity: 0 !important;
+}
+
+/* ---------- hero ---------- */
+.sim-hero {
+    position: relative;
+    padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    overflow: hidden;
+}
+
+.sim-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 80%, rgba(127, 214, 244, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 30% 20%, rgba(224, 182, 92, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.sim-hero-title {
+    font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(1.4rem, 3.2vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(232, 238, 245, 0.97);
+    margin: 0 0 0.6rem;
+    line-height: 1.1;
+}
+
+.sim-hero-sub {
+    font-size: clamp(0.85rem, 1.1vw + 0.3rem, 1.05rem);
+    color: var(--sim-text-dim);
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+}
+
+.sim-hero-divider {
+    width: 4rem;
+    height: 2px;
+    margin: 0 auto;
+    border: none;
+    background: linear-gradient(90deg, transparent, var(--sim-accent), transparent);
+}
+
+.sim-module-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.9rem;
+}
+
+.sim-module-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-decoration: none;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(127, 214, 244, 0.18);
+    border-radius: var(--sim-radius);
+    background: rgba(9, 18, 29, 0.7);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sim-module-card:hover {
+    border-color: rgba(127, 214, 244, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(4, 8, 14, 0.34);
+}
+
+.sim-module-card.active {
+    border-color: rgba(224, 182, 92, 0.38);
+    background: linear-gradient(180deg, rgba(224, 182, 92, 0.1) 0%, rgba(9, 18, 29, 0.82) 85%);
+}
+
+.sim-module-kicker {
+    font-size: 0.52rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--sim-text-dim);
+}
+
+.sim-module-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(232, 238, 245, 0.96);
+}
+
+.sim-module-copy {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: rgba(170, 184, 200, 0.76);
+}
+
+.sim-module-block {
+    border-top: 1px solid rgba(127, 214, 244, 0.12);
+    padding-top: 1.1rem;
+}
+
+.sim-module-head {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.sim-module-head-title {
+    font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(0.86rem, 1.1vw + 0.2rem, 1.08rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(190, 223, 245, 0.94);
+    margin: 0;
+}
+
+/* ---------- lunar terrain canvas ---------- */
+.sim-scene-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+    border: 1px solid var(--sim-border);
+    border-radius: var(--sim-radius);
+    overflow: hidden;
+    background: linear-gradient(180deg, #060c14 0%, #0a1220 40%, #101a28 100%);
+}
+
+.sim-scene-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+}
+
+.sim-scene-label {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1rem;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sim-accent-dim);
+    pointer-events: none;
+}
+
+.sim-scene-signals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.55rem;
+    margin-top: 0.8rem;
+}
+
+.sim-scene-signal {
+    padding: 0.5rem 0.62rem;
+    border: 1px solid rgba(127, 214, 244, 0.16);
+    border-radius: 0.45rem;
+    background: rgba(9, 18, 29, 0.58);
+}
+
+.sim-scene-signal-label {
+    font-size: 0.54rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sim-text-dim);
+}
+
+.sim-scene-signal-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.72rem;
+    color: var(--sim-accent);
+    margin-top: 0.2rem;
+}
+
+/* ---------- generic panel ---------- */
+.sim-panel {
+    --pcut: var(--sim-cut);
+    position: relative;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    border: 1px solid var(--sim-border);
+    clip-path: polygon(
+        var(--pcut) 0,
+        calc(100% - var(--pcut)) 0,
+        100% var(--pcut),
+        100% calc(100% - var(--pcut)),
+        calc(100% - var(--pcut)) 100%,
+        var(--pcut) 100%,
+        0 calc(100% - var(--pcut)),
+        0 var(--pcut)
+    );
+    background:
+        radial-gradient(circle at 80% 10%, rgba(122, 241, 255, 0.04) 0%, transparent 48%),
+        linear-gradient(180deg, var(--sim-panel) 0%, rgba(6, 12, 19, 0.88) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    margin-bottom: 1.5rem;
+}
+
+.sim-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: clamp(1.5rem, 5%, 3rem);
+    right: clamp(1.5rem, 5%, 3rem);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(127, 214, 244, 0.22), transparent);
+}
+
+.sim-panel-title {
+    font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(0.72rem, 0.9vw + 0.2rem, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(190, 223, 245, 0.94);
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(127, 214, 244, 0.1);
+}
+
+/* ---------- scale selector ---------- */
+.sim-scale-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.sim-scale-btn {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--sim-border);
+    border-radius: 999px;
+    background: rgba(9, 18, 29, 0.8);
+    color: var(--sim-text-dim);
+    cursor: pointer;
+    transition: all 0.28s ease;
+}
+
+.sim-scale-btn:hover {
+    border-color: var(--sim-accent);
+    color: var(--sim-accent);
+    background: rgba(127, 214, 244, 0.06);
+}
+
+.sim-scale-btn.active {
+    border-color: var(--sim-gold);
+    color: var(--sim-gold);
+    background: rgba(224, 182, 92, 0.08);
+    box-shadow: 0 0 16px rgba(224, 182, 92, 0.12);
+}
+
+/* ---------- controls grid ---------- */
+.sim-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.sim-controls-shell {
+    display: grid;
+    gap: 0.95rem;
+}
+
+.sim-controls-title {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(190, 223, 245, 0.84);
+}
+
+.sim-advanced-wrap {
+    border: 1px solid rgba(127, 214, 244, 0.14);
+    border-radius: var(--sim-radius);
+    background: rgba(7, 13, 22, 0.72);
+    padding: 0.65rem 0.7rem;
+}
+
+.sim-advanced-wrap summary {
+    cursor: pointer;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(170, 184, 200, 0.78);
+    list-style: none;
+}
+
+.sim-advanced-wrap summary::-webkit-details-marker {
+    display: none;
+}
+
+.sim-controls-grid-advanced {
+    margin-top: 0.8rem;
+}
+
+.sim-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.sim-control-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sim-text-dim);
+}
+
+.sim-control-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--sim-accent);
+    text-align: right;
+    min-width: 3.5rem;
+}
+
+.sim-control-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.sim-range {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(127, 214, 244, 0.12);
+    outline: none;
+}
+
+.sim-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--sim-accent);
+    border: 2px solid rgba(9, 18, 29, 0.9);
+    box-shadow: 0 0 8px rgba(127, 214, 244, 0.3);
+    cursor: pointer;
+}
+
+.sim-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--sim-accent);
+    border: 2px solid rgba(9, 18, 29, 0.9);
+    box-shadow: 0 0 8px rgba(127, 214, 244, 0.3);
+    cursor: pointer;
+}
+
+.sim-select {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--sim-border);
+    border-radius: var(--sim-radius);
+    background: rgba(9, 18, 29, 0.9);
+    color: var(--sim-text);
+    outline: none;
+    width: 100%;
+}
+
+.sim-select:focus {
+    border-color: var(--sim-accent);
+}
+
+/* ---------- metrics grid ---------- */
+.sim-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.8rem;
+}
+
+.sim-metric-card {
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(127, 214, 244, 0.1);
+    border-radius: var(--sim-radius);
+    background: rgba(9, 18, 29, 0.6);
+    text-align: center;
+}
+
+.sim-metric-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sim-text-dim);
+    margin-bottom: 0.35rem;
+}
+
+.sim-metric-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    font-weight: 800;
+    color: var(--sim-accent);
+    line-height: 1.2;
+}
+
+.sim-metric-unit {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--sim-text-dim);
+    margin-top: 0.15rem;
+}
+
+.sim-metric-card.gold .sim-metric-value {
+    color: var(--sim-gold);
+}
+
+.sim-metric-card.warn .sim-metric-value {
+    color: rgba(220, 120, 90, 0.92);
+}
+
+.sim-conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.8rem;
+}
+
+.sim-conclusion-card {
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(127, 214, 244, 0.12);
+    border-radius: var(--sim-radius);
+    background: rgba(9, 18, 29, 0.64);
+}
+
+.sim-conclusion-label {
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sim-text-dim);
+    margin-bottom: 0.35rem;
+}
+
+.sim-conclusion-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.74rem;
+    color: var(--sim-accent);
+    line-height: 1.4;
+}
+
+.sim-conclusion-card.warn .sim-conclusion-value {
+    color: rgba(230, 126, 34, 0.92);
+}
+
+.sim-conclusion-card.good .sim-conclusion-value {
+    color: rgba(46, 204, 113, 0.92);
+}
+
+/* ---------- charts ---------- */
+.sim-charts-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sim-chart-box {
+    min-height: 220px;
+    position: relative;
+}
+
+.sim-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.6rem;
+    height: 180px;
+    padding: 0 0.5rem;
+}
+
+.sim-bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.sim-bar {
+    width: 100%;
+    max-width: 48px;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, var(--sim-accent), rgba(127, 214, 244, 0.3));
+    transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-height: 2px;
+}
+
+.sim-bar.gold {
+    background: linear-gradient(180deg, var(--sim-gold), rgba(224, 182, 92, 0.3));
+}
+
+.sim-bar-label {
+    font-size: 0.52rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sim-text-dim);
+    text-align: center;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.sim-bar-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: var(--sim-accent);
+}
+
+/* ---------- timeline ---------- */
+.sim-timeline {
+    position: relative;
+    display: flex;
+    gap: 0;
+    padding: 1.5rem 0 0;
+}
+
+.sim-timeline::before {
+    content: "";
+    position: absolute;
+    top: 2.2rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--sim-accent-dim), var(--sim-gold-dim));
+}
+
+.sim-timeline-phase {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.sim-timeline-dot {
+    position: absolute;
+    top: -0.35rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--sim-accent);
+    border: 2px solid var(--sim-bg);
+    box-shadow: 0 0 8px rgba(127, 214, 244, 0.3);
+}
+
+.sim-timeline-phase.active .sim-timeline-dot {
+    background: var(--sim-gold);
+    box-shadow: 0 0 12px rgba(224, 182, 92, 0.4);
+}
+
+.sim-timeline-label {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sim-text-dim);
+    margin-bottom: 0.25rem;
+}
+
+.sim-timeline-phase.active .sim-timeline-label {
+    color: var(--sim-gold);
+}
+
+.sim-timeline-desc {
+    font-size: 0.68rem;
+    color: var(--sim-text-dim);
+    line-height: 1.5;
+}
+
+/* ---------- formula panel ---------- */
+.sim-formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.sim-formula-card {
+    padding: 1rem;
+    border: 1px solid rgba(127, 214, 244, 0.08);
+    border-radius: var(--sim-radius);
+    background: rgba(6, 12, 20, 0.6);
+}
+
+.sim-formula-name {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sim-gold);
+    margin-bottom: 0.5rem;
+}
+
+.sim-formula-eq {
+    font-family: "SFMono-Regular", "Consolas", monospace;
+    font-size: 0.82rem;
+    color: var(--sim-accent);
+    padding: 0.5rem 0.7rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.sim-formula-desc {
+    font-size: 0.75rem;
+    color: var(--sim-text-dim);
+    line-height: 1.6;
+}
+
+/* ---------- comparison mode ---------- */
+.sim-compare-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.sim-compare-toggle label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--sim-text-dim);
+    cursor: pointer;
+}
+
+.sim-toggle-switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    border-radius: 11px;
+    border: 1px solid var(--sim-border);
+    background: rgba(9, 18, 29, 0.8);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sim-toggle-switch.on {
+    background: rgba(127, 214, 244, 0.15);
+    border-color: var(--sim-accent);
+}
+
+.sim-toggle-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--sim-text-dim);
+    transition: all 0.2s;
+}
+
+.sim-toggle-switch.on .sim-toggle-knob {
+    left: 22px;
+    background: var(--sim-accent);
+}
+
+.sim-compare-container {
+    display: none;
+}
+
+.sim-compare-container.visible {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.sim-compare-col h3 {
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sim-gold);
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(224, 182, 92, 0.15);
+}
+
+.sim-compare-metric {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(127, 214, 244, 0.06);
+    font-size: 0.72rem;
+}
+
+.sim-compare-metric-label {
+    color: var(--sim-text-dim);
+}
+
+.sim-compare-metric-val {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    color: var(--sim-accent);
+    font-size: 0.68rem;
+}
+
+/* ---------- plausibility badge ---------- */
+.sim-plaus-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.sim-plaus-badge[data-level="highly-plausible"] {
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    background: rgba(46, 204, 113, 0.08);
+    color: rgba(46, 204, 113, 0.9);
+}
+
+.sim-plaus-badge[data-level="plausible"] {
+    border: 1px solid rgba(127, 214, 244, 0.3);
+    background: rgba(127, 214, 244, 0.08);
+    color: var(--sim-accent);
+}
+
+.sim-plaus-badge[data-level="constrained"] {
+    border: 1px solid rgba(224, 182, 92, 0.3);
+    background: rgba(224, 182, 92, 0.08);
+    color: var(--sim-gold);
+}
+
+.sim-plaus-badge[data-level="marginal"] {
+    border: 1px solid rgba(230, 126, 34, 0.3);
+    background: rgba(230, 126, 34, 0.08);
+    color: rgba(230, 126, 34, 0.9);
+}
+
+.sim-plaus-badge[data-level="implausible"] {
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    background: rgba(220, 53, 69, 0.08);
+    color: rgba(220, 80, 80, 0.9);
+}
+
+/* ---------- reliability bar ---------- */
+.sim-reliability-bar-wrap {
+    margin-top: 0.6rem;
+}
+
+.sim-reliability-track {
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(127, 214, 244, 0.08);
+    overflow: hidden;
+}
+
+.sim-reliability-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease, background 0.3s ease;
+}
+
+/* ---------- section spacing ---------- */
+.sim-section {
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sim-section-title {
+    font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(0.9rem, 1.2vw + 0.2rem, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(190, 223, 245, 0.94);
+    margin: 0 0 1.2rem;
+    text-align: center;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 767px) {
+    .sim-controls-grid {
+        grid-template-columns: 1fr;
+    }
+    .sim-scene-signals {
+        grid-template-columns: 1fr 1fr;
+    }
+    .sim-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .sim-charts-row {
+        grid-template-columns: 1fr;
+    }
+    .sim-timeline {
+        flex-direction: column;
+        gap: 1rem;
+        padding-left: 1.5rem;
+    }
+    .sim-timeline::before {
+        top: 0;
+        bottom: 0;
+        left: 0.35rem;
+        right: auto;
+        width: 2px;
+        height: auto;
+    }
+    .sim-timeline-phase {
+        text-align: left;
+        padding-top: 0;
+    }
+    .sim-timeline-dot {
+        top: 0.2rem;
+        left: -1.15rem;
+        transform: none;
+    }
+    .sim-compare-container.visible {
+        grid-template-columns: 1fr;
+    }
+    .sim-formula-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .sim-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .sim-scene-signals {
+        grid-template-columns: 1fr;
+    }
+    .sim-scale-bar {
+        gap: 0.35rem;
+    }
+    .sim-scale-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.55rem;
+    }
+    .sim-module-card {
+        padding: 0.8rem 0.85rem;
+    }
+}
+
+/* ---------- loading / transition ---------- */
+.sim-fade-in {
+    animation: simFadeIn 0.6s ease forwards;
+}
+
+@keyframes simFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- scene star field ---------- */
+.sim-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.sim-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    animation: simTwinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes simTwinkle {
+    0%   { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* ---------- nav active state for simulator ---------- */
+.sim-page .navbar .navbar-nav .nav-link.active {
+    color: #cc3700 !important;
+}
