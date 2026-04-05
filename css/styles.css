@@ -1936,7 +1936,7 @@ progress {
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.98px) and (hover: none) and (pointer: coarse) {
   .table-responsive-md {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -5439,7 +5439,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 767.98px) and (hover: none) and (pointer: coarse) {
   .modal-fullscreen-md-down {
     width: 100vw;
     max-width: none;
@@ -15884,7 +15884,9 @@ body.site-page:not(.home-page)::after {
 
 .site-page .site-footer {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  padding-top: 0.35rem !important;
+  padding-bottom: 0.8rem !important;
   background: linear-gradient(180deg, rgba(5, 8, 12, 0.18) 0%, rgba(5, 8, 12, 0.28) 100%) !important;
   border-top: 1px solid rgba(255, 238, 209, 0.08);
   box-shadow:
@@ -15909,12 +15911,14 @@ body.site-page:not(.home-page)::after {
 }
 
 .site-page .site-footer .row {
-  min-height: 2.25rem;
+  min-height: 1.8rem;
+  align-items: center;
+  transform: translateY(-0.14rem);
 }
 
 .site-page .site-footer .small,
 .site-page .site-footer a.small {
-  line-height: 1.1;
+  line-height: 1.35;
 }
 
 .site-page .site-footer a.small:hover,
@@ -18559,8 +18563,8 @@ body.site-page:not(.home-page)::after {
 .articles-page .articles-library-shell {
   position: relative;
   display: grid;
-  gap: 1.5rem;
-  padding: clamp(1.2rem, 3vw, 1.9rem);
+  gap: clamp(1.8rem, 3.2vw, 2.6rem);
+  padding: clamp(1.5rem, 3.6vw, 2.5rem);
   border: 1px solid rgba(127, 214, 244, 0.1);
   clip-path: polygon(
     1.4rem 0, calc(100% - 1.4rem) 0,
@@ -18591,8 +18595,8 @@ body.site-page:not(.home-page)::after {
 .articles-page .articles-bookshelf {
   position: relative;
   display: grid;
-  gap: 2rem;
-  padding: clamp(1.15rem, 3vw, 2rem);
+  gap: clamp(2.2rem, 3.8vw, 3rem);
+  padding: clamp(1.5rem, 3.8vw, 2.7rem);
   border: 1px solid rgba(127, 214, 244, 0.13);
   clip-path: polygon(
     1rem 0, calc(100% - 1rem) 0,
@@ -18622,11 +18626,14 @@ body.site-page:not(.home-page)::after {
 
 /* ── Shelf row: ONE horizontal line of books per shelf ────────── */
 .articles-page .articles-shelf-row {
-  --shelf-slot-height: clamp(10.6rem, 24vw, 13.8rem);
+  --article-card-width: clamp(8.9rem, 12.8vw, 13.2rem);
+  --shelf-slot-height: calc(var(--article-card-width) * 1.56);
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: repeat(3, var(--article-card-width));
+  column-gap: clamp(0.85rem, 1.9vw, 1.35rem);
+  row-gap: 0;
+  justify-content: center;
   padding-inline: clamp(0.9rem, 2.8vw, 1.5rem);
   padding-bottom: 1.1rem;
   min-height: calc(var(--shelf-slot-height) + 1.1rem);
@@ -18660,7 +18667,7 @@ body.site-page:not(.home-page)::after {
 
 /* ── Shelf slot: uniform height, transparent container ───────── */
 .articles-page .articles-shelf-slot {
-  --article-panel-width: min(100%, 7.45rem);
+  --article-panel-width: var(--article-card-width);
   --article-panel-cut: clamp(0.38rem, 0.9vw, 0.58rem);
   position: relative;
   display: flex;
@@ -18689,9 +18696,21 @@ body.site-page:not(.home-page)::after {
 }
 
 .articles-page .article-book-link:hover {
+  filter: none;
+}
+
+.articles-page .article-book-link.article-book-link-space:hover {
   filter:
-    drop-shadow(0 0 14px rgba(255, 214, 120, 0.28))
+    drop-shadow(0 0 20px rgba(122, 241, 255, 0.58))
+    drop-shadow(0 0 36px rgba(122, 241, 255, 0.34))
     drop-shadow(0 20px 36px rgba(0, 0, 0, 0.48));
+}
+
+.articles-page .article-book-link.article-book-link-lunar:hover {
+  filter:
+    drop-shadow(0 0 28px rgba(0, 0, 0, 0.92))
+    drop-shadow(0 0 52px rgba(0, 0, 0, 0.74))
+    drop-shadow(0 24px 44px rgba(0, 0, 0, 0.68));
 }
 
 /* ── Book: octagon data-card, matches site tile language ──────── */
@@ -18815,6 +18834,28 @@ body.site-page:not(.home-page)::after {
     inset 0 0 20px rgba(255, 214, 120, 0.04);
 }
 
+.articles-page .article-book-link:hover .article-book.article-book-cover-space-datacenter {
+  border-color: rgba(122, 241, 255, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.3),
+    inset 0 0 20px rgba(122, 241, 255, 0.08),
+    0 0 20px rgba(122, 241, 255, 0.58),
+    0 0 36px rgba(122, 241, 255, 0.34),
+    0 20px 36px rgba(0, 0, 0, 0.48);
+}
+
+.articles-page .article-book-link:hover .article-book.article-book-cover-lunar-base {
+  border-color: rgba(104, 118, 132, 0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(32, 45, 56, 0.28),
+    inset 0 0 34px rgba(0, 0, 0, 0.42),
+    0 0 36px rgba(0, 0, 0, 0.72),
+    0 0 72px rgba(0, 0, 0, 0.56),
+    0 28px 48px rgba(0, 0, 0, 0.66);
+}
+
 .articles-page .articles-shelf-slot:nth-child(even) .article-book-link:hover .article-book {
   transform: translateZ(-6px) rotateX(20deg) translateY(-10px) scale(1.03);
 }
@@ -18852,12 +18893,12 @@ body.site-page:not(.home-page)::after {
 .articles-page .article-book-title {
   display: block;
   margin-top: 1.35rem;
-  max-width: 80%;
-  padding-right: 0.45rem;
+  max-width: 100%;
+  padding-right: 0.2rem;
   font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-  font-size: clamp(0.58rem, 0.62vw + 0.3rem, 0.82rem);
+  font-size: clamp(0.62rem, 0.54vw + 0.3rem, 1.18rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   overflow-wrap: normal;
   word-break: keep-all;
@@ -18871,11 +18912,32 @@ body.site-page:not(.home-page)::after {
     0 1px 0 rgba(255, 247, 229, 0.08);
 }
 
+@media (max-width: 1199.98px) {
+  .articles-page .articles-shelf-row {
+    --article-card-width: clamp(7.3rem, 13.4vw, 9.8rem);
+    --shelf-slot-height: calc(var(--article-card-width) * 1.56);
+  }
+
+  .articles-page .articles-shelf-slot {
+    --article-panel-width: var(--article-card-width);
+  }
+
+  .articles-page .article-book {
+    padding: 0.94rem 0.92rem 0.84rem 1rem;
+  }
+
+  .articles-page .article-book-title {
+    margin-top: 1.05rem;
+    font-size: clamp(0.58rem, 0.46vw + 0.24rem, 0.86rem);
+    line-height: 1.08;
+  }
+}
+
 .articles-page .article-book-subtitle {
   display: block;
   margin-top: 0.42rem;
   max-width: 100%;
-  font-size: 0.56rem;
+  font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   overflow-wrap: normal;
@@ -18891,7 +18953,7 @@ body.site-page:not(.home-page)::after {
   padding-top: 0.55rem;
   border-top: 1px solid rgba(127, 214, 244, 0.1);
   max-width: 100%;
-  font-size: 0.58rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.13em;
   overflow-wrap: normal;
@@ -18904,7 +18966,20 @@ body.site-page:not(.home-page)::after {
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 991.98px) {
   .articles-page .articles-shelf-row {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    --article-card-width: clamp(6.9rem, 15vw, 9rem);
+    --shelf-slot-height: calc(var(--article-card-width) * 1.56);
+    grid-template-columns: repeat(3, var(--article-card-width));
+    column-gap: clamp(0.7rem, 2.4vw, 1.2rem);
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .articles-page .articles-shelf-row {
+    justify-content: space-between;
+    column-gap: clamp(0.9rem, 2.2vw, 1.6rem);
+    padding-inline: clamp(1rem, 2.4vw, 2rem);
+    width: 100%;
   }
 }
 
@@ -18923,8 +18998,13 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-bookshelf {
-    padding: 0.95rem;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, var(--article-card-width));
+    column-gap: clamp(0.62rem, 3.6vw, 1rem);
+    row-gap: 1.1rem;
+    justify-content: center;
+    padding: 1.15rem;
+    gap: 1.8rem;
     clip-path: polygon(
       0.7rem 0, calc(100% - 0.7rem) 0,
       100% 0.7rem, 100% calc(100% - 0.7rem),
@@ -18934,29 +19014,20 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-shelf-row {
-    --shelf-slot-height: clamp(9.2rem, 46vw, 11.2rem);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 0.4rem;
-    row-gap: 0.95rem;
-    padding-inline: 1rem;
-    padding-bottom: 0.85rem;
-    /* Add a second shelf line for the wrapped mobile row */
-    background:
-      linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 214, 120, 0.15) 6%,
-        rgba(255, 214, 120, 0.44) 28%,
-        rgba(224, 182, 92, 0.58) 50%,
-        rgba(255, 214, 120, 0.44) 72%,
-        rgba(255, 214, 120, 0.15) 94%,
-        transparent 100%
-      )
-      left calc(var(--shelf-slot-height) + 0.48rem) / 100% 2px no-repeat;
+    --article-card-width: clamp(7.8rem, 40vw, 9.4rem);
+    --shelf-slot-height: calc(var(--article-card-width) * 1.56);
+    display: contents;
+    min-height: 0;
+    padding: 0;
+    background: none;
+  }
+
+  .articles-page .articles-shelf-row::after {
+    content: none;
   }
 
   .articles-page .articles-shelf-slot {
-    --article-panel-width: min(100%, 7.8rem);
+    --article-panel-width: var(--article-card-width);
   }
 
   .articles-page .article-book {
@@ -18984,16 +19055,54 @@ body.site-page:not(.home-page)::after {
 
   .articles-page .article-book-title {
     margin-top: 1rem;
-    max-width: 80%;
+    max-width: 100%;
     padding-right: 0.32rem;
-    font-size: 0.56rem;
+    font-size: 0.64rem;
     line-height: 1.08;
   }
 
   .articles-page .article-book-subtitle,
   .articles-page .article-book-author {
     max-width: 100%;
-    font-size: 0.5rem;
-    letter-spacing: 0.11em;
+    font-size: 0.54rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .articles-page .article-book-link.article-book-link-space {
+    filter:
+      drop-shadow(0 0 20px rgba(122, 241, 255, 0.58))
+      drop-shadow(0 0 36px rgba(122, 241, 255, 0.34))
+      drop-shadow(0 20px 36px rgba(0, 0, 0, 0.48));
+  }
+
+  .articles-page .article-book-link.article-book-link-lunar {
+    filter:
+      drop-shadow(0 0 28px rgba(0, 0, 0, 0.92))
+      drop-shadow(0 0 52px rgba(0, 0, 0, 0.74))
+      drop-shadow(0 24px 44px rgba(0, 0, 0, 0.68));
+  }
+
+  .articles-page .article-book.article-book-cover-space-datacenter {
+    border-color: rgba(122, 241, 255, 0.3);
+    box-shadow:
+      inset 0 1px 0 rgba(228, 248, 255, 0.08),
+      inset 0 0 0 1px rgba(40, 85, 113, 0.28),
+      inset 0 0 18px rgba(122, 241, 255, 0.08),
+      0 0 20px rgba(122, 241, 255, 0.58),
+      0 0 36px rgba(122, 241, 255, 0.34),
+      0 20px 36px rgba(0, 0, 0, 0.48);
+  }
+
+  .articles-page .article-book.article-book-cover-lunar-base {
+    border-color: rgba(104, 118, 132, 0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(228, 248, 255, 0.06),
+      inset 0 0 0 1px rgba(32, 45, 56, 0.26),
+      inset 0 0 30px rgba(0, 0, 0, 0.4),
+      0 0 32px rgba(0, 0, 0, 0.66),
+      0 0 64px rgba(0, 0, 0, 0.5),
+      0 26px 44px rgba(0, 0, 0, 0.62);
   }
 }

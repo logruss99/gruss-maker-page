@@ -20,99 +20,16 @@
                 padding-bottom: clamp(3rem, 7vw, 5.5rem);
             }
 
-            /* Back-to-library button (styled like Open Library panel) */
-            .article-post-library-btn {
-                --btn-cut: clamp(0.85rem, 1.7vw, 1rem);
-                position: relative;
-                display: inline-grid;
-                place-items: center;
-                min-width: clamp(13rem, 40vw, 16rem);
-                min-height: 4.2rem;
-                padding: 0.85rem 1.8rem;
-                border: 1px solid rgba(127, 214, 244, 0.16);
-                clip-path: polygon(
-                    var(--btn-cut) 0,
-                    calc(100% - var(--btn-cut)) 0,
-                    100% var(--btn-cut),
-                    100% calc(100% - var(--btn-cut)),
-                    calc(100% - var(--btn-cut)) 100%,
-                    var(--btn-cut) 100%,
-                    0 calc(100% - var(--btn-cut)),
-                    0 var(--btn-cut)
-                );
-                background:
-                    linear-gradient(180deg, rgba(9, 18, 29, 0.22) 0%, rgba(8, 15, 24, 0.1) 38%, rgba(4, 10, 16, 0.16) 100%),
-                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.07) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%);
-                box-shadow:
-                    0 0 0 1px rgba(255, 214, 120, 0.04),
-                    0 20px 34px rgba(0, 0, 0, 0.16),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
-                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
-                color: rgba(242, 206, 129, 0.96);
-                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: clamp(0.8rem, 1.05vw, 0.95rem);
-                font-weight: 800;
-                letter-spacing: -0.01em;
-                text-align: center;
-                text-decoration: none;
-                text-shadow:
-                    0 0 16px rgba(255, 214, 120, 0.18),
-                    0 1px 0 rgba(255, 247, 229, 0.12);
-                overflow: hidden;
-                isolation: isolate;
-                transition: border-color 0.22s ease, transform 0.22s ease, filter 0.22s ease;
+            .article-post-page .resume-page-wrap::before,
+            .article-post-page .resume-page-wrap::after {
+                content: none !important;
+                background: none !important;
             }
 
-            .article-post-library-btn::before,
-            .article-post-library-btn::after {
-                content: "";
-                position: absolute;
-                pointer-events: none;
-            }
-
-            .article-post-library-btn::before {
-                inset: 0;
-                clip-path: inherit;
-                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
-                opacity: 0.24;
-            }
-
-            .article-post-library-btn::after {
-                inset: 0.56rem;
-                clip-path: polygon(
-                    calc(var(--btn-cut) * 0.78) 0,
-                    calc(100% - calc(var(--btn-cut) * 0.78)) 0,
-                    100% calc(var(--btn-cut) * 0.78),
-                    100% calc(100% - calc(var(--btn-cut) * 0.78)),
-                    calc(100% - calc(var(--btn-cut) * 0.78)) 100%,
-                    calc(var(--btn-cut) * 0.78) 100%,
-                    0 calc(100% - calc(var(--btn-cut) * 0.78)),
-                    0 calc(var(--btn-cut) * 0.78)
-                );
-                border: 1px solid rgba(175, 189, 199, 0.08);
-                box-shadow:
-                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
-                    inset 0 0 10px rgba(7, 19, 29, 0.05),
-                    0 0 0 1px rgba(255, 214, 120, 0.03);
-                opacity: 0.42;
-            }
-
-            .article-post-library-btn:hover {
-                color: rgba(250, 224, 161, 0.98);
-                border-color: rgba(255, 221, 146, 0.7);
-                transform: translateY(-1px);
-                filter:
-                    brightness(1.08)
-                    saturate(1.08)
-                    drop-shadow(0 0 10px rgba(255, 230, 155, 0.5))
-                    drop-shadow(0 0 22px rgba(255, 198, 94, 0.34));
-            }
-
-            .article-post-library-btn-icon {
-                display: block;
-                margin-bottom: 0.3rem;
-                font-size: 1.2rem;
-                line-height: 1;
+            body.site-page.article-post-page::after {
+                content: none !important;
+                background: none !important;
+                opacity: 0 !important;
             }
 
             .article-post-library-btn-top {
@@ -123,7 +40,7 @@
             .article-post-hero {
                 --cut: clamp(0.9rem, 1.8vw, 1.4rem);
                 position: relative;
-                max-width: min(66rem, 100%);
+                max-width: min(48rem, 100%);
                 margin: 0 auto clamp(1.15rem, 2.4vw, 1.6rem);
                 padding: clamp(0.75rem, 1.7vw, 1.05rem) clamp(1rem, 3vw, 1.8rem);
                 border: 1px solid rgba(127, 214, 244, 0.18);
@@ -221,15 +138,15 @@
                 position: absolute;
                 left: 50%;
                 top: 52%;
-                width: 10.6rem;
-                height: 10.6rem;
+                width: 13.8rem;
+                height: 13.8rem;
                 transform: translate(-50%, -50%) scale(0.92);
                 border-radius: 999px;
                 pointer-events: none;
                 z-index: 0;
-                background: radial-gradient(circle, rgba(122, 241, 255, 0.3) 0%, rgba(122, 241, 255, 0.14) 38%, rgba(122, 241, 255, 0) 74%);
-                filter: blur(18px);
-                opacity: 0.35;
+                background: radial-gradient(circle, rgba(122, 241, 255, 0.52) 0%, rgba(122, 241, 255, 0.26) 42%, rgba(122, 241, 255, 0) 78%);
+                filter: blur(22px);
+                opacity: 0.62;
                 transition: transform 0.42s ease, opacity 0.42s ease, filter 0.42s ease;
             }
 
@@ -302,15 +219,15 @@
 
             .article-post-hero-book-link:hover {
                 filter:
-                    drop-shadow(0 0 20px rgba(122, 241, 255, 0.58))
-                    drop-shadow(0 0 36px rgba(122, 241, 255, 0.34))
-                    drop-shadow(0 20px 36px rgba(0, 0, 0, 0.48));
+                    drop-shadow(0 0 28px rgba(122, 241, 255, 0.86))
+                    drop-shadow(0 0 52px rgba(122, 241, 255, 0.58))
+                    drop-shadow(0 24px 44px rgba(0, 0, 0, 0.58));
             }
 
             .article-post-hero-book-link:hover::before {
                 transform: translate(-50%, -50%) scale(1.12);
-                opacity: 0.95;
-                filter: blur(22px);
+                opacity: 1;
+                filter: blur(26px);
             }
 
             .article-post-hero-book-link:hover::after {
@@ -711,9 +628,11 @@
             <section class="resume-page-wrap py-5 article-post-wrap">
                 <div class="container px-5">
 
-                    <a href="articles.html" class="article-post-library-btn article-post-library-btn-top">
-                        Back to Library
-                    </a>
+                    <div class="resume-hero-actions article-post-library-btn-top">
+                        <a class="btn btn-primary px-4 py-3" href="articles.html">
+                            Back to Library
+                        </a>
+                    </div>
 
                     <div class="article-post-hero-book-wrap">
                         <a
@@ -751,12 +670,6 @@
                                 <p>In this article, I am analyzing whether data centers placed in space could be physically better than data centers on Earth. I focus on the main advantages and limitations by looking at thermodynamics, cooling, solar power, radiation, latency, and launch cost. First, I use Landauer's principle to show that lower temperature lowers the minimum energy required for irreversible computation. Next, I use the Stefan-Boltzmann law to show that a space-based system could reject heat through passive radiation rather than large active cooling systems. After that, I compare solar power in space versus on Earth and show that orbit provides much larger continuous solar input per unit area. However, I then show that radiation in space creates serious problems for normal electronics, and that the speed of light places a strict limit on latency that cannot be engineered away. Finally, I examine launch economics and argue that while ordinary orbital data centers are still heavily constrained, a more specialized system at the Sun-Earth L2 point using RSFQ superconducting logic may represent a physically distinct and much more efficient computing platform. Overall, the physics suggests that space-based computing is not a good replacement for normal terrestrial cloud infrastructure, but it may become a strong option for large, energy-intensive, latency-tolerant workloads.</p>
                                 <p><small>(Image credit: NASA) <a href="https://www.sify.com/data-centers/from-earth-to-orbit-data-centers-are-heading-out-to-space/" target="_blank" rel="noopener noreferrer">https://www.sify.com/data-centers/from-earth-to-orbit-data-centers-are-heading-out-to-space/</a></small></p>
                             </div>
-                        </div>
-
-                        <div class="article-post-footer-nav">
-                            <a href="articles.html" class="article-post-library-btn">
-                                Return to Library
-                            </a>
                         </div>
                     </div>
 
