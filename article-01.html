@@ -20,41 +20,104 @@
                 padding-bottom: clamp(3rem, 7vw, 5.5rem);
             }
 
-            /* Back link */
-            .article-post-back {
-                --back-cut: clamp(0.75rem, 1.6vw, 1rem);
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding: 0.5rem 1rem 0.5rem 0.75rem;
-                margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
-                border: 1px solid rgba(127, 214, 244, 0.22);
+            /* Back-to-library button (styled like Open Library panel) */
+            .article-post-library-btn {
+                --btn-cut: clamp(0.85rem, 1.7vw, 1rem);
+                position: relative;
+                display: inline-grid;
+                place-items: center;
+                min-width: clamp(13rem, 40vw, 16rem);
+                min-height: 4.2rem;
+                padding: 0.85rem 1.8rem;
+                border: 1px solid rgba(127, 214, 244, 0.16);
                 clip-path: polygon(
-                    var(--back-cut) 0,
-                    calc(100% - var(--back-cut)) 0,
-                    100% var(--back-cut),
-                    100% calc(100% - var(--back-cut)),
-                    calc(100% - var(--back-cut)) 100%,
-                    var(--back-cut) 100%,
-                    0 calc(100% - var(--back-cut)),
-                    0 var(--back-cut)
+                    var(--btn-cut) 0,
+                    calc(100% - var(--btn-cut)) 0,
+                    100% var(--btn-cut),
+                    100% calc(100% - var(--btn-cut)),
+                    calc(100% - var(--btn-cut)) 100%,
+                    var(--btn-cut) 100%,
+                    0 calc(100% - var(--btn-cut)),
+                    0 var(--btn-cut)
                 );
-                background: rgba(9, 18, 29, 0.72);
-                color: rgba(143, 198, 240, 0.9);
-                font-size: 0.78rem;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.22) 0%, rgba(8, 15, 24, 0.1) 38%, rgba(4, 10, 16, 0.16) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.07) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%);
+                box-shadow:
+                    0 0 0 1px rgba(255, 214, 120, 0.04),
+                    0 20px 34px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+                color: rgba(242, 206, 129, 0.96);
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(0.8rem, 1.05vw, 0.95rem);
+                font-weight: 800;
+                letter-spacing: -0.01em;
+                text-align: center;
                 text-decoration: none;
-                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
+                text-shadow:
+                    0 0 16px rgba(255, 214, 120, 0.18),
+                    0 1px 0 rgba(255, 247, 229, 0.12);
+                overflow: hidden;
+                isolation: isolate;
+                transition: border-color 0.22s ease, transform 0.22s ease, filter 0.22s ease;
             }
-            .article-post-back:hover {
-                background: rgba(11, 22, 35, 0.84);
-                border-color: rgba(127, 214, 244, 0.38);
-                color: rgba(186, 223, 248, 0.98);
+
+            .article-post-library-btn::before,
+            .article-post-library-btn::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .article-post-library-btn::before {
+                inset: 0;
+                clip-path: inherit;
+                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+                opacity: 0.24;
+            }
+
+            .article-post-library-btn::after {
+                inset: 0.56rem;
+                clip-path: polygon(
+                    calc(var(--btn-cut) * 0.78) 0,
+                    calc(100% - calc(var(--btn-cut) * 0.78)) 0,
+                    100% calc(var(--btn-cut) * 0.78),
+                    100% calc(100% - calc(var(--btn-cut) * 0.78)),
+                    calc(100% - calc(var(--btn-cut) * 0.78)) 100%,
+                    calc(var(--btn-cut) * 0.78) 100%,
+                    0 calc(100% - calc(var(--btn-cut) * 0.78)),
+                    0 calc(var(--btn-cut) * 0.78)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    inset 0 0 10px rgba(7, 19, 29, 0.05),
+                    0 0 0 1px rgba(255, 214, 120, 0.03);
+                opacity: 0.42;
+            }
+
+            .article-post-library-btn:hover {
+                color: rgba(250, 224, 161, 0.98);
+                border-color: rgba(255, 221, 146, 0.7);
                 transform: translateY(-1px);
+                filter:
+                    brightness(1.08)
+                    saturate(1.08)
+                    drop-shadow(0 0 10px rgba(255, 230, 155, 0.5))
+                    drop-shadow(0 0 22px rgba(255, 198, 94, 0.34));
             }
-            .article-post-back .bi { font-size: 0.88rem; }
+
+            .article-post-library-btn-icon {
+                display: block;
+                margin-bottom: 0.3rem;
+                font-size: 1.2rem;
+                line-height: 1;
+            }
+
+            .article-post-library-btn-top {
+                margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
+            }
 
             /* Hero panel */
             .article-post-hero {
@@ -141,11 +204,14 @@
                 display: flex;
                 justify-content: center;
                 margin: 0 auto 1.2rem;
+                width: 100%;
             }
 
             .article-post-hero-book-link {
                 display: inline-flex;
                 position: relative;
+                width: clamp(9.25rem, 46vw, 12rem);
+                max-width: min(100%, 12rem);
                 text-decoration: none;
                 transition: filter 0.42s ease;
             }
@@ -270,9 +336,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                width: clamp(10.2rem, 24vw, 11.8rem);
-                height: clamp(13.8rem, 35vw, 15.6rem);
-                padding: 1.08rem 1rem 0.95rem 1.32rem;
+                width: 100%;
+                aspect-ratio: 0.74 / 1;
+                min-height: 12.6rem;
+                padding: clamp(0.85rem, 2vw, 1.08rem) clamp(0.82rem, 2.2vw, 1rem) clamp(0.8rem, 2vw, 0.95rem) clamp(1rem, 2.8vw, 1.32rem);
                 clip-path: polygon(
                     var(--book-cut) 0, calc(100% - var(--book-cut)) 0,
                     100% var(--book-cut), 100% calc(100% - var(--book-cut)),
@@ -352,20 +419,21 @@
             .article-post-hero-book-title {
                 display: block;
                 margin-top: 1.35rem;
-                max-width: 100%;
+                max-width: 86%;
+                padding-right: clamp(0.5rem, 1.8vw, 0.85rem);
                 font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: clamp(0.82rem, 1.2vw, 0.92rem);
+                font-size: clamp(0.68rem, 1.1vw + 0.08rem, 0.92rem);
                 font-weight: 800;
-                line-height: 1.1;
-                letter-spacing: -0.01em;
+                line-height: 1.05;
+                letter-spacing: -0.02em;
                 text-transform: uppercase;
                 color: rgba(224, 182, 92, 0.96);
                 text-shadow:
                     0 0 8px rgba(255, 214, 120, 0.14),
                     0 1px 0 rgba(255, 247, 229, 0.08);
-                overflow-wrap: normal;
-                word-break: normal;
-                text-wrap: balance;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+                text-wrap: pretty;
                 text-align: left;
             }
 
@@ -397,6 +465,40 @@
                 overflow-wrap: normal;
                 word-break: normal;
                 text-align: left;
+            }
+
+            @media (max-width: 576px) {
+                .article-post-hero-book-link {
+                    width: min(86vw, 10.25rem);
+                }
+
+                .article-post-hero-book-link::before {
+                    width: min(92vw, 9.25rem);
+                    height: min(92vw, 9.25rem);
+                }
+
+                .article-post-hero-book-link::after {
+                    transform: translate(0.3rem, 0.38rem);
+                }
+
+                .article-post-hero-pages {
+                    transform: translate(0.14rem, 0.18rem);
+                }
+
+                .article-post-hero-book-title {
+                    margin-top: 1rem;
+                    font-size: clamp(0.62rem, 3.1vw, 0.8rem);
+                    max-width: 82%;
+                    padding-right: 0.35rem;
+                }
+
+                .article-post-hero-book-subtitle {
+                    font-size: 0.52rem;
+                }
+
+                .article-post-hero-book-author {
+                    font-size: 0.56rem;
+                }
             }
 
             .article-post-subtitle {
@@ -553,39 +655,7 @@
                 justify-content: center;
             }
 
-            .article-post-footer-back {
-                --btn-cut: clamp(0.75rem, 1.6vw, 1rem);
-                display: inline-flex;
-                align-items: center;
-                gap: 0.55rem;
-                padding: 0.75rem 1.6rem;
-                border: 1px solid rgba(127, 214, 244, 0.24);
-                clip-path: polygon(
-                    var(--btn-cut) 0,
-                    calc(100% - var(--btn-cut)) 0,
-                    100% var(--btn-cut),
-                    100% calc(100% - var(--btn-cut)),
-                    calc(100% - var(--btn-cut)) 100%,
-                    var(--btn-cut) 100%,
-                    0 calc(100% - var(--btn-cut)),
-                    0 var(--btn-cut)
-                );
-                background: rgba(9, 18, 29, 0.74);
-                color: rgba(156, 209, 245, 0.9);
-                font-size: 0.8rem;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                text-decoration: none;
-                transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease, transform 0.22s ease;
-            }
-
-            .article-post-footer-back:hover {
-                background: rgba(12, 24, 38, 0.86);
-                border-color: rgba(127, 214, 244, 0.42);
-                color: rgba(190, 226, 248, 0.98);
-                transform: translateY(-1px);
-            }
+            
         </style>
     </head>
     <body class="d-flex flex-column h-100 bg-light site-page resume-page article-post-page">
@@ -611,8 +681,7 @@
             <section class="resume-page-wrap py-5 article-post-wrap">
                 <div class="container px-5">
 
-                    <a href="articles.html" class="article-post-back">
-                        <i class="bi bi-arrow-left"></i>
+                    <a href="articles.html" class="article-post-library-btn article-post-library-btn-top">
                         Back to Library
                     </a>
 
@@ -654,8 +723,7 @@
                         </div>
 
                         <div class="article-post-footer-nav">
-                            <a href="articles.html" class="article-post-footer-back">
-                                <i class="bi bi-journal-richtext"></i>
+                            <a href="articles.html" class="article-post-library-btn">
                                 Return to Library
                             </a>
                         </div>

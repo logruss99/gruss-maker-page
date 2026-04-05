@@ -18651,7 +18651,7 @@ body.site-page:not(.home-page)::after {
 
 /* ── Shelf slot: uniform height, transparent container ───────── */
 .articles-page .articles-shelf-slot {
-  --article-panel-width: min(100%, 6.85rem);
+  --article-panel-width: min(100%, 7.45rem);
   --article-panel-cut: clamp(0.38rem, 0.9vw, 0.58rem);
   position: relative;
   display: flex;
@@ -18801,15 +18801,18 @@ body.site-page:not(.home-page)::after {
 .articles-page .article-book-title {
   display: block;
   margin-top: 1.35rem;
-  max-width: calc(100% - 0.5rem);
+  max-width: 80%;
+  padding-right: 0.45rem;
   font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-  font-size: clamp(0.78rem, 0.9vw + 0.34rem, 0.98rem);
+  font-size: clamp(0.58rem, 0.62vw + 0.3rem, 0.82rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   overflow-wrap: normal;
-  word-break: normal;
+  word-break: keep-all;
   hyphens: none;
+  text-wrap: pretty;
+  white-space: normal;
   text-transform: uppercase;
   color: rgba(224, 182, 92, 0.96);
   text-shadow:
@@ -18902,7 +18905,7 @@ body.site-page:not(.home-page)::after {
   }
 
   .articles-page .articles-shelf-slot {
-    --article-panel-width: min(100%, 7.35rem);
+    --article-panel-width: min(100%, 7.8rem);
   }
 
   .articles-page .article-book {
@@ -18930,8 +18933,9 @@ body.site-page:not(.home-page)::after {
 
   .articles-page .article-book-title {
     margin-top: 1rem;
-    max-width: calc(100% - 0.42rem);
-    font-size: 0.7rem;
+    max-width: 80%;
+    padding-right: 0.32rem;
+    font-size: 0.56rem;
     line-height: 1.08;
   }
 
