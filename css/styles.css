@@ -19069,7 +19069,7 @@ body.site-page:not(.home-page)::after {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (hover: none), (pointer: coarse) {
   .articles-page .article-book-link.article-book-link-space {
     filter:
       drop-shadow(0 0 20px rgba(122, 241, 255, 0.58))
