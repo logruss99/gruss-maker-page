@@ -13356,6 +13356,35 @@ html {
   border-top: 1px solid rgba(148, 164, 177, 0.18);
 }
 
+.resume-page .resume-skill-collapse-btn {
+  cursor: pointer;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.75rem;
+}
+.resume-page .resume-skill-chevron {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(143, 198, 240, 0.28);
+  background: rgba(143, 198, 240, 0.08);
+  color: rgba(143, 198, 240, 0.9);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+}
+.resume-page .resume-skill-collapse-btn:hover .resume-skill-chevron {
+  background: rgba(143, 198, 240, 0.15);
+  border-color: rgba(143, 198, 240, 0.5);
+}
+.resume-page .resume-skill-collapse-btn[aria-expanded="true"] .resume-skill-chevron {
+  transform: rotate(180deg);
+  background: rgba(255, 214, 120, 0.12);
+  border-color: rgba(255, 214, 120, 0.36);
+  color: rgba(255, 214, 120, 0.9);
+}
+
 .resume-page .resume-skill-pill {
   justify-content: center;
   padding: 1rem 1.1rem !important;
