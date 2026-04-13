@@ -18992,6 +18992,236 @@ body.site-page:not(.home-page)::after {
   color: rgba(224, 182, 92, 0.58);
 }
 
+.site-password-modal-open {
+  overflow: hidden;
+}
+
+.site-password-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2rem);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(122, 241, 255, 0.12) 0%, rgba(122, 241, 255, 0.02) 24%, rgba(4, 9, 15, 0.72) 52%, rgba(2, 5, 9, 0.86) 100%),
+    rgba(3, 7, 12, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.site-password-modal[hidden] {
+  display: none;
+}
+
+.site-password-dialog {
+  --dialog-cut: clamp(1rem, 2vw, 1.35rem);
+  position: relative;
+  width: min(100%, 28rem);
+  padding: clamp(1.3rem, 3vw, 1.8rem);
+  border: 1px solid rgba(127, 214, 244, 0.16);
+  clip-path: polygon(
+    var(--dialog-cut) 0,
+    calc(100% - var(--dialog-cut)) 0,
+    100% var(--dialog-cut),
+    100% calc(100% - var(--dialog-cut)),
+    calc(100% - var(--dialog-cut)) 100%,
+    var(--dialog-cut) 100%,
+    0 calc(100% - var(--dialog-cut)),
+    0 var(--dialog-cut)
+  );
+  background:
+    linear-gradient(180deg, rgba(10, 19, 30, 0.96) 0%, rgba(5, 10, 16, 0.98) 100%),
+    radial-gradient(circle at 16% 14%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0) 34%);
+  box-shadow:
+    0 32px 60px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+}
+
+.site-password-dialog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(127, 214, 244, 0.08) 0%, transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(255, 214, 120, 0.08) 0%, rgba(255, 214, 120, 0) 36%);
+}
+
+.site-password-dialog > * {
+  position: relative;
+  z-index: 1;
+}
+
+.site-password-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.site-password-dialog-title-wrap {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.site-password-dialog-kicker {
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(143, 198, 240, 0.72);
+}
+
+.site-password-dialog-title {
+  margin: 0;
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1rem, 1.2vw + 0.75rem, 1.28rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(239, 244, 250, 0.98);
+}
+
+.site-password-dialog-close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(127, 214, 244, 0.2);
+  border-radius: 999px;
+  background: rgba(10, 18, 28, 0.78);
+  color: rgba(222, 232, 243, 0.88);
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-password-dialog-close:hover,
+.site-password-dialog-close:focus {
+  transform: translateY(-1px);
+  border-color: rgba(122, 241, 255, 0.42);
+  background: rgba(16, 29, 42, 0.92);
+  color: rgba(250, 252, 255, 0.96);
+}
+
+.site-password-dialog-copy {
+  margin: 0 0 1rem;
+  color: rgba(228, 222, 210, 0.84);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.site-password-dialog-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.site-password-dialog-label {
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(143, 198, 240, 0.76);
+}
+
+.site-password-dialog-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(127, 214, 244, 0.26);
+  border-radius: 0.85rem;
+  background: rgba(6, 12, 19, 0.92);
+  color: rgba(244, 247, 251, 0.96);
+  font-size: 1rem;
+  box-shadow:
+    inset 0 1px 0 rgba(228, 248, 255, 0.04),
+    inset 0 0 0 1px rgba(40, 85, 113, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.site-password-dialog-input::placeholder {
+  color: rgba(170, 192, 212, 0.4);
+}
+
+.site-password-dialog-input:hover,
+.site-password-dialog-input:focus {
+  outline: none;
+  border-color: rgba(122, 241, 255, 0.56);
+  background: rgba(8, 15, 24, 0.98);
+  box-shadow:
+    0 0 0 0.22rem rgba(122, 241, 255, 0.12),
+    inset 0 1px 0 rgba(228, 248, 255, 0.05);
+}
+
+.site-password-dialog-error {
+  min-height: 1.4rem;
+  margin: 0;
+  color: rgba(255, 165, 136, 0.94);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.site-password-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.site-password-dialog-btn {
+  min-width: 7rem;
+  padding: 0.78rem 1.25rem;
+  border-radius: 999px;
+  font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.site-password-dialog-btn:hover,
+.site-password-dialog-btn:focus {
+  transform: translateY(-1px);
+}
+
+.site-password-dialog-btn-secondary {
+  border: 1px solid rgba(127, 214, 244, 0.18);
+  background: rgba(12, 22, 34, 0.84);
+  color: rgba(225, 234, 243, 0.88);
+}
+
+.site-password-dialog-btn-secondary:hover,
+.site-password-dialog-btn-secondary:focus {
+  border-color: rgba(127, 214, 244, 0.34);
+  background: rgba(16, 29, 43, 0.96);
+  color: rgba(248, 250, 253, 0.96);
+}
+
+.site-password-dialog-btn-primary {
+  border: 1px solid rgba(84, 225, 255, 0.4);
+  background: linear-gradient(135deg, rgba(32, 198, 234, 0.94) 0%, rgba(81, 239, 255, 0.92) 100%);
+  color: rgba(5, 16, 24, 0.96);
+  box-shadow:
+    0 10px 24px rgba(27, 198, 233, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.site-password-dialog-btn-primary:hover,
+.site-password-dialog-btn-primary:focus {
+  border-color: rgba(133, 247, 255, 0.6);
+  background: linear-gradient(135deg, rgba(71, 218, 243, 0.98) 0%, rgba(125, 249, 255, 0.98) 100%);
+  box-shadow:
+    0 14px 28px rgba(27, 198, 233, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 991.98px) {
   .articles-page .articles-shelf-row {
@@ -19013,6 +19243,19 @@ body.site-page:not(.home-page)::after {
 }
 
 @media (max-width: 575.98px) {
+  .site-password-dialog {
+    width: min(100%, 23rem);
+    padding: 1.15rem;
+  }
+
+  .site-password-dialog-actions {
+    flex-direction: column-reverse;
+  }
+
+  .site-password-dialog-btn {
+    width: 100%;
+  }
+
   .articles-page .resume-title-glyph {
     inline-size: min(2.6rem, calc((100% - (7 * var(--resume-title-gap))) / 8));
   }

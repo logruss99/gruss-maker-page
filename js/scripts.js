@@ -6,6 +6,214 @@
 window.addEventListener("DOMContentLoaded", function () {
     var root = document.documentElement;
     var body = document.body;
+    var protectedPdfLinks = Array.prototype.slice.call(document.querySelectorAll("[data-pdf-password]"));
+    var pdfModal;
+    var pdfModalTitle;
+    var pdfModalInput;
+    var pdfModalError;
+    var activeProtectedLink = null;
+    var previousFocus = null;
+
+    function getProtectedPdfTitle(link) {
+        var explicitTitle = link.getAttribute("data-pdf-title");
+        var bookTitle = link.querySelector(".article-post-hero-book-title");
+
+        if (explicitTitle) {
+            return explicitTitle;
+        }
+
+        if (bookTitle && bookTitle.textContent) {
+            return bookTitle.textContent.trim();
+        }
+
+        return "Protected PDF";
+    }
+
+    function closeProtectedPdfModal() {
+        if (!pdfModal) {
+            return;
+        }
+
+        pdfModal.setAttribute("hidden", "hidden");
+        pdfModal.setAttribute("aria-hidden", "true");
+        body.classList.remove("site-password-modal-open");
+        activeProtectedLink = null;
+
+        if (pdfModalInput) {
+            pdfModalInput.value = "";
+        }
+
+        if (pdfModalError) {
+            pdfModalError.textContent = "";
+        }
+
+        if (previousFocus && typeof previousFocus.focus === "function") {
+            previousFocus.focus();
+        }
+
+        previousFocus = null;
+    }
+
+    function openProtectedPdfDestination(link) {
+        var destination = link.getAttribute("href");
+        var target = link.getAttribute("target");
+
+        if (!destination) {
+            return;
+        }
+
+        if (target && target !== "_self") {
+            window.open(destination, target, "noopener,noreferrer");
+            return;
+        }
+
+        window.location.href = destination;
+    }
+
+    function submitProtectedPdfPassword(event) {
+        var expectedPassword;
+        var enteredPassword;
+        var linkToOpen;
+
+        if (event) {
+            event.preventDefault();
+        }
+
+        if (!activeProtectedLink || !pdfModalInput || !pdfModalError) {
+            return;
+        }
+
+        expectedPassword = activeProtectedLink.getAttribute("data-pdf-password");
+        enteredPassword = pdfModalInput.value.trim();
+
+        if (enteredPassword !== expectedPassword) {
+            pdfModalError.textContent = "That password was not recognized. Please try again.";
+            pdfModalInput.focus();
+            pdfModalInput.select();
+            return;
+        }
+
+        linkToOpen = activeProtectedLink;
+        closeProtectedPdfModal();
+        openProtectedPdfDestination(linkToOpen);
+    }
+
+    function buildProtectedPdfModal() {
+        var modalMarkup;
+        var form;
+        var closeButtons;
+
+        if (!body || pdfModal) {
+            return;
+        }
+
+        modalMarkup = document.createElement("div");
+        modalMarkup.className = "site-password-modal";
+        modalMarkup.setAttribute("hidden", "hidden");
+        modalMarkup.setAttribute("aria-hidden", "true");
+        modalMarkup.innerHTML =
+            '<div class="site-password-dialog" role="dialog" aria-modal="true" aria-labelledby="site-password-dialog-title">' +
+                '<div class="site-password-dialog-header">' +
+                    '<div class="site-password-dialog-title-wrap">' +
+                        '<span class="site-password-dialog-kicker">Secure Access</span>' +
+                        '<h2 class="site-password-dialog-title" id="site-password-dialog-title">Protected PDF</h2>' +
+                    '</div>' +
+                    '<button class="site-password-dialog-close" type="button" data-password-close aria-label="Close password dialog">&times;</button>' +
+                '</div>' +
+                '<p class="site-password-dialog-copy">Did not expect...locked door.</p>' +
+                '<form class="site-password-dialog-form">' +
+                    '<label class="site-password-dialog-label" for="site-password-dialog-input">Password</label>' +
+                    '<input class="site-password-dialog-input" id="site-password-dialog-input" name="pdf-password" type="password" autocomplete="off" spellcheck="false" />' +
+                    '<p class="site-password-dialog-error" aria-live="polite"></p>' +
+                    '<div class="site-password-dialog-actions">' +
+                        '<button class="site-password-dialog-btn site-password-dialog-btn-secondary" type="button" data-password-close>Cancel</button>' +
+                        '<button class="site-password-dialog-btn site-password-dialog-btn-primary" type="submit">Open PDF</button>' +
+                    '</div>' +
+                '</form>' +
+            '</div>';
+
+        body.appendChild(modalMarkup);
+
+        pdfModal = modalMarkup;
+        pdfModalTitle = pdfModal.querySelector(".site-password-dialog-title");
+        pdfModalInput = pdfModal.querySelector(".site-password-dialog-input");
+        pdfModalError = pdfModal.querySelector(".site-password-dialog-error");
+        form = pdfModal.querySelector(".site-password-dialog-form");
+        closeButtons = Array.prototype.slice.call(pdfModal.querySelectorAll("[data-password-close]"));
+
+        form.addEventListener("submit", submitProtectedPdfPassword);
+
+        closeButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                closeProtectedPdfModal();
+            });
+        });
+
+        pdfModal.addEventListener("click", function (event) {
+            if (event.target === pdfModal) {
+                closeProtectedPdfModal();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && pdfModal && !pdfModal.hasAttribute("hidden")) {
+                closeProtectedPdfModal();
+            }
+        });
+    }
+
+    function openProtectedPdfModal(link) {
+        if (!link || !body) {
+            return;
+        }
+
+        if (!pdfModal) {
+            buildProtectedPdfModal();
+        }
+
+        activeProtectedLink = link;
+        previousFocus = document.activeElement;
+
+        if (pdfModalTitle) {
+            pdfModalTitle.textContent = getProtectedPdfTitle(link);
+        }
+
+        if (pdfModalError) {
+            pdfModalError.textContent = "";
+        }
+
+        if (pdfModalInput) {
+            pdfModalInput.value = "";
+        }
+
+        pdfModal.removeAttribute("hidden");
+        pdfModal.setAttribute("aria-hidden", "false");
+        body.classList.add("site-password-modal-open");
+
+        window.setTimeout(function () {
+            if (pdfModalInput) {
+                pdfModalInput.focus();
+            }
+        }, 0);
+    }
+
+    if (protectedPdfLinks.length) {
+        buildProtectedPdfModal();
+
+        protectedPdfLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                var expectedPassword = link.getAttribute("data-pdf-password");
+                var destination = link.getAttribute("href");
+
+                if (!expectedPassword || !destination) {
+                    return;
+                }
+
+                event.preventDefault();
+                openProtectedPdfModal(link);
+            });
+        });
+    }
 
     if (body && body.classList.contains("home-page") && root.classList.contains("home-intro-first")) {
         window.requestAnimationFrame(function () {
