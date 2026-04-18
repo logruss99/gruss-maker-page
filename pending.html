@@ -135,6 +135,297 @@
                 color: var(--pending-accent-text);
             }
 
+            .cloud-chamber-tab-pane {
+                outline: none;
+            }
+
+            #cloudChamberTabs.project-section-tabs {
+                margin-top: 1.75rem;
+                border-color: rgba(143, 198, 240, 0.22);
+                background: linear-gradient(145deg, rgba(16, 24, 33, 0.95), rgba(23, 37, 49, 0.88));
+                box-shadow: 0 1rem 2.2rem rgba(10, 12, 16, 0.26);
+            }
+
+            #cloudChamberTabs .project-section-tab {
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(143, 198, 240, 0.12));
+                color: #e4f5ff;
+            }
+
+            #cloudChamberTabs .project-section-tab:hover,
+            #cloudChamberTabs .project-section-tab:focus,
+            #cloudChamberTabs .project-section-tab.active {
+                background: linear-gradient(135deg, #86bfe7, #5f95c0);
+                color: #0d1823;
+                box-shadow: 0 0.75rem 1.5rem rgba(95, 149, 192, 0.28);
+            }
+
+            .cloud-chamber-rubric-grid,
+            .cloud-chamber-principles-grid,
+            .cloud-chamber-cycle-support-grid,
+            .cloud-chamber-reflection-grid {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .cloud-chamber-rubric-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                margin-top: 1.3rem;
+            }
+
+            .cloud-chamber-rubric-card,
+            .cloud-chamber-principle-card,
+            .cloud-chamber-reflection-card {
+                padding: 1rem;
+                border: 1px solid rgba(143, 198, 240, 0.18);
+                border-radius: 1rem;
+                background: linear-gradient(145deg, rgba(12, 20, 28, 0.88), rgba(20, 30, 40, 0.78));
+                box-shadow: inset 0 1px 0 rgba(228, 248, 255, 0.04);
+            }
+
+            .cloud-chamber-rubric-card h4,
+            .cloud-chamber-principle-card h4,
+            .cloud-chamber-reflection-card h4 {
+                margin: 0 0 0.45rem;
+                color: #eef8ff;
+                font-size: 0.98rem;
+            }
+
+            .cloud-chamber-rubric-card p,
+            .cloud-chamber-principle-card p,
+            .cloud-chamber-reflection-card p {
+                margin: 0;
+                color: rgba(225, 238, 248, 0.9);
+                font-size: 0.95rem;
+                line-height: 1.65;
+            }
+
+            .cloud-chamber-principles-grid,
+            .cloud-chamber-reflection-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cloud-chamber-cycle-meta {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .cloud-chamber-cycle-meta h3 {
+                margin-bottom: 0.25rem;
+            }
+
+            .cloud-chamber-cycle-path {
+                margin: 0;
+                color: rgba(223, 242, 255, 0.86);
+                font-size: 0.95rem;
+                font-weight: 700;
+                letter-spacing: 0.01em;
+            }
+
+            .cloud-chamber-cycle-score {
+                margin: 0;
+                padding: 0.45rem 0.85rem;
+                border: 1px solid rgba(143, 198, 240, 0.18);
+                border-radius: 999px;
+                background: rgba(143, 198, 240, 0.08);
+                color: var(--pending-accent-text);
+                font-size: 0.88rem;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+
+            .cloud-chamber-feature-figure,
+            .cloud-chamber-cycle-support-grid .pending-deliverable-figure {
+                padding: 0.95rem;
+                border: 1px solid rgba(255, 238, 209, 0.08);
+                border-radius: 1rem;
+                background: rgba(255, 255, 255, 0.025);
+            }
+
+            .cloud-chamber-feature-figure {
+                margin-top: 1.15rem;
+            }
+
+            .cloud-chamber-feature-figure a,
+            .cloud-chamber-cycle-support-grid .pending-deliverable-figure a {
+                display: block;
+            }
+
+            .cloud-chamber-feature-figure img {
+                width: 100%;
+                max-height: 42rem;
+                object-fit: contain;
+                border-radius: 0.9rem;
+                background: rgba(10, 14, 20, 0.84);
+            }
+
+            .cloud-chamber-cycle-support-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                margin-top: 1rem;
+            }
+
+            .cloud-chamber-cycle-support-grid .pending-deliverable-figure img {
+                width: 100%;
+                max-height: 28rem;
+                object-fit: contain;
+                border-radius: 0.85rem;
+                background: rgba(10, 14, 20, 0.82);
+            }
+
+            .cloud-chamber-metrics-table {
+                margin-top: 1rem;
+                border: 1px solid rgba(143, 198, 240, 0.18);
+                border-radius: 1rem;
+                overflow: hidden;
+            }
+
+            .cloud-chamber-metrics-table.table {
+                --bs-table-bg: rgba(12, 20, 28, 0.88);
+                --bs-table-color: rgba(228, 245, 255, 0.92);
+                --bs-table-border-color: rgba(143, 198, 240, 0.16);
+                --bs-table-striped-bg: rgba(143, 198, 240, 0.06);
+                --bs-table-striped-color: rgba(228, 245, 255, 0.92);
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-metrics-table th {
+                color: #eef8ff;
+                font-size: 0.92rem;
+                letter-spacing: 0.03em;
+                text-transform: uppercase;
+            }
+
+            .cloud-chamber-metrics-table td,
+            .cloud-chamber-metrics-table th {
+                vertical-align: top;
+                padding: 1rem;
+            }
+
+            .cloud-chamber-metrics-table p:last-child,
+            .cloud-chamber-metrics-table ul:last-child,
+            .cloud-chamber-metrics-table ol:last-child {
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-placeholder {
+                margin-top: 0.85rem;
+                padding: 0.8rem 0.95rem;
+                border: 1px dashed rgba(143, 198, 240, 0.34);
+                border-radius: 0.9rem;
+                background: rgba(143, 198, 240, 0.08);
+                color: #e4f5ff;
+                font-weight: 700;
+                line-height: 1.5;
+            }
+
+            .cloud-chamber-timeline {
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-timeline li + li {
+                margin-top: 0.75rem;
+            }
+
+            .cloud-chamber-prototyping {
+                display: grid;
+                gap: 1.35rem;
+            }
+
+            .cloud-chamber-cycle-card {
+                padding: 1.45rem;
+                border: 1px solid rgba(143, 198, 240, 0.16);
+                border-radius: 1.25rem;
+                background: linear-gradient(145deg, rgba(12, 20, 28, 0.92), rgba(20, 30, 40, 0.82));
+                box-shadow: 0 1rem 2.4rem rgba(10, 12, 16, 0.2);
+            }
+
+            .cloud-chamber-cycle-card h3 {
+                margin-bottom: 0.35rem;
+                text-align: center;
+                font-size: clamp(2rem, 4vw, 3rem);
+                color: #f4fbff;
+            }
+
+            .cloud-chamber-cycle-card p:last-child {
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-cycle-card .cloud-chamber-cycle-path {
+                margin-bottom: 1.2rem;
+                text-align: center;
+                color: var(--pending-accent-text);
+                font-size: 1rem;
+            }
+
+            .cloud-chamber-cycle-list {
+                list-style: none;
+                padding: 0;
+                margin: 1.25rem 0 0;
+                display: grid;
+                gap: 0.95rem;
+            }
+
+            .cloud-chamber-cycle-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.95rem;
+                color: rgba(228, 245, 255, 0.92);
+                font-size: 1.02rem;
+                line-height: 1.7;
+            }
+
+            .cloud-chamber-check {
+                flex: 0 0 1.45rem;
+                width: 1.45rem;
+                height: 1.45rem;
+                margin-top: 0.2rem;
+                border: 1px solid rgba(202, 220, 235, 0.28);
+                border-radius: 0.38rem;
+                background: rgba(255, 255, 255, 0.03);
+                color: transparent;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cloud-chamber-check.is-complete {
+                border-color: #54ef88;
+                background: #54ef88;
+                color: #102316;
+                box-shadow: 0 0 1rem rgba(84, 239, 136, 0.3);
+            }
+
+            .cloud-chamber-check i {
+                font-size: 0.72rem;
+            }
+
+            .cloud-chamber-cycle-figure {
+                margin: 1.5rem 0 0;
+                padding: 0.9rem;
+                border: 1px solid rgba(255, 238, 209, 0.08);
+                border-radius: 1.15rem;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .cloud-chamber-cycle-figure a {
+                display: block;
+            }
+
+            .cloud-chamber-cycle-figure img {
+                width: 100%;
+                max-height: 42rem;
+                object-fit: contain;
+                border-radius: 0.95rem;
+                background: rgba(10, 14, 20, 0.84);
+            }
+
+            .cloud-chamber-cycle-summary {
+                margin-top: 1.2rem;
+            }
+
             .pending-hero-panel {
                 --pending-hero-cut: clamp(1.1rem, 2vw, 1.75rem);
                 position: relative;
@@ -442,14 +733,36 @@
                 }
             }
 
+            @media (max-width: 991.98px) {
+                .cloud-chamber-rubric-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
             @media (max-width: 767.98px) {
                 .pending-deliverable-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .cloud-chamber-rubric-grid,
+                .cloud-chamber-principles-grid,
+                .cloud-chamber-cycle-support-grid,
+                .cloud-chamber-reflection-grid {
                     grid-template-columns: 1fr;
                 }
 
                 .pending-deliverable-section,
                 .pending-deliverable-intro {
                     padding: 1.15rem;
+                }
+
+                .cloud-chamber-cycle-card {
+                    padding: 1.15rem;
+                }
+
+                .cloud-chamber-cycle-list li {
+                    gap: 0.8rem;
+                    font-size: 0.98rem;
                 }
 
                 .pending-hero-panel {
@@ -540,7 +853,7 @@
                                         <span class="pending-showcase-action">Open project notes <i class="bi bi-arrow-up-right"></i></span>
                                     </div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
+                                <img class="img-fluid" src="assets/img/cloudchamber/prototyping-testing/cycle3_design_slide.png" alt="Cloud chamber iteration cycle 3 design slide" />
                             </div>
                         </div>
                     </div>
@@ -561,19 +874,15 @@
                                             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                             <div class="divider-custom-line"></div>
                                         </div>
-                                        <div class="pending-deliverable">
+                                        <div class="nav project-section-tabs" id="cloudChamberTabs" role="tablist" aria-label="Cloud chamber sections">
+                                            <button class="project-section-tab active" id="cloud-project-tab" data-bs-toggle="tab" data-bs-target="#cloud-project-pane" type="button" role="tab" aria-controls="cloud-project-pane" aria-selected="true">Project</button>
+                                            <button class="project-section-tab" id="cloud-prototyping-tab" data-bs-toggle="tab" data-bs-target="#cloud-prototyping-pane" type="button" role="tab" aria-controls="cloud-prototyping-pane" aria-selected="false">Prototyping and Testing</button>
+                                        </div>
+                                        <div class="tab-content project-tab-content" id="cloudChamberTabsContent">
+                                            <div class="tab-pane fade show active cloud-chamber-tab-pane" id="cloud-project-pane" role="tabpanel" aria-labelledby="cloud-project-tab" tabindex="0">
+                                                <div class="pending-deliverable">
                                             <div class="pending-deliverable-intro">
-                                                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-3">
-                                                    
-                                                    
-                                                </div>
-                                                <figure class="pending-deliverable-figure">
-                                                    <a href="assets/img/portfolio/gargamelle.jpg" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint"><b>Figure 1.1</b> (Click the image to view fullscreen)</p>
-                                                
+                                                <p class="mb-0">This project section documents the cloud chamber as a Peltier-cooled diffusion cloud chamber intended to function as an educational teaching tool. To keep the project focused on my own development work and the iteration record, I removed the outside reference images and kept the visual emphasis on the prototype cycle slides in the Prototyping and Testing tab.</p>
                                             </div>
 
                                             <section class="pending-deliverable-section">
@@ -589,13 +898,6 @@
 
                                                 <h4>Background Framing</h4>
                                                 <p>Our approach for the project is framed around the diffusion cloud chamber, rather than around detection alone. The chamber works by creating a supersaturated alcohol vapor to flood the enclosed atmosphere. Within the chamber will be a great temperature differential between the top and surface of the base, the base being around -30 celcius. That temperature gradient creates the sensitive region where particle tracks become visible. In general, the idea is about visualization, but for those interested in the physical phenomena; the trails are visible because a charged particle passes through a supersaturated alcohol vapor in the cloud chamber and ionizes the gas along its path. The vapor then condenses onto those ions, forming tiny droplets. Those droplets line up where the particle traveled, so you can see a visible trail of exactly that particle's path. For the basic educational demonstration, natural background radiation should be enough to create visible trails, meaning nothing special needs to be placed inside the chamber for the core effect to appear. However, I have included an image below that represents what happens when something of greater emission is placed inside the chamber (an alpha emitter).</p>
-                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                    <a href="assets/img/portfolio/alpha-tracks-radium-1912.png" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/alpha-tracks-radium-1912.png" alt="Picture of alpha tracks of radium from 1912" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint mb-1"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
-                                                <p class="mb-3"><small>Source: <a href="https://www.cloudylabs.fr/wp/differentes-machines/" target="_blank" rel="noopener noreferrer">Cloudylabs, "The first particles detectors"</a></small></p>
                                                 <p>The emphasis is on the chamber as an educational system. The value of the demonstration comes from allowing students to see direct visual proof that atmospheric radiation exists, notice that different particle tracks may appear different, and begin asking what is visible, what can be inferred, and what still cannot be directly seen. This can give rise to questions regarding how we can alter these paths, how to induce a longer path, as well as, the limitations of the device. That is how we plan to balance educational value with accessibility and usability for anyone to participate in understanding.</p>
 
                                                 <h4>User / Customer Profile</h4>
@@ -641,12 +943,6 @@
 
                                                 <h4>Selected Design Direction</h4>
                                                 <p>The selected direction is a Peltier-cooled diffusion cloud chamber designed as an educational teaching tool. I chose this approach because it supports the core goal of making invisible radiation visible, while also allowing the project to be built around usability, safety explanation, and conceptual accessibility rather than engineering spectacle alone. At this stage, this should be read as the current direction rather than as a fully finalized design.</p>
-                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                    <a href="assets/img/portfolio/story-board.jpg" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/story-board.jpg" alt="Storyboard sketch showing brainstorming themes, insight statements, and questions for the physics education concept" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
                                             </section>
 
                                             <section class="pending-deliverable-section">
@@ -662,13 +958,6 @@
                                                     <li>From there, the demonstration can lead into broader real-world or scientific visualizations and show that the classroom experience connects outward to larger contexts.</li>
                                                     <li>The instructor also has an opportunity to address safety and misconceptions surrounding radiation, electricity, and the chamber's hot and cold components.</li>
                                                     <li>The experience ultimately opens the door to deeper learning, including equations, interpretation, and broader particle physics ideas that grow out of what students have already observed.</li>
-                                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                        <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
-                                                            <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
-                                                        </a>
-                                                    </figure>
-                                                    <p class="fullscreen-hint"><b>Figure 1.3</b> (Click the image to view fullscreen)</p>
-                                                    <p class="mb-3"><small>Source: <a href="https://www.rs-online.com/designspark/peltier-cooled-cloud-chamber-part-2" target="_blank" rel="noopener noreferrer">RS DesignSpark, "Peltier Cooled Cloud Chamber Part 2"</a></small></p>
                                                     <li>Finally, the last step the student will take is that when they tell all their classmates how incredible ionizing radiation can look! On a more serious note, the user can now express something that was once invisible, using concrete observations. Our hopes are that this promotes a welcoming introduction to less intuitive concepts</li>
                                                 </ol>
                                             </section>
@@ -705,6 +994,107 @@
                                                 <h3>6. Closing Reflection</h3>
                                                 <p>The larger goal of this project is to make an abstract concept feel more concrete. Particle physics can be difficult to understand when students are asked to imagine a phenomenon they cannot normally see, so the cloud chamber gives them a more direct way to connect observation to the underlying physics. By making ionizing radiation visible in a classroom setting, the project can help turn a difficult topic into something more accessible, discussable, and real.</p>
                                             </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade cloud-chamber-tab-pane" id="cloud-prototyping-pane" role="tabpanel" aria-labelledby="cloud-prototyping-tab" tabindex="0">
+                                                <div class="pending-deliverable cloud-chamber-prototyping">
+                                                    <section class="pending-deliverable-intro">
+                                                        <span class="pending-deliverable-label">Stage 2 Submission</span>
+                                                        <h3 class="mt-3">Prototyping and Testing</h3>
+                                                        <p>This section tracks the four prototype cycles we used to refine the cloud chamber's cooling-support hardware. I kept the layout simple so the progression is easy to follow: what changed, which goals each version met, and how each redesign pushed the project closer to a classroom-ready Peltier-cooled diffusion cloud chamber.</p>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 1</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD -&gt; CAM for PLA -&gt; Testing</p>
+                                                        <p>The problem statement for this project puts a lot of weight on making sure as many educators and students as possible can access the materials required to make the cloud chamber and keep using it over time. Because of that, we framed our first prototype around a set of quantifiable goals that kept the build process fast, understandable, and repeatable.</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -30 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>All parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" alt="Cycle 1 slide showing the first cooling-stack concept for the cloud chamber support hardware." />
+                                                            </a>
+                                                            <figcaption>Cycle 1 established the first PLA proof-of-concept for stacking the heatsink, Peltier cooler, aluminum disc, and printed supports.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>For cycle 1, only two of the five goals were met. This first version proved that the cooling stack could be organized physically, but it also exposed where the concept still failed once we moved from theory into an actual printed assembly.</p>
+                                                            <p class="mb-0">The biggest issue was that the parts were not yet behaving like one fully resolved system. Even though some of the fit conditions were close, parts of the assembly were still relying on gravity instead of being directly secured to one another, so the first prototype was useful mainly because it showed us exactly what had to change next.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 2</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM for PLA -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check"></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" alt="Cycle 2 slide showing the redesigned cloud chamber support parts being combined into one part." />
+                                                            </a>
+                                                            <figcaption>Cycle 2 focused on combining the earlier support pieces into a more compact and compatible printed form.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>We checked off two new goals with iteration 2, but we also gave up two gains from the first version in the process. This redesign improved part compatibility and made the set easier to fit on one PRUSA Mini+ build plate, which moved the project closer to something more repeatable and practical to fabricate.</p>
+                                                            <p class="mb-0">The tradeoff was access. Taking the aluminum disc out of the brace became less convenient than it had been before and could require either very small fingers or needle-nosed pliers, so cycle 2 taught us that making the structure tighter and more integrated could also make maintenance harder.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 3</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle3_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle3_design_slide.png" alt="Cycle 3 slide showing changes to infill, wiring clearance, and screw positioning." />
+                                                            </a>
+                                                            <figcaption>Cycle 3 was the major redesign stage where geometry and print strategy started working together instead of being treated separately.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>Iterations 2 and 3 were the closest to one another, but cycle 3 arguably moved us the furthest toward the version we actually wanted. We made room for Peltier cooler wiring, adjusted screw positioning to reduce breakage under tension, and changed the CAM approach so the printed part could better support the temperature demands of the chamber.</p>
+                                                            <p class="mb-0">This was the point where the design started to feel much more buildable in practice. We kept the compatibility and one-plate fabrication gains from the previous version, and the added wire routing finally helped us resolve the hardware-fit issue without noticeably increasing the print footprint.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 4</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Material Change -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle4_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle4_design_slide.png" alt="Cycle 4 slide showing the PETG material change and final cloud chamber brace updates." />
+                                                            </a>
+                                                            <figcaption>Cycle 4 became the final prototype direction by combining the last geometry changes with the move from PLA to PETG.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>By the fourth and final iteration, we checked off the last two goals on the list. We had planned from the beginning to wait until the design felt stable before changing the material from PLA to PETG, and that switch finally gave the brace the resistance it needed against heat deformation and extended cold exposure.</p>
+                                                            <p>The last redesign also improved attachment points and added better clearance for handling the brace during disassembly. At the same time, we adjusted the design to accommodate extra thermal paste so the Peltier could get as cold as possible without fighting the structure around it.</p>
+                                                            <p class="mb-0">At this point, the cooling-support hardware finally met all five goals together. That made cycle 4 much more than a late-stage tweak; it became the version that tied together manufacturability, compatibility, durability, and day-to-day usability in a way that actually supports the final classroom cloud chamber build.</p>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
                                         </div>
                                         <button class="btn btn-primary" data-bs-dismiss="modal">
                                             <i class="fas fa-xmark fa-fw"></i>
