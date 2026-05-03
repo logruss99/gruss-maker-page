@@ -40,6 +40,123 @@
                 background-color: rgba(143, 198, 240, 0.42);
             }
 
+            .projects-page .portfolio-modal .btn-primary {
+                --nav-link-cut: clamp(0.7rem, 1.8vw, 0.9rem);
+                --bs-btn-bg: transparent;
+                --bs-btn-border-color: rgba(127, 214, 244, 0.13);
+                --bs-btn-hover-bg: transparent;
+                --bs-btn-hover-border-color: rgba(127, 214, 244, 0.18);
+                --bs-btn-active-bg: transparent;
+                --bs-btn-active-border-color: rgba(127, 214, 244, 0.18);
+                position: relative;
+                display: inline-flex;
+                min-height: clamp(3.25rem, 7vw, 4.6rem);
+                min-width: min(100%, clamp(11rem, 24vw, 14rem));
+                margin-top: clamp(1.6rem, 4vw, 2.4rem);
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                isolation: isolate;
+                gap: 0.35rem;
+                padding: clamp(0.75rem, 1.8vw, 0.95rem) clamp(1.15rem, 3vw, 1.75rem);
+                border: 1px solid rgba(127, 214, 244, 0.13) !important;
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--nav-link-cut) 0,
+                    calc(100% - var(--nav-link-cut)) 0,
+                    100% var(--nav-link-cut),
+                    100% calc(100% - var(--nav-link-cut)),
+                    calc(100% - var(--nav-link-cut)) 100%,
+                    var(--nav-link-cut) 100%,
+                    0 calc(100% - var(--nav-link-cut)),
+                    0 var(--nav-link-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%) !important;
+                color: #edf5f8 !important;
+                font-weight: 800;
+                line-height: 1.1;
+                text-align: center;
+                box-shadow:
+                    0 16px 28px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.18);
+                transition:
+                    color 0.2s ease-in-out,
+                    border-color 0.2s ease-in-out,
+                    box-shadow 0.2s ease-in-out,
+                    transform 0.2s ease-in-out;
+            }
+
+            .projects-page .portfolio-modal .btn-primary::before,
+            .projects-page .portfolio-modal .btn-primary::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            .projects-page .portfolio-modal .btn-primary::before {
+                inset: 0;
+                clip-path: inherit;
+                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+            }
+
+            .projects-page .portfolio-modal .btn-primary::after {
+                inset: 0.42rem;
+                clip-path: polygon(
+                    calc(var(--nav-link-cut) * 0.78) 0,
+                    calc(100% - calc(var(--nav-link-cut) * 0.78)) 0,
+                    100% calc(var(--nav-link-cut) * 0.78),
+                    100% calc(100% - calc(var(--nav-link-cut) * 0.78)),
+                    calc(100% - calc(var(--nav-link-cut) * 0.78)) 100%,
+                    calc(var(--nav-link-cut) * 0.78) 100%,
+                    0 calc(100% - calc(var(--nav-link-cut) * 0.78)),
+                    0 calc(var(--nav-link-cut) * 0.78)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    inset 0 0 10px rgba(7, 19, 29, 0.05),
+                    0 0 0 1px rgba(255, 214, 120, 0.03);
+            }
+
+            .projects-page .portfolio-modal .btn-primary:hover,
+            .projects-page .portfolio-modal .btn-primary:focus,
+            .projects-page .portfolio-modal .btn-primary:active {
+                border-color: rgba(127, 214, 244, 0.18) !important;
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.24) 0%, rgba(8, 15, 24, 0.1) 34%, rgba(4, 10, 16, 0.16) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.1) 0%, rgba(168, 239, 255, 0.02) 16%, rgba(168, 239, 255, 0) 34%) !important;
+                color: #ffe08a !important;
+                box-shadow:
+                    0 0 0 1px rgba(255, 214, 120, 0.04),
+                    0 20px 34px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+                transform: translateY(-1px);
+            }
+
+            .projects-page .portfolio-modal .btn-primary:hover::before,
+            .projects-page .portfolio-modal .btn-primary:focus::before,
+            .projects-page .portfolio-modal .btn-primary:active::before {
+                opacity: 0.24;
+            }
+
+            .projects-page .portfolio-modal .btn-primary:hover::after,
+            .projects-page .portfolio-modal .btn-primary:focus::after,
+            .projects-page .portfolio-modal .btn-primary:active::after {
+                opacity: 0.42;
+            }
+
+            .projects-page .portfolio-modal .btn-primary .fas {
+                position: relative;
+                z-index: 1;
+                font-size: 0.9em;
+            }
+
             .cloud-chamber-modal .divider-custom .divider-custom-icon,
             .cloud-chamber-modal .fullscreen-hint,
             .cloud-chamber-modal small,
@@ -104,16 +221,46 @@
             }
 
             .cloud-chamber-modal .pending-deliverable-label {
+                --label-cut: 0.48rem;
+                position: relative;
                 display: inline-flex;
                 align-items: center;
-                padding: 0.35rem 0.7rem;
-                border-radius: 999px;
-                background: var(--pending-accent-soft);
-                color: var(--pending-accent-text);
+                overflow: hidden;
+                isolation: isolate;
+                padding: 0.42rem 0.86rem 0.38rem;
+                border: 1px solid rgba(127, 214, 244, 0.18);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--label-cut) 0,
+                    100% 0,
+                    100% calc(100% - var(--label-cut)),
+                    calc(100% - var(--label-cut)) 100%,
+                    0 100%,
+                    0 var(--label-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.44), rgba(5, 12, 20, 0.22)),
+                    linear-gradient(90deg, rgba(255, 224, 138, 0.14), rgba(127, 214, 244, 0.05));
+                color: #ffe08a;
                 font-size: 0.78rem;
-                font-weight: 700;
+                font-weight: 800;
                 letter-spacing: 0.08em;
+                line-height: 1;
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 -1px 0 rgba(255, 214, 120, 0.08);
                 text-transform: uppercase;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-label::after {
+                content: "";
+                position: absolute;
+                right: 0.55rem;
+                bottom: 0.25rem;
+                left: 0.55rem;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(127, 214, 244, 0.5), transparent);
+                opacity: 0.7;
             }
 
             .cloud-chamber-modal .pending-deliverable-figure {
@@ -185,23 +332,129 @@
             }
 
             #cloudChamberTabs.project-section-tabs {
+                --tabs-panel-cut: clamp(0.9rem, 2vw, 1.25rem);
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: clamp(0.7rem, 2vw, 1.25rem);
                 margin-top: 1.75rem;
-                border-color: rgba(143, 198, 240, 0.22);
-                background: linear-gradient(145deg, rgba(16, 24, 33, 0.95), rgba(23, 37, 49, 0.88));
-                box-shadow: 0 1rem 2.2rem rgba(10, 12, 16, 0.26);
+                padding: clamp(0.85rem, 2vw, 1.2rem);
+                border-color: rgba(127, 214, 244, 0.18);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--tabs-panel-cut) 0,
+                    calc(100% - var(--tabs-panel-cut)) 0,
+                    100% var(--tabs-panel-cut),
+                    100% calc(100% - var(--tabs-panel-cut)),
+                    calc(100% - var(--tabs-panel-cut)) 100%,
+                    var(--tabs-panel-cut) 100%,
+                    0 calc(100% - var(--tabs-panel-cut)),
+                    0 var(--tabs-panel-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.28) 0%, rgba(8, 15, 24, 0.14) 44%, rgba(4, 10, 16, 0.22) 100%),
+                    radial-gradient(circle at 12% 18%, rgba(168, 239, 255, 0.05) 0%, rgba(168, 239, 255, 0) 32%);
+                box-shadow:
+                    inset 0 0 0 1px rgba(127, 214, 244, 0.18),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.04);
             }
 
             #cloudChamberTabs .project-section-tab {
-                background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(143, 198, 240, 0.12));
-                color: #e4f5ff;
+                --nav-link-cut: clamp(0.65rem, 1.5vw, 0.9rem);
+                position: relative;
+                display: inline-flex;
+                min-height: clamp(3.75rem, 8vw, 5rem);
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                isolation: isolate;
+                padding: clamp(0.7rem, 1.8vw, 0.95rem) clamp(0.9rem, 2.6vw, 1.4rem);
+                border: 1px solid rgba(127, 214, 244, 0.12);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--nav-link-cut) 0,
+                    calc(100% - var(--nav-link-cut)) 0,
+                    100% var(--nav-link-cut),
+                    100% calc(100% - var(--nav-link-cut)),
+                    calc(100% - var(--nav-link-cut)) 100%,
+                    var(--nav-link-cut) 100%,
+                    0 calc(100% - var(--nav-link-cut)),
+                    0 var(--nav-link-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%);
+                color: #edf5f8;
+                font-size: clamp(0.95rem, 1.8vw, 1.18rem);
+                line-height: 1.15;
+                text-align: center;
+                box-shadow:
+                    0 16px 28px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.18);
+                white-space: normal;
+            }
+
+            #cloudChamberTabs .project-section-tab::before,
+            #cloudChamberTabs .project-section-tab::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            #cloudChamberTabs .project-section-tab::before {
+                inset: 0;
+                clip-path: inherit;
+                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+            }
+
+            #cloudChamberTabs .project-section-tab::after {
+                inset: 0.42rem;
+                clip-path: polygon(
+                    calc(var(--nav-link-cut) * 0.78) 0,
+                    calc(100% - calc(var(--nav-link-cut) * 0.78)) 0,
+                    100% calc(var(--nav-link-cut) * 0.78),
+                    100% calc(100% - calc(var(--nav-link-cut) * 0.78)),
+                    calc(100% - calc(var(--nav-link-cut) * 0.78)) 100%,
+                    calc(var(--nav-link-cut) * 0.78) 100%,
+                    0 calc(100% - calc(var(--nav-link-cut) * 0.78)),
+                    0 calc(var(--nav-link-cut) * 0.78)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    inset 0 0 10px rgba(7, 19, 29, 0.05),
+                    0 0 0 1px rgba(255, 214, 120, 0.03);
             }
 
             #cloudChamberTabs .project-section-tab:hover,
             #cloudChamberTabs .project-section-tab:focus,
             #cloudChamberTabs .project-section-tab.active {
-                background: linear-gradient(135deg, #86bfe7, #5f95c0);
-                color: #0d1823;
-                box-shadow: 0 0.75rem 1.5rem rgba(95, 149, 192, 0.28);
+                border-color: rgba(127, 214, 244, 0.18);
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.24) 0%, rgba(8, 15, 24, 0.1) 34%, rgba(4, 10, 16, 0.16) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.1) 0%, rgba(168, 239, 255, 0.02) 16%, rgba(168, 239, 255, 0) 34%);
+                color: #ffe08a;
+                box-shadow:
+                    0 0 0 1px rgba(255, 214, 120, 0.04),
+                    0 20px 34px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+                transform: translateY(-1px);
+            }
+
+            #cloudChamberTabs .project-section-tab:hover::before,
+            #cloudChamberTabs .project-section-tab:focus::before,
+            #cloudChamberTabs .project-section-tab.active::before {
+                opacity: 0.24;
+            }
+
+            #cloudChamberTabs .project-section-tab:hover::after,
+            #cloudChamberTabs .project-section-tab:focus::after,
+            #cloudChamberTabs .project-section-tab.active::after {
+                opacity: 0.42;
             }
 
             .cloud-chamber-modal .cloud-chamber-prototyping {
@@ -414,6 +667,15 @@
 
                 .cloud-chamber-modal .cloud-chamber-deck-link {
                     grid-template-columns: 1fr;
+                }
+
+                #cloudChamberTabs.project-section-tabs {
+                    grid-template-columns: 1fr;
+                }
+
+                #cloudChamberTabs .project-section-tab {
+                    min-height: 3.35rem;
+                    font-size: 0.98rem;
                 }
             }
         </style>
@@ -655,7 +917,6 @@
                                                             <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
                                                                 <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
                                                             </a>
-                                                            <figcaption>Cloud chamber image used for the project module. Click the image to view fullscreen.</figcaption>
                                                         </figure>
                                                         <div class="cloud-chamber-summary-grid">
                                                             <div class="cloud-chamber-summary-card">
@@ -668,7 +929,7 @@
                                                             </div>
                                                             <div class="cloud-chamber-summary-card">
                                                                 <h4>Final Deliverables</h4>
-                                                                <p>A Peltier-cooled chamber using a glass enclosure, PETG support hardware, and an open-source GitHub guide.</p>
+                                                                <p>A Peltier-cooled chamber using a glass enclosure, PETG support hardware, and an open-source Instructables guide.</p>
                                                             </div>
                                                         </div>
                                                     </section>
@@ -726,13 +987,14 @@
 
                                                     <section class="pending-deliverable-section cloud-chamber-deliverable-card">
                                                         <div class="cloud-chamber-deliverable-heading">
-                                                            <h3>GitHub Guide: Friday, May 8 by 5:00 PM</h3>
+                                                            <h3>Instructables Guide</h3>
                                                         </div>
-                                                        <p>For the open-source guide, we decided GitHub made more sense than Dozuki for this specific project. The printed parts and build files are a bit more involved than we would like, so having the CAD/STL files, wiring diagrams, bill of materials, build guide PDF, and any microcontroller code in one place makes the project much easier to reproduce. The goal is that another school or lab could open the repository and understand how to start without needing us to explain every file in person.</p>
-                                                        <p>The repository listed in our slides is <a href="https://github.com/benkhayat/ECC-Files" target="_blank" rel="noopener noreferrer">github.com/benkhayat/ECC-Files</a>. At the time of the final presentation, we were treating it as a work in progress, but the intended structure was clear: five main files, one organized location, and a target bill of materials under $50. This also fits the educational goal of the chamber because open-source particle physics should not be hidden behind expensive or hard-to-find resources.</p>
-                                                        <figure class="cloud-chamber-image-placeholder" role="img" aria-label="Placeholder for GitHub guide screenshot">
-                                                            <span>GitHub guide screenshot placeholder</span>
-                                                        </figure>
+                                                        <p>For the open-source guide, we published the build as an Instructables project so the chamber instructions, materials, assembly steps, and testing notes are easy to follow in one public place. The goal is that another student, teacher, school, or lab could open the page and understand how to start without needing us to explain every part in person.</p>
+                                                        <p>The Instructables page walks through the completed Peltier-cooled electron cloud chamber and keeps the project focused on accessible, reproducible particle physics instead of hiding the build behind hard-to-find resources.</p>
+                                                        <h4>Instructables Link</h4>
+                                                        <p><a href="https://www.instructables.com/Peltier-Cooled-Electron-Cloud-Chamber/" target="_blank" rel="noopener noreferrer">https://www.instructables.com/Peltier-Cooled-Electron-Cloud-Chamber/</a></p>
+                                                        <h4>PDF Download</h4>
+                                                        <p><a href="assets/instructables-echambeer.pdf" download>instructables-echambeer.pdf</a></p>
                                                     </section>
 
                                                     <section class="pending-deliverable-section cloud-chamber-deliverable-card">
