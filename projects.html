@@ -13,7 +13,410 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&amp;family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
         <link href="css/styles1.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />      
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .cloud-chamber-modal {
+                --pending-accent: #8fc6f0;
+                --pending-accent-soft: rgba(143, 198, 240, 0.14);
+                --pending-accent-line: rgba(143, 198, 240, 0.5);
+                --pending-accent-text: #dff2ff;
+            }
+
+            .cloud-chamber-modal .modal-content {
+                background: linear-gradient(145deg, #101820, #172737 52%, #0b1118);
+                color: rgba(230, 242, 249, 0.92);
+            }
+
+            .cloud-chamber-modal .portfolio-modal-title {
+                color: #f4fbff !important;
+                text-transform: none !important;
+            }
+
+            .cloud-chamber-modal a {
+                color: #b4dcff;
+            }
+
+            .cloud-chamber-modal .divider-custom .divider-custom-line {
+                background-color: rgba(143, 198, 240, 0.42);
+            }
+
+            .cloud-chamber-modal .divider-custom .divider-custom-icon,
+            .cloud-chamber-modal .fullscreen-hint,
+            .cloud-chamber-modal small,
+            .cloud-chamber-modal figcaption {
+                color: rgba(218, 232, 241, 0.78);
+            }
+
+            .cloud-chamber-modal .pending-deliverable {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-section,
+            .cloud-chamber-modal .pending-deliverable-intro {
+                padding: 1.4rem 1.5rem;
+                border: 1px solid rgba(143, 198, 240, 0.14);
+                border-radius: 1.25rem;
+                background: rgba(255, 255, 255, 0.035);
+                box-shadow: inset 0 1px 0 rgba(228, 248, 255, 0.05);
+            }
+
+            .cloud-chamber-modal .pending-deliverable h3,
+            .cloud-chamber-modal .pending-deliverable h4 {
+                color: #f4fbff;
+            }
+
+            .cloud-chamber-modal .pending-deliverable h3 {
+                margin-bottom: 0.85rem;
+                font-size: 1.35rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable h4 {
+                margin-top: 1.2rem;
+                margin-bottom: 0.55rem;
+                font-size: 1rem;
+                letter-spacing: 0.02em;
+            }
+
+            .cloud-chamber-modal .pending-deliverable p:last-child,
+            .cloud-chamber-modal .pending-deliverable ul:last-child,
+            .cloud-chamber-modal .pending-deliverable ol:last-child {
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-modal .pending-deliverable ul,
+            .cloud-chamber-modal .pending-deliverable ol {
+                padding-left: 1.25rem;
+                margin-bottom: 0;
+            }
+
+            .cloud-chamber-modal .pending-deliverable li + li {
+                margin-top: 0.55rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-note {
+                margin-top: 1rem;
+                padding: 0.95rem 1rem;
+                border-left: 3px solid var(--pending-accent-line);
+                border-radius: 0.85rem;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .cloud-chamber-modal .pending-deliverable-label {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.35rem 0.7rem;
+                border-radius: 999px;
+                background: var(--pending-accent-soft);
+                color: var(--pending-accent-text);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-figure {
+                margin: 0;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-figure img {
+                width: 100%;
+                max-height: 22rem;
+                object-fit: cover;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-figure-contain img {
+                max-height: 34rem;
+                object-fit: contain;
+                background: rgba(10, 14, 20, 0.7);
+            }
+
+            .cloud-chamber-modal .pending-deliverable-figure figcaption {
+                margin-top: 0.6rem;
+                font-size: 0.92rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-grid,
+            .cloud-chamber-modal .cloud-chamber-summary-grid,
+            .cloud-chamber-modal .cloud-chamber-image-grid {
+                display: grid;
+                gap: 1rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-grid,
+            .cloud-chamber-modal .cloud-chamber-image-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cloud-chamber-modal .cloud-chamber-summary-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                margin-top: 1.2rem;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-card,
+            .cloud-chamber-modal .cloud-chamber-summary-card {
+                padding: 1rem;
+                border: 1px solid rgba(143, 198, 240, 0.16);
+                border-radius: 1rem;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-summary-card h4 {
+                margin: 0 0 0.45rem;
+                color: #eef8ff;
+                font-size: 0.96rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-summary-card p {
+                margin: 0;
+                color: rgba(225, 238, 248, 0.9);
+                font-size: 0.94rem;
+                line-height: 1.65;
+            }
+
+            .cloud-chamber-modal .pending-deliverable-status {
+                font-weight: 700;
+                color: var(--pending-accent-text);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-tab-pane {
+                outline: none;
+            }
+
+            #cloudChamberTabs.project-section-tabs {
+                margin-top: 1.75rem;
+                border-color: rgba(143, 198, 240, 0.22);
+                background: linear-gradient(145deg, rgba(16, 24, 33, 0.95), rgba(23, 37, 49, 0.88));
+                box-shadow: 0 1rem 2.2rem rgba(10, 12, 16, 0.26);
+            }
+
+            #cloudChamberTabs .project-section-tab {
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(143, 198, 240, 0.12));
+                color: #e4f5ff;
+            }
+
+            #cloudChamberTabs .project-section-tab:hover,
+            #cloudChamberTabs .project-section-tab:focus,
+            #cloudChamberTabs .project-section-tab.active {
+                background: linear-gradient(135deg, #86bfe7, #5f95c0);
+                color: #0d1823;
+                box-shadow: 0 0.75rem 1.5rem rgba(95, 149, 192, 0.28);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-prototyping {
+                display: grid;
+                gap: 1.35rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-card,
+            .cloud-chamber-modal .cloud-chamber-deliverable-card {
+                padding: 1.45rem;
+                border: 1px solid rgba(143, 198, 240, 0.16);
+                border-radius: 1.25rem;
+                background: linear-gradient(145deg, rgba(12, 20, 28, 0.92), rgba(20, 30, 40, 0.82));
+                box-shadow: 0 1rem 2.4rem rgba(10, 12, 16, 0.2);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-card h3 {
+                margin-bottom: 0.35rem;
+                text-align: center;
+                font-size: clamp(2rem, 4vw, 3rem);
+                color: #f4fbff;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-card .cloud-chamber-cycle-path {
+                margin-bottom: 1.2rem;
+                text-align: center;
+                color: var(--pending-accent-text);
+                font-size: 1rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-list {
+                list-style: none;
+                padding: 0;
+                margin: 1.25rem 0 0;
+                display: grid;
+                gap: 0.95rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.95rem;
+                color: rgba(228, 245, 255, 0.92);
+                font-size: 1.02rem;
+                line-height: 1.7;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-check {
+                flex: 0 0 1.45rem;
+                width: 1.45rem;
+                height: 1.45rem;
+                margin-top: 0.2rem;
+                border: 1px solid rgba(202, 220, 235, 0.28);
+                border-radius: 0.38rem;
+                background: rgba(255, 255, 255, 0.03);
+                color: transparent;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-check.is-complete {
+                border-color: #54ef88;
+                background: #54ef88;
+                color: #102316;
+                box-shadow: 0 0 1rem rgba(84, 239, 136, 0.3);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-figure {
+                margin: 1.5rem 0 0;
+                padding: 0.9rem;
+                border: 1px solid rgba(255, 238, 209, 0.08);
+                border-radius: 1.15rem;
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-figure img {
+                width: 100%;
+                max-height: 42rem;
+                object-fit: contain;
+                border-radius: 0.95rem;
+                background: rgba(10, 14, 20, 0.84);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-cycle-summary {
+                margin-top: 1.2rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deliverable-heading {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.75rem 1rem;
+                margin-bottom: 0.85rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deliverable-heading h3 {
+                margin: 0;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-image-placeholder {
+                display: grid;
+                min-height: 14rem;
+                margin: 1.2rem 0 0;
+                place-items: center;
+                border: 1px dashed rgba(180, 220, 255, 0.55);
+                border-radius: 1rem;
+                background: linear-gradient(135deg, rgba(143, 198, 240, 0.08), rgba(255, 255, 255, 0.025));
+                color: rgba(228, 245, 255, 0.78);
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-link {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                align-items: center;
+                gap: 1.5rem;
+                min-height: 14rem;
+                margin-top: 1.2rem;
+                padding: clamp(1.1rem, 2vw, 1.55rem);
+                border: 1px solid rgba(180, 220, 255, 0.32);
+                border-radius: 1rem;
+                background:
+                    linear-gradient(135deg, rgba(143, 198, 240, 0.14), rgba(255, 255, 255, 0.035)),
+                    radial-gradient(circle at 78% 24%, rgba(84, 239, 136, 0.1), transparent 34%);
+                color: rgba(228, 245, 255, 0.92);
+                text-decoration: none;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-link:hover,
+            .cloud-chamber-modal .cloud-chamber-deck-link:focus {
+                color: #f4fbff;
+                border-color: rgba(180, 220, 255, 0.62);
+                box-shadow: 0 1rem 2rem rgba(95, 149, 192, 0.18);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-kicker {
+                display: block;
+                margin-bottom: 0.45rem;
+                color: var(--pending-accent-text);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-title {
+                display: block;
+                color: #f4fbff;
+                font-size: clamp(1.35rem, 2.8vw, 2rem);
+                font-weight: 800;
+                line-height: 1.1;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-note {
+                display: block;
+                margin-top: 0.7rem;
+                color: rgba(218, 232, 241, 0.8);
+                font-size: 0.95rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-graphic {
+                position: relative;
+                width: clamp(6.5rem, 18vw, 10rem);
+                aspect-ratio: 4 / 3;
+                border-radius: 0.85rem;
+                background: linear-gradient(145deg, rgba(230, 244, 255, 0.96), rgba(143, 198, 240, 0.78));
+                box-shadow:
+                    -0.75rem 0.75rem 0 rgba(143, 198, 240, 0.16),
+                    -1.4rem 1.4rem 0 rgba(143, 198, 240, 0.08),
+                    0 1rem 2rem rgba(0, 0, 0, 0.2);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-graphic::before,
+            .cloud-chamber-modal .cloud-chamber-deck-graphic::after {
+                content: "";
+                position: absolute;
+                left: 14%;
+                right: 14%;
+                border-radius: 999px;
+                background: #0d1823;
+                opacity: 0.82;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-graphic::before {
+                top: 24%;
+                height: 0.7rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-deck-graphic::after {
+                top: 45%;
+                height: 0.42rem;
+                box-shadow: 0 1rem 0 rgba(13, 24, 35, 0.72);
+            }
+
+            @media (max-width: 767.98px) {
+                .cloud-chamber-modal .pending-deliverable-grid,
+                .cloud-chamber-modal .cloud-chamber-summary-grid,
+                .cloud-chamber-modal .cloud-chamber-image-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .cloud-chamber-modal .pending-deliverable-section,
+                .cloud-chamber-modal .pending-deliverable-intro,
+                .cloud-chamber-modal .cloud-chamber-cycle-card,
+                .cloud-chamber-modal .cloud-chamber-deliverable-card {
+                    padding: 1.15rem;
+                }
+
+                .cloud-chamber-modal .cloud-chamber-deck-link {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
     </head>
     <body class="d-flex flex-column h-100 bg-light site-page projects-page">
         <main class="flex-shrink-0">
@@ -151,9 +554,9 @@
                         <div class="project-orbit project-orbit-1">
                             <div class="project-orbit-anchor">
                                 <div class="project-orbit-shell">
-                                    <button class="project-branch project-branch-1" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal1" aria-label="Open Name Tag project">
-                                        <span class="project-branch-title">Name Tag</span>
-                                        <span class="project-branch-meta">3D Print Intro</span>
+                                    <button class="project-branch project-branch-1" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal1" aria-label="Open Cloud Chamber project">
+                                        <span class="project-branch-title">Cloud Chamber</span>
+                                        <span class="project-branch-meta">Final Write-Up</span>
                                     </button>
                                 </div>
                             </div>
@@ -221,78 +624,397 @@
         </section>
         <!-- Portfolio Modals-->
         <!-- Portfolio Modal 1-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                    <div class="modal-body pb-5">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Name Tag</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
+        <div class="portfolio-modal modal fade cloud-chamber-modal" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Title" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                        <div class="modal-body pb-5">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-10">
+                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="portfolioModal1Title">Electron Cloud Chamber Final Write-Up</h2>
+                                        <div class="divider-custom">
+                                            <div class="divider-custom-line"></div>
+                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                            <div class="divider-custom-line"></div>
+                                        </div>
+                                        <div class="nav project-section-tabs" id="cloudChamberTabs" role="tablist" aria-label="Cloud chamber final project sections">
+                                            <button class="project-section-tab active" id="cloud-final-tab" data-bs-toggle="tab" data-bs-target="#cloud-final-pane" type="button" role="tab" aria-controls="cloud-final-pane" aria-selected="true">Final Deliverables</button>
+                                            <button class="project-section-tab" id="cloud-project-tab" data-bs-toggle="tab" data-bs-target="#cloud-project-pane" type="button" role="tab" aria-controls="cloud-project-pane" aria-selected="false">Project Background</button>
+                                            <button class="project-section-tab" id="cloud-prototyping-tab" data-bs-toggle="tab" data-bs-target="#cloud-prototyping-pane" type="button" role="tab" aria-controls="cloud-prototyping-pane" aria-selected="false">Prototyping / Testing</button>
+                                        </div>
+                                        <div class="tab-content project-tab-content" id="cloudChamberTabsContent">
+                                            <div class="tab-pane fade show active cloud-chamber-tab-pane" id="cloud-final-pane" role="tabpanel" aria-labelledby="cloud-final-tab" tabindex="0">
+                                                <div class="pending-deliverable cloud-chamber-final-writeup">
+                                                    <section class="pending-deliverable-intro">
+                                                        <span class="pending-deliverable-label">Final Write-Up</span>
+                                                        <h3 class="mt-3">Electron Cloud Chamber</h3>
+                                                        <p>For our final project, my team and I created an electron cloud chamber, which is essentially a visual teaching tool for particle physics and visualizing an abstract concept. The whole reason we chose this project is because science classes can very quickly move into topics that are too small or too fast to actually see. That makes the topic feel distant, even when the physics is happening around us constantly. Our goal was to make a device that lets students see particle paths with their own eyes, instead of only hearing that ionizing radiation exists.</p>
+                                                        <p>From the start, we tried to judge the chamber by a few concrete goals: it needed to be compact and portable, produce consistent results, have educational value, stay low-cost enough to replicate, and require minimal user involvement. Those goals mattered because this was not supposed to be a cloud chamber that only worked for us after a lot of tinkering. Ideally, it should be something an educator could bring out, turn on, explain, and use to get students interested in the natural sciences.</p>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4">
+                                                            <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
+                                                            </a>
+                                                            <figcaption>Cloud chamber image used for the project module. Click the image to view fullscreen.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-summary-grid">
+                                                            <div class="cloud-chamber-summary-card">
+                                                                <h4>Target User</h4>
+                                                                <p>Educators, with students as the audience. The device needed to be easy to demonstrate and interesting to observe.</p>
+                                                            </div>
+                                                            <div class="cloud-chamber-summary-card">
+                                                                <h4>Core Effect</h4>
+                                                                <p>A temperature differential, alcohol vapor, and controlled environment make normally invisible particle paths visible as tiny droplet trails.</p>
+                                                            </div>
+                                                            <div class="cloud-chamber-summary-card">
+                                                                <h4>Final Deliverables</h4>
+                                                                <p>A Peltier-cooled chamber using a glass enclosure, PETG support hardware, and an open-source GitHub guide.</p>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-deliverable-card">
+                                                        <div class="cloud-chamber-deliverable-heading">
+                                                            <h3>Physical Prototype</h3>
+                                                        </div>
+                                                        <p>Our final physical prototype came out of four iteration cycles. The first build used a single TEC1-12709 Peltier module between an aluminum cold plate and a heatsink with a CPU fan. This version helped prove the basic stack could function, but it was not yet creating a favorable environment for viewing tracks. The temperature differential was too small for strong supersaturation, which we attributed to a poor seal and not enough thermal paste.</p>
+                                                        <p>In cycle 2, we combined several printed brace parts into one piece and started testing the cooling more seriously. The thermal paste testing was one of the most helpful measurable results from the project. With no paste the plate was around 3 C, minimal paste only brought it to 2 C, moderate paste brought it to about -15 C, lots of paste brought it to about -25 C, and lots of paste with the glass chamber brought the system to about -40 C. That made it very clear that the issue was not just the Peltier itself, but the contact between the Peltier, plate, and chamber environment.</p>
+                                                        <p>Cycle 3 focused on making the design easier to fabricate and less awkward to assemble. We moved from several 3D printed pieces to two main printed pieces, increased the infill for better temperature resistance, made room for the Peltier wiring, and adjusted the screw positions so the brace would not break under tension. We also moved from an acrylic enclosure idea to a glass one, using an upside-down Yankee Candle jar so we could avoid another custom fabrication step.</p>
+                                                        <p>By cycle 4, the final version finally met all of our goals. We switched the support material from PLA to PETG, added attachment points for the chamber and enclosure, made room for extra thermal paste, printed a stand for the isopropanol rag, and added finger clearance so the brace could be taken apart without tools. Overall, this was the point where the chamber started to feel like a real device instead of a collection of tests.</p>
+                                                        <div class="cloud-chamber-image-grid">
+                                                            <figure class="pending-deliverable-figure pending-deliverable-figure-contain">
+                                                                <a href="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" target="_blank">
+                                                                    <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" alt="Cycle 1 prototype layout for the electron cloud chamber cooling stack." />
+                                                                </a>
+                                                                <figcaption>Cycle 1: the baseline cooling stack and first printed support pieces.</figcaption>
+                                                            </figure>
+                                                            <figure class="pending-deliverable-figure pending-deliverable-figure-contain">
+                                                                <a href="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" target="_blank">
+                                                                    <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" alt="Cycle 2 prototype layout combining multiple support pieces into one brace." />
+                                                                </a>
+                                                                <figcaption>Cycle 2: combining the brace pieces and testing the seal and cooling more directly.</figcaption>
+                                                            </figure>
+                                                            <figure class="pending-deliverable-figure pending-deliverable-figure-contain">
+                                                                <a href="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" target="_blank">
+                                                                    <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" alt="Cycle 3 prototype summary showing miniaturizing and wiring clearance changes." />
+                                                                </a>
+                                                                <figcaption>Cycle 3: redesigning the geometry, wiring clearance, and screw placement.</figcaption>
+                                                            </figure>
+                                                            <figure class="pending-deliverable-figure pending-deliverable-figure-contain">
+                                                                <a href="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" target="_blank">
+                                                                    <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" alt="Cycle 4 final prototype summary showing PETG material and usability improvements." />
+                                                                </a>
+                                                                <figcaption>Cycle 4: the final PETG version with attachment points, extra paste clearance, and easier disassembly.</figcaption>
+                                                            </figure>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-deliverable-card">
+                                                        <div class="cloud-chamber-deliverable-heading">
+                                                            <h3>Presentation Deck</h3>
+                                                        </div>
+                                                        <p>The presentation deck below shows the full story of our project, including the problem definition, user research, major design pivots, prototype cycles, live demo explanation, GitHub repository, and future improvements.</p>
+                                                        <a class="cloud-chamber-deck-link" href="assets/final-electron-cloud-chamber-slides.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the Electron Cloud Chamber presentation deck PDF">
+                                                            <span>
+                                                                <span class="cloud-chamber-deck-kicker">PDF Presentation</span>
+                                                                <span class="cloud-chamber-deck-title">Final Electron Cloud Chamber Slides</span>
+                                                                <span class="cloud-chamber-deck-note">Open the actual presentation deck and scroll through the slides.</span>
+                                                            </span>
+                                                            <span class="cloud-chamber-deck-graphic" aria-hidden="true"></span>
+                                                        </a>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-deliverable-card">
+                                                        <div class="cloud-chamber-deliverable-heading">
+                                                            <h3>GitHub Guide: Friday, May 8 by 5:00 PM</h3>
+                                                        </div>
+                                                        <p>For the open-source guide, we decided GitHub made more sense than Dozuki for this specific project. The printed parts and build files are a bit more involved than we would like, so having the CAD/STL files, wiring diagrams, bill of materials, build guide PDF, and any microcontroller code in one place makes the project much easier to reproduce. The goal is that another school or lab could open the repository and understand how to start without needing us to explain every file in person.</p>
+                                                        <p>The repository listed in our slides is <a href="https://github.com/benkhayat/ECC-Files" target="_blank" rel="noopener noreferrer">github.com/benkhayat/ECC-Files</a>. At the time of the final presentation, we were treating it as a work in progress, but the intended structure was clear: five main files, one organized location, and a target bill of materials under $50. This also fits the educational goal of the chamber because open-source particle physics should not be hidden behind expensive or hard-to-find resources.</p>
+                                                        <figure class="cloud-chamber-image-placeholder" role="img" aria-label="Placeholder for GitHub guide screenshot">
+                                                            <span>GitHub guide screenshot placeholder</span>
+                                                        </figure>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-deliverable-card">
+                                                        <div class="cloud-chamber-deliverable-heading">
+                                                            <h3>Video Presentation</h3>
+                                                        </div>
+                                                        <p>The video presentation should follow the same order as the live demonstration. First, the Peltier module cools the metal plate to about -25 to -30 C. Isopropyl alcohol then evaporates from warm felt near the top of the chamber and diffuses downward. When that vapor reaches the cold plate it becomes supersaturated, meaning the air holds more alcohol vapor than it normally can at that temperature. Charged particles then pass through the thin layer, knock electrons off nearby molecules, and leave an ionized path. Finally, alcohol vapor condenses around those ions and a bright light makes the droplet trail visible.</p>
+                                                        <p>The slides also included a track identification guide. Alpha particles tend to be thick, short, and straight. Beta particles tend to be thin, curly, and more erratic. Cosmic muons can appear as long, razor-straight tracks from cosmic rays above us, while gamma rays can create dense or branching patterns depending on the interaction. For the video, this section is the most important because it turns the device from a cool-looking chamber into a teaching tool.</p>
+                                                        <figure class="cloud-chamber-image-placeholder" role="img" aria-label="Placeholder for video presentation thumbnail">
+                                                            <span>Video thumbnail placeholder</span>
+                                                        </figure>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-deliverable-card">
+                                                        <div class="cloud-chamber-deliverable-heading">
+                                                            <h3>Individual Write-Up Reflection</h3>
+                                                        </div>
+                                                        <p>Overall, my biggest takeaway from this project is that making something work once is very different from making something useful for another person. At first, it was easy to focus only on whether the Peltier could get cold enough, or whether the chamber could show particle paths at all. However, the more we iterated, the more I realized the actual design problem was making the chamber reliable, explainable, and approachable for someone who did not build it.</p>
+                                                        <p>I also think the project was helpful because every issue forced us to connect the physics and the fabrication. Poor sealing, too little thermal paste, awkward printed geometry, and an inconvenient enclosure were not separate problems. They all affected whether the chamber could reach the right environment for supersaturation and whether a user could actually operate it. The switch to PETG, the glass enclosure, the added clearance, and the extra thermal paste were all small changes individually, but together they made the chamber much closer to the educational tool we originally wanted.</p>
+                                                        <p>Moving forward, there are still clear improvements I would make. I would want a more precise housing that is portable but still large enough to keep the temperature stable, a dedicated power supply so the device does not require constant rewiring, a cleaner illustrated build guide, and eventually a sub-$35 version of the bill of materials. The final prototype succeeded, but these changes would make the project more realistic for smaller departments, personal builders, and teachers who simply want to introduce students to particle physics in a more concrete way.</p>
+                                                        <p class="mb-0">Overall, this project showed me that the strongest design choices were the ones that made the science easier to see. The chamber is interesting because it makes particle tracks visible, but it becomes valuable when that visibility helps someone ask a better question than they had before using it.</p>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade cloud-chamber-tab-pane" id="cloud-project-pane" role="tabpanel" aria-labelledby="cloud-project-tab" tabindex="0">
+                                                <div class="pending-deliverable">
+                                            <div class="pending-deliverable-intro">
+                                                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-3">
+
+
+                                                </div>
+                                                <figure class="pending-deliverable-figure">
+                                                    <a href="assets/img/portfolio/gargamelle.jpg" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 1.1</b> (Click the image to view fullscreen)</p>
+
+                                            </div>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>1. Project Overview</h3>
+                                                <p>My team's project focuses on a Peltier-cooled diffusion cloud chamber intended to function as an educational teaching tool. Rather than serving only as a device demonstration, the chamber is meant to create a classroom experience in which students can directly observe evidence of ionizing radiation and connect that observation to a physical reality.</p>
+                                                <p>My team and I chose this direction because particle physics can feel unintuitive, uninteresting, and difficult to access when students are asked to imagine a phenomenon they cannot normally sense; coupled with our personal interest in the discipline. Making radiation tracks visible to the human eye offers a more concrete way to introduce the topic and gives students a reason to observe, question, and discuss what they are seeing. The overall hope is that it inspires students to explore the fascinating world of particle physics further.</p>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>2. Research &amp; Problem Framing</h3>
+                                                <h4>Problem Statement</h4>
+                                                <p>This project addresses a common issue regarding certain academia, being the lack of a drawing and educationally valuable way to help students visualize non-intuitive topics. This can range from a topic within anthropology, such as the massive scale of city population to that of our focus, particle physics. Our project will visualize the passage of ionizing radiation in the atmosphere, here, on Brandeis's campus. The goal is to develop a device, electron cloud chamber, that makes an invisible phenomenon visible. We hope to make this topic more accessible by presenting it in a form that supports classroom teaching, discussion, and conceptual understanding.</p>
+
+                                                <h4>Background Framing</h4>
+                                                <p>Our approach for the project is framed around the diffusion cloud chamber, rather than around detection alone. The chamber works by creating a supersaturated alcohol vapor to flood the enclosed atmosphere. Within the chamber will be a great temperature differential between the top and surface of the base, the base being around -30 celcius. That temperature gradient creates the sensitive region where particle tracks become visible. In general, the idea is about visualization, but for those interested in the physical phenomena; the trails are visible because a charged particle passes through a supersaturated alcohol vapor in the cloud chamber and ionizes the gas along its path. The vapor then condenses onto those ions, forming tiny droplets. Those droplets line up where the particle traveled, so you can see a visible trail of exactly that particle's path. For the basic educational demonstration, natural background radiation should be enough to create visible trails, meaning nothing special needs to be placed inside the chamber for the core effect to appear. However, I have included an image below that represents what happens when something of greater emission is placed inside the chamber (an alpha emitter).</p>
+                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
+                                                    <a href="assets/img/portfolio/alpha-tracks-radium-1912.png" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/alpha-tracks-radium-1912.png" alt="Picture of alpha tracks of radium from 1912" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint mb-1"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
+                                                <p class="mb-3"><small>Source: <a href="https://www.cloudylabs.fr/wp/differentes-machines/" target="_blank" rel="noopener noreferrer">Cloudylabs, "The first particles detectors"</a></small></p>
+                                                <p>The emphasis is on the chamber as an educational system. The value of the demonstration comes from allowing students to see direct visual proof that atmospheric radiation exists, notice that different particle tracks may appear different, and begin asking what is visible, what can be inferred, and what still cannot be directly seen. This can give rise to questions regarding how we can alter these paths, how to induce a longer path, as well as, the limitations of the device. That is how we plan to balance educational value with accessibility and usability for anyone to participate in understanding.</p>
+
+                                                <h4>User / Customer Profile</h4>
+                                                <ul>
+                                                    <li>The primary users are any individuals who are struggling to understanding something that feels abstract and make it concrete. Specifically aimed towards students and possibly researchers. The idea is that they can come to conclusions and form hypotheses about this invisible concept independently using the device.</li>
+                                                    <li>The secondary users are physics' majors. Although, they could benefit from the demonstration, this is mainly a focus on helping those who cannot visualize the invisible in anyway; therefore a physics major studying these concepts might already have a good idea of the abstract in a "concrete" form via mathematics. However, as mentioned the device can still benefit these individuals as they too, cannot often see this phenomena with the human eye. If they could, then they would be a superhero.</li>
+                                                    <li>The educational goal is to help students build interest, ask questions, and connect what they observe as physical reality to the abstract.</li>
+                                                    <li>The chamber will teach students to make observations of the now visible particles and convert those observations into understanding, rather than overwhelm the users with engineering details and the complex underlying quantum mechanics. As mentioned, the idea is to help individuals understanding the power of visualization when understanding an abstract concept.</li>
+                                                </ul>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>3. Problem Definition &amp; Brainstorming</h3>
+                                                <h4>Thematic Design Tensions and Themes</h4>
+                                                <ul>
+                                                    <li>One major challenge is creating interest in something that students cannot normally sense and connecting this topic to the idea of accessibility for all users.</li>
+                                                    <li>The project has to balance functionality, portability, consistency, aesthetics, and educational value.</li>
+                                                    <li>Another hurdle is the balance between system autonomy and the amount of interaction users should have. Ideally, we want the users focus to be on the chamber not the controls. Our plan is to build the device with a simple plug and play interface.</li>
+                                                    <li>The chamber also raises the notion of showing versus explaining. Although, we want to show the user this phenomena, they will not always understand what the importance is. As the builders we will add an interface that briefly introduces the user to the concepts we hope to convey.</li>
+                                                    <li>Mathematics and physical law both need to be incorporated in a way that feels meaningful rather than forced onto the users; as we assume they are not familiar with the complexities of the topics. In general, we can approach this from a fabrication stand point alone with zero quantitative analysis. On the flip side we can also calculate the amount of voltage necessary, coupled with the efficiency of the heat sink, without forgetting the impact of density of saturation...and very quickly we lose sight of our original intent. This fine line between over-explaining and educational substance will have to be addressed carefully and presented with the user in mind being someone not currently familiar with the concepts.</li>
+
+                                                </ul>
+                                                <div class="pending-deliverable-note">
+                                                    <p><span class="pending-deliverable-status">Design Themes Summary:</span> Accessibility to the invisible, educational value, portability, consistency within the device, autonomy balanced with user interaction, and deeper scientific explanation beyond spectacle without over-explaining to a uninformed audience.</p>
+                                                </div>
+
+                                                <h4>Insight Statements about Design</h4>
+                                                <ul>
+                                                    <li>Students struggle to engage with ionizing radiation because it is normally invisible and difficult to connect to everyday experience.</li>
+                                                    <li>A successful classroom cloud chamber must do more than function physically; it must also balance cooling performance with portability, consistency, and educational clarity.</li>
+                                                    <li>Too much automation may reduce learning, while too much user control may reduce reliability.</li>
+                                                    <li>The educational power of the chamber comes not only from showing tracks, but from helping students ask better questions about what those tracks mean.</li>
+                                                    <li>The chamber is strong as a teaching tool as it connects direct visual experience to broader academic clarity.</li>
+                                                </ul>
+
+                                                <h4>Focused Questions</h4>
+                                                <ul>
+                                                    <li>How can we make ionizing radiation visible in a way that feels concrete and captivating to students?</li>
+                                                    <li>How might we design a cloud chamber that is compact and portable without sacrificing track visibility and consistency? How does design effect who can use it? Why?</li>
+                                                    <li>How might we balance automation with user interaction so the system is reliable but still educational?</li>
+                                                    <li>How might we use the chamber not just to show tracks, but to prompt deeper discussion of physics concepts and limitations? How do we move students past the "Whoa! Cool" stage, into forming hypotheses?</li>
+                                                </ul>
+
+                                                <h4>Selected Design Direction</h4>
+                                                <p>The selected direction is a Peltier-cooled diffusion cloud chamber designed as an educational teaching tool. I chose this approach because it supports the core goal of making invisible radiation visible, while also allowing the project to be built around usability, safety explanation, and conceptual accessibility rather than engineering spectacle alone. At this stage, this should be read as the current direction rather than as a fully finalized design.</p>
+                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
+                                                    <a href="assets/img/portfolio/story-board.jpg" target="_blank">
+                                                        <img class="img-fluid rounded" src="assets/img/portfolio/story-board.jpg" alt="Storyboard sketch showing brainstorming themes, insight statements, and questions for the physics education concept" />
+                                                    </a>
+                                                </figure>
+                                                <p class="fullscreen-hint"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>4. Storyboard</h3>
+                                                <ol>
+                                                    <p><i>Our story begins with a classroom problem: a physics professor wants to introduce students to ionizing radiation, but the concept is difficult to make concrete because students cannot directly sense it.</i></p>
+                                                    <li>The cloud chamber , pictured in Figure 1.3, then acts as the bridge between that invisible idea and the perceivable physical world, allowing the lesson to begin with observation rather than abstraction alone.</li>
+                                                    <li>The next step is explaining that the device is a diffusion chamber, which creates a supersaturated vapor by keeping the bottom very cold while the top remains warmer. It's crucial to begin the explanation post demonstration as we are focused on the connection not this specific phenomena necessarily.</li>
+                                                    <li>Once the chamber reaches that sensitive state and proper temperature differential, charged particles passing through the region leave visible condensation tracks, which the user will now see.</li>
+                                                    <li>At that point, students will begin asking questions about what they are seeing, why some tracks may appear different, and what can actually be concluded from the demonstration. And the most common, "is this safe?" Of course, the particles are there whether we visualize them or not, that is our whole point! Success!</li>
+                                                    <li>The instructor can then use the chamber to connect those visible trails to larger physics concepts instead of treating the demonstration as spectacle alone.</li>
+                                                    <li>The chamber's components can also become part of the explanation, since the build itself helps show how the conditions for visibility are created and give a brief introduction to circuitry.</li>
+                                                    <li>From there, the demonstration can lead into broader real-world or scientific visualizations and show that the classroom experience connects outward to larger contexts.</li>
+                                                    <li>The instructor also has an opportunity to address safety and misconceptions surrounding radiation, electricity, and the chamber's hot and cold components.</li>
+                                                    <li>The experience ultimately opens the door to deeper learning, including equations, interpretation, and broader particle physics ideas that grow out of what students have already observed.</li>
+                                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
+                                                        <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
+                                                            <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
+                                                        </a>
+                                                    </figure>
+                                                    <p class="fullscreen-hint"><b>Figure 1.3</b> (Click the image to view fullscreen)</p>
+                                                    <p class="mb-3"><small>Source: <a href="https://www.rs-online.com/designspark/peltier-cooled-cloud-chamber-part-2" target="_blank" rel="noopener noreferrer">RS DesignSpark, "Peltier Cooled Cloud Chamber Part 2"</a></small></p>
+                                                    <li>Finally, the last step the student will take is that when they tell all their classmates how incredible ionizing radiation can look! On a more serious note, the user can now express something that was once invisible, using concrete observations. Our hopes are that this promotes a welcoming introduction to less intuitive concepts</li>
+                                                </ol>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>5. Current Design Direction</h3>
+                                                <p>Our design direction is a Peltier-cooled diffusion cloud chamber. A similar approach has been taken using dry ice, however that is not user friendly. In the present system logic, stacked Peltier modules create the cold side needed for the chamber, an aluminum plate is part of the cold-side design, and the hot side must be actively cooled with a heat sink and CPU fan. A buck converter has also been discussed as one option for setting the Peltier voltage and keeping it stable, however, proved unnecessary. Overall, the design is trying to balance cooling performance, a stable atmosphere, and classroom usability.</p>
+                                                <p>The list below reflects the current documented direction rather than a locked final bill of materials. In general, the design will remain consistent but some parts may be removed or changed:</p>
+
+                                                <div class="pending-deliverable-grid">
+
+                                                    <div class="pending-deliverable-card">
+                                                        <h4>Current Documented Parts</h4>
+                                                        <ul>
+
+
+                                                            <li>DC PSU</li>
+                                                            <li>CPU fan / heat sink</li>
+                                                            <li>stacked Peltier modules (pre-stackedd)</li>
+                                                            <li>aluminum plate 60mm diameter x 3mm height</li>
+                                                            <li>thermal paste</li>
+                                                            <li>temperature gauge</li>
+
+                                                            <li>wires</li>
+                                                            <li>fuse (undecided if needed)</li>
+                                                            <li>silicone insulation</li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                            <section class="pending-deliverable-section">
+                                                <h3>6. Closing Reflection</h3>
+                                                <p>The larger goal of this project is to make an abstract concept feel more concrete. Particle physics can be difficult to understand when students are asked to imagine a phenomenon they cannot normally see, so the cloud chamber gives them a more direct way to connect observation to the underlying physics. By making ionizing radiation visible in a classroom setting, the project can help turn a difficult topic into something more accessible, discussable, and real.</p>
+                                            </section>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade cloud-chamber-tab-pane" id="cloud-prototyping-pane" role="tabpanel" aria-labelledby="cloud-prototyping-tab" tabindex="0">
+                                                <div class="pending-deliverable cloud-chamber-prototyping">
+                                                    <section class="pending-deliverable-intro">
+                                                        <span class="pending-deliverable-label">Stage 2 Submission</span>
+                                                        <h3 class="mt-3">Prototyping and Testing</h3>
+                                                        <p>This section tracks the four prototype cycles we used to refine the cloud chamber's hardware housing.</p>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 1</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD -&gt; CAM for PLA -&gt; Testing</p>
+                                                        <p>The problem statement for this project puts a lot of weight on making sure many individuals can access the materials required to make the cloud chamber and keep using it over time. Because of that, we framed our first prototype around a set of quantifiable goals that kept the build process fast, understandable, and repeatable.</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -30 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>All parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" alt="Cycle 1 slide showing the first cooling-stack concept for the cloud chamber support hardware." />
+                                                            </a>
+                                                            <figcaption>Cycle 1 established the first PLA proof-of-concept for stacking the heatsink, Peltier cooler, aluminum disc, and printed supports.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>For cycle 1, only two of the five goals were met. This first version proved that the cooling stack could be organized physically, but it also exposed where the concept still failed once we moved from theory into an actual printed assembly.</p>
+                                                            <p class="mb-0">The biggest issue was that the parts were not yet behaving like one fully resolved system. Even though some of the fit conditions were close, parts of the assembly were still relying on gravity instead of being directly secured to one another, so the first prototype was useful mainly because it showed us exactly what had to change next.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 2</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM for PLA -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check"></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" alt="Cycle 2 slide showing the redesigned cloud chamber support parts being combined into one part." />
+                                                            </a>
+                                                            <figcaption>Cycle 2 focused on combining the earlier support pieces into a more compact and compatible printed form.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>We checked off two new goals with iteration 2, but we also gave up two gains from the first version in the process. This redesign improved part compatibility and made the set easier to fit on one PRUSA Mini+ build plate, which moved the project closer to something more repeatable and practical to fabricate.</p>
+                                                            <p class="mb-0">The tradeoff was access. Taking the aluminum disc out of the brace became less convenient than it had been before and could require either very small fingers or needle-nosed pliers, so cycle 2 taught us that making the structure tighter and more integrated could also make maintenance harder.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 3</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" alt="Cycle 3 summary card describing the progress made through geometry and print-strategy changes." />
+                                                            </a>
+                                                            <figcaption>Cycle 3 summary card highlighting how the redesign locked in compatibility, wiring access, and one-plate fabrication.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>Iterations 2 and 3 were the closest to one another, but cycle 3 arguably moved us the furthest toward the version we actually wanted. We made room for Peltier cooler wiring, adjusted screw positioning to reduce breakage under tension, and changed the CAM approach so the printed part could better support the temperature demands of the chamber.</p>
+                                                            <p class="mb-0">This was the point where the design started to feel much more buildable in practice. We kept the compatibility and one-plate fabrication gains from the previous version, and the added wire routing finally helped us resolve the hardware-fit issue without noticeably increasing the print footprint.</p>
+                                                        </div>
+                                                    </section>
+
+                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
+                                                        <h3>Iteration Cycle 4</h3>
+                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Material Change -&gt; Testing</p>
+                                                        <ul class="cloud-chamber-cycle-list">
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
+                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
+                                                        </ul>
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
+                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" alt="Cycle 4 summary card describing the final material and usability improvements." />
+                                                            </a>
+                                                            <figcaption>Cycle 4 summary card showing the final prototype direction after the move from PLA to PETG.</figcaption>
+                                                        </figure>
+                                                        <div class="cloud-chamber-cycle-summary">
+                                                            <p>By the fourth and final iteration, we checked off the last two goals on the list. We had planned from the beginning to wait until the design felt stable before changing the material from PLA to PETG, and that switch finally gave the brace the resistance it needed against heat deformation and extended cold exposure.</p>
+                                                            <p>The last redesign also improved attachment points and added better clearance for handling the brace during disassembly. At the same time, we adjusted the design to accommodate extra thermal paste so the Peltier could get as cold as possible without fighting the structure around it.</p>
+                                                            <p class="mb-0">At this point, the cooling-support hardware finally met all five goals together. That made cycle 4 much more than a late-stage tweak; it became the version that tied together manufacturability, compatibility, durability, and day-to-day usability in a way that actually supports the final classroom cloud chamber build.</p>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                                            <i class="fas fa-xmark fa-fw"></i>
+                                            Close Window
+                                        </button>
                                     </div>
-                                    <!-- Portfolio Modal - Image-->
-                                    <a href="assets/img/portfolio/tag-settings.png" target="_blank">
-  <img class="img-fluid rounded mb-3" src="assets/img/portfolio/tag-settings.png" alt="..." />
-</a>
-<p class="fullscreen-hint"><a><b>Figure 1.1 </b></a> (Click the image to view fullscreen)</p>
-<p><a href="https://www.thingiverse.com/thing:1545913">Open Source File</a></p>
-
-            <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">For my first project (Figure 1.1), and my introduction to 3D printing, I started by creating a nametag. The design for the tag was pulled from an open source. The overall focus of this print was not famaliarizing myself with the design process but understanding the machine, itself. In lieu of studying a few different CAD (computer aided design) softwares and their capabilities and limits, I started by looking at the CAM (computer aided machining) aspect. The reason for this is because by understanding what the machines are capable and incapable of, I can keep those parameters in mind while designing on the software of my choice. This allows me to stay grounded in the reality of what can actually be created and what would fail in the physical world; which may have succeeded in the digital one.</p>
-
-                            <p>
-                                <b><i>Settings (pictured above):</i></b>
-                            
-                                <li class="mb-2">
-                                <span class="fw-bold">Total PLA filament used (grams):</span>
-                                  3.77g (3.27g orange+0.52g red)
-                                </li>
-                                <li class="mb-2">
-                                  <span class="fw-bold">CAD Settings (Prusa Slicer Software):</span>
-                                  The CAD software I used was the Prusa Slicer to load my found (.3mf) file and later splice it and export as the (.bgcode). Unilke a (.stl) file, the (.3mf) files store and preserve printer settings. The parameters I set within the software are as follows: Print Settings-0.20mm SPEED; Filament- Generic PLA (2 colors); Printer-Original Prusa MINI & MINI+ Input Shaper
-                                </li>
-
-                                <li class="mb-0">
-                                  <span class="fw-bold">Print Time:</span>
-                                   13-14 minutes
-                                </li>
-                            </p>
-                                <a href="assets/img/portfolio/tag-settings.png" target="_blank">
-                                </a>
-                            </div>
-
-
-        <!-- Portfolio Modal - Text-->
-        <a href="assets/img/portfolio/full-tag.jpg" target="_blank">
-  <img class="img-fluid rounded mb-3" src="assets/img/portfolio/full-tag.jpg" alt="..." />
-</a>
-<a>
-                                <p class="fullscreen-hint"><a><b>Figure 1.2 </b></a>(Click the image to view fullscreen)
-                            </p>
-                        </a>
-                <!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
-                </h2>
-                                    <p class="mb-4">During this print I was required to manually swap the filament I was using in order to achieve the color change. However, when swapping to the second filament color, the motor located above the extrusion tip did not effectively "grasp onto" the filament when I pushed it through. This mistake caused the printer to "ghost print" or in other words, the machine started performing the task, as instructed by the code, but had no substance to actually create a physical print. When I noticed and adjusted the filament so the motor can catch it, the printer was now releasing the melted filament slightly higher than it should have been. Consequently, the machine was not printing flush to the tag. This created the stringy effect and disconnects that are apparent in Figure 1.2. In order to avoid this issue in the future, prior to beginning the print I will ensure the filament is properly aligned. </p>
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">
-                                        <i class="fas fa-xmark fa-fw"></i>
-                                        Close Window
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
 
 <!-- Portfolio Modal 2-->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
@@ -327,7 +1049,7 @@
 
 <p>
             <b><i>Settings (pictured above):</i></b>
-                            
+
             <li class="mb-2">
                 <span class="fw-bold">Total PLA filament used (grams):
                 </span>
@@ -401,7 +1123,7 @@
 <p><a href="https://www.makersmakingchange.com/product/drag-assistive-writing-and-drawing-device/01tJR0000037zufYAA">Open Source File</p></a>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">I decided to build this device based on its practical applications and similarities to an already widley used product. The assistive writing tool I printed from an open source design mimics the structure of a common computer mouse. This design is not only easy to hold for those with minimal strength in their fingers, but also allows the user to smoothly maneuver the device on most surfaces; as you would a computer mouse. The device was a three part print which required a small amount of hands on construction. The overall use-case for the device is to assist users with difficulty in writing by providing a stable point for the writing utensil and easy to hold control point.</p>
-                            
+
                             <a href="assets/img/portfolio/left-assist.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/left-assist.png" alt="..." />
 </a>
@@ -413,7 +1135,7 @@
 
                             <p>
                                         <b><i>Settings Left Side (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -442,7 +1164,7 @@
 
                             <p>
                                         <b><i>Settings Right Side (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -471,7 +1193,7 @@
 
                             <p>
                                         <b><i>Settings Center (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -528,8 +1250,8 @@
                                     <!-- Portfolio Modal - Image-->
                                     <p class="mb-4">This was a joint venture between Ben Khayat and myself in which we explored a few different mediums for constructing a path following kit-car. The vehicle uses two sensors to determine the color change (from bright to dark) of the path and corrects accordingly. The ability to detect these changes, keeps the car focused on the dark electrical-tape path we created.</p>
 
-                                    <p>The kit we used came with all the needed components, including two sensors, motors, wheels, and essential capacitors and resistors (shown in Figure 4.1). We soldered on all the necessary components, which I detailed further below along with certain issues we had. Prior to our build, neither of us had had any experience soldering. The manual (linked here: https://m.media-amazon.com/images/I/A1lEYFXJO1L.pdf) gave thorough instructions with images, however, it did not provide much insight on the soldering process. For example, certain components required different strategies for making the solder joints. The manual, however, wrote all instructions the same regarding "how" to solder the components.</p> 
-                            
+                                    <p>The kit we used came with all the needed components, including two sensors, motors, wheels, and essential capacitors and resistors (shown in Figure 4.1). We soldered on all the necessary components, which I detailed further below along with certain issues we had. Prior to our build, neither of us had had any experience soldering. The manual (linked here: https://m.media-amazon.com/images/I/A1lEYFXJO1L.pdf) gave thorough instructions with images, however, it did not provide much insight on the soldering process. For example, certain components required different strategies for making the solder joints. The manual, however, wrote all instructions the same regarding "how" to solder the components.</p>
+
                             <a href="assets/img/portfolio/solder-parts.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/solder-parts.png" alt="..." />
 </a>
@@ -541,7 +1263,7 @@
 
                             <p>
                                         <b><i><u>Constructing The Circuit Board</u></i></b>
-                                                        
+
                                         <p>Prior to constructing the chassis for the car, we needed to solder the parts, shown in the tray above, to the circuit board. We found it helpful to organize our workspace prior to beginning. To best split the work load, we each soldered a few components and then the other would solder an equal amount until we were finished. On the first day, we were using an old soldering iron which downgraded the quality of each solder. In order to combat this, we were constantly tinning and cleaning our iron with iospropyl alchohol. Luckily on day two, we acquired a much newer iron, and therefore had cleaner solders and were no longer required to tin the tip each time. This is apparent in the top right photo in Figure 4.1, by the difference in solder quality. Besides capacitors, LEDs, resistors, components to set the intensity of correction, and other parts for our board, we also had sensors and motors. The sensors allowed for our kit-car to determine the intensity of color on it's left and right sides, which keeps it in line. These sensors would then drive power to either the left motor or right motor depending on what is needed to continue on the dark line. The two LEDs on the front-sides, indicate which wheel is recieving power. The angle of intesity the vehicle will take is dependent on a set of controls that we had to adjust until we were satisfied with the movement. For a turn of too great an angle could send the car off the track and it become "lost." I included a sketch of the dimensions of the board down below.</p>
                             </p>
 <a href="assets/img/portfolio/dim-board.png" target="_blank">
@@ -571,7 +1293,7 @@
 
                             <p>
                                         <b><i><u>3D Printed Chassis</u></i></b>
-                                                        
+
                                         <p>We decided to create two alternative prints for our project, working together in a shared OnShape space. We shared this responsibilty by adjusting and adding to the project as we both saw fit. The first, being the fully grey print in Figure 4.2, was a focus on scale and fit. In order to determine the proper dimensions for the print we used a caliper to find the length, width, and height of our car. It is important to also pay special attention to the front of the car, which was an arc instead of a flat bumper. By finding the radius of that arc, we easily scaled the front. The first print provided us with confirmation that our dimensions were correct and additions were not outside the realm of our printer's capabilities. This model also ensured we followed the proper guidelines, which allows us to remove the cap to access batteries, provides a small hole for the power button, visibility to LEDs, and free sensors. We printed the first model upside down, to avoid supports in the inner cavity, after ensuring the print preview looked successful by checking the layers in Bambu Studio, we completed version 1.</p>
 
                                         <p>For our second print, we decided to test multi-filament printing, along with stressing angles to see if it would fail without support. Starting with the angular stress, the windshield is tilted at approximately a 40 degree angle, within the threshold of the print, and therefore succeeded nicely. We also added two faux exhausts on the back to test whether the small exhuast ports would cave-in on itself, it did not! Secondly, we flipped the print, so this time, there were supports holding up the inner cavaity. This provided a cleaner top surface than our first print. Finally, we decided to use two colors to excentuate the windshield and exhausts. Although this increased print time, requiring a filament tower, it also improved the aesthetic and clearly depicts which objects are part of the chassis, itself, and which are existing for visual imrpovement.</p>
@@ -588,7 +1310,7 @@
 
                             <p>
                                         <b><i>Settings Print 1-Grey (Figure 4.3):</i></b>
-                                                      
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -618,7 +1340,7 @@
                                         <b><i>Settings Print 2-Black/Grey (Figure 4.4):</i></b>
                                                       </p>
                                           <p><a href="assets/3D-Car.3mf" download>Download Version 2 Print File</a></p>
-                                          <p>    
+                                          <p>
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -657,12 +1379,12 @@
 </a>
 <p><u>
                                         <b><i>OnShape Laser Cut Layout (Figure 4.6):</i></b>
-                                               </u></p>         
+                                               </u></p>
                                     <p>
-                                                    As described above, the auto-layout feature and laser joint feature are apparent in our design pictured in Figure 4.6. Prior to actually making our cut, it is required that all pieces of the model are laying flat, therefore the auto-layout feature saves a lot of time. Laying out each part is critical, as the laser cut is a vertical burn on only the 2D level, unlike a 3D printer with x, y, and z. Post lay out, we exported into a drawing, ensured the dimensions were accurate, imported into Light Burn, and then begin our cut. We also made sure at least one of us was watching the cut as it was going, to check for any signs of fire or toxicity.</p> 
+                                                    As described above, the auto-layout feature and laser joint feature are apparent in our design pictured in Figure 4.6. Prior to actually making our cut, it is required that all pieces of the model are laying flat, therefore the auto-layout feature saves a lot of time. Laying out each part is critical, as the laser cut is a vertical burn on only the 2D level, unlike a 3D printer with x, y, and z. Post lay out, we exported into a drawing, ensured the dimensions were accurate, imported into Light Burn, and then begin our cut. We also made sure at least one of us was watching the cut as it was going, to check for any signs of fire or toxicity.</p>
                                         </li>
 
-                                    
+
                             </p>
                             <a href="assets/img/portfolio/laser-sett.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/laser-sett.png" alt="..." />
@@ -678,7 +1400,7 @@
                                         <b><i>Settings-Laser Cut (pictured above):</i></b>
                                              </p>
                                           <p><a href="assets/light-car.zip" download>Download LightBurn File</a></p>
-                                          <p>                
+                                          <p>
                                         <li class="mb-2">
                                             <span class="fw-bold">Power: 100% (less powerful machine)
                                             </span>
@@ -687,7 +1409,7 @@
                                         </li>
                                         <li class="mb-2">
                                             <span class="fw-bold">CAD used-LightBurn: </span>
-                                                    Lightburn is the software we used in order to transfer our drawing from OnShape, into a Laser cut file for the GRBL software to interpret. 
+                                                    Lightburn is the software we used in order to transfer our drawing from OnShape, into a Laser cut file for the GRBL software to interpret.
                                         </li>
 
                                         <li class="mb-0">
@@ -701,7 +1423,7 @@
 </video>
 <!-- Portfolio Modal - Title-->
                 <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
-                </h2>                
+                </h2>
 
                 <p><b>Soldering</b></p>
                                     <p class="mb-4">We had a few issues throughout the process, so I will go through them in order of our approach. Starting with contructing the circuit board, the most time consuming portion was due to having an older soldering iron. The issue is after a while the iron's tip begins to oxidize over time and the more used the iron the more quickly it oxidizes. When this occurs, the solder has a very difficult time heating up and therefore, does not bind to the circuit board or the iron, itself. The consequence of having to re-tin the iron before each solder, slowed us down immensely. On the second day we used a much newer iron, and therefore finished the board quicker and with cleaner solder joints.</p>
@@ -749,11 +1471,11 @@
 </b>
          </a>(Click the image to view fullscreen)
         </p>
-        <p><a href="https://thangs.com/designer/daniel.pugz/3d-model/Nuclear-%20Top%20Screw%20v3.stl-29865">Open Source File</p></a> 
+        <p><a href="https://thangs.com/designer/daniel.pugz/3d-model/Nuclear-%20Top%20Screw%20v3.stl-29865">Open Source File</p></a>
 </a>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">For this project, I wanted to explore a few different avenues. For starters, my main goal was to become more comfortable with the CAD tools: TinkerCAD and OnShape. I started with an open source model I found online. I went with a "nuclear radiation tower" because the shape provides a wider base than its top; therefore, it is much more difficult to tip. The original model was similair in shape but very different in function. Originally, the model had an open bottom, with the base having a corkscrew pattern about 1/4 inch high. This led me to believe this was some sort of "screw," to secure the model into some pre-existing location. My original intent was to create a pencil-cup, so that cork screw was not relevant to me. Another portion of the model which needed to be removed was the original top on the model. The top was secured to the object so it did not allow for anything to be placed in from above...quite the issue for a pencil-cup. I address how I delt with the unwanted parts of the model in the following sections. Overall, my main goals were to use TinkerCAD to create the shape of the object, and then I later transitioned the pencil cup into a "desktop waste basket," by creating a lid in OnShape. Below is an image of the sketch I designed on paper, starting from the open source design and ending with what I planned on creating (Figure 5.2).</p>
-                            
+
  <a href="assets/img/portfolio/Proj2-sketch.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/Proj2-sketch.png" alt="..." />
 </a>
@@ -777,7 +1499,7 @@
 
                             <p>
                                         <b><i>Settings Cup (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -820,7 +1542,7 @@
 
                             <p>
                                         <b><i>Settings Top of Bin (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -893,7 +1615,7 @@
                                                     <img class="img-fluid" src="assets/img/portfolio/bottle.png" alt="Prosthetic hand photo 2" />
                                                 </a>
                                             </div>
-                                           
+
                                         </div>
                                         <button class="carousel-control-prev wrist-guard-carousel-control" type="button" data-bs-target="#prostheticHandIntroCarousel" data-bs-slide="prev" aria-label="Previous prosthetic hand photo">
                                             <span class="wrist-guard-carousel-icon" aria-hidden="true">&#10094;</span>
@@ -906,7 +1628,7 @@
                                         <div class="carousel-indicators wrist-guard-carousel-indicators">
                                             <button type="button" data-bs-target="#prostheticHandIntroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="View prosthetic hand photo 1"></button>
                                             <button type="button" data-bs-target="#prostheticHandIntroCarousel" data-bs-slide-to="1" aria-label="Bottle"></button>
-                                          
+
                                         </div>
                                     </div>
                                     <!-- Portfolio Modal - Text-->
@@ -930,7 +1652,7 @@
 
                             <p>
                                         <b><i>Settings Digits and Pins (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -962,7 +1684,7 @@
 
                             <p>
                                         <b><i>Settings Palm (pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -1016,7 +1738,7 @@
 
                             <p>
                                         <b><i>Settings Wrist Guard(pictured above):</i></b>
-                                                        
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -1034,7 +1756,7 @@
                             </p>
                         <p><b>Print Notes:</b></p>
      <p>The palm, pins, and digits are more or less self explanatory in purpose, however when discussing the assembly I will go into further detail about how they operate. The wrist guard and tension block are a bit less intuitive. The tension block is designed to provide the necessary resistance for the device to function properly, acting as an anchor for the wiring. The pins are secured in the block, and wires ran through the hand. In our case, we used string. Obvious from the slicer photo, the guard is not yet properly shaped. In order to form the piece into a proper shape, we used a reflow station attached to a heat gun; shaping the object manually (seen by scrolling through Figure 6.3). This allowed for more customizability, as well as, a cleaner look on the overall print. Shaping after printing also avoids required supports for floating edges, saving time.  </p>
-  <p>                                                    
+  <p>
  <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Assembly Process</h2>
 </p>
 <a href="assets/img/portfolio/xray-hand.png" target="_blank">
@@ -1047,7 +1769,7 @@
 </a>
 
                             <p>
-                            Prior to beginning our assembly process we watched a video on a similar build but felt it did not focus enough on the orientation of parts, such as the tension block pins, along with lacking detail in regard to the wiring process. We found the images in Figure 6.4 to be the most helpful resources. For one, being detailed images we were not forced to pause a video multiple times to follow any needed instruction. Secondly, the X-ray image displayed the interior wiring structure far better than simplifying watching someone do it themselves. This not only provided clear direction for how to wire our prosthetic, but also allowed us to better understand how the device is going to use tension in order to grasp around objects. Figure 6.5 shows the layout of the components we printed prior to assembly.  
+                            Prior to beginning our assembly process we watched a video on a similar build but felt it did not focus enough on the orientation of parts, such as the tension block pins, along with lacking detail in regard to the wiring process. We found the images in Figure 6.4 to be the most helpful resources. For one, being detailed images we were not forced to pause a video multiple times to follow any needed instruction. Secondly, the X-ray image displayed the interior wiring structure far better than simplifying watching someone do it themselves. This not only provided clear direction for how to wire our prosthetic, but also allowed us to better understand how the device is going to use tension in order to grasp around objects. Figure 6.5 shows the layout of the components we printed prior to assembly.
                             </p>
 
                             <a href="assets/img/portfolio/hand-parts.png" target="_blank">
@@ -1059,14 +1781,14 @@
         </p>
 
 </a>
- <p>                                                    
+ <p>
  <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Adding to the Design</h2>
 </p>
                             <p>
                                         <b>Grocery/Bag Hook and Wire Management</b>
                                                        </p>
-                           <p> 
-                            We added three additions to the original design. The first two are exact copies of one another at different scales. The larger hook, mounted on the top of the hand, will provide the user with the ability to freely hold shopping bags and even heavy bottles with a hook to ease the strain on the fingers. The identical hook on the side of the hand provides cable management for the final addition we made. The second hook, was actually a "mistake," in the sense that we did not properly scale the object prior to printing. However, this ended up being a happy accident as we still found a use case for the smaller hook. The main addition can be seen below in Figure 6.6. To avoid cluttering this portion of my description, I added the file for the hook below and a photo to view print settings in Figure 6.6. For scaling purposes, the larger hook is 200% larger than the smaller. 
+                           <p>
+                            We added three additions to the original design. The first two are exact copies of one another at different scales. The larger hook, mounted on the top of the hand, will provide the user with the ability to freely hold shopping bags and even heavy bottles with a hook to ease the strain on the fingers. The identical hook on the side of the hand provides cable management for the final addition we made. The second hook, was actually a "mistake," in the sense that we did not properly scale the object prior to printing. However, this ended up being a happy accident as we still found a use case for the smaller hook. The main addition can be seen below in Figure 6.6. To avoid cluttering this portion of my description, I added the file for the hook below and a photo to view print settings in Figure 6.6. For scaling purposes, the larger hook is 200% larger than the smaller.
                             </p>
                                           <p><a href="assets/Hook-Addition.3mf" download>Download Hook Addition.3mf</a></p>
 
@@ -1098,7 +1820,7 @@
                             </div>
 <p><b>Figure 6.6 (Click the images to view fullscreen)</b></p>
 
-<p>                                                    
+<p>
  <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">E.T. Addition</h2>
 </p>
 
@@ -1142,31 +1864,31 @@
                 <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
                 </h2>
                                     <p class="mb-4">
-                                  
+
                                         The majority of issues and pitfalls in instruction are found in the Directions Review section, along with a peer review for another group's instructions (which I highly suggest viewing). Although listed in detail under the mentioned section, I'll briefly list a forewarning here:
                                         <li class="mb-2">
                                             <span>Minimal mention of disabled user; lack of focus on the user throughout the instructions</span>
                                             </span>
-                                            
+
                                         </li>
                                         <li class="mb-2">
                                             <span>Unnecessary amount of rafts added to palm andd cross bar; avoid for cleaner print and need to cut rafts</span>
-                                                   
+
                                         </li>
 
                                         <li class="mb-0">
                                             <span>Connector pins were too small after 150% scale; I suggest all parts at 150% and the pins at 155%-158%</span>
-                                                               
+
                                         </li>
 
 
                                     </p>
                                     <p><b>Links and Resources:</b></p>
-                                    
+
                                     <p><b>Model used for fingers, pins, wrist guard and tension block components:</b> BioVisUser123. Human Heart Model. Version 2.1, NIH 3D, 2024. <a href="https://3d.nih.gov/entries/3DPX-020260" target="_blank">Fingers, Pins, Tension Block, Wrist Guard (v3)</a></p>
-                                    
+
                                     <p><b>Model used for palm:</b> BioVisUser123. Human Heart Model. Version 2.1, NIH 3D, 2024. <a href="https://3d.nih.gov/entries/3DPX-020259" target="_blank">Palm Only (v2)</a></p>
-                                    
+
                                     <p><a href="https://www.thingiverse.com/thing:1674320" target="_blank">X-ray Wire Guide (Scroll through the photos to locate the X-ray wire guide)</a></p>
 
                                     </div>
@@ -1181,7 +1903,7 @@
                                             <p class="project-review-label">Peer Review</p>
                                             <p class="mb-0">We also peer reviewed another team, Ben Khayat and Maria Mykhaylyk. I attached their FAQs below to refer to throughout this section. First, the guidance on which exact open source files to use was really helpful because it removes a lot of confusion right away. Knowing to use the Phoenix Hand V2 palm with the V3 fingers and other V3 parts, and to scale everything to 150%.
 
-                                            Second, the section on rafts and print settings was very helpful because it gives practical advice that can prevent failed prints. Rebecca andd I used rafts for almost all parts, where Ben and Maria opted out of using a raft for a few portions, which provided a cleaner end result. They also clearly explain which parts need rafts, which do not, and also gives strength tips like using over 25% infill and PETG instead of PLA. Personally, we used PLA, however, I noticed the silk PLA broke on two ddifferent wrist gaurds on two different occasions. 
+                                            Second, the section on rafts and print settings was very helpful because it gives practical advice that can prevent failed prints. Rebecca andd I used rafts for almost all parts, where Ben and Maria opted out of using a raft for a few portions, which provided a cleaner end result. They also clearly explain which parts need rafts, which do not, and also gives strength tips like using over 25% infill and PETG instead of PLA. Personally, we used PLA, however, I noticed the silk PLA broke on two ddifferent wrist gaurds on two different occasions.
 
                                             Third, the explanation of threading string through the palm using wire stood out as especially useful because it gives a simple, realistic trick that makes assembly easier. We used an alan key and tweezers, which although worked relatively well, a wire will be able to pass through the channels more easily. Overall, I highly suggest reviewing their .pdf prior to even printing. Thank you Ben and Maria!</p>
                                             <p><a href="assets/Ben and Maria Instructions.pdf" download>FAQs by Ben and Maria</a></p>
@@ -1257,8 +1979,8 @@
                                     <!-- Portfolio Modal - Image-->
                                     <p class="mb-4">This was a joint venture between Ben Khayat and myself in which we explored a few different mediums for constructing a path following kit-car. The vehicle uses two sensors to determine the color change (from bright to dark) of the path and corrects accordingly. The ability to detect these changes, keeps the car focused on the dark electrical-tape path we created.</p>
 
-                                    <p>The kit we used came with all the needed components, including two sensors, motors, wheels, and essential capacitors and resistors (shown in Figure 4.1). We soldered on all the necessary components, which I detailed further below along with certain issues we had. Prior to our build, neither of us had had any experience soldering. The manual (linked here: https://m.media-amazon.com/images/I/A1lEYFXJO1L.pdf) gave thorough instructions with images, however, it did not provide much insight on the soldering process. For example, certain components required different strategies for making the solder joints. The manual, however, wrote all instructions the same regarding "how" to solder the components.</p> 
-                            
+                                    <p>The kit we used came with all the needed components, including two sensors, motors, wheels, and essential capacitors and resistors (shown in Figure 4.1). We soldered on all the necessary components, which I detailed further below along with certain issues we had. Prior to our build, neither of us had had any experience soldering. The manual (linked here: https://m.media-amazon.com/images/I/A1lEYFXJO1L.pdf) gave thorough instructions with images, however, it did not provide much insight on the soldering process. For example, certain components required different strategies for making the solder joints. The manual, however, wrote all instructions the same regarding "how" to solder the components.</p>
+
                             <a href="assets/img/portfolio/solder-parts.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/solder-parts.png" alt="..." />
 </a>
@@ -1270,7 +1992,7 @@
 
                             <p>
                                         <b><i><u>Constructing The Circuit Board</u></i></b>
-                                                        
+
                                         <p>Prior to constructing the chassis for the car, we needed to solder the parts, shown in the tray above, to the circuit board. We found it helpful to organize our workspace prior to beginning. To best split the work load, we each soldered a few components and then the other would solder an equal amount until we were finished. On the first day, we were using an old soldering iron which downgraded the quality of each solder. In order to combat this, we were constantly tinning and cleaning our iron with iospropyl alchohol. Luckily on day two, we acquired a much newer iron, and therefore had cleaner solders and were no longer required to tin the tip each time. This is apparent in the top right photo in Figure 4.1, by the difference in solder quality. Besides capacitors, LEDs, resistors, components to set the intensity of correction, and other parts for our board, we also had sensors and motors. The sensors allowed for our kit-car to determine the intensity of color on it's left and right sides, which keeps it in line. These sensors would then drive power to either the left motor or right motor depending on what is needed to continue on the dark line. The two LEDs on the front-sides, indicate which wheel is recieving power. The angle of intesity the vehicle will take is dependent on a set of controls that we had to adjust until we were satisfied with the movement. For a turn of too great an angle could send the car off the track and it become "lost." I included a sketch of the dimensions of the board down below.</p>
                             </p>
 <a href="assets/img/portfolio/dim-board.png" target="_blank">
@@ -1300,7 +2022,7 @@
 
                             <p>
                                         <b><i><u>3D Printed Chassis</u></i></b>
-                                                        
+
                                         <p>We decided to create two alternative prints for our project, working together in a shared OnShape space. We shared this responsibilty by adjusting and adding to the project as we both saw fit. The first, being the fully grey print in Figure 4.2, was a focus on scale and fit. In order to determine the proper dimensions for the print we used a caliper to find the length, width, and height of our car. It is important to also pay special attention to the front of the car, which was an arc instead of a flat bumper. By finding the radius of that arc, we easily scaled the front. The first print provided us with confirmation that our dimensions were correct and additions were not outside the realm of our printer's capabilities. This model also ensured we followed the proper guidelines, which allows us to remove the cap to access batteries, provides a small hole for the power button, visibility to LEDs, and free sensors. We printed the first model upside down, to avoid supports in the inner cavity, after ensuring the print preview looked successful by checking the layers in Bambu Studio, we completed version 1.</p>
 
                                         <p>For our second print, we decided to test multi-filament printing, along with stressing angles to see if it would fail without support. Starting with the angular stress, the windshield is tilted at approximately a 40 degree angle, within the threshold of the print, and therefore succeeded nicely. We also added two faux exhausts on the back to test whether the small exhuast ports would cave-in on itself, it did not! Secondly, we flipped the print, so this time, there were supports holding up the inner cavaity. This provided a cleaner top surface than our first print. Finally, we decided to use two colors to excentuate the windshield and exhausts. Although this increased print time, requiring a filament tower, it also improved the aesthetic and clearly depicts which objects are part of the chassis, itself, and which are existing for visual imrpovement.</p>
@@ -1317,7 +2039,7 @@
 
                             <p>
                                         <b><i>Settings Print 1-Grey (Figure 4.3):</i></b>
-                                                      
+
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -1347,7 +2069,7 @@
                                         <b><i>Settings Print 2-Black/Grey (Figure 4.4):</i></b>
                                                       </p>
                                           <p><a href="assets/3D-Car.3mf" download>Download Version 2 Print File</a></p>
-                                          <p>    
+                                          <p>
                                         <li class="mb-2">
                                             <span class="fw-bold">Total PLA filament used (grams):
                                             </span>
@@ -1386,12 +2108,12 @@
 </a>
 <p><u>
                                         <b><i>OnShape Laser Cut Layout (Figure 4.6):</i></b>
-                                               </u></p>         
+                                               </u></p>
                                     <p>
-                                                    As described above, the auto-layout feature and laser joint feature are apparent in our design pictured in Figure 4.6. Prior to actually making our cut, it is required that all pieces of the model are laying flat, therefore the auto-layout feature saves a lot of time. Laying out each part is critical, as the laser cut is a vertical burn on only the 2D level, unlike a 3D printer with x, y, and z. Post lay out, we exported into a drawing, ensured the dimensions were accurate, imported into Light Burn, and then begin our cut. We also made sure at least one of us was watching the cut as it was going, to check for any signs of fire or toxicity.</p> 
+                                                    As described above, the auto-layout feature and laser joint feature are apparent in our design pictured in Figure 4.6. Prior to actually making our cut, it is required that all pieces of the model are laying flat, therefore the auto-layout feature saves a lot of time. Laying out each part is critical, as the laser cut is a vertical burn on only the 2D level, unlike a 3D printer with x, y, and z. Post lay out, we exported into a drawing, ensured the dimensions were accurate, imported into Light Burn, and then begin our cut. We also made sure at least one of us was watching the cut as it was going, to check for any signs of fire or toxicity.</p>
                                         </li>
 
-                                    
+
                             </p>
                             <a href="assets/img/portfolio/laser-sett.png" target="_blank">
   <img class="img-fluid rounded mb-3" src="assets/img/portfolio/laser-sett.png" alt="..." />
@@ -1407,7 +2129,7 @@
                                         <b><i>Settings-Laser Cut (pictured above):</i></b>
                                              </p>
                                           <p><a href="assets/light-car.zip" download>Download LightBurn File</a></p>
-                                          <p>                
+                                          <p>
                                         <li class="mb-2">
                                             <span class="fw-bold">Power: 100% (less powerful machine)
                                             </span>
@@ -1416,7 +2138,7 @@
                                         </li>
                                         <li class="mb-2">
                                             <span class="fw-bold">CAD used-LightBurn: </span>
-                                                    Lightburn is the software we used in order to transfer our drawing from OnShape, into a Laser cut file for the GRBL software to interpret. 
+                                                    Lightburn is the software we used in order to transfer our drawing from OnShape, into a Laser cut file for the GRBL software to interpret.
                                         </li>
 
                                         <li class="mb-0">
@@ -1430,7 +2152,7 @@
 </video>
 <!-- Portfolio Modal - Title-->
                 <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
-                </h2>                
+                </h2>
 
                 <p><b>Soldering</b></p>
                                     <p class="mb-4">We had a few issues throughout the process, so I will go through them in order of our approach. Starting with contructing the circuit board, the most time consuming portion was due to having an older soldering iron. The issue is after a while the iron's tip begins to oxidize over time and the more used the iron the more quickly it oxidizes. When this occurs, the solder has a very difficult time heating up and therefore, does not bind to the circuit board or the iron, itself. The consequence of having to re-tin the iron before each solder, slowed us down immensely. On the second day we used a much newer iron, and therefore finished the board quicker and with cleaner solder joints.</p>
@@ -1441,7 +2163,7 @@
 
                                     <p>Our laser cut went really well, as expected due to the precision of the machine. It printed our joints perfectly as expected, and burned off almost no noticable material, keeping our scale true. The only major downside to the lasercut is the lingering scent of burnt wood, which although easy to remove from our hands, not so easy to remove from the build; limited where a laser cut is desired. For example, you might not want to bring a laser-cut item, made a week ago into an enclosed office space. Overall, my major take away is that laser cutting is superior in speed and precision on basic models, however, for more complex builds, where time is not limited, 3D printing will provide a more complete and detailed model.</p>
 
-                                 <p><b>Links and Resources:</b></p>   
+                                 <p><b>Links and Resources:</b></p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window

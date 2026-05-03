@@ -17335,7 +17335,7 @@ body.site-page:not(.home-page)::after {
 }
 
 .projects-page .project-branch-1 {
-  --branch-image: url("../assets/img/portfolio/nametag.png");
+  --branch-image: url("../assets/img/portfolio/cloud-chamber-device.png");
   --branch-position: center center;
 }
 
