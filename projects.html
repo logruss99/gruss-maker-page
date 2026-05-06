@@ -20,6 +20,8 @@
                 --pending-accent-soft: rgba(143, 198, 240, 0.14);
                 --pending-accent-line: rgba(143, 198, 240, 0.5);
                 --pending-accent-text: #dff2ff;
+                --cloud-panel-cut: clamp(0.75rem, 1.8vw, 1.05rem);
+                --cloud-card-cut: clamp(0.55rem, 1.4vw, 0.8rem);
             }
 
             .cloud-chamber-modal .modal-content {
@@ -172,11 +174,29 @@
 
             .cloud-chamber-modal .pending-deliverable-section,
             .cloud-chamber-modal .pending-deliverable-intro {
+                --panel-cut: var(--cloud-panel-cut);
+                position: relative;
+                overflow: hidden;
                 padding: 1.4rem 1.5rem;
-                border: 1px solid rgba(143, 198, 240, 0.14);
-                border-radius: 1.25rem;
-                background: rgba(255, 255, 255, 0.035);
-                box-shadow: inset 0 1px 0 rgba(228, 248, 255, 0.05);
+                border: 1px solid rgba(127, 214, 244, 0.16);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.34) 0%, rgba(8, 15, 24, 0.2) 42%, rgba(4, 10, 16, 0.28) 100%),
+                    radial-gradient(circle at 18% 14%, rgba(168, 239, 255, 0.07) 0%, rgba(168, 239, 255, 0.016) 20%, rgba(168, 239, 255, 0) 42%);
+                box-shadow:
+                    0 16px 28px rgba(0, 0, 0, 0.14),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.18);
             }
 
             .cloud-chamber-modal .pending-deliverable h3,
@@ -213,11 +233,27 @@
             }
 
             .cloud-chamber-modal .pending-deliverable-note {
+                --panel-cut: 0.7rem;
+                position: relative;
+                overflow: hidden;
                 margin-top: 1rem;
                 padding: 0.95rem 1rem;
+                border: 1px solid rgba(127, 214, 244, 0.16);
                 border-left: 3px solid var(--pending-accent-line);
-                border-radius: 0.85rem;
-                background: rgba(255, 255, 255, 0.03);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    linear-gradient(90deg, rgba(143, 198, 240, 0.12), rgba(255, 255, 255, 0.025) 42%, rgba(255, 255, 255, 0.015)),
+                    rgba(255, 255, 255, 0.03);
             }
 
             .cloud-chamber-modal .pending-deliverable-label {
@@ -268,15 +304,119 @@
             }
 
             .cloud-chamber-modal .pending-deliverable-figure img {
+                --panel-cut: var(--cloud-card-cut);
                 width: 100%;
                 max-height: 22rem;
                 object-fit: cover;
+                border-radius: 0 !important;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
             }
 
             .cloud-chamber-modal .pending-deliverable-figure-contain img {
                 max-height: 34rem;
                 object-fit: contain;
                 background: rgba(10, 14, 20, 0.7);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a {
+                position: relative;
+                display: block;
+                isolation: isolate;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a::after {
+                --panel-cut: var(--cloud-card-cut);
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                pointer-events: none;
+                border: 1px solid rgba(112, 235, 255, 0.6);
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                opacity: 0;
+                box-shadow:
+                    0 0 0 1px rgba(92, 225, 255, 0.24),
+                    0 0 18px rgba(50, 217, 255, 0.28),
+                    0 0 38px rgba(20, 169, 255, 0.18);
+                transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a::before {
+                --panel-cut: var(--cloud-card-cut);
+                content: "";
+                position: absolute;
+                inset: -0.28rem;
+                z-index: -1;
+                pointer-events: none;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    radial-gradient(circle at 50% 50%, rgba(92, 225, 255, 0.22), rgba(92, 225, 255, 0.08) 46%, rgba(92, 225, 255, 0) 72%);
+                filter: blur(12px);
+                opacity: 0.58;
+                transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop img {
+                display: block;
+                aspect-ratio: 16 / 10;
+                height: clamp(18rem, 50vw, 34rem);
+                border: 1px solid rgba(127, 214, 244, 0.18);
+                max-height: none;
+                object-fit: cover;
+                object-position: center 46%;
+                background: transparent;
+                box-shadow:
+                    0 14px 30px rgba(0, 0, 0, 0.18),
+                    0 0 0 1px rgba(92, 225, 255, 0.06);
+                transform: translateZ(0);
+                transition:
+                    border-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+                backface-visibility: hidden;
+                will-change: transform;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:hover::after,
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:focus::after {
+                opacity: 1;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:hover::before,
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:focus::before {
+                opacity: 0.86;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:hover img,
+            .cloud-chamber-modal .cloud-chamber-photo-crop a:focus img {
+                border-color: rgba(112, 235, 255, 0.72);
+                transform: translateZ(0) scale(1.012);
             }
 
             .cloud-chamber-modal .pending-deliverable-figure figcaption {
@@ -303,10 +443,28 @@
 
             .cloud-chamber-modal .pending-deliverable-card,
             .cloud-chamber-modal .cloud-chamber-summary-card {
+                --panel-cut: var(--cloud-card-cut);
+                position: relative;
+                overflow: hidden;
                 padding: 1rem;
                 border: 1px solid rgba(143, 198, 240, 0.16);
-                border-radius: 1rem;
-                background: rgba(255, 255, 255, 0.03);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(13, 28, 40, 0.42), rgba(5, 12, 20, 0.22)),
+                    rgba(255, 255, 255, 0.025);
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.04),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.12);
             }
 
             .cloud-chamber-modal .cloud-chamber-summary-card h4 {
@@ -320,6 +478,94 @@
                 color: rgba(225, 238, 248, 0.9);
                 font-size: 0.94rem;
                 line-height: 1.65;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-table-group {
+                display: grid;
+                gap: 1rem;
+                margin: 1.1rem 0 1.25rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-table-wrap {
+                --table-cut: clamp(0.75rem, 1.8vw, 1rem);
+                position: relative;
+                overflow-x: auto;
+                border: 1px solid rgba(127, 214, 244, 0.18);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--table-cut) 0,
+                    calc(100% - var(--table-cut)) 0,
+                    100% var(--table-cut),
+                    100% calc(100% - var(--table-cut)),
+                    calc(100% - var(--table-cut)) 100%,
+                    var(--table-cut) 100%,
+                    0 calc(100% - var(--table-cut)),
+                    0 var(--table-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.34) 0%, rgba(8, 15, 24, 0.2) 42%, rgba(4, 10, 16, 0.28) 100%),
+                    radial-gradient(circle at 16% 12%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 18%, rgba(168, 239, 255, 0) 38%);
+                box-shadow:
+                    0 16px 28px rgba(0, 0, 0, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table {
+                width: 100%;
+                min-width: 26rem;
+                margin: 0;
+                border-collapse: collapse;
+                color: rgba(228, 245, 255, 0.92);
+                font-size: 0.95rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table caption {
+                caption-side: top;
+                padding: 1rem 1rem 0.82rem;
+                border-bottom: 1px solid rgba(127, 214, 244, 0.28);
+                background:
+                    linear-gradient(180deg, rgba(15, 35, 50, 0.72), rgba(5, 12, 20, 0.34)),
+                    linear-gradient(90deg, rgba(127, 214, 244, 0.18), rgba(127, 214, 244, 0.035));
+                color: #dff7ff;
+                font-weight: 800;
+                letter-spacing: 0.09em;
+                text-align: left;
+                text-shadow: 0 0 12px rgba(127, 214, 244, 0.16);
+                text-transform: uppercase;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table th,
+            .cloud-chamber-modal .cloud-chamber-data-table td {
+                padding: 0.78rem 1rem;
+                border-top: 1px solid rgba(127, 214, 244, 0.12);
+                vertical-align: top;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table th {
+                border-top: 0;
+                border-bottom: 1px solid rgba(127, 214, 244, 0.24);
+                color: #9cefff;
+                font-size: 0.78rem;
+                font-weight: 800;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                background:
+                    linear-gradient(180deg, rgba(22, 47, 64, 0.8), rgba(9, 22, 34, 0.52)),
+                    radial-gradient(circle at 12% 12%, rgba(168, 239, 255, 0.1), transparent 34%);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table td {
+                font-size: 1rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table tbody tr:nth-child(even) {
+                background: rgba(143, 198, 240, 0.025);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-data-table td:last-child {
+                color: #dff2ff;
+                font-weight: 700;
             }
 
             .cloud-chamber-modal .pending-deliverable-status {
@@ -464,11 +710,29 @@
 
             .cloud-chamber-modal .cloud-chamber-cycle-card,
             .cloud-chamber-modal .cloud-chamber-deliverable-card {
+                --panel-cut: var(--cloud-panel-cut);
+                position: relative;
+                overflow: hidden;
                 padding: 1.45rem;
                 border: 1px solid rgba(143, 198, 240, 0.16);
-                border-radius: 1.25rem;
-                background: linear-gradient(145deg, rgba(12, 20, 28, 0.92), rgba(20, 30, 40, 0.82));
-                box-shadow: 0 1rem 2.4rem rgba(10, 12, 16, 0.2);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    linear-gradient(145deg, rgba(12, 20, 28, 0.92), rgba(20, 30, 40, 0.82)),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.06), transparent 36%);
+                box-shadow:
+                    0 1rem 2.4rem rgba(10, 12, 16, 0.2),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.18);
             }
 
             .cloud-chamber-modal .cloud-chamber-cycle-card h3 {
@@ -524,18 +788,30 @@
             }
 
             .cloud-chamber-modal .cloud-chamber-cycle-figure {
+                --panel-cut: var(--cloud-card-cut);
+                overflow: hidden;
                 margin: 1.5rem 0 0;
                 padding: 0.9rem;
-                border: 1px solid rgba(255, 238, 209, 0.08);
-                border-radius: 1.15rem;
-                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(127, 214, 244, 0.14);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background: rgba(255, 255, 255, 0.025);
             }
 
             .cloud-chamber-modal .cloud-chamber-cycle-figure img {
                 width: 100%;
                 max-height: 42rem;
                 object-fit: contain;
-                border-radius: 0.95rem;
+                border-radius: 0 !important;
                 background: rgba(10, 14, 20, 0.84);
             }
 
@@ -556,12 +832,24 @@
             }
 
             .cloud-chamber-modal .cloud-chamber-image-placeholder {
+                --panel-cut: var(--cloud-card-cut);
                 display: grid;
+                overflow: hidden;
                 min-height: 14rem;
                 margin: 1.2rem 0 0;
                 place-items: center;
                 border: 1px dashed rgba(180, 220, 255, 0.55);
-                border-radius: 1rem;
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
                 background: linear-gradient(135deg, rgba(143, 198, 240, 0.08), rgba(255, 255, 255, 0.025));
                 color: rgba(228, 245, 255, 0.78);
                 font-weight: 700;
@@ -569,7 +857,9 @@
             }
 
             .cloud-chamber-modal .cloud-chamber-deck-link {
+                --panel-cut: var(--cloud-card-cut);
                 display: grid;
+                overflow: hidden;
                 grid-template-columns: minmax(0, 1fr) auto;
                 align-items: center;
                 gap: 1.5rem;
@@ -577,7 +867,17 @@
                 margin-top: 1.2rem;
                 padding: clamp(1.1rem, 2vw, 1.55rem);
                 border: 1px solid rgba(180, 220, 255, 0.32);
-                border-radius: 1rem;
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
                 background:
                     linear-gradient(135deg, rgba(143, 198, 240, 0.14), rgba(255, 255, 255, 0.035)),
                     radial-gradient(circle at 78% 24%, rgba(84, 239, 136, 0.1), transparent 34%);
@@ -621,7 +921,8 @@
                 position: relative;
                 width: clamp(6.5rem, 18vw, 10rem);
                 aspect-ratio: 4 / 3;
-                border-radius: 0.85rem;
+                border-radius: 0;
+                clip-path: polygon(0.7rem 0, calc(100% - 0.7rem) 0, 100% 0.7rem, 100% calc(100% - 0.7rem), calc(100% - 0.7rem) 100%, 0.7rem 100%, 0 calc(100% - 0.7rem), 0 0.7rem);
                 background: linear-gradient(145deg, rgba(230, 244, 255, 0.96), rgba(143, 198, 240, 0.78));
                 box-shadow:
                     -0.75rem 0.75rem 0 rgba(143, 198, 240, 0.16),
@@ -693,7 +994,6 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder pt-3 pt-lg-0">
         <li class="nav-item"><a class="nav-link" href="resume.html">About Me</a></li>
         <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="pending.html">Pending Projects</a></li>
         <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
       </ul>
     </div>
@@ -818,7 +1118,7 @@
                                 <div class="project-orbit-shell">
                                     <button class="project-branch project-branch-1" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal1" aria-label="Open Cloud Chamber project">
                                         <span class="project-branch-title">Cloud Chamber</span>
-                                        <span class="project-branch-meta">Final Write-Up</span>
+                                        <span class="project-branch-meta">Observing the Invisible</span>
                                     </button>
                                 </div>
                             </div>
@@ -862,7 +1162,7 @@
                                 <div class="project-orbit-shell">
                                     <button class="project-branch project-branch-5" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal5" aria-label="Open Desktop Waste Basket project">
                                         <span class="project-branch-title">Desktop Waste Basket</span>
-                                        <span class="project-branch-meta">Laser Cut Form</span>
+                                        <span class="project-branch-meta">Open-Source Alteration</span>
                                     </button>
                                 </div>
                             </div>
@@ -909,13 +1209,12 @@
                                             <div class="tab-pane fade show active cloud-chamber-tab-pane" id="cloud-final-pane" role="tabpanel" aria-labelledby="cloud-final-tab" tabindex="0">
                                                 <div class="pending-deliverable cloud-chamber-final-writeup">
                                                     <section class="pending-deliverable-intro">
-                                                        <span class="pending-deliverable-label">Final Write-Up</span>
                                                         <h3 class="mt-3">Electron Cloud Chamber</h3>
                                                         <p>For our final project, my team and I created an electron cloud chamber, which is essentially a visual teaching tool for particle physics and visualizing an abstract concept. The whole reason we chose this project is because science classes can very quickly move into topics that are too small or too fast to actually see. That makes the topic feel distant, even when the physics is happening around us constantly. Our goal was to make a device that lets students see particle paths with their own eyes, instead of only hearing that ionizing radiation exists.</p>
                                                         <p>From the start, we tried to judge the chamber by a few concrete goals: it needed to be compact and portable, produce consistent results, have educational value, stay low-cost enough to replicate, and require minimal user involvement. Those goals mattered because this was not supposed to be a cloud chamber that only worked for us after a lot of tinkering. Ideally, it should be something an educator could bring out, turn on, explain, and use to get students interested in the natural sciences.</p>
-                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4">
-                                                            <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
-                                                                <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
+                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-photo-crop mt-4">
+                                                            <a href="assets/img/portfolio/25520.jpg" target="_blank">
+                                                                <img class="img-fluid rounded" src="assets/img/portfolio/25520.jpg" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
                                                             </a>
                                                         </figure>
                                                         <div class="cloud-chamber-summary-grid">
@@ -939,7 +1238,63 @@
                                                             <h3>Physical Prototype</h3>
                                                         </div>
                                                         <p>Our final physical prototype came out of four iteration cycles. The first build used a single TEC1-12709 Peltier module between an aluminum cold plate and a heatsink with a CPU fan. This version helped prove the basic stack could function, but it was not yet creating a favorable environment for viewing tracks. The temperature differential was too small for strong supersaturation, which we attributed to a poor seal and not enough thermal paste.</p>
-                                                        <p>In cycle 2, we combined several printed brace parts into one piece and started testing the cooling more seriously. The thermal paste testing was one of the most helpful measurable results from the project. With no paste the plate was around 3 C, minimal paste only brought it to 2 C, moderate paste brought it to about -15 C, lots of paste brought it to about -25 C, and lots of paste with the glass chamber brought the system to about -40 C. That made it very clear that the issue was not just the Peltier itself, but the contact between the Peltier, plate, and chamber environment.</p>
+                                                        <p>Cycle 2 combined several printed brace parts into one piece and shifted the testing from basic assembly toward measurable cooling performance. This is where thermal paste and current draw became useful variables, because both showed that the chamber depended on strong contact between the Peltier, plate, and chamber environment.</p>
+                                                        <div class="cloud-chamber-table-group">
+                                                            <div class="cloud-chamber-table-wrap">
+                                                                <table class="cloud-chamber-data-table">
+                                                                    <caption>Thermal Paste Test Results</caption>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Amount of Thermal Paste</th>
+                                                                            <th scope="col">Plate temp.</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>No paste</td>
+                                                                            <td>About 3 C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Minimal - pea size</td>
+                                                                            <td>About 2 C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Moderate - dime size</td>
+                                                                            <td>About -15 C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Lots - heatsink covered</td>
+                                                                            <td>About -25 C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Lots w/ chamber - Peltier + CPU fully covered</td>
+                                                                            <td>About -40 C</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="cloud-chamber-table-wrap">
+                                                                <table class="cloud-chamber-data-table">
+                                                                    <caption>Peltier Current Test Results</caption>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Current Supplied to Peltier</th>
+                                                                            <th scope="col">Reached Peltier Temperature</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>4 amps</td>
+                                                                            <td>About -15 C</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>5 amps</td>
+                                                                            <td>&lt; -30 C</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                         <p>Cycle 3 focused on making the design easier to fabricate and less awkward to assemble. We moved from several 3D printed pieces to two main printed pieces, increased the infill for better temperature resistance, made room for the Peltier wiring, and adjusted the screw positions so the brace would not break under tension. We also moved from an acrylic enclosure idea to a glass one, using an upside-down Yankee Candle jar so we could avoid another custom fabrication step.</p>
                                                         <p>By cycle 4, the final version finally met all of our goals. We switched the support material from PLA to PETG, added attachment points for the chamber and enclosure, made room for extra thermal paste, printed a stand for the isopropanol rag, and added finger clearance so the brace could be taken apart without tools. Overall, this was the point where the chamber started to feel like a real device instead of a collection of tests.</p>
                                                         <div class="cloud-chamber-image-grid">
@@ -993,8 +1348,6 @@
                                                         <p>The Instructables page walks through the completed Peltier-cooled electron cloud chamber and keeps the project focused on accessible, reproducible particle physics instead of hiding the build behind hard-to-find resources.</p>
                                                         <h4>Instructables Link</h4>
                                                         <p><a href="https://www.instructables.com/Peltier-Cooled-Electron-Cloud-Chamber/" target="_blank" rel="noopener noreferrer">https://www.instructables.com/Peltier-Cooled-Electron-Cloud-Chamber/</a></p>
-                                                        <h4>PDF Download</h4>
-                                                        <p><a href="assets/instructables-echambeer.pdf" download>instructables-echambeer.pdf</a></p>
                                                     </section>
 
                                                     <section class="pending-deliverable-section cloud-chamber-deliverable-card">
@@ -1010,12 +1363,12 @@
 
                                                     <section class="pending-deliverable-section cloud-chamber-deliverable-card">
                                                         <div class="cloud-chamber-deliverable-heading">
-                                                            <h3>Individual Write-Up Reflection</h3>
+                                                            <h3>Final Reflection</h3>
                                                         </div>
                                                         <p>Overall, my biggest takeaway from this project is that making something work once is very different from making something useful for another person. At first, it was easy to focus only on whether the Peltier could get cold enough, or whether the chamber could show particle paths at all. However, the more we iterated, the more I realized the actual design problem was making the chamber reliable, explainable, and approachable for someone who did not build it.</p>
-                                                        <p>I also think the project was helpful because every issue forced us to connect the physics and the fabrication. Poor sealing, too little thermal paste, awkward printed geometry, and an inconvenient enclosure were not separate problems. They all affected whether the chamber could reach the right environment for supersaturation and whether a user could actually operate it. The switch to PETG, the glass enclosure, the added clearance, and the extra thermal paste were all small changes individually, but together they made the chamber much closer to the educational tool we originally wanted.</p>
-                                                        <p>Moving forward, there are still clear improvements I would make. I would want a more precise housing that is portable but still large enough to keep the temperature stable, a dedicated power supply so the device does not require constant rewiring, a cleaner illustrated build guide, and eventually a sub-$35 version of the bill of materials. The final prototype succeeded, but these changes would make the project more realistic for smaller departments, personal builders, and teachers who simply want to introduce students to particle physics in a more concrete way.</p>
-                                                        <p class="mb-0">Overall, this project showed me that the strongest design choices were the ones that made the science easier to see. The chamber is interesting because it makes particle tracks visible, but it becomes valuable when that visibility helps someone ask a better question than they had before using it.</p>
+                                                        <p>I also think the project was helpful because every issue forced us to connect the user, the physics, and the fabrication. Poor sealing, too little thermal paste, awkward printed geometry, and an inconvenient enclosure were not separate problems. They all affected whether the chamber could reach the right environment for supersaturation and whether a user could actually operate it and learn from it. The switch to PETG, the glass enclosure, and the extra thermal paste were all small changes individually, but together they made the chamber much closer to the educational tool we originally wanted.</p>
+                                                        <p>Moving forward, there are still clear improvements I would make. I would want a more precise housing that is portable but still large enough to keep the temperature stable, a dedicated power supply so the device does not require constant rewiring, a cleaner illustrated build guide, and eventually a sub-$100 version of the bill of materials. The final prototype succeeded, but these changes would make the project more realistic for smaller departments, personal builders, and teachers who simply want to introduce students to abstract ideas in a more concrete way. Furthering the skills we have to explore the "invisible."</p>
+                                                        <p class="mb-0">Overall, this project showed me that the strongest design choices were the ones that made the science easier to see and those with the user in focus. The chamber is interesting because it makes particle tracks visible, but it becomes valuable when that visibility helps someone ask a better question than they had before using it.</p>
                                                     </section>
                                                 </div>
                                             </div>
@@ -1121,9 +1474,9 @@
                                                     <li>From there, the demonstration can lead into broader real-world or scientific visualizations and show that the classroom experience connects outward to larger contexts.</li>
                                                     <li>The instructor also has an opportunity to address safety and misconceptions surrounding radiation, electricity, and the chamber's hot and cold components.</li>
                                                     <li>The experience ultimately opens the door to deeper learning, including equations, interpretation, and broader particle physics ideas that grow out of what students have already observed.</li>
-                                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                        <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
-                                                            <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
+                                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-photo-crop mt-4 mb-0">
+                                                        <a href="assets/img/portfolio/25520.jpg" target="_blank">
+                                                            <img class="img-fluid rounded" src="assets/img/portfolio/25520.jpg" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
                                                         </a>
                                                     </figure>
                                                     <p class="fullscreen-hint"><b>Figure 1.3</b> (Click the image to view fullscreen)</p>
@@ -1169,7 +1522,6 @@
                                             <div class="tab-pane fade cloud-chamber-tab-pane" id="cloud-prototyping-pane" role="tabpanel" aria-labelledby="cloud-prototyping-tab" tabindex="0">
                                                 <div class="pending-deliverable cloud-chamber-prototyping">
                                                     <section class="pending-deliverable-intro">
-                                                        <span class="pending-deliverable-label">Stage 2 Submission</span>
                                                         <h3 class="mt-3">Prototyping and Testing</h3>
                                                         <p>This section tracks the four prototype cycles we used to refine the cloud chamber's hardware housing.</p>
                                                     </section>
