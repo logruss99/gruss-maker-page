@@ -831,15 +831,18 @@
                 margin: 0;
             }
 
-            .cloud-chamber-modal .cloud-chamber-image-placeholder {
+            .cloud-chamber-modal .cloud-chamber-video-scroll {
                 --panel-cut: var(--cloud-card-cut);
-                display: grid;
+                display: flex;
+                gap: 1rem;
                 overflow: hidden;
-                min-height: 14rem;
                 margin: 1.2rem 0 0;
-                place-items: center;
-                border: 1px dashed rgba(180, 220, 255, 0.55);
-                border-radius: 0;
+                padding: 0.95rem;
+                overflow-x: auto;
+                overscroll-behavior-inline: contain;
+                scroll-snap-type: x mandatory;
+                scrollbar-color: rgba(180, 220, 255, 0.44) rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(180, 220, 255, 0.32);
                 clip-path: polygon(
                     var(--panel-cut) 0,
                     calc(100% - var(--panel-cut)) 0,
@@ -850,10 +853,56 @@
                     0 calc(100% - var(--panel-cut)),
                     0 var(--panel-cut)
                 );
-                background: linear-gradient(135deg, rgba(143, 198, 240, 0.08), rgba(255, 255, 255, 0.025));
-                color: rgba(228, 245, 255, 0.78);
+                background:
+                    linear-gradient(135deg, rgba(143, 198, 240, 0.08), rgba(255, 255, 255, 0.025)),
+                    radial-gradient(circle at 84% 10%, rgba(84, 239, 136, 0.08), transparent 32%);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-scroll::-webkit-scrollbar {
+                height: 0.72rem;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-scroll::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.06);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-scroll::-webkit-scrollbar-thumb {
+                border: 2px solid rgba(10, 18, 29, 0.95);
+                border-radius: 999px;
+                background: rgba(180, 220, 255, 0.5);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-card {
+                flex: 0 0 min(84%, 42rem);
+                scroll-snap-align: start;
+                display: grid;
+                gap: 0.75rem;
+                margin: 0;
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-card:first-child {
+                flex-basis: min(92%, 48rem);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-card video {
+                display: block;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                object-fit: contain;
+                border: 1px solid rgba(180, 220, 255, 0.18);
+                background: #07101a;
+                box-shadow:
+                    0 1rem 2rem rgba(0, 0, 0, 0.22),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05);
+            }
+
+            .cloud-chamber-modal .cloud-chamber-video-caption {
+                margin: 0;
+                color: rgba(228, 245, 255, 0.82);
+                font-size: 0.9rem;
                 font-weight: 700;
-                text-align: center;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
             }
 
             .cloud-chamber-modal .cloud-chamber-deck-link {
@@ -968,6 +1017,15 @@
 
                 .cloud-chamber-modal .cloud-chamber-deck-link {
                     grid-template-columns: 1fr;
+                }
+
+                .cloud-chamber-modal .cloud-chamber-video-scroll {
+                    padding: 0.75rem;
+                }
+
+                .cloud-chamber-modal .cloud-chamber-video-card,
+                .cloud-chamber-modal .cloud-chamber-video-card:first-child {
+                    flex-basis: min(88vw, 100%);
                 }
 
                 #cloudChamberTabs.project-section-tabs {
@@ -1311,9 +1369,43 @@
                                                         </div>
                                                         <p>The video presentation should follow the same order as the live demonstration. First, the Peltier module cools the metal plate to about -25 to -30 C. Isopropyl alcohol then evaporates from warm felt near the top of the chamber and diffuses downward. When that vapor reaches the cold plate it becomes supersaturated, meaning the air holds more alcohol vapor than it normally can at that temperature. Charged particles then pass through the thin layer, knock electrons off nearby molecules, and leave an ionized path. Finally, alcohol vapor condenses around those ions and a bright light makes the droplet trail visible.</p>
                                                         <p>The slides also included a track identification guide. Alpha particles tend to be thick, short, and straight. Beta particles tend to be thin, curly, and more erratic. Cosmic muons can appear as long, razor-straight tracks from cosmic rays above us, while gamma rays can create dense or branching patterns depending on the interaction. For the video, this section is the most important because it turns the device from a cool-looking chamber into a teaching tool.</p>
-                                                        <figure class="cloud-chamber-image-placeholder" role="img" aria-label="Placeholder for video presentation thumbnail">
-                                                            <span>Video thumbnail placeholder</span>
-                                                        </figure>
+                                                        <div class="cloud-chamber-video-scroll" aria-label="Scrollable video presentations">
+                                                            <figure class="cloud-chamber-video-card">
+                                                                <video controls preload="metadata">
+                                                                    <source src="assets/video/gruss-slides.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                <figcaption class="cloud-chamber-video-caption">Gruss Slides</figcaption>
+                                                            </figure>
+                                                            <figure class="cloud-chamber-video-card">
+                                                                <video controls preload="metadata">
+                                                                    <source src="assets/video/ben-slide3-slide9.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                <figcaption class="cloud-chamber-video-caption">Ben Slide 3 to Slide 9</figcaption>
+                                                            </figure>
+                                                            <figure class="cloud-chamber-video-card">
+                                                                <video controls preload="metadata">
+                                                                    <source src="assets/video/roys.mp4" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                <figcaption class="cloud-chamber-video-caption">Roy's</figcaption>
+                                                            </figure>
+                                                            <figure class="cloud-chamber-video-card">
+                                                                <video controls preload="metadata">
+                                                                    <source src="assets/video/screen-recording-2026-05-07-5-50-42-pm.mov" type="video/quicktime">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                <figcaption class="cloud-chamber-video-caption">Josh Slides</figcaption>
+                                                            </figure>
+                                                            <figure class="cloud-chamber-video-card">
+                                                                <video controls preload="metadata">
+                                                                    <source src="assets/video/screen-recording-2026-05-07-5-56-55-pm.mov" type="video/quicktime">
+                                                                    Your browser does not support the video tag.
+                                                                </video>
+                                                                <figcaption class="cloud-chamber-video-caption">Josh Slides</figcaption>
+                                                            </figure>
+                                                        </div>
                                                     </section>
 
                                                     <section class="pending-deliverable-section cloud-chamber-deliverable-card">
