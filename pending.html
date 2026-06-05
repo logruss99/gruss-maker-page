@@ -30,9 +30,19 @@
 
             .pending-deliverable-section,
             .pending-deliverable-intro {
+                --sect-cut: 0.75rem;
                 padding: 1.4rem 1.5rem;
                 border: 1px solid rgba(255, 238, 209, 0.08);
-                border-radius: 1.25rem;
+                clip-path: polygon(
+                    var(--sect-cut) 0,
+                    calc(100% - var(--sect-cut)) 0,
+                    100% var(--sect-cut),
+                    100% calc(100% - var(--sect-cut)),
+                    calc(100% - var(--sect-cut)) 100%,
+                    var(--sect-cut) 100%,
+                    0 calc(100% - var(--sect-cut)),
+                    0 var(--sect-cut)
+                );
                 background: rgba(255, 255, 255, 0.03);
                 box-shadow: inset 0 1px 0 rgba(255, 247, 230, 0.04);
             }
@@ -71,10 +81,20 @@
             }
 
             .pending-deliverable-note {
+                --note-cut: 0.55rem;
                 margin-top: 1rem;
                 padding: 0.95rem 1rem;
-                border-left: 3px solid var(--pending-accent-line);
-                border-radius: 0.85rem;
+                border: 1px solid var(--pending-accent-line);
+                clip-path: polygon(
+                    var(--note-cut) 0,
+                    calc(100% - var(--note-cut)) 0,
+                    100% var(--note-cut),
+                    100% calc(100% - var(--note-cut)),
+                    calc(100% - var(--note-cut)) 100%,
+                    var(--note-cut) 100%,
+                    0 calc(100% - var(--note-cut)),
+                    0 var(--note-cut)
+                );
                 background: rgba(255, 255, 255, 0.025);
             }
 
@@ -82,7 +102,7 @@
                 display: inline-flex;
                 align-items: center;
                 padding: 0.35rem 0.7rem;
-                border-radius: 999px;
+                clip-path: polygon(0.32rem 0, calc(100% - 0.32rem) 0, 100% 0.32rem, 100% calc(100% - 0.32rem), calc(100% - 0.32rem) 100%, 0.32rem 100%, 0 calc(100% - 0.32rem), 0 0.32rem);
                 background: var(--pending-accent-soft);
                 color: var(--pending-accent-text);
                 font-size: 0.78rem;
@@ -120,14 +140,183 @@
             }
 
             .pending-deliverable-card {
+                --card-cut: 0.6rem;
                 padding: 1rem;
                 border: 1px solid rgba(255, 238, 209, 0.08);
-                border-radius: 1rem;
+                clip-path: polygon(
+                    var(--card-cut) 0,
+                    calc(100% - var(--card-cut)) 0,
+                    100% var(--card-cut),
+                    100% calc(100% - var(--card-cut)),
+                    calc(100% - var(--card-cut)) 100%,
+                    var(--card-cut) 100%,
+                    0 calc(100% - var(--card-cut)),
+                    0 var(--card-cut)
+                );
                 background: rgba(255, 255, 255, 0.025);
             }
 
             .pending-deliverable-card h4 {
                 margin-top: 0;
+            }
+
+            .pending-module-shell {
+                --shell-cut: clamp(0.9rem, 1.4vw, 1.35rem);
+                position: relative;
+                isolation: isolate;
+                width: min(42rem, 100%);
+                margin: 0 auto;
+            }
+
+            .pending-module-shield {
+                --panel-cut: clamp(0.9rem, 1.4vw, 1.35rem);
+                position: relative;
+                width: 100%;
+                padding: clamp(2rem, 4vw, 3.1rem);
+                display: grid;
+                grid-template-rows: auto auto auto;
+                justify-items: center;
+                align-content: center;
+                gap: 0.65rem;
+                text-align: center;
+                color: #effcff;
+                border: 1px solid rgba(127, 214, 244, 0.14);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--panel-cut) 0,
+                    calc(100% - var(--panel-cut)) 0,
+                    100% var(--panel-cut),
+                    100% calc(100% - var(--panel-cut)),
+                    calc(100% - var(--panel-cut)) 100%,
+                    var(--panel-cut) 100%,
+                    0 calc(100% - var(--panel-cut)),
+                    0 var(--panel-cut)
+                );
+                background:
+                    radial-gradient(circle at 50% 0%, rgba(143, 198, 240, 0.1) 0%, rgba(143, 198, 240, 0) 38%),
+                    linear-gradient(180deg, rgba(11, 20, 30, 0.72) 0%, rgba(6, 12, 19, 0.82) 100%);
+                box-shadow:
+                    0 28px 62px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.22);
+                overflow: hidden;
+                cursor: pointer;
+                isolation: isolate;
+                transition:
+                    filter 0.28s ease,
+                    border-color 0.28s ease,
+                    box-shadow 0.28s ease;
+            }
+
+            .pending-module-shield::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background:
+                    linear-gradient(90deg, rgba(143, 198, 240, 0.16), rgba(143, 198, 240, 0) 24% 76%, rgba(143, 198, 240, 0.16)),
+                    linear-gradient(180deg, rgba(255, 214, 120, 0.04), rgba(255, 214, 120, 0));
+                opacity: 0.55;
+                pointer-events: none;
+            }
+
+            .pending-module-shield::after {
+                content: "";
+                position: absolute;
+                inset: clamp(0.5rem, 1vw, 0.8rem);
+                z-index: 0;
+                clip-path: polygon(
+                    calc(var(--panel-cut) * 0.72) 0,
+                    calc(100% - calc(var(--panel-cut) * 0.72)) 0,
+                    100% calc(var(--panel-cut) * 0.72),
+                    100% calc(100% - calc(var(--panel-cut) * 0.72)),
+                    calc(100% - calc(var(--panel-cut) * 0.72)) 100%,
+                    calc(var(--panel-cut) * 0.72) 100%,
+                    0 calc(100% - calc(var(--panel-cut) * 0.72)),
+                    0 calc(var(--panel-cut) * 0.72)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.09);
+                opacity: 0.64;
+                pointer-events: none;
+            }
+
+            .pending-module-shield > * {
+                position: relative;
+                z-index: 1;
+            }
+
+            .pending-module-shield:hover,
+            .pending-module-shield:focus-visible {
+                outline: none;
+                border-color: rgba(127, 214, 244, 0.32);
+                filter:
+                    brightness(1.06)
+                    drop-shadow(0 0 8px rgba(100, 210, 255, 0.5))
+                    drop-shadow(0 0 20px rgba(80, 180, 240, 0.3));
+                box-shadow:
+                    0 32px 68px rgba(0, 0, 0, 0.36),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.1),
+                    inset 0 0 0 1px rgba(60, 120, 170, 0.3);
+            }
+
+            .pending-module-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.22rem 0.6rem;
+                clip-path: polygon(0.28rem 0, calc(100% - 0.28rem) 0, 100% 0.28rem, 100% calc(100% - 0.28rem), calc(100% - 0.28rem) 100%, 0.28rem 100%, 0 calc(100% - 0.28rem), 0 0.28rem);
+                background: var(--pending-accent-soft);
+                border: 1px solid rgba(143, 198, 240, 0.22);
+                color: var(--pending-accent-text);
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+
+            .pending-module-title {
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+                font-weight: 700;
+                line-height: 1.1;
+                letter-spacing: 0.01em;
+                color: #f4fbff;
+                margin: 0;
+                text-shadow:
+                    0 0 10px rgba(100, 214, 255, 0.14),
+                    0 6px 18px rgba(6, 14, 22, 0.4);
+            }
+
+            .pending-module-meta {
+                font-size: 0.92rem;
+                line-height: 1.6;
+                letter-spacing: 0.01em;
+                color: rgba(225, 238, 248, 0.82);
+                margin: 0;
+            }
+
+            @media (min-width: 768px) {
+                .pending-modal .modal-dialog {
+                    --bs-modal-width: min(780px, 94vw);
+                }
+            }
+
+            .pending-modal .modal-content {
+                background: linear-gradient(145deg, #0c1520, #152030 52%, #090f17);
+                color: rgba(220, 238, 250, 0.92);
+                border: 1px solid rgba(127, 214, 244, 0.12);
+            }
+
+            .pending-modal .portfolio-modal-title {
+                color: #e8f8ff !important;
+                text-transform: none !important;
+            }
+
+            .pending-modal .divider-custom .divider-custom-line {
+                background-color: rgba(127, 214, 244, 0.3);
+            }
+
+            .pending-modal .divider-custom-icon {
+                color: rgba(127, 214, 244, 0.7);
             }
 
             .pending-deliverable-status {
@@ -159,6 +348,45 @@
                 box-shadow: 0 0.75rem 1.5rem rgba(95, 149, 192, 0.28);
             }
 
+            #motorjetTabs.project-section-tabs {
+                margin-top: 1.75rem;
+                border-color: rgba(143, 198, 240, 0.22);
+                background: linear-gradient(145deg, rgba(16, 24, 33, 0.95), rgba(23, 37, 49, 0.88));
+                box-shadow: 0 1rem 2.2rem rgba(10, 12, 16, 0.26);
+            }
+
+            #motorjetTabs .project-section-tab {
+                background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(143, 198, 240, 0.12));
+                color: #e4f5ff;
+            }
+
+            #motorjetTabs .project-section-tab:hover,
+            #motorjetTabs .project-section-tab:focus,
+            #motorjetTabs .project-section-tab.active {
+                background: linear-gradient(135deg, #86bfe7, #5f95c0);
+                color: #0d1823;
+                box-shadow: 0 0.75rem 1.5rem rgba(95, 149, 192, 0.28);
+            }
+
+            .inquiry-eq {
+                display: block;
+                text-align: center;
+                font-style: italic;
+                font-size: 1.05rem;
+                color: rgba(220, 240, 255, 0.92);
+                margin: 0.65rem 0;
+                padding: 0.25rem 0;
+                letter-spacing: 0.01em;
+            }
+
+            math[display="block"] {
+                display: block;
+                margin: 0.8rem auto;
+                color: rgba(220, 240, 255, 0.92);
+                font-size: 1.08rem;
+                overflow-x: auto;
+            }
+
             .cloud-chamber-summary-grid,
             .cloud-chamber-image-grid {
                 display: grid;
@@ -171,9 +399,19 @@
             }
 
             .cloud-chamber-summary-card {
+                --card-cut: 0.6rem;
                 padding: 1rem;
                 border: 1px solid rgba(143, 198, 240, 0.18);
-                border-radius: 1rem;
+                clip-path: polygon(
+                    var(--card-cut) 0,
+                    calc(100% - var(--card-cut)) 0,
+                    100% var(--card-cut),
+                    100% calc(100% - var(--card-cut)),
+                    calc(100% - var(--card-cut)) 100%,
+                    var(--card-cut) 100%,
+                    0 calc(100% - var(--card-cut)),
+                    0 var(--card-cut)
+                );
                 background: linear-gradient(145deg, rgba(12, 20, 28, 0.88), rgba(20, 30, 40, 0.78));
                 box-shadow: inset 0 1px 0 rgba(228, 248, 255, 0.04);
             }
@@ -208,7 +446,7 @@
                 margin: 0;
                 padding: 0.45rem 0.85rem;
                 border: 1px solid rgba(143, 198, 240, 0.18);
-                border-radius: 999px;
+                clip-path: polygon(0.4rem 0, calc(100% - 0.4rem) 0, 100% 0.4rem, 100% calc(100% - 0.4rem), calc(100% - 0.4rem) 100%, 0.4rem 100%, 0 calc(100% - 0.4rem), 0 0.4rem);
                 background: rgba(143, 198, 240, 0.08);
                 color: var(--pending-accent-text);
                 font-size: 0.88rem;
@@ -226,9 +464,19 @@
             }
 
             .cloud-chamber-image-grid .pending-deliverable-figure {
+                --fig-cut: 0.6rem;
                 padding: 0.85rem;
                 border: 1px solid rgba(255, 238, 209, 0.08);
-                border-radius: 1rem;
+                clip-path: polygon(
+                    var(--fig-cut) 0,
+                    calc(100% - var(--fig-cut)) 0,
+                    100% var(--fig-cut),
+                    100% calc(100% - var(--fig-cut)),
+                    calc(100% - var(--fig-cut)) 100%,
+                    var(--fig-cut) 100%,
+                    0 calc(100% - var(--fig-cut)),
+                    0 var(--fig-cut)
+                );
                 background: rgba(255, 255, 255, 0.025);
             }
 
@@ -239,7 +487,6 @@
             .cloud-chamber-image-grid .pending-deliverable-figure img {
                 max-height: 24rem;
                 object-fit: contain;
-                border-radius: 0.85rem;
                 background: rgba(10, 14, 20, 0.82);
             }
 
@@ -265,9 +512,19 @@
             }
 
             .cloud-chamber-cycle-card {
+                --cyc-cut: 0.75rem;
                 padding: 1.45rem;
                 border: 1px solid rgba(143, 198, 240, 0.16);
-                border-radius: 1.25rem;
+                clip-path: polygon(
+                    var(--cyc-cut) 0,
+                    calc(100% - var(--cyc-cut)) 0,
+                    100% var(--cyc-cut),
+                    100% calc(100% - var(--cyc-cut)),
+                    calc(100% - var(--cyc-cut)) 100%,
+                    var(--cyc-cut) 100%,
+                    0 calc(100% - var(--cyc-cut)),
+                    0 var(--cyc-cut)
+                );
                 background: linear-gradient(145deg, rgba(12, 20, 28, 0.92), rgba(20, 30, 40, 0.82));
                 box-shadow: 0 1rem 2.4rem rgba(10, 12, 16, 0.2);
             }
@@ -313,7 +570,7 @@
                 height: 1.45rem;
                 margin-top: 0.2rem;
                 border: 1px solid rgba(202, 220, 235, 0.28);
-                border-radius: 0.38rem;
+                clip-path: polygon(0.28rem 0, calc(100% - 0.28rem) 0, 100% 0.28rem, 100% calc(100% - 0.28rem), calc(100% - 0.28rem) 100%, 0.28rem 100%, 0 calc(100% - 0.28rem), 0 0.28rem);
                 background: rgba(255, 255, 255, 0.03);
                 color: transparent;
                 display: inline-flex;
@@ -333,10 +590,20 @@
             }
 
             .cloud-chamber-cycle-figure {
+                --fig-cut: 0.65rem;
                 margin: 1.5rem 0 0;
                 padding: 0.9rem;
                 border: 1px solid rgba(255, 238, 209, 0.08);
-                border-radius: 1.15rem;
+                clip-path: polygon(
+                    var(--fig-cut) 0,
+                    calc(100% - var(--fig-cut)) 0,
+                    100% var(--fig-cut),
+                    100% calc(100% - var(--fig-cut)),
+                    calc(100% - var(--fig-cut)) 100%,
+                    var(--fig-cut) 100%,
+                    0 calc(100% - var(--fig-cut)),
+                    0 var(--fig-cut)
+                );
                 background: rgba(255, 255, 255, 0.03);
             }
 
@@ -348,7 +615,6 @@
                 width: 100%;
                 max-height: 42rem;
                 object-fit: contain;
-                border-radius: 0.95rem;
                 background: rgba(10, 14, 20, 0.84);
             }
 
@@ -424,16 +690,17 @@
             .pending-hero-copy {
                 position: relative;
                 z-index: 1;
-                max-width: 34rem;
+                max-width: min(50rem, 100%);
+                margin-inline: auto;
             }
 
             .pending-hero-copy::after {
                 content: "";
                 display: block;
-                width: 6rem;
+                width: min(12rem, 42%);
                 height: 1px;
-                margin-top: 1.15rem;
-                background: linear-gradient(90deg, rgba(143, 198, 240, 0.9) 0%, rgba(143, 198, 240, 0) 100%);
+                margin: 1.15rem auto 0;
+                background: linear-gradient(90deg, rgba(143, 198, 240, 0) 0%, rgba(143, 198, 240, 0.85) 50%, rgba(143, 198, 240, 0) 100%);
             }
 
             .pending-hero .badge {
@@ -469,12 +736,113 @@
             }
 
             .pending-hero-title {
-                margin-bottom: 0.75rem;
+                margin: 0 auto 0.85rem;
+                width: min(100%, 46rem);
                 font-size: clamp(2.35rem, 5vw, 3.8rem);
-                letter-spacing: -0.05em;
             }
 
-            .pending-hero-title .text-gradient,
+            .pending-title-shell {
+                position: relative;
+                display: grid;
+                gap: clamp(0.36rem, 0.9vw, 0.62rem);
+                width: 100%;
+                max-width: 100%;
+                padding: clamp(0.18rem, 0.55vw, 0.42rem) 0;
+                container-type: inline-size;
+                isolation: isolate;
+            }
+
+            .pending-title-track {
+                --pending-title-gap: clamp(0.14rem, 0.92cqw, 0.58rem);
+                display: inline-flex;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                gap: var(--pending-title-gap);
+                flex-wrap: nowrap;
+            }
+
+            .pending-title-glyph {
+                --pending-title-cut: clamp(0.5rem, 1.25cqw, 1rem);
+                position: relative;
+                display: inline-grid;
+                place-items: center;
+                inline-size: min(4.35rem, calc((100% - (7 * var(--pending-title-gap))) / 8));
+                min-inline-size: 0;
+                aspect-ratio: 1 / 1;
+                padding: clamp(0.16rem, 0.58cqw, 0.42rem);
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(0.82rem, 5.2cqw, 2.7rem);
+                font-weight: 800;
+                line-height: 1;
+                letter-spacing: 0;
+                text-transform: uppercase;
+                color: rgba(224, 182, 92, 0.92);
+                border: 1px solid rgba(127, 214, 244, 0.13);
+                border-radius: 0;
+                clip-path: polygon(
+                    var(--pending-title-cut) 0,
+                    calc(100% - var(--pending-title-cut)) 0,
+                    100% var(--pending-title-cut),
+                    100% calc(100% - var(--pending-title-cut)),
+                    calc(100% - var(--pending-title-cut)) 100%,
+                    var(--pending-title-cut) 100%,
+                    0 calc(100% - var(--pending-title-cut)),
+                    0 var(--pending-title-cut)
+                );
+                background:
+                    linear-gradient(180deg, rgba(9, 18, 29, 0.2) 0%, rgba(8, 15, 24, 0.08) 34%, rgba(4, 10, 16, 0.14) 100%),
+                    radial-gradient(circle at 18% 16%, rgba(168, 239, 255, 0.08) 0%, rgba(168, 239, 255, 0.018) 16%, rgba(168, 239, 255, 0) 34%),
+                    linear-gradient(135deg, rgba(138, 207, 230, 0.025) 0%, rgba(138, 207, 230, 0) 34%);
+                box-shadow:
+                    0 0 0 1px rgba(255, 214, 120, 0.04),
+                    0 20px 34px rgba(0, 0, 0, 0.14),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.06),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.2);
+                isolation: isolate;
+                text-shadow:
+                    0 0 6px rgba(255, 214, 120, 0.08),
+                    0 0 12px rgba(255, 214, 120, 0.04),
+                    0 1px 0 rgba(255, 247, 229, 0.08);
+                animation: homeTitleGoldFlicker 9.6s steps(1, end) infinite;
+            }
+
+            .pending-title-glyph::before,
+            .pending-title-glyph::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .pending-title-glyph::before {
+                inset: 0;
+                z-index: 0;
+                clip-path: inherit;
+                background: radial-gradient(circle at 24% 22%, rgba(122, 241, 255, 0.06) 0%, rgba(122, 241, 255, 0.016) 20%, rgba(122, 241, 255, 0) 42%);
+                opacity: 0.24;
+            }
+
+            .pending-title-glyph::after {
+                inset: clamp(0.18rem, 0.42cqw, 0.42rem);
+                z-index: 0;
+                clip-path: polygon(
+                    calc(var(--pending-title-cut) * 0.78) 0,
+                    calc(100% - calc(var(--pending-title-cut) * 0.78)) 0,
+                    100% calc(var(--pending-title-cut) * 0.78),
+                    100% calc(100% - calc(var(--pending-title-cut) * 0.78)),
+                    calc(100% - calc(var(--pending-title-cut) * 0.78)) 100%,
+                    calc(var(--pending-title-cut) * 0.78) 100%,
+                    0 calc(100% - calc(var(--pending-title-cut) * 0.78)),
+                    0 calc(var(--pending-title-cut) * 0.78)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.08);
+                box-shadow:
+                    inset 0 0 0 1px rgba(20, 43, 60, 0.22),
+                    inset 0 0 10px rgba(7, 19, 29, 0.05),
+                    0 0 0 1px rgba(255, 214, 120, 0.03);
+                opacity: 0.42;
+            }
+
             .pending-showcase-card .text-gradient,
             .pending-page .text-gradient {
                 background: linear-gradient(135deg, #f4fbff 0%, #b4dcff 48%, #6ea8d8 100%);
@@ -483,8 +851,8 @@
             }
 
             .pending-hero-summary {
-                margin: 0;
-                max-width: 32rem;
+                margin: 0 auto;
+                max-width: 36rem;
                 color: rgba(225, 238, 248, 0.9);
                 font-size: 1rem;
                 line-height: 1.75;
@@ -494,9 +862,130 @@
                 display: flex;
             }
 
+            .pending-empty-section {
+                display: grid;
+                place-items: center;
+                min-height: clamp(18rem, 38vw, 26rem);
+                padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+            }
+
+            .pending-empty-col {
+                display: flex;
+                justify-content: center;
+            }
+
+            .pending-empty-panel {
+                --pending-empty-cut: clamp(0.9rem, 1.4vw, 1.35rem);
+                position: relative;
+                isolation: isolate;
+                width: min(42rem, 100%);
+                padding: clamp(2rem, 4vw, 3.1rem);
+                clip-path: polygon(
+                    var(--pending-empty-cut) 0,
+                    calc(100% - var(--pending-empty-cut)) 0,
+                    100% var(--pending-empty-cut),
+                    100% calc(100% - var(--pending-empty-cut)),
+                    calc(100% - var(--pending-empty-cut)) 100%,
+                    var(--pending-empty-cut) 100%,
+                    0 calc(100% - var(--pending-empty-cut)),
+                    0 var(--pending-empty-cut)
+                );
+                border: 1px solid rgba(127, 214, 244, 0.14);
+                background:
+                    radial-gradient(circle at 50% 0%, rgba(143, 198, 240, 0.1) 0%, rgba(143, 198, 240, 0) 38%),
+                    linear-gradient(180deg, rgba(11, 20, 30, 0.72) 0%, rgba(6, 12, 19, 0.82) 100%);
+                box-shadow:
+                    0 28px 62px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.08),
+                    inset 0 0 0 1px rgba(40, 85, 113, 0.22);
+            }
+
+            .pending-empty-panel::before,
+            .pending-empty-panel::after {
+                content: "";
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .pending-empty-panel::before {
+                inset: 0;
+                z-index: -1;
+                background:
+                    linear-gradient(90deg, rgba(143, 198, 240, 0.16), rgba(143, 198, 240, 0) 24% 76%, rgba(143, 198, 240, 0.16)),
+                    linear-gradient(180deg, rgba(255, 214, 120, 0.06), rgba(255, 214, 120, 0));
+                opacity: 0.55;
+            }
+
+            .pending-empty-panel::after {
+                inset: clamp(0.5rem, 1vw, 0.8rem);
+                clip-path: polygon(
+                    calc(var(--pending-empty-cut) * 0.72) 0,
+                    calc(100% - calc(var(--pending-empty-cut) * 0.72)) 0,
+                    100% calc(var(--pending-empty-cut) * 0.72),
+                    100% calc(100% - calc(var(--pending-empty-cut) * 0.72)),
+                    calc(100% - calc(var(--pending-empty-cut) * 0.72)) 100%,
+                    calc(var(--pending-empty-cut) * 0.72) 100%,
+                    0 calc(100% - calc(var(--pending-empty-cut) * 0.72)),
+                    0 calc(var(--pending-empty-cut) * 0.72)
+                );
+                border: 1px solid rgba(175, 189, 199, 0.09);
+                opacity: 0.64;
+            }
+
+            .pending-empty-title {
+                margin-bottom: 0.65rem;
+                color: #f4fbff;
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+                font-weight: 700;
+            }
+
+            .pending-empty-copy {
+                margin: 0 auto 1.6rem;
+                max-width: 32rem;
+                color: rgba(225, 238, 248, 0.86) !important;
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .pending-empty-action {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 10.5rem;
+                min-height: 3.25rem;
+                padding: 0.82rem 1.5rem;
+                border: 1px solid rgba(143, 198, 240, 0.24);
+                border-radius: 0;
+                clip-path: polygon(0.8rem 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% calc(100% - 0.8rem), calc(100% - 0.8rem) 100%, 0.8rem 100%, 0 calc(100% - 0.8rem), 0 0.8rem);
+                background:
+                    linear-gradient(180deg, rgba(17, 42, 61, 0.9) 0%, rgba(9, 24, 36, 0.82) 100%) !important;
+                color: #f2cf80 !important;
+                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
+                font-weight: 700;
+                letter-spacing: 0;
+                text-decoration: none;
+                box-shadow:
+                    0 18px 36px rgba(0, 0, 0, 0.24),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.08);
+                transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+            }
+
+            .pending-empty-action:hover,
+            .pending-empty-action:focus {
+                border-color: rgba(143, 198, 240, 0.42);
+                color: #ffe09a !important;
+                transform: translateY(-1px);
+                box-shadow:
+                    0 22px 42px rgba(0, 0, 0, 0.28),
+                    0 0 0 1px rgba(143, 198, 240, 0.16),
+                    inset 0 1px 0 rgba(228, 248, 255, 0.12);
+            }
+
             .pending-showcase-card {
                 aspect-ratio: 16 / 8.6 !important;
-                border-radius: 1rem !important;
+                border-radius: 0 !important;
+                clip-path: polygon(0.9rem 0, calc(100% - 0.9rem) 0, 100% 0.9rem, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0.9rem 100%, 0 calc(100% - 0.9rem), 0 0.9rem) !important;
                 border-color: rgba(143, 198, 240, 0.26) !important;
                 box-shadow:
                     0 26px 60px rgba(5, 7, 10, 0.4),
@@ -527,7 +1016,7 @@
                 align-items: center;
                 margin-bottom: 0.85rem;
                 padding: 0.35rem 0.7rem;
-                border-radius: 999px;
+                clip-path: polygon(0.32rem 0, calc(100% - 0.32rem) 0, 100% 0.32rem, 100% calc(100% - 0.32rem), calc(100% - 0.32rem) 100%, 0.32rem 100%, 0 calc(100% - 0.32rem), 0 0.32rem);
                 background: rgba(143, 198, 240, 0.16);
                 color: var(--pending-accent-text);
                 font-size: 0.78rem;
@@ -694,7 +1183,19 @@
                 }
 
                 .pending-hero-title {
-                    font-size: clamp(2rem, 10vw, 2.9rem);
+                    width: min(100%, 34rem);
+                }
+
+                .pending-title-shell {
+                    gap: 0.32rem;
+                }
+
+                .pending-title-track {
+                    --pending-title-gap: clamp(0.1rem, 0.74cqw, 0.26rem);
+                }
+
+                .pending-title-glyph {
+                    --pending-title-cut: clamp(0.3rem, 0.92cqw, 0.58rem);
                 }
 
                 .pending-showcase-card {
@@ -744,6 +1245,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder pt-3 pt-lg-0">
                             <li class="nav-item"><a class="nav-link" href="resume.html">About Me</a></li>
                             <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="pending.html">Pending Projects</a></li>
                             <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
                         </ul>
                     </div>
@@ -752,313 +1254,390 @@
             <header class="py-5 projects-hero pending-hero">
                 <div class="container px-5">
                     <div class="projects-hero-panel pending-hero-panel">
-                        <div class="pending-hero-copy text-center text-lg-start">
-                            <h1 class="pending-hero-title fw-bolder"><span class="text-gradient d-inline">Pending Projects</span></h1>
-                            <p class="pending-hero-summary">One classroom-focused build currently moving from concept development toward fabrication.</p>
+                        <div class="pending-hero-copy text-center">
+                            <h1 class="pending-hero-title fw-bolder" aria-label="Pending Projects">
+                                <span class="pending-title-shell" aria-hidden="true">
+                                    <span class="pending-title-track">
+                                        <span class="pending-title-glyph">P</span>
+                                        <span class="pending-title-glyph">E</span>
+                                        <span class="pending-title-glyph">N</span>
+                                        <span class="pending-title-glyph">D</span>
+                                        <span class="pending-title-glyph">I</span>
+                                        <span class="pending-title-glyph">N</span>
+                                        <span class="pending-title-glyph">G</span>
+                                    </span>
+                                    <span class="pending-title-track">
+                                        <span class="pending-title-glyph">P</span>
+                                        <span class="pending-title-glyph">R</span>
+                                        <span class="pending-title-glyph">O</span>
+                                        <span class="pending-title-glyph">J</span>
+                                        <span class="pending-title-glyph">E</span>
+                                        <span class="pending-title-glyph">C</span>
+                                        <span class="pending-title-glyph">T</span>
+                                        <span class="pending-title-glyph">S</span>
+                                    </span>
+                                </span>
+                            </h1>
+                            <p class="pending-hero-summary">Current in-progress work will appear here as new builds move into development.</p>
                         </div>
                     </div>
                 </div>
             </header>
-            <section class="page-section portfolio freelancer-scope" id="portfolio">
+            <section class="page-section portfolio freelancer-scope" id="motorjet-engine">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-10 col-xl-9 mb-4 pending-showcase-col">
-                            <div class="portfolio-item pending-showcase-card mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                    <div class="pending-showcase-caption">
-                                        <span class="pending-showcase-kicker">In Progress</span>
-                                        <h2 class="text-center display-4 fw-bolder">
-                                            <span class="text-gradient d-inline">Cloud Chamber</span>
-                                        </h2>
-                                        <p class="pending-showcase-summary">Coming soon: a classroom cloud chamber focused on making abstract particle physics concepts feel more concrete through direct observation.</p>
-                                        <span class="pending-showcase-action">Open project notes <i class="bi bi-arrow-up-right"></i></span>
-                                    </div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
+                        <div class="col-lg-8 col-xl-7">
+                            <div class="pending-module-shell">
+                                <button class="pending-module-shield" type="button" data-bs-toggle="modal" data-bs-target="#motorjetModal" aria-label="Open Motorjet Engine project">
+                                    <span class="pending-module-badge">In Progress</span>
+                                    <span class="pending-module-title">Motorjet Engine</span>
+                                    <span class="pending-module-meta">Thermojet &mdash; Build Log</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Title" aria-hidden="true">
+            <div class="portfolio-modal modal fade pending-modal" id="motorjetModal" tabindex="-1" aria-labelledby="motorjetModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-scrollable">
                     <div class="modal-content">
-                        <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                        <div class="modal-header border-0"><button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
                         <div class="modal-body pb-5">
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="portfolioModal1Title">Cloud Chamber Design Project Deliverables</h2>
+                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="motorjetModalTitle">Motorjet Engine (Thermojet) &mdash; Build Log &amp; Roadmap</h2>
                                         <div class="divider-custom">
                                             <div class="divider-custom-line"></div>
-                                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                            <div class="divider-custom-icon"><i class="bi bi-fire"></i></div>
                                             <div class="divider-custom-line"></div>
                                         </div>
-                                        <div class="nav project-section-tabs" id="cloudChamberTabs" role="tablist" aria-label="Cloud chamber sections">
-                                            <button class="project-section-tab active" id="cloud-project-tab" data-bs-toggle="tab" data-bs-target="#cloud-project-pane" type="button" role="tab" aria-controls="cloud-project-pane" aria-selected="true">Project</button>
-                                            <button class="project-section-tab" id="cloud-prototyping-tab" data-bs-toggle="tab" data-bs-target="#cloud-prototyping-pane" type="button" role="tab" aria-controls="cloud-prototyping-pane" aria-selected="false">Prototyping and Testing</button>
+                                        <article class="pending-deliverable">
+                                        <section class="pending-deliverable-intro">
+                                            <span class="pending-deliverable-label">In Progress</span>
+                                            <p class="mt-3">Motor-driven compressor &rarr; combustor &rarr; converging nozzle &rarr; thrust. Configuration after the Caproni Campini N.1 (1940).</p>
+                                        </section>
+                                        <div class="nav project-section-tabs" id="motorjetTabs" role="tablist" aria-label="Motorjet Engine project sections">
+                                            <button class="project-section-tab active" id="motorjet-buildlog-tab" data-bs-toggle="tab" data-bs-target="#motorjet-buildlog-pane" type="button" role="tab" aria-controls="motorjet-buildlog-pane" aria-selected="true">Build Log &amp; Roadmap</button>
+                                            <button class="project-section-tab" id="motorjet-inquiry-tab" data-bs-toggle="tab" data-bs-target="#motorjet-inquiry-pane" type="button" role="tab" aria-controls="motorjet-inquiry-pane" aria-selected="false">Academic Inquiry</button>
                                         </div>
-                                        <div class="tab-content project-tab-content" id="cloudChamberTabsContent">
-                                            <div class="tab-pane fade show active cloud-chamber-tab-pane" id="cloud-project-pane" role="tabpanel" aria-labelledby="cloud-project-tab" tabindex="0">
-                                                <div class="pending-deliverable">
-                                            <div class="pending-deliverable-intro">
-                                                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-3">
-                                                    
-                                                    
-                                                </div>
-                                                <figure class="pending-deliverable-figure">
-                                                    <a href="assets/img/portfolio/gargamelle.jpg" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/gargamelle.jpg" alt="Historic particle physics chamber image showing visible tracks" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint"><b>Figure 1.1</b> (Click the image to view fullscreen)</p>
-                                                
-                                            </div>
+                                        <div class="tab-content project-tab-content" id="motorjetTabsContent">
+                                        <div class="tab-pane fade show active cloud-chamber-tab-pane" id="motorjet-buildlog-pane" role="tabpanel" aria-labelledby="motorjet-buildlog-tab" tabindex="0">
+                                        <div class="pending-deliverable-sections" style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem;">
 
-                                            <section class="pending-deliverable-section">
-                                                <h3>1. Project Overview</h3>
-                                                <p>My team's project focuses on a Peltier-cooled diffusion cloud chamber intended to function as an educational teaching tool. Rather than serving only as a device demonstration, the chamber is meant to create a classroom experience in which students can directly observe evidence of ionizing radiation and connect that observation to a physical reality.</p>
-                                                <p>My team and I chose this direction because particle physics can feel unintuitive, uninteresting, and difficult to access when students are asked to imagine a phenomenon they cannot normally sense; coupled with our personal interest in the discipline. Making radiation tracks visible to the human eye offers a more concrete way to introduce the topic and gives students a reason to observe, question, and discuss what they are seeing. The overall hope is that it inspires students to explore the fascinating world of particle physics further.</p>
-                                            </section>
-
-                                            <section class="pending-deliverable-section">
-                                                <h3>2. Research &amp; Problem Framing</h3>
-                                                <h4>Problem Statement</h4>
-                                                <p>This project addresses a common issue regarding certain academia, being the lack of a drawing and educationally valuable way to help students visualize non-intuitive topics. This can range from a topic within anthropology, such as the massive scale of city population to that of our focus, particle physics. Our project will visualize the passage of ionizing radiation in the atmosphere, here, on Brandeis's campus. The goal is to develop a device, electron cloud chamber, that makes an invisible phenomenon visible. We hope to make this topic more accessible by presenting it in a form that supports classroom teaching, discussion, and conceptual understanding.</p>
-
-                                                <h4>Background Framing</h4>
-                                                <p>Our approach for the project is framed around the diffusion cloud chamber, rather than around detection alone. The chamber works by creating a supersaturated alcohol vapor to flood the enclosed atmosphere. Within the chamber will be a great temperature differential between the top and surface of the base, the base being around -30 celcius. That temperature gradient creates the sensitive region where particle tracks become visible. In general, the idea is about visualization, but for those interested in the physical phenomena; the trails are visible because a charged particle passes through a supersaturated alcohol vapor in the cloud chamber and ionizes the gas along its path. The vapor then condenses onto those ions, forming tiny droplets. Those droplets line up where the particle traveled, so you can see a visible trail of exactly that particle's path. For the basic educational demonstration, natural background radiation should be enough to create visible trails, meaning nothing special needs to be placed inside the chamber for the core effect to appear. However, I have included an image below that represents what happens when something of greater emission is placed inside the chamber (an alpha emitter).</p>
-                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                    <a href="assets/img/portfolio/alpha-tracks-radium-1912.png" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/alpha-tracks-radium-1912.png" alt="Picture of alpha tracks of radium from 1912" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint mb-1"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
-                                                <p class="mb-3"><small>Source: <a href="https://www.cloudylabs.fr/wp/differentes-machines/" target="_blank" rel="noopener noreferrer">Cloudylabs, "The first particles detectors"</a></small></p>
-                                                <p>The emphasis is on the chamber as an educational system. The value of the demonstration comes from allowing students to see direct visual proof that atmospheric radiation exists, notice that different particle tracks may appear different, and begin asking what is visible, what can be inferred, and what still cannot be directly seen. This can give rise to questions regarding how we can alter these paths, how to induce a longer path, as well as, the limitations of the device. That is how we plan to balance educational value with accessibility and usability for anyone to participate in understanding.</p>
-
-                                                <h4>User / Customer Profile</h4>
-                                                <ul>
-                                                    <li>The primary users are any individuals who are struggling to understanding something that feels abstract and make it concrete. Specifically aimed towards students and possibly researchers. The idea is that they can come to conclusions and form hypotheses about this invisible concept independently using the device.</li>
-                                                    <li>The secondary users are physics' majors. Although, they could benefit from the demonstration, this is mainly a focus on helping those who cannot visualize the invisible in anyway; therefore a physics major studying these concepts might already have a good idea of the abstract in a "concrete" form via mathematics. However, as mentioned the device can still benefit these individuals as they too, cannot often see this phenomena with the human eye. If they could, then they would be a superhero.</li>
-                                                    <li>The educational goal is to help students build interest, ask questions, and connect what they observe as physical reality to the abstract.</li>
-                                                    <li>The chamber will teach students to make observations of the now visible particles and convert those observations into understanding, rather than overwhelm the users with engineering details and the complex underlying quantum mechanics. As mentioned, the idea is to help individuals understanding the power of visualization when understanding an abstract concept.</li>
-                                                </ul>
-                                            </section>
-
-                                            <section class="pending-deliverable-section">
-                                                <h3>3. Problem Definition &amp; Brainstorming</h3>
-                                                <h4>Thematic Design Tensions and Themes</h4>
-                                                <ul>
-                                                    <li>One major challenge is creating interest in something that students cannot normally sense and connecting this topic to the idea of accessibility for all users.</li>
-                                                    <li>The project has to balance functionality, portability, consistency, aesthetics, and educational value.</li>
-                                                    <li>Another hurdle is the balance between system autonomy and the amount of interaction users should have. Ideally, we want the users focus to be on the chamber not the controls. Our plan is to build the device with a simple plug and play interface.</li>
-                                                    <li>The chamber also raises the notion of showing versus explaining. Although, we want to show the user this phenomena, they will not always understand what the importance is. As the builders we will add an interface that briefly introduces the user to the concepts we hope to convey.</li>
-                                                    <li>Mathematics and physical law both need to be incorporated in a way that feels meaningful rather than forced onto the users; as we assume they are not familiar with the complexities of the topics. In general, we can approach this from a fabrication stand point alone with zero quantitative analysis. On the flip side we can also calculate the amount of voltage necessary, coupled with the efficiency of the heat sink, without forgetting the impact of density of saturation...and very quickly we lose sight of our original intent. This fine line between over-explaining and educational substance will have to be addressed carefully and presented with the user in mind being someone not currently familiar with the concepts.</li>
-                                                   
-                                                </ul>
-                                                <div class="pending-deliverable-note">
-                                                    <p><span class="pending-deliverable-status">Design Themes Summary:</span> Accessibility to the invisible, educational value, portability, consistency within the device, autonomy balanced with user interaction, and deeper scientific explanation beyond spectacle without over-explaining to a uninformed audience.</p>
-                                                </div>
-
-                                                <h4>Insight Statements about Design</h4>
-                                                <ul>
-                                                    <li>Students struggle to engage with ionizing radiation because it is normally invisible and difficult to connect to everyday experience.</li>
-                                                    <li>A successful classroom cloud chamber must do more than function physically; it must also balance cooling performance with portability, consistency, and educational clarity.</li>
-                                                    <li>Too much automation may reduce learning, while too much user control may reduce reliability.</li>
-                                                    <li>The educational power of the chamber comes not only from showing tracks, but from helping students ask better questions about what those tracks mean.</li>
-                                                    <li>The chamber is strong as a teaching tool as it connects direct visual experience to broader academic clarity.</li>
-                                                </ul>
-
-                                                <h4>Focused Questions</h4>
-                                                <ul>
-                                                    <li>How can we make ionizing radiation visible in a way that feels concrete and captivating to students?</li>
-                                                    <li>How might we design a cloud chamber that is compact and portable without sacrificing track visibility and consistency? How does design effect who can use it? Why?</li>
-                                                    <li>How might we balance automation with user interaction so the system is reliable but still educational?</li>
-                                                    <li>How might we use the chamber not just to show tracks, but to prompt deeper discussion of physics concepts and limitations? How do we move students past the "Whoa! Cool" stage, into forming hypotheses?</li>
-                                                </ul>
-
-                                                <h4>Selected Design Direction</h4>
-                                                <p>The selected direction is a Peltier-cooled diffusion cloud chamber designed as an educational teaching tool. I chose this approach because it supports the core goal of making invisible radiation visible, while also allowing the project to be built around usability, safety explanation, and conceptual accessibility rather than engineering spectacle alone. At this stage, this should be read as the current direction rather than as a fully finalized design.</p>
-                                                <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                    <a href="assets/img/portfolio/story-board.jpg" target="_blank">
-                                                        <img class="img-fluid rounded" src="assets/img/portfolio/story-board.jpg" alt="Storyboard sketch showing brainstorming themes, insight statements, and questions for the physics education concept" />
-                                                    </a>
-                                                </figure>
-                                                <p class="fullscreen-hint"><b>Figure 1.2</b> (Click the image to view fullscreen)</p>
-                                            </section>
-
-                                            <section class="pending-deliverable-section">
-                                                <h3>4. Storyboard</h3>
-                                                <ol>
-                                                    <p><i>Our story begins with a classroom problem: a physics professor wants to introduce students to ionizing radiation, but the concept is difficult to make concrete because students cannot directly sense it.</i></p>
-                                                    <li>The cloud chamber , pictured in Figure 1.3, then acts as the bridge between that invisible idea and the perceivable physical world, allowing the lesson to begin with observation rather than abstraction alone.</li>
-                                                    <li>The next step is explaining that the device is a diffusion chamber, which creates a supersaturated vapor by keeping the bottom very cold while the top remains warmer. It's crucial to begin the explanation post demonstration as we are focused on the connection not this specific phenomena necessarily.</li>
-                                                    <li>Once the chamber reaches that sensitive state and proper temperature differential, charged particles passing through the region leave visible condensation tracks, which the user will now see.</li>
-                                                    <li>At that point, students will begin asking questions about what they are seeing, why some tracks may appear different, and what can actually be concluded from the demonstration. And the most common, "is this safe?" Of course, the particles are there whether we visualize them or not, that is our whole point! Success!</li>
-                                                    <li>The instructor can then use the chamber to connect those visible trails to larger physics concepts instead of treating the demonstration as spectacle alone.</li>
-                                                    <li>The chamber's components can also become part of the explanation, since the build itself helps show how the conditions for visibility are created and give a brief introduction to circuitry.</li>
-                                                    <li>From there, the demonstration can lead into broader real-world or scientific visualizations and show that the classroom experience connects outward to larger contexts.</li>
-                                                    <li>The instructor also has an opportunity to address safety and misconceptions surrounding radiation, electricity, and the chamber's hot and cold components.</li>
-                                                    <li>The experience ultimately opens the door to deeper learning, including equations, interpretation, and broader particle physics ideas that grow out of what students have already observed.</li>
-                                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-4 mb-0">
-                                                        <a href="assets/img/portfolio/cloud-chamber-device.png" target="_blank">
-                                                            <img class="img-fluid rounded" src="assets/img/portfolio/cloud-chamber-device.png" alt="Cloud chamber device setup with illuminated chamber and front control switches" />
-                                                        </a>
-                                                    </figure>
-                                                    <p class="fullscreen-hint"><b>Figure 1.3</b> (Click the image to view fullscreen)</p>
-                                                    <p class="mb-3"><small>Source: <a href="https://www.rs-online.com/designspark/peltier-cooled-cloud-chamber-part-2" target="_blank" rel="noopener noreferrer">RS DesignSpark, "Peltier Cooled Cloud Chamber Part 2"</a></small></p>
-                                                    <li>Finally, the last step the student will take is that when they tell all their classmates how incredible ionizing radiation can look! On a more serious note, the user can now express something that was once invisible, using concrete observations. Our hopes are that this promotes a welcoming introduction to less intuitive concepts</li>
-                                                </ol>
-                                            </section>
-
-                                            <section class="pending-deliverable-section">
-                                                <h3>5. Current Design Direction</h3>
-                                                <p>Our design direction is a Peltier-cooled diffusion cloud chamber. A similar approach has been taken using dry ice, however that is not user friendly. In the present system logic, stacked Peltier modules create the cold side needed for the chamber, an aluminum plate is part of the cold-side design, and the hot side must be actively cooled with a heat sink and CPU fan. A buck converter has also been discussed as one option for setting the Peltier voltage and keeping it stable, however, proved unnecessary. Overall, the design is trying to balance cooling performance, a stable atmosphere, and classroom usability.</p>
-                                                <p>The list below reflects the current documented direction rather than a locked final bill of materials. In general, the design will remain consistent but some parts may be removed or changed:</p>
-
-                                                <div class="pending-deliverable-grid">
-                                                   
-                                                    <div class="pending-deliverable-card">
-                                                        <h4>Current Documented Parts</h4>
-                                                        <ul>
-                                                        
-                                                        
-                                                            <li>DC PSU</li>
-                                                            <li>CPU fan / heat sink</li>
-                                                            <li>stacked Peltier modules (pre-stackedd)</li>
-                                                            <li>aluminum plate 60mm diameter x 3mm height</li>
-                                                            <li>thermal paste</li>
-                                                            <li>temperature gauge</li>
-                                                        
-                                                            <li>wires</li>
-                                                            <li>fuse (undecided if needed)</li>
-                                                            <li>silicone insulation</li>
-                                                            
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </section>
-
-                                            <section class="pending-deliverable-section">
-                                                <h3>6. Closing Reflection</h3>
-                                                <p>The larger goal of this project is to make an abstract concept feel more concrete. Particle physics can be difficult to understand when students are asked to imagine a phenomenon they cannot normally see, so the cloud chamber gives them a more direct way to connect observation to the underlying physics. By making ionizing radiation visible in a classroom setting, the project can help turn a difficult topic into something more accessible, discussable, and real.</p>
-                                            </section>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade cloud-chamber-tab-pane" id="cloud-prototyping-pane" role="tabpanel" aria-labelledby="cloud-prototyping-tab" tabindex="0">
-                                                <div class="pending-deliverable cloud-chamber-prototyping">
-                                                    <section class="pending-deliverable-intro">
-                                                        <span class="pending-deliverable-label">Stage 2 Submission</span>
-                                                        <h3 class="mt-3">Prototyping and Testing</h3>
-                                                        <p>This section tracks the four prototype cycles we used to refine the cloud chamber's hardware housing.</p>
-                                                    </section>
-
-                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
-                                                        <h3>Iteration Cycle 1</h3>
-                                                        <p class="cloud-chamber-cycle-path">CAD -&gt; CAM for PLA -&gt; Testing</p>
-                                                        <p>The problem statement for this project puts a lot of weight on making sure many individuals can access the materials required to make the cloud chamber and keep using it over time. Because of that, we framed our first prototype around a set of quantifiable goals that kept the build process fast, understandable, and repeatable.</p>
-                                                        <ul class="cloud-chamber-cycle-list">
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -30 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>All parts can be printed on one PRUSA Mini+ build plate.</span></li>
-                                                        </ul>
-                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
-                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" target="_blank">
-                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle1_design_slide.png" alt="Cycle 1 slide showing the first cooling-stack concept for the cloud chamber support hardware." />
-                                                            </a>
-                                                            <figcaption>Cycle 1 established the first PLA proof-of-concept for stacking the heatsink, Peltier cooler, aluminum disc, and printed supports.</figcaption>
-                                                        </figure>
-                                                        <div class="cloud-chamber-cycle-summary">
-                                                            <p>For cycle 1, only two of the five goals were met. This first version proved that the cooling stack could be organized physically, but it also exposed where the concept still failed once we moved from theory into an actual printed assembly.</p>
-                                                            <p class="mb-0">The biggest issue was that the parts were not yet behaving like one fully resolved system. Even though some of the fit conditions were close, parts of the assembly were still relying on gravity instead of being directly secured to one another, so the first prototype was useful mainly because it showed us exactly what had to change next.</p>
-                                                        </div>
-                                                    </section>
-
-                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
-                                                        <h3>Iteration Cycle 2</h3>
-                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM for PLA -&gt; Testing</p>
-                                                        <ul class="cloud-chamber-cycle-list">
-                                                            <li><span class="cloud-chamber-check"></span><span>3D prints fit their associated hardware without needing modification.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
-                                                        </ul>
-                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
-                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" target="_blank">
-                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle2_design_slide.png" alt="Cycle 2 slide showing the redesigned cloud chamber support parts being combined into one part." />
-                                                            </a>
-                                                            <figcaption>Cycle 2 focused on combining the earlier support pieces into a more compact and compatible printed form.</figcaption>
-                                                        </figure>
-                                                        <div class="cloud-chamber-cycle-summary">
-                                                            <p>We checked off two new goals with iteration 2, but we also gave up two gains from the first version in the process. This redesign improved part compatibility and made the set easier to fit on one PRUSA Mini+ build plate, which moved the project closer to something more repeatable and practical to fabricate.</p>
-                                                            <p class="mb-0">The tradeoff was access. Taking the aluminum disc out of the brace became less convenient than it had been before and could require either very small fingers or needle-nosed pliers, so cycle 2 taught us that making the structure tighter and more integrated could also make maintenance harder.</p>
-                                                        </div>
-                                                    </section>
-
-                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
-                                                        <h3>Iteration Cycle 3</h3>
-                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Testing</p>
-                                                        <ul class="cloud-chamber-cycle-list">
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
-                                                            <li><span class="cloud-chamber-check"></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
-                                                        </ul>
-                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
-                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" target="_blank">
-                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle3_summary_card.png" alt="Cycle 3 summary card describing the progress made through geometry and print-strategy changes." />
-                                                            </a>
-                                                            <figcaption>Cycle 3 summary card highlighting how the redesign locked in compatibility, wiring access, and one-plate fabrication.</figcaption>
-                                                        </figure>
-                                                        <div class="cloud-chamber-cycle-summary">
-                                                            <p>Iterations 2 and 3 were the closest to one another, but cycle 3 arguably moved us the furthest toward the version we actually wanted. We made room for Peltier cooler wiring, adjusted screw positioning to reduce breakage under tension, and changed the CAM approach so the printed part could better support the temperature demands of the chamber.</p>
-                                                            <p class="mb-0">This was the point where the design started to feel much more buildable in practice. We kept the compatibility and one-plate fabrication gains from the previous version, and the added wire routing finally helped us resolve the hardware-fit issue without noticeably increasing the print footprint.</p>
-                                                        </div>
-                                                    </section>
-
-                                                    <section class="pending-deliverable-section cloud-chamber-cycle-card">
-                                                        <h3>Iteration Cycle 4</h3>
-                                                        <p class="cloud-chamber-cycle-path">CAD Redesign -&gt; CAM Redesign -&gt; Material Change -&gt; Testing</p>
-                                                        <ul class="cloud-chamber-cycle-list">
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>3D prints fit their associated hardware without needing modification.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts are all compatible with one another, and the Peltier brace can be built using screws without force or extra connection methods.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be exposed to temperatures -20 C or colder for 10 minutes or longer without deforming, cracking, or breaking.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>The brace can be disassembled without breaking parts, using additional tools, or requiring a reprint.</span></li>
-                                                            <li><span class="cloud-chamber-check is-complete"><i class="fas fa-check"></i></span><span>Parts can be printed on one PRUSA Mini+ build plate.</span></li>
-                                                        </ul>
-                                                        <figure class="pending-deliverable-figure pending-deliverable-figure-contain cloud-chamber-cycle-figure">
-                                                            <a href="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" target="_blank">
-                                                                <img class="img-fluid rounded" src="assets/img/cloudchamber/prototyping-testing/cycle4_summary_card.png" alt="Cycle 4 summary card describing the final material and usability improvements." />
-                                                            </a>
-                                                            <figcaption>Cycle 4 summary card showing the final prototype direction after the move from PLA to PETG.</figcaption>
-                                                        </figure>
-                                                        <div class="cloud-chamber-cycle-summary">
-                                                            <p>By the fourth and final iteration, we checked off the last two goals on the list. We had planned from the beginning to wait until the design felt stable before changing the material from PLA to PETG, and that switch finally gave the brace the resistance it needed against heat deformation and extended cold exposure.</p>
-                                                            <p>The last redesign also improved attachment points and added better clearance for handling the brace during disassembly. At the same time, we adjusted the design to accommodate extra thermal paste so the Peltier could get as cold as possible without fighting the structure around it.</p>
-                                                            <p class="mb-0">At this point, the cooling-support hardware finally met all five goals together. That made cycle 4 much more than a late-stage tweak; it became the version that tied together manufacturability, compatibility, durability, and day-to-day usability in a way that actually supports the final classroom cloud chamber build.</p>
-                                                        </div>
-                                                    </section>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                            <i class="fas fa-xmark fa-fw"></i>
-                                            Close Window
-                                        </button>
+                                <section class="pending-deliverable-section">
+                                    <h3>1. Background &mdash; How a Real Jet Compares</h3>
+                                    <p>A real turbofan has two airflow paths driven by nested concentric shafts, called a two-spool layout.</p>
+                                    <ul>
+                                        <li>The big front fan moves a huge mass of air slowly; most of it bypasses the core and produces about 80% of the thrust on modern engines.</li>
+                                        <li>Behind the fan, the compressor, or second fan, does the opposite job: it squeezes a small mass of core air into a smaller, higher-pressure volume before the combustor. It is staged: a low-pressure compressor/booster on the same shaft as the front fan, driven by the rear low-pressure turbine, and a high-pressure compressor on a separate faster inner shaft, driven by its own high-pressure turbine behind the combustor.</li>
+                                        <li>A real engine is self-sustaining: the turbines downstream of the combustor extract energy from the hot flow to drive the compressors.</li>
+                                    </ul>
+                                    <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-3">
+                                        <img src="assets/img/campini-caproni.jpg" alt="Campini Caproni N.1 cutaway diagram showing the motorjet layout" />
+                                        <figcaption>Campini Caproni N.1 (1940) &mdash; cutaway showing the piston-engine-driven compressor, combustor, and converging nozzle.</figcaption>
+                                    </figure>
+                                    <div class="pending-deliverable-note">
+                                        <p><span class="pending-deliverable-status">How this motorjet simplifies it:</span> The Campini Caproni N.1 (above) solved the same problem using a piston engine to drive its compressor — replacing the self-sustaining turbine loop entirely. This build follows the same logic: an electric motor replaces that piston engine, driving a single centrifugal impeller instead of a multi-stage compressor. Because the shaft work comes from wall power rather than a turbine extracting energy from the hot flow, the cycle does not need to self-sustain, and there is no turbine in the exhaust path at all — the converging nozzle does the final job instead.</p>
                                     </div>
-                                </div>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>2. How It Works / Operating Principle</h3>
+                                    <p>This is a motorjet, or thermojet, demonstrator. An electric motor replaces the power turbine of a real jet engine, so the thermodynamic cycle does not need to self-sustain. Wall power supplies the shaft work a turbine would normally extract from the flow.</p>
+                                    <ol>
+                                        <li>A motor-driven centrifugal compressor raises air pressure.</li>
+                                        <li>A combustor adds heat at high static pressure, with fuel injected downstream of the compressor only.</li>
+                                        <li>A converging nozzle converts that pressure into high exhaust velocity, producing thrust.</li>
+                                    </ol>
+                                    <div class="pending-deliverable-note">
+                                        <p><span class="pending-deliverable-status">Operating logic:</span> Hold high static pressure in the combustor for dense, stable burning, then convert that pressure to high exhaust velocity through the nozzle.</p>
+                                    </div>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>3. The Build (Current Physical Setup)</h3>
+                                    <div class="pending-deliverable-grid">
+                                        <div class="pending-deliverable-card">
+                                            <h4>Drive</h4>
+                                            <p>A brushed universal motor, directly spins the compressor impeller. It was chosen because it self-spins the cycle without needing combustion to sustain rotation.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Input / Intake</h4>
+                                            <p>Ambient air is drawn in axially at the front through the motor/compressor inlet. The impeller pulls air in along the shaft axis and flings it radially outward.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Compressor</h4>
+                                            <p>Centrifugal metal impeller, about 110 mm outer diameter. It discharges the compressed air into the chamber.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Airflow Out The Back Via 2 Holes</h4>
+                                            <p>The compressed air exits the compressor into the combustion chamber through two outlet holes. These two holes are the primary combustion-air feed and are central to the whole design. Air enters the chamber, mixes with fuel injected downstream, burns, and exits rearward.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Combustor</h4>
+                                            <p>Fuel is injected only downstream of the two air holes, mixed with the compressed air, and ignited.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Exhaust</h4>
+                                            <p>A converging nozzle, or narrowing cone, accelerates the hot gas out the back to produce thrust.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pending-deliverable-note">
+                                        <p><span class="pending-deliverable-status">Dropped on purpose:</span> There is no downstream free turbine wheel. A free turbine would extract energy and slow the flow, costing thrust for no benefit, and it would be an unbalanced disk spinning in a hot stream, creating burst risk. The nozzle does its job instead.</p>
+                                        <p><span class="pending-deliverable-status">Expected performance:</span> Vacuum-impeller pressure ratio is realistically low, about 1.15&ndash;1.25:1 at zero flow and lower at the real operating point, and must be measured, not assumed. Expected cold thrust is on the order of a few newtons, or hundreds of grams-force. Rig vibration sets real resolution, so averaging via a load cell and logging beats chasing fine display digits.</p>
+                                    </div>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>4. Flashback / Blowback Control</h3>
+                                    <p>On ignition, chamber pressure spikes and flame can try to climb back up the two air holes toward the motor. The fix is layered; no single measure is enough.</p>
+                                    <ul>
+                                        <li><span class="pending-deliverable-status">Out-velocity beats flame speed:</span> A flame can only travel upstream if the gas it is climbing moves slower than the flame propagates. Hydrocarbon/air laminar flame speed is sub-1 m/s. Size the two holes small enough that discharge velocity comfortably exceeds flame speed, so the flow physically blows the flame front back downstream. Smaller holes mean higher velocity, but only as small as the compressor can still feed without choking mass flow.</li>
+                                        <li><span class="pending-deliverable-status">Tangential injection / swirl:</span> Aim the two holes tangentially, off-axis, not at each other. This creates a swirling vortex that anchors the flame in a central recirculation zone, held away from the inlet holes, while keeping high velocity right at the holes.</li>
+                                        <li><span class="pending-deliverable-status">Bluff-body flame holder:</span> A small disc or cone on a stalk placed downstream of the two inlets creates a low-velocity wake that deliberately anchors the flame there, so it never wanders forward.</li>
+                                        <li><span class="pending-deliverable-status">Fuel placement:</span> Inject fuel only downstream of the two air holes, into the established swirl. No fuel near the impeller means nothing to flash back to.</li>
+                                        <li><span class="pending-deliverable-status">Flame-arrestor option:</span> A fine stainless mesh or perforated plate at or just behind the air holes acts as a flashback arrestor, using the Davy-lamp principle. It quenches any flame front trying to pass back through small passages. This is an optional belt-and-suspenders measure.</li>
+                                        <li><span class="pending-deliverable-status">Air staging:</span> Treat the two holes as primary combustion air at the front. Any later downstream openings feed secondary/dilution air through the chamber wall further back to cool the burn without disturbing the upstream barrier.</li>
+                                    </ul>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>5. Joining Hot Section to Cold Section</h3>
+                                    <p>The interface where the hot combustor meets the cooler compressor/motor section is where cheap builds fail. The motor side needs protection from both conducted and radiated heat.</p>
+                                    <ul>
+                                        <li><span class="pending-deliverable-status">Thermal break / air gap:</span> Never bolt hot stainless directly to the cold section. Leave an air gap or insulating spacer so heat does not conduct straight back. Lengthen the conduction path where possible.</li>
+                                        <li><span class="pending-deliverable-status">Ceramic fiber insulation:</span> Kaowool, ceramic blanket, or fireplace rope gasket can line the junction or wrap the combustor front.</li>
+                                        <li><span class="pending-deliverable-status">Radiation shield:</span> A thin stainless shield or standoff between hot and cold faces blocks line-of-sight radiant heat.</li>
+                                        <li><span class="pending-deliverable-status">Hardware:</span> Use stainless or steel fasteners only in the hot region. Never use aluminium or zinc, because they soften or melt.</li>
+                                        <li><span class="pending-deliverable-status">High-temp gasket:</span> Use exhaust gasket sheet or fiberglass rope rated above 800 &deg;C on the sealing face between sections.</li>
+                                        <li><span class="pending-deliverable-status">Slip-fit clamps:</span> Stainless hose or band clamps let sections join and disassemble for tuning. A slip-fit tolerates thermal expansion far better than a rigid weld at the transition.</li>
+                                        <li><span class="pending-deliverable-status">Keep bearings cool:</span> Ensure the motor bearings and windings stay well below their rating. The junction's whole job is to keep that heat from reaching them.</li>
+                                    </ul>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>6. Materials &amp; Max Temperature Ratings</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered align-middle mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="pending-deliverable-status" scope="col">Material</th>
+                                                    <th class="pending-deliverable-status" scope="col">Approx. Max Service Temp</th>
+                                                    <th class="pending-deliverable-status" scope="col">Home-Manufacturability</th>
+                                                    <th class="pending-deliverable-status" scope="col">Best Use / Notes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-muted">Aluminium</td>
+                                                    <td class="text-muted">~150&ndash;200 &deg;C usable, melts ~660 &deg;C</td>
+                                                    <td class="text-muted">Very easy (cuts/drills/prints)</td>
+                                                    <td class="text-muted">Cold section only (compressor housing). Never near flame.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Mild / carbon steel</td>
+                                                    <td class="text-muted">~400&ndash;500 &deg;C sustained, melts ~1425 &deg;C</td>
+                                                    <td class="text-muted">Easy (cut, drill, weld)</td>
+                                                    <td class="text-muted">Brackets, cold structure. Scales and weakens when glowing.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">409 stainless (ferritic, exhaust grade)</td>
+                                                    <td class="text-muted">~815 &deg;C continuous</td>
+                                                    <td class="text-muted">Easy &mdash; sold as exhaust tubing/sheet</td>
+                                                    <td class="text-muted">Cheapest hot-zone option; combustor and nozzle.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">304 stainless</td>
+                                                    <td class="text-muted">~870 &deg;C continuous (~925 &deg;C intermittent)</td>
+                                                    <td class="text-muted">Easy &mdash; widely available sheet/tube</td>
+                                                    <td class="text-muted">Workhorse combustor and nozzle material.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">321 stainless (Ti-stabilised)</td>
+                                                    <td class="text-muted">~900 &deg;C continuous</td>
+                                                    <td class="text-muted">Moderate (less common stock)</td>
+                                                    <td class="text-muted">Higher-temp combustor sections, weld zones.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Inconel 625/718 (nickel superalloy)</td>
+                                                    <td class="text-muted">~980&ndash;1000+ &deg;C continuous</td>
+                                                    <td class="text-muted">Hard (tough to machine, pricey)</td>
+                                                    <td class="text-muted">Hottest tips/throat only if pushing temps.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Cast iron</td>
+                                                    <td class="text-muted">Melts ~1200 &deg;C</td>
+                                                    <td class="text-muted">Moderate</td>
+                                                    <td class="text-muted">Heavy; not ideal for thin combustors.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Ceramic fiber blanket (kaowool)</td>
+                                                    <td class="text-muted">~1260 &deg;C</td>
+                                                    <td class="text-muted">Very easy (cut with knife)</td>
+                                                    <td class="text-muted">Insulation/lining, not structural.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Fiberglass rope / exhaust gasket</td>
+                                                    <td class="text-muted">~550&ndash;800 &deg;C</td>
+                                                    <td class="text-muted">Very easy</td>
+                                                    <td class="text-muted">Sealing the hot-to-cold junction face.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="pending-deliverable-note">
+                                        <p><span class="pending-deliverable-status">Material priority:</span> Prioritise stainless exhaust tubing/sheet. It is already heat-rated, sold at auto parts stores, and the easiest path for a home build.</p>
+                                    </div>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>7. Variable-Area Nozzle (Future)</h3>
+                                    <p>The goal is to vary the exhaust throat area to tune thrust and velocity, like a real jet's variable nozzle. Wiring and actuation control are out of scope here; this list is about potential parts, geometries, and heat-capable materials only.</p>
+                                    <div class="pending-deliverable-grid">
+                                        <div class="pending-deliverable-card">
+                                            <h4>Translating Plug / Centerbody</h4>
+                                            <p>Recommended first attempt. A movable cone, or spike, on the centerline slides axially inside the convergent nozzle. Moving it changes the annular throat area. It has the fewest moving parts in the gas path, only one axial motion, and is easier to seal. Plug material should be 304/321 stainless or an Inconel tip, with a stainless guide rod running back to a cold actuation point outside the hot zone.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Telescoping / Sliding Sleeve</h4>
+                                            <p>An outer convergent cone slides over an inner cone; relative position sets exit diameter. The geometry is simple, but sealing the sliding fit while hot is the challenge. Stainless on stainless with slip clearance allows for expansion.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Iris / Overlapping Petal Nozzle</h4>
+                                            <p>Multiple overlapping stainless petals on pivot pins, driven by an external sliding ring/linkage, contract or expand the exit like a real afterburning nozzle. It is the most jet-like and the hardest to make, requiring precise overlapping petals, stainless pivot pins, and a cool external actuation ring. Use 304/321 stainless, with Inconel at the trailing tips if needed.</p>
+                                        </div>
+                                        <div class="pending-deliverable-card">
+                                            <h4>Material Notes</h4>
+                                            <p>Keep all moving and sealing surfaces in stainless or nickel superalloy. Put pivots, rings, and linkages as far from the flame as geometry allows. Allow generous clearances for thermal expansion so nothing seizes when hot.</p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>8. Safety Guards</h3>
+                                    <ul>
+                                        <li><span class="pending-deliverable-status">Flame backsplashes into motor:</span> Covered by layered flashback control in Subsection 4: high out-velocity, swirl, bluff body, downstream-only fuel, and optional mesh arrestor.</li>
+                                        <li><span class="pending-deliverable-status">Start sequence, non-negotiable:</span> Airflow on first, with compressor running and cold flow established. Ignition lit second, with the igniter energised before any fuel. Then introduce steady, metered fuel. Never fuel first; pooled liquid fuel lighting all at once can rupture a sheet-metal chamber.</li>
+                                        <li><span class="pending-deliverable-status">Pressure safety gate:</span> No combustion attempt until cold-flow static chamber pressure is measured with the engine running and unlit. This confirms the compressor holds a positive pressure margin versus combustion backpressure and gives the real discharge velocity for flashback sizing.</li>
+                                        <li><span class="pending-deliverable-status">Fire precautions:</span> Keep a fire extinguisher and fuel shutoff within reach, clear the test area, avoid aluminium/zinc anywhere hot, and keep everything stainless or steel in the hot zone.</li>
+                                    </ul>
+                                </section>
+
+                                <section class="pending-deliverable-section">
+                                    <h3>9. Next Steps / Roadmap</h3>
+                                    <ol>
+                                        <li>Measure cold-flow static chamber pressure, the safety gate, before any fire.</li>
+                                        <li>Confirm positive pressure margin versus expected combustion backpressure.</li>
+                                        <li>Acquire instrumentation: RC thrust stand (~49 N / 5 kgf range), digital manometer rated above expected chamber pressure, and load cell with data logging.</li>
+                                        <li>Finalise and drill the two tangential air holes; fit the bluff-body flame holder downstream; add optional mesh flashback arrestor.</li>
+                                        <li>Build and insulate the hot-to-cold junction using a thermal break, ceramic fiber, stainless hardware, and high-temp gasket.</li>
+                                        <li>Dry-rehearse the start sequence; test ignition before introducing fuel.</li>
+                                        <li>Run the first lit test; log thrust and chamber pressure.</li>
+                                        <li>Prototype the variable nozzle, starting with a translating plug/centerbody.</li>
+                                    </ol>
+                                </section>
+                                        </div><!-- /pending-deliverable-sections -->
+                                        </div><!-- /motorjet-buildlog-pane -->
+
+                                        <div class="tab-pane fade cloud-chamber-tab-pane" id="motorjet-inquiry-pane" role="tabpanel" aria-labelledby="motorjet-inquiry-tab" tabindex="0">
+                                        <div class="pending-deliverable-sections" style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem;">
+
+                                        <section class="pending-deliverable-section">
+                                            <h3>Academic Inquiry &mdash; Verifying Conservation of Mass (&#7745; = dm/dt)</h3>
+                                            <p style="color:rgba(183,220,248,0.78);font-size:0.9rem;margin-bottom:1.1rem;"><b>Goal:</b>Using the engine&rsquo;s airflow to experimentally confirm the continuity equation, then produce a formal report with full error analysis.</p>
+                                            <p>Although possible with a simple system, I have chosen to introduce an engineering exercise coupled with the physics inquiry using the motorjet&rsquo;s measured airflow to test the law of conservation of mass. For steady 1-D flow, mass cannot accumulate in the engine, so the mass flow rate must be constant at every cross-section, therefore:</p>
+                                            <math display="block"><mrow><mi>&#x1E41;</mi><mo>=</mo><mi>&#x3C1;</mi><mo>&#x22C5;</mo><mi>A</mi><mo>&#x22C5;</mo><mi>V</mi><mo>=</mo><mtext>constant</mtext></mrow></math>
+                                            <p>The aim is to measure &#7745; independently at the inlet and the nozzle exit, show they agree within experimental uncertainty, and report a best-estimate &#7745; &plusmn; U. The law is confirmed if the residual between stations is no larger than the combined measurement uncertainty.</p>
+                                            <ol>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 1 &mdash; Establish the theory.</span>
+                                                    <p>Derive continuity from conservation of mass on a control volume (steady flow &rarr; mass in = mass out). Key supporting equations:</p>
+                                                    <math display="block"><mrow><mi>&#x3C1;</mi><mo>=</mo><mfrac><mi>p</mi><mrow><mi>R</mi><mo>&#x22C5;</mo><mi>T</mi></mrow></mfrac><mo>,</mo><mspace width="1em"/><mi>R</mi><mo>=</mo><mn>287</mn><mtext>&#x00A0;J/(kg&#x22C5;K)</mtext></mrow></math>
+                                                    <p>Incompressible velocity (Mach &lt; 0.3):</p>
+                                                    <math display="block"><mrow><mi>V</mi><mo>=</mo><msqrt><mfrac><mrow><mn>2</mn><mo>(</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#x2212;</mo><msub><mi>p</mi><mi>s</mi></msub><mo>)</mo></mrow><mi>&#x3C1;</mi></mfrac></msqrt></mrow></math>
+                                                    <p>Compressible Mach number (Mach &ge; 0.3), &gamma; = 1.4:</p>
+                                                    <math display="block"><mrow><mi>M</mi><mo>=</mo><msqrt><mrow><mfrac><mn>2</mn><mrow><mi>&#x3B3;</mi><mo>&#x2212;</mo><mn>1</mn></mrow></mfrac><mo>[</mo><msup><mrow><mo>(</mo><mfrac><msub><mi>p</mi><mn>0</mn></msub><msub><mi>p</mi><mi>s</mi></msub></mfrac><mo>)</mo></mrow><mfrac><mrow><mi>&#x3B3;</mi><mo>&#x2212;</mo><mn>1</mn></mrow><mi>&#x3B3;</mi></mfrac></msup><mo>&#x2212;</mo><mn>1</mn><mo>]</mo></mrow></msqrt><mo>,</mo><mspace width="1.5em"/><mi>V</mi><mo>=</mo><mi>M</mi><msqrt><mrow><mi>&#x3B3;</mi><mi>R</mi><mi>T</mi></mrow></msqrt></mrow></math>
+                                                    <p>Thrust cross-check (momentum-based estimate of &#7745;):</p>
+                                                    <math display="block"><mrow><mi>F</mi><mo>&#x2248;</mo><mi>&#x1E41;</mi><mo>&#x22C5;</mo><msub><mi>V</mi><mi>e</mi></msub><mtext>&#x00A0;(+ pressure term)</mtext></mrow></math>
+                                                </li>
+                                                <li><span class="pending-deliverable-status">Step 2 &mdash; Define measurement stations.</span> Fix Station 1 = inlet/bellmouth (low velocity, clean geometry) and Station 2 = nozzle exit. Optionally add a combustor-inlet station. Record the role of each.</li>
+                                                <li><span class="pending-deliverable-status">Step 3 &mdash; Assemble instrumentation.</span> Pitot-static probe (or total + static taps) at each station; digital manometer / differential pressure transducer; type-K thermocouples; calipers/micrometer for diameters; tachometer for RPM; RC thrust stand (~49 N) + load cell + data logger; for hot runs, a scale or flow meter to measure fuel mass vs time.</li>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 4 &mdash; Measure the geometry.</span>
+                                                    <p>At each station measure diameter D and compute:</p>
+                                                    <math display="block"><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><mi>&#x3C0;</mi><msup><mi>D</mi><mn>2</mn></msup></mrow><mn>4</mn></mfrac></mrow></math>
+                                                    <p>Record the instrument resolution for D.</p>
+                                                </li>
+                                                <li><span class="pending-deliverable-status">Step 5 &mdash; Confirm steady state.</span> Log RPM and pressures as a time series and confirm they are constant over the sampling window (continuity requires &part;/&part;t = 0). Do not record data until steady.</li>
+                                                <li><span class="pending-deliverable-status">Step 6 &mdash; Run the safety gate, then the cold test first.</span> With the engine running but unlit, measure cold-flow static chamber pressure (safety gate). The cold run is the cleanest test of pure continuity (no fuel-mass term): &#7745;<sub>in</sub> should equal &#7745;<sub>out</sub>. Get this to agree before attempting combustion.</li>
+                                                <li><span class="pending-deliverable-status">Step 7 &mdash; Take station data via a pitot traverse.</span> At each station record p<sub>s</sub>, p<sub>0</sub>, and T at several radial points (the velocity profile is not uniform). Also log ambient pressure and temperature. Repeat the full run N &ge; 5 times for statistics.</li>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 8 &mdash; Compute mass flow at each station.</span>
+                                                    <p>Per measurement point:</p>
+                                                    <math display="block"><mrow><mi>&#x3C1;</mi><mo>=</mo><mfrac><msub><mi>p</mi><mi>s</mi></msub><mrow><mi>R</mi><mo>&#x22C5;</mo><mi>T</mi></mrow></mfrac><mo>,</mo><mspace width="2em"/><mi>q</mi><mo>=</mo><msub><mi>p</mi><mn>0</mn></msub><mo>&#x2212;</mo><msub><mi>p</mi><mi>s</mi></msub><mo>,</mo><mspace width="2em"/><mi>&#x1E41;</mi><mo>=</mo><mi>&#x3C1;</mi><mo>&#x22C5;</mo><mi>A</mi><mo>&#x22C5;</mo><mi>V</mi></mrow></math>
+                                                    <p>Area-average the traverse:</p>
+                                                    <math display="block"><mrow><mi>&#x1E41;</mi><mo>=</mo><mo>&#x2211;</mo><msub><mi>&#x3C1;</mi><mi>i</mi></msub><mo>&#x22C5;</mo><msub><mi>V</mi><mi>i</mi></msub><mo>&#x22C5;</mo><msub><mi>A</mi><mi>i</mi></msub><mspace width="0.5em"/><mo stretchy="false">(</mo><mo>&#x2248;</mo><mo>&#x222B;</mo><mi>&#x3C1;</mi><mi>V</mi><mspace width="0.15em"/><mi>d</mi><mi>A</mi><mo stretchy="false">)</mo></mrow></math>
+                                                </li>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 9 &mdash; Compare stations and cross-check.</span>
+                                                    <p>Compare &#7745;<sub>inlet</sub> vs &#7745;<sub>exit</sub> (cold: expect equal). Compute the thrust-based &#7745;:</p>
+                                                    <math display="block"><mrow><mi>F</mi><mo>&#x2248;</mo><mi>&#x1E41;</mi><mo>&#x22C5;</mo><msub><mi>V</mi><mi>e</mi></msub></mrow></math>
+                                                    <p>and compare to the &rho;AV results.</p>
+                                                </li>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 10 &mdash; Propagate uncertainty.</span>
+                                                    <p>Use the partial-derivative (RSS) method:</p>
+                                                    <math display="block"><mrow><mfrac><mrow><mi>&#x3B4;</mi><mi>A</mi></mrow><mi>A</mi></mfrac><mo>=</mo><mn>2</mn><mfrac><mrow><mi>&#x3B4;</mi><mi>D</mi></mrow><mi>D</mi></mfrac></mrow></math>
+                                                    <math display="block"><mrow><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>&#x3C1;</mi></mrow><mi>&#x3C1;</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><msub><mi>p</mi><mi>s</mi></msub></mrow><msub><mi>p</mi><mi>s</mi></msub></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>T</mi></mrow><mi>T</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mrow></math>
+                                                    <math display="block"><mrow><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>V</mi></mrow><mi>V</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mfrac><mrow><mi>&#x3B4;</mi><mi>q</mi></mrow><mi>q</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mfrac><mrow><mi>&#x3B4;</mi><mi>&#x3C1;</mi></mrow><mi>&#x3C1;</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mrow></math>
+                                                    <math display="block"><mrow><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>&#x1E41;</mi></mrow><mi>&#x1E41;</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>&#x3C1;</mi></mrow><mi>&#x3C1;</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>A</mi></mrow><mi>A</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>(</mo><mfrac><mrow><mi>&#x3B4;</mi><mi>V</mi></mrow><mi>V</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup></mrow></math>
+                                                    <p>Add random uncertainty from N repeats: mean, sample std dev s, standard error s/&radic;N, and a Student-t confidence interval. Combine systematic and random in quadrature into a total U for each &#7745;.</p>
+                                                </li>
+                                                <li>
+                                                    <span class="pending-deliverable-status">Step 11 &mdash; Apply the validation criterion.</span>
+                                                    <p>Compute residual and its uncertainty:</p>
+                                                    <math display="block"><mrow><mi>&#x3B5;</mi><mo>=</mo><msub><mi>&#x1E41;</mi><mtext>out</mtext></msub><mo>&#x2212;</mo><msub><mi>&#x1E41;</mi><mtext>in</mtext></msub><mo>,</mo><mspace width="2em"/><mi>U</mi><mo>(</mo><mi>&#x3B5;</mi><mo>)</mo><mo>=</mo><msqrt><mrow><msubsup><mi>U</mi><mtext>in</mtext><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>U</mi><mtext>out</mtext><mn>2</mn></msubsup></mrow></msqrt></mrow></math>
+                                                    <p>Conservation of mass is confirmed within experimental error if:</p>
+                                                    <math display="block"><mrow><mo>|</mo><mi>&#x3B5;</mi><mo>|</mo><mo>&#x2264;</mo><mi>U</mi><mo>(</mo><mi>&#x3B5;</mi><mo>)</mo></mrow></math>
+                                                    <p>Hot test: confirm:</p>
+                                                    <math display="block"><mrow><mo>|</mo><msub><mi>&#x1E41;</mi><mtext>out</mtext></msub><mo>&#x2212;</mo><msub><mi>&#x1E41;</mi><mtext>in</mtext></msub><mo>&#x2212;</mo><msub><mi>&#x1E41;</mi><mtext>fuel</mtext></msub><mo>|</mo><mo>&#x2264;</mo><mtext>combined U</mtext></mrow></math>
+                                                </li>
+                                                <li><span class="pending-deliverable-status">Step 12 &mdash; Run the hot test (later).</span> Repeat with combustion following the start sequence (airflow &rarr; ignition &rarr; metered fuel), now measuring &#7745;<sub>fuel</sub> (&Delta;m/&Delta;t) and including it in the mass balance.</li>
+                                                <li><span class="pending-deliverable-status">Step 13 &mdash; Discuss real-world departures.</span> Address velocity-profile non-uniformity, pitot misalignment, unsteadiness, heat loss, and compressibility (if Mach &gt; 0.3). Identify the dominant error source from the propagation terms (sensitivity analysis) and which measurement to improve first.</li>
+                                                <li><span class="pending-deliverable-status">Step 14 &mdash; Write the formal report.</span> Structure: abstract &rarr; theory (continuity derivation + equations) &rarr; apparatus &rarr; method &rarr; raw data tables &rarr; one full worked sample calc + tabulated results &rarr; error/uncertainty analysis &rarr; results (&#7745; &plusmn; U per station, residual vs uncertainty) &rarr; discussion (was the law confirmed within error?) &rarr; conclusion &rarr; appendices (calibration, full data, propagation algebra).</li>
+                                            </ol>
+                                            <div class="pending-deliverable-note">
+                                                <p><span class="pending-deliverable-status">Status:</span> planning phase. Cold continuity test to be run first as the primary proof; hot test and full written report to follow.</p>
+                                            </div>
+                                        </section>
+
+                                        </div><!-- /pending-deliverable-sections -->
+                                        </div><!-- /motorjet-inquiry-pane -->
+                                        </div><!-- /tab-content -->
+                                        </article>
+                                    </div><!-- /col-lg-10 -->
+                                </div><!-- /row -->
+                            </div><!-- /container -->
+                        </div><!-- /modal-body -->
+                    </div><!-- /modal-content -->
+                </div><!-- /modal-dialog -->
+            </div><!-- /motorjetModal -->
+
+            <section class="page-section portfolio freelancer-scope pending-empty-section" id="portfolio">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xl-7 pending-empty-col">
+                            <div class="pending-empty-panel text-center">
+                                <div class="pending-empty-title">No pending projects right now</div>
+                                <p class="pending-empty-copy">Completed work has moved into the main project hub.</p>
+                                <a class="pending-empty-action" href="projects.html">View Projects</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <section class="site-cta py-5 bg-gradient-primary-to-secondary text-white">
                 <div class="container px-5 my-3">
