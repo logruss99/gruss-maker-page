@@ -160,140 +160,6 @@
                 margin-top: 0;
             }
 
-            .pending-module-shell {
-                --shell-cut: clamp(0.9rem, 1.4vw, 1.35rem);
-                position: relative;
-                isolation: isolate;
-                width: min(42rem, 100%);
-                margin: 0 auto;
-            }
-
-            .pending-module-shield {
-                --panel-cut: clamp(0.9rem, 1.4vw, 1.35rem);
-                position: relative;
-                width: 100%;
-                padding: clamp(2rem, 4vw, 3.1rem);
-                display: grid;
-                grid-template-rows: auto auto auto;
-                justify-items: center;
-                align-content: center;
-                gap: 0.65rem;
-                text-align: center;
-                color: #effcff;
-                border: 1px solid rgba(127, 214, 244, 0.14);
-                border-radius: 0;
-                clip-path: polygon(
-                    var(--panel-cut) 0,
-                    calc(100% - var(--panel-cut)) 0,
-                    100% var(--panel-cut),
-                    100% calc(100% - var(--panel-cut)),
-                    calc(100% - var(--panel-cut)) 100%,
-                    var(--panel-cut) 100%,
-                    0 calc(100% - var(--panel-cut)),
-                    0 var(--panel-cut)
-                );
-                background:
-                    radial-gradient(circle at 50% 0%, rgba(143, 198, 240, 0.1) 0%, rgba(143, 198, 240, 0) 38%),
-                    linear-gradient(180deg, rgba(11, 20, 30, 0.72) 0%, rgba(6, 12, 19, 0.82) 100%);
-                box-shadow:
-                    0 28px 62px rgba(0, 0, 0, 0.3),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.08),
-                    inset 0 0 0 1px rgba(40, 85, 113, 0.22);
-                overflow: hidden;
-                cursor: pointer;
-                isolation: isolate;
-                transition:
-                    filter 0.28s ease,
-                    border-color 0.28s ease,
-                    box-shadow 0.28s ease;
-            }
-
-            .pending-module-shield::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                z-index: 0;
-                background:
-                    linear-gradient(90deg, rgba(143, 198, 240, 0.16), rgba(143, 198, 240, 0) 24% 76%, rgba(143, 198, 240, 0.16)),
-                    linear-gradient(180deg, rgba(255, 214, 120, 0.04), rgba(255, 214, 120, 0));
-                opacity: 0.55;
-                pointer-events: none;
-            }
-
-            .pending-module-shield::after {
-                content: "";
-                position: absolute;
-                inset: clamp(0.5rem, 1vw, 0.8rem);
-                z-index: 0;
-                clip-path: polygon(
-                    calc(var(--panel-cut) * 0.72) 0,
-                    calc(100% - calc(var(--panel-cut) * 0.72)) 0,
-                    100% calc(var(--panel-cut) * 0.72),
-                    100% calc(100% - calc(var(--panel-cut) * 0.72)),
-                    calc(100% - calc(var(--panel-cut) * 0.72)) 100%,
-                    calc(var(--panel-cut) * 0.72) 100%,
-                    0 calc(100% - calc(var(--panel-cut) * 0.72)),
-                    0 calc(var(--panel-cut) * 0.72)
-                );
-                border: 1px solid rgba(175, 189, 199, 0.09);
-                opacity: 0.64;
-                pointer-events: none;
-            }
-
-            .pending-module-shield > * {
-                position: relative;
-                z-index: 1;
-            }
-
-            .pending-module-shield:hover,
-            .pending-module-shield:focus-visible {
-                outline: none;
-                border-color: rgba(127, 214, 244, 0.32);
-                filter:
-                    brightness(1.06)
-                    drop-shadow(0 0 8px rgba(100, 210, 255, 0.5))
-                    drop-shadow(0 0 20px rgba(80, 180, 240, 0.3));
-                box-shadow:
-                    0 32px 68px rgba(0, 0, 0, 0.36),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.1),
-                    inset 0 0 0 1px rgba(60, 120, 170, 0.3);
-            }
-
-            .pending-module-badge {
-                display: inline-flex;
-                align-items: center;
-                padding: 0.22rem 0.6rem;
-                clip-path: polygon(0.28rem 0, calc(100% - 0.28rem) 0, 100% 0.28rem, 100% calc(100% - 0.28rem), calc(100% - 0.28rem) 100%, 0.28rem 100%, 0 calc(100% - 0.28rem), 0 0.28rem);
-                background: var(--pending-accent-soft);
-                border: 1px solid rgba(143, 198, 240, 0.22);
-                color: var(--pending-accent-text);
-                font-size: 0.65rem;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-            }
-
-            .pending-module-title {
-                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-                font-weight: 700;
-                line-height: 1.1;
-                letter-spacing: 0.01em;
-                color: #f4fbff;
-                margin: 0;
-                text-shadow:
-                    0 0 10px rgba(100, 214, 255, 0.14),
-                    0 6px 18px rgba(6, 14, 22, 0.4);
-            }
-
-            .pending-module-meta {
-                font-size: 0.92rem;
-                line-height: 1.6;
-                letter-spacing: 0.01em;
-                color: rgba(225, 238, 248, 0.82);
-                margin: 0;
-            }
-
             @media (min-width: 768px) {
                 .pending-modal .modal-dialog {
                     --bs-modal-width: min(780px, 94vw);
@@ -862,126 +728,6 @@
                 display: flex;
             }
 
-            .pending-empty-section {
-                display: grid;
-                place-items: center;
-                min-height: clamp(18rem, 38vw, 26rem);
-                padding: clamp(2.5rem, 6vw, 4.5rem) 0;
-            }
-
-            .pending-empty-col {
-                display: flex;
-                justify-content: center;
-            }
-
-            .pending-empty-panel {
-                --pending-empty-cut: clamp(0.9rem, 1.4vw, 1.35rem);
-                position: relative;
-                isolation: isolate;
-                width: min(42rem, 100%);
-                padding: clamp(2rem, 4vw, 3.1rem);
-                clip-path: polygon(
-                    var(--pending-empty-cut) 0,
-                    calc(100% - var(--pending-empty-cut)) 0,
-                    100% var(--pending-empty-cut),
-                    100% calc(100% - var(--pending-empty-cut)),
-                    calc(100% - var(--pending-empty-cut)) 100%,
-                    var(--pending-empty-cut) 100%,
-                    0 calc(100% - var(--pending-empty-cut)),
-                    0 var(--pending-empty-cut)
-                );
-                border: 1px solid rgba(127, 214, 244, 0.14);
-                background:
-                    radial-gradient(circle at 50% 0%, rgba(143, 198, 240, 0.1) 0%, rgba(143, 198, 240, 0) 38%),
-                    linear-gradient(180deg, rgba(11, 20, 30, 0.72) 0%, rgba(6, 12, 19, 0.82) 100%);
-                box-shadow:
-                    0 28px 62px rgba(0, 0, 0, 0.3),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.08),
-                    inset 0 0 0 1px rgba(40, 85, 113, 0.22);
-            }
-
-            .pending-empty-panel::before,
-            .pending-empty-panel::after {
-                content: "";
-                position: absolute;
-                pointer-events: none;
-            }
-
-            .pending-empty-panel::before {
-                inset: 0;
-                z-index: -1;
-                background:
-                    linear-gradient(90deg, rgba(143, 198, 240, 0.16), rgba(143, 198, 240, 0) 24% 76%, rgba(143, 198, 240, 0.16)),
-                    linear-gradient(180deg, rgba(255, 214, 120, 0.06), rgba(255, 214, 120, 0));
-                opacity: 0.55;
-            }
-
-            .pending-empty-panel::after {
-                inset: clamp(0.5rem, 1vw, 0.8rem);
-                clip-path: polygon(
-                    calc(var(--pending-empty-cut) * 0.72) 0,
-                    calc(100% - calc(var(--pending-empty-cut) * 0.72)) 0,
-                    100% calc(var(--pending-empty-cut) * 0.72),
-                    100% calc(100% - calc(var(--pending-empty-cut) * 0.72)),
-                    calc(100% - calc(var(--pending-empty-cut) * 0.72)) 100%,
-                    calc(var(--pending-empty-cut) * 0.72) 100%,
-                    0 calc(100% - calc(var(--pending-empty-cut) * 0.72)),
-                    0 calc(var(--pending-empty-cut) * 0.72)
-                );
-                border: 1px solid rgba(175, 189, 199, 0.09);
-                opacity: 0.64;
-            }
-
-            .pending-empty-title {
-                margin-bottom: 0.65rem;
-                color: #f4fbff;
-                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-                font-weight: 700;
-            }
-
-            .pending-empty-copy {
-                margin: 0 auto 1.6rem;
-                max-width: 32rem;
-                color: rgba(225, 238, 248, 0.86) !important;
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-
-            .pending-empty-action {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-width: 10.5rem;
-                min-height: 3.25rem;
-                padding: 0.82rem 1.5rem;
-                border: 1px solid rgba(143, 198, 240, 0.24);
-                border-radius: 0;
-                clip-path: polygon(0.8rem 0, calc(100% - 0.8rem) 0, 100% 0.8rem, 100% calc(100% - 0.8rem), calc(100% - 0.8rem) 100%, 0.8rem 100%, 0 calc(100% - 0.8rem), 0 0.8rem);
-                background:
-                    linear-gradient(180deg, rgba(17, 42, 61, 0.9) 0%, rgba(9, 24, 36, 0.82) 100%) !important;
-                color: #f2cf80 !important;
-                font-family: "Orbitron", "Plus Jakarta Sans", sans-serif;
-                font-weight: 700;
-                letter-spacing: 0;
-                text-decoration: none;
-                box-shadow:
-                    0 18px 36px rgba(0, 0, 0, 0.24),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.08);
-                transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
-            }
-
-            .pending-empty-action:hover,
-            .pending-empty-action:focus {
-                border-color: rgba(143, 198, 240, 0.42);
-                color: #ffe09a !important;
-                transform: translateY(-1px);
-                box-shadow:
-                    0 22px 42px rgba(0, 0, 0, 0.28),
-                    0 0 0 1px rgba(143, 198, 240, 0.16),
-                    inset 0 1px 0 rgba(228, 248, 255, 0.12);
-            }
-
             .pending-showcase-card {
                 aspect-ratio: 16 / 8.6 !important;
                 border-radius: 0 !important;
@@ -1088,7 +834,6 @@
                 -webkit-text-fill-color: transparent;
             }
 
-            .pending-page .navbar,
             .pending-page .pending-hero-panel,
             .pending-page .pending-showcase-col,
             .pending-page .site-cta,
@@ -1099,8 +844,11 @@
                 animation: pendingPageRise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
             }
 
+            /* Fade only: moving a backdrop-filter element re-blurs the rain
+               layer behind it every frame */
             .pending-page .navbar {
-                animation-delay: 0.04s;
+                opacity: 0;
+                animation: pfFadeIn 0.9s ease-out 0.04s forwards;
             }
 
             .pending-page .pending-hero-panel {
@@ -1236,7 +984,7 @@
             <nav class="navbar navbar-light bg-white py-3">
                 <div class="container px-5">
                     <a class="navbar-brand home-brand" href="index.html">
-                        <img class="home-brand-logo" src="assets/profile.png" alt="" aria-hidden="true" />
+                        <img decoding="async" class="home-brand-logo" src="assets/profile.png" alt="" aria-hidden="true" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -1278,23 +1026,25 @@
                                     </span>
                                 </span>
                             </h1>
-                            <p class="pending-hero-summary">Current in-progress work will appear here as new builds move into development.</p>
                         </div>
                     </div>
                 </div>
             </header>
-            <section class="page-section portfolio freelancer-scope" id="motorjet-engine">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 col-xl-7">
-                            <div class="pending-module-shell">
-                                <button class="pending-module-shield" type="button" data-bs-toggle="modal" data-bs-target="#motorjetModal" aria-label="Open Motorjet Engine project">
-                                    <span class="pending-module-badge">In Progress</span>
-                                    <span class="pending-module-title">Motorjet Engine</span>
-                                    <span class="pending-module-meta">Thermojet &mdash; Build Log</span>
-                                </button>
-                            </div>
-                        </div>
+            <section class="pf-section" id="motorjet-engine">
+                <div class="container px-5">
+                    <div class="pf-grid">
+                        <button class="pf-card" type="button" data-modal-password="BodeScout" data-modal-target="#motorjetModal" data-modal-title="Motorjet Engine" aria-label="Open Motorjet Engine project">
+                            <span class="pf-card-media">
+                                <img src="assets/img/campini-caproni.jpg" alt="" width="800" height="341" loading="lazy" decoding="async" />
+                            </span>
+                            <span class="pf-card-ticks" aria-hidden="true"></span>
+                            <span class="pf-card-body">
+                                <span class="pf-card-tag">In Progress</span>
+                                <span class="pf-card-title">Motorjet Engine</span>
+                                <span class="pf-card-desc">Thermojet &middot; Build Log</span>
+                                <span class="pf-card-cta"><i class="bi bi-shield-lock" aria-hidden="true"></i>Open build log</span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -1307,7 +1057,7 @@
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10">
-                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="motorjetModalTitle">Motorjet Engine (Thermojet) &mdash; Build Log &amp; Roadmap</h2>
+                                        <h2 class="portfolio-modal-title text-secondary mb-0" id="motorjetModalTitle">Motorjet Engine (Thermojet): Build Log &amp; Roadmap</h2>
                                         <div class="divider-custom">
                                             <div class="divider-custom-line"></div>
                                             <div class="divider-custom-icon"><i class="bi bi-fire"></i></div>
@@ -1327,7 +1077,7 @@
                                         <div class="pending-deliverable-sections" style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem;">
 
                                 <section class="pending-deliverable-section">
-                                    <h3>1. Background &mdash; How a Real Jet Compares</h3>
+                                    <h3>1. Background: How a Real Jet Compares</h3>
                                     <p>A real turbofan has two airflow paths driven by nested concentric shafts, called a two-spool layout.</p>
                                     <ul>
                                         <li>The big front fan moves a huge mass of air slowly; most of it bypasses the core and produces about 80% of the thrust on modern engines.</li>
@@ -1335,11 +1085,11 @@
                                         <li>A real engine is self-sustaining: the turbines downstream of the combustor extract energy from the hot flow to drive the compressors.</li>
                                     </ul>
                                     <figure class="pending-deliverable-figure pending-deliverable-figure-contain mt-3">
-                                        <img src="assets/img/campini-caproni.jpg" alt="Campini Caproni N.1 cutaway diagram showing the motorjet layout" />
-                                        <figcaption>Campini Caproni N.1 (1940) &mdash; cutaway showing the piston-engine-driven compressor, combustor, and converging nozzle.</figcaption>
+                                        <img width="800" height="341" loading="lazy" decoding="async" src="assets/img/campini-caproni.jpg" alt="Campini Caproni N.1 cutaway diagram showing the motorjet layout" />
+                                        <figcaption>Campini Caproni N.1 (1940): cutaway showing the piston-engine-driven compressor, combustor, and converging nozzle.</figcaption>
                                     </figure>
                                     <div class="pending-deliverable-note">
-                                        <p><span class="pending-deliverable-status">How this motorjet simplifies it:</span> The Campini Caproni N.1 (above) solved the same problem using a piston engine to drive its compressor — replacing the self-sustaining turbine loop entirely. This build follows the same logic: an electric motor replaces that piston engine, driving a single centrifugal impeller instead of a multi-stage compressor. Because the shaft work comes from wall power rather than a turbine extracting energy from the hot flow, the cycle does not need to self-sustain, and there is no turbine in the exhaust path at all — the converging nozzle does the final job instead.</p>
+                                        <p><span class="pending-deliverable-status">How this motorjet simplifies it:</span> The Campini Caproni N.1 (above) solved the same problem using a piston engine to drive its compressor, replacing the self-sustaining turbine loop entirely. This build follows the same logic: an electric motor replaces that piston engine, driving a single centrifugal impeller instead of a multi-stage compressor. Because the shaft work comes from wall power rather than a turbine extracting energy from the hot flow, the cycle does not need to self-sustain, and there is no turbine in the exhaust path at all; the converging nozzle does the final job instead.</p>
                                     </div>
                                 </section>
 
@@ -1445,13 +1195,13 @@
                                                 <tr>
                                                     <td class="text-muted">409 stainless (ferritic, exhaust grade)</td>
                                                     <td class="text-muted">~815 &deg;C continuous</td>
-                                                    <td class="text-muted">Easy &mdash; sold as exhaust tubing/sheet</td>
+                                                    <td class="text-muted">Easy (sold as exhaust tubing/sheet)</td>
                                                     <td class="text-muted">Cheapest hot-zone option; combustor and nozzle.</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="text-muted">304 stainless</td>
                                                     <td class="text-muted">~870 &deg;C continuous (~925 &deg;C intermittent)</td>
-                                                    <td class="text-muted">Easy &mdash; widely available sheet/tube</td>
+                                                    <td class="text-muted">Easy (widely available sheet/tube)</td>
                                                     <td class="text-muted">Workhorse combustor and nozzle material.</td>
                                                 </tr>
                                                 <tr>
@@ -1545,7 +1295,7 @@
                                         <div class="pending-deliverable-sections" style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem;">
 
                                         <section class="pending-deliverable-section">
-                                            <h3>Academic Inquiry &mdash; Verifying Conservation of Mass (&#7745; = dm/dt)</h3>
+                                            <h3>Academic Inquiry: Verifying Conservation of Mass (&#7745; = dm/dt)</h3>
                                             <p style="color:rgba(183,220,248,0.78);font-size:0.9rem;margin-bottom:1.1rem;">Using the engine&rsquo;s airflow to experimentally confirm the continuity equation, then produce a formal report with full error analysis.</p>
 
                                             <h4>Aim</h4>
@@ -1581,7 +1331,7 @@
                                             <p>Because the whole derivation depends on steady operation, I will log RPM and the station pressures as a time series and confirm they are constant over the sampling window before I record any data. Continuity only holds when &#x2202;/&#x2202;t&nbsp;=&nbsp;0.</p>
 
                                             <h4>Procedure</h4>
-                                            <p>I will run the safety gate first &mdash; measuring the cold-flow static chamber pressure with the engine running but unlit &mdash; and then perform the cold (unlit) test before anything else. The cold run is the cleanest proof of pure continuity because no fuel mass is added, so I expect &#7745;<sub>in</sub>&nbsp;=&nbsp;&#7745;<sub>out</sub> exactly. At each station I will take a pitot traverse, recording p<sub>s</sub>, p<sub>0</sub> and T at several radial points rather than a single centreline point, since the velocity profile is not uniform. I will also log ambient pressure and temperature, and I will repeat each run several times (N&nbsp;&ge;&nbsp;5) to support a statistical treatment.</p>
+                                            <p>I will run the safety gate first, measuring the cold-flow static chamber pressure with the engine running but unlit, and then perform the cold (unlit) test before anything else. The cold run is the cleanest proof of pure continuity because no fuel mass is added, so I expect &#7745;<sub>in</sub>&nbsp;=&nbsp;&#7745;<sub>out</sub> exactly. At each station I will take a pitot traverse, recording p<sub>s</sub>, p<sub>0</sub> and T at several radial points rather than a single centreline point, since the velocity profile is not uniform. I will also log ambient pressure and temperature, and I will repeat each run several times (N&nbsp;&ge;&nbsp;5) to support a statistical treatment.</p>
 
                                             <h4>Calculations I will perform</h4>
                                             <p>For each measured point I will compute the density &#x3C1;&nbsp;=&nbsp;p<sub>s</sub>/(R&#x22C5;T), the dynamic pressure q&nbsp;=&nbsp;p<sub>0</sub>&nbsp;&minus;&nbsp;p<sub>s</sub>, the Mach number, and then the velocity V, before forming the local mass flow &#7745;&nbsp;=&nbsp;&#x3C1;&#x22C5;A&#x22C5;V. To account for the non-uniform profile I will area-average across the traverse,</p>
@@ -1632,20 +1382,6 @@
                     </div><!-- /modal-content -->
                 </div><!-- /modal-dialog -->
             </div><!-- /motorjetModal -->
-
-            <section class="page-section portfolio freelancer-scope pending-empty-section" id="portfolio">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 col-xl-7 pending-empty-col">
-                            <div class="pending-empty-panel text-center">
-                                <div class="pending-empty-title">No pending projects right now</div>
-                                <p class="pending-empty-copy">Completed work has moved into the main project hub.</p>
-                                <a class="pending-empty-action" href="projects.html">View Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <section class="site-cta py-5 bg-gradient-primary-to-secondary text-white">
                 <div class="container px-5 my-3">

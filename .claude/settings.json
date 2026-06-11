@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 _replace_inquiry.py)"
+      "Bash(python3 _replace_inquiry.py)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; foreach \\($f in @\\('assets\\\\img\\\\portfolio\\\\25520.jpg','assets\\\\img\\\\portfolio\\\\assist-device.png','assets\\\\img\\\\portfolio\\\\kit-car.png','assets\\\\img\\\\portfolio\\\\hand-main.png'\\)\\) { $img = [System.Drawing.Image]::FromFile\\(\\(Resolve-Path $f\\)\\); Write-Output \\(\"{0}: {1}x{2}\" -f $f, $img.Width, $img.Height\\); $img.Dispose\\(\\) })",
+      "PowerShell($files = @\\('projects.html','css\\\\styles.css','js\\\\scripts.js'\\); foreach \\($f in $files\\) { $bytes = [System.IO.File]::ReadAllBytes\\(\\(Resolve-Path $f\\)\\)[0..2]; Write-Output \\(\"{0}: first bytes {1} {2} {3}\" -f $f, $bytes[0], $bytes[1], $bytes[2]\\) })",
+      "Read(//c/Users/logru/AppData/Local/Temp/pf-shots/**)"
     ]
   }
 }
