@@ -568,6 +568,107 @@
                 font-weight: 700;
             }
 
+            /* Bill of materials table (FPV quad build) */
+            #portfolioModal3 .bom-wrap {
+                margin: 0 0 1.6rem;
+                overflow-x: auto;
+                border: 1px solid rgba(127, 214, 244, 0.22);
+                background: linear-gradient(180deg, rgba(13, 20, 28, 0.6), rgba(8, 13, 19, 0.42));
+                box-shadow:
+                    inset 0 1px 0 rgba(228, 248, 255, 0.05),
+                    0 14px 30px rgba(0, 0, 0, 0.28);
+            }
+
+            #portfolioModal3 .bom-table {
+                width: 100%;
+                min-width: 34rem;
+                margin: 0;
+                border-collapse: collapse;
+                color: rgba(228, 245, 255, 0.92);
+                font-size: 0.95rem;
+            }
+
+            #portfolioModal3 .bom-table caption {
+                caption-side: top;
+                padding: 0.9rem 1rem 0.8rem;
+                border-bottom: 1px solid rgba(127, 214, 244, 0.28);
+                background:
+                    linear-gradient(180deg, rgba(15, 35, 50, 0.72), rgba(5, 12, 20, 0.34)),
+                    linear-gradient(90deg, rgba(127, 214, 244, 0.18), rgba(127, 214, 244, 0.035));
+                color: #dff7ff;
+                font-size: 0.82rem;
+                font-weight: 800;
+                letter-spacing: 0.14em;
+                text-align: left;
+                text-transform: uppercase;
+                text-shadow: 0 0 12px rgba(127, 214, 244, 0.16);
+            }
+
+            #portfolioModal3 .bom-table th,
+            #portfolioModal3 .bom-table td {
+                padding: 0.7rem 1rem;
+                border-top: 1px solid rgba(127, 214, 244, 0.12);
+                vertical-align: top;
+                text-align: left;
+            }
+
+            #portfolioModal3 .bom-table thead th {
+                border-top: 0;
+                border-bottom: 1px solid rgba(127, 214, 244, 0.24);
+                color: #9cefff;
+                font-size: 0.72rem;
+                font-weight: 800;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                background:
+                    linear-gradient(180deg, rgba(22, 47, 64, 0.8), rgba(9, 22, 34, 0.52)),
+                    radial-gradient(circle at 12% 12%, rgba(168, 239, 255, 0.1), transparent 34%);
+            }
+
+            #portfolioModal3 .bom-table tbody tr:nth-child(even) {
+                background: rgba(143, 198, 240, 0.03);
+            }
+
+            #portfolioModal3 .bom-table .bom-idx {
+                width: 2.4rem;
+                color: rgba(127, 214, 244, 0.6);
+                font-weight: 700;
+                font-variant-numeric: tabular-nums;
+            }
+
+            #portfolioModal3 .bom-table .bom-comp {
+                color: #eaf6ff;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+
+            #portfolioModal3 .bom-table .bom-qty {
+                width: 3.2rem;
+                text-align: center;
+                color: #dff2ff;
+                white-space: nowrap;
+                font-variant-numeric: tabular-nums;
+            }
+
+            #portfolioModal3 .bom-status {
+                display: inline-block;
+                padding: 0.16rem 0.6rem;
+                border: 1px solid currentColor;
+                font-size: 0.68rem;
+                font-weight: 800;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            #portfolioModal3 .bom-status.is-on {
+                color: #6fd6f4;
+            }
+
+            #portfolioModal3 .bom-status.is-bench {
+                color: #ffbf5c;
+            }
+
             .cloud-chamber-modal .pending-deliverable-status {
                 font-weight: 700;
                 color: var(--pending-accent-text);
@@ -1092,15 +1193,15 @@
                             <span class="pf-card-cta">View build</span>
                         </span>
                     </button>
-                    <button class="pf-card" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal3" aria-label="Open Assistive Writing Device project">
+                    <button class="pf-card" type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal3" aria-label="Open FPV Freestyle Quad project">
                         <span class="pf-card-media">
-                            <img src="assets/img/portfolio/assist-device.png" alt="" width="800" height="600" loading="lazy" decoding="async" />
+                            <img src="assets/img/portfolio/drone-assembled.jpg" alt="" width="1179" height="1517" loading="lazy" decoding="async" />
                         </span>
                         <span class="pf-card-ticks" aria-hidden="true"></span>
                         <span class="pf-card-body">
-                            <span class="pf-card-tag">Accessibility Build</span>
-                            <span class="pf-card-title">Assistive Writing Device</span>
-                            <span class="pf-card-desc">A mouse-shaped, 3D-printed writing aid that gives a steady grip without needing much finger strength.</span>
+                            <span class="pf-card-tag">Fabrication + Flight</span>
+                            <span class="pf-card-title">FPV Freestyle Quad</span>
+                            <span class="pf-card-desc">A ground-up 5-inch freestyle quad built around a SpeedyBee F405 and a Corvon 50A 4-in-1 ESC, soldered from a pile of parts to a flyable airframe.</span>
                             <span class="pf-card-cta">View build</span>
                         </span>
                     </button>
@@ -1578,7 +1679,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Assistive Writing Device</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">FPV Freestyle Quad Build</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -1586,113 +1687,129 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                <a href="assets/img/portfolio/all-sides.png" target="_blank">
-  <img width="1080" height="1080" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/all-sides.png" alt="..." />
-</a>
-<a>
-        <p class="fullscreen-hint"><a><b>Figure 3.1 </b>
-         </a>(Click the image to view fullscreen)
-        </p>
-</a>
-<p><a href="https://www.makersmakingchange.com/product/drag-assistive-writing-and-drawing-device/01tJR0000037zufYAA">Open Source File</p></a>
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">I decided to build this device based on its practical applications and similarities to an already widley used product. The assistive writing tool I printed from an open source design mimics the structure of a common computer mouse. This design is not only easy to hold for those with minimal strength in their fingers, but also allows the user to smoothly maneuver the device on most surfaces; as you would a computer mouse. The device was a three part print which required a small amount of hands on construction. The overall use-case for the device is to assist users with difficulty in writing by providing a stable point for the writing utensil and easy to hold control point.</p>
-
-                            <a href="assets/img/portfolio/left-assist.png" target="_blank">
-  <img width="2444" height="1780" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/left-assist.png" alt="..." />
-</a>
-<a>
-        <p class="fullscreen-hint"><a><b>Figure 3.1 </b>
-         </a>(Click the image to view fullscreen)
-        </p>
-</a>
-
-                            <p>
-                                        <b><i>Settings Left Side (pictured above):</i></b>
-
-                                        <li class="mb-2">
-                                            <span class="fw-bold">Total PLA filament used (grams):
-                                            </span>
-                                             32.78g
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="fw-bold">CAD Settings (Prusa Slicer Software):</span>
-                                                    The CAD software I used was the Prusa Slicer to load my found (.stl) file and later splice it and export as the (.bgcode). The parameters I set within the software are as follows: Print Settings-0.20mm SPEED; Filament- Generic PLA; Printer-Original Prusa MINI & MINI+ Input Shaper
-                                        </li>
-
-                                        <li class="mb-0">
-                                            <span class="fw-bold">Print Time:</span>
-                                                               1 hour 19 minutes
-                                        </li>
-                            </p>
-
-                            <a href="assets/img/portfolio/right-assist.png" target="_blank">
-  <img width="2680" height="1786" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/right-assist.png" alt="..." />
-</a>
-<a>
-        <p class="fullscreen-hint"><a><b>Figure 3.1 </b>
-         </a>(Click the image to view fullscreen)
-        </p>
-
-</a>
-
-                            <p>
-                                        <b><i>Settings Right Side (pictured above):</i></b>
-
-                                        <li class="mb-2">
-                                            <span class="fw-bold">Total PLA filament used (grams):
-                                            </span>
-                                             32.38g
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="fw-bold">CAD Settings (Prusa Slicer Software):</span>
-                                                   The CAD software I used was the Prusa Slicer to load my found (.stl) file and later splice it and export as the (.bgcode). The parameters I set within the software are as follows: Print Settings-0.20mm SPEED; Filament- Generic PLA; Printer-Original Prusa MINI & MINI+ Input Shaper
-                                        </li>
-
-                                        <li class="mb-0">
-                                            <span class="fw-bold">Print Time:</span>
-                                                               1 hour 14 minutes
-                                        </li>
-                            </p>
-
-                            <a href="assets/img/portfolio/center-assist.png" target="_blank">
-  <img width="2446" height="1782" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/center-assist.png" alt="..." />
-</a>
-<a>
-        <p class="fullscreen-hint"><a><b>Figure 3.1 </b>
-         </a>(Click the image to view fullscreen)
-        </p>
-</a>
-
-
-                            <p>
-                                        <b><i>Settings Center (pictured above):</i></b>
-
-                                        <li class="mb-2">
-                                            <span class="fw-bold">Total PLA filament used (grams):
-                                            </span>
-                                             11.03g
-                                        </li>
-                                        <li class="mb-2">
-                                            <span class="fw-bold">CAD Settings (Prusa Slicer Software):</span>
-                                                    The CAD software I used was the Prusa Slicer to load my found (.stl) file and later splice it and export as the (.bgcode). The parameters I set within the software are as follows: Print Settings-0.20mm SPEED; Filament- Generic PLA; Printer-Original Prusa MINI & MINI+ Input Shaper
-                                        </li>
-
-                                        <li class="mb-0">
-                                            <span class="fw-bold">Print Time:</span>
-                                                               22 minutes
-                                        </li>
-                            </p>
-
-<img width="4032" height="3024" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/finished-assist.png" alt="..." />
-                                    <p class="fullscreen-hint">Figure 3.5</p>
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">The completed product (Figure 3.5) requires about 2-5 minutes of manual assembly, where I was required to insert two M3 x 20mm screws into the sides. For the clamp that holds the pen, I also inserted another M3 x 20mm screw. The final build is sturdy and easy to move around on most traditional desktop surfaces. The size of the pen that the device can hold varries, but in general fits any writing utensil without a grip. Overall, my hopes are that this can help those struggling to grasp a thin object like a pen, as well as, create a stronger anchor point when writing.</p>
-
-<!-- Portfolio Modal - Title-->
-                <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a>
-                </h2>
-                                    <p class="mb-4">The left and right sides of the device had virtually no printing issues whatsoever. The only distortion was a slight fold in the area which the user would insert a screw. However, given the function of the hole, this should not be a major issue. When creating the center of the device I came across a much greater problem. When printing, the print began with a very thin layer of the base of the object but then was trapped in a loop moving from a point A to a point B over and over. This happened twice, until I replaced the (.bgcode). After that the print functioned normally. The cause of this issue seemed to be within the code I uploaded to the machine. I say this after a series of trial-and-error. I first examined the filament, which was properly aligned, I then ensured the plate was of correct height and the nozzle not clogged in anyway. After switching to a second printer, and having the same exact issue I deduced it was an issue with the file. After recreating and reuploading the file, the print succeeded. It is important to note that the filament could have been broken at a certain point when fed into the machine. This is unlikely though, given the same issue occurred on separate machines. However, moving forwards a slight "bend-test" prior to inserting the filament can ensure it has not accumulated too much water.</p>
+                                    <a href="assets/img/portfolio/drone-assembled.jpg" target="_blank">
+                                        <img width="1179" height="1517" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/drone-assembled.jpg" alt="Assembled 5-inch FPV quad with Corvon 50A 4-in-1 ESC and blue props" />
+                                    </a>
+                                    <p class="fullscreen-hint"><b>Figure 3.1 </b>(Click the image to view fullscreen)</p>
+                                    <p class="mb-4">I decided to build this quadcopter as a ground-up project, starting from a collection of individual parts rather than a ready-to-fly kit. The airframe is a 5-inch freestyle build centered around a SpeedyBee F405 flight controller and a Corvon 50A 8-bit 4-in-1 ESC, shown fully assembled in Figure 3.1. My goal from the beginning was to end up with a durable and repairable platform that I could fly hard and still fix at the bench, rather than a delicate build that I would be afraid to crash.</p>
+                                    <p class="mb-4">For now, everything on the quad is analog, which I chose deliberately in order to keep this first build simple and reliable. Prior to this, I had smoked an ESC on an earlier stack, so this time I wanted to get the power side of the build correct before adding anything else to the frame. In the longer term, I plan to use this airframe as a test bed for the autonomy work that I have been wanting to explore, which is part of the reason the GPS module is already on board. The radio receiver and the video system are the two remaining pieces that I have not yet installed, and I have detailed both of them further below.</p>
+                                    <p class="mb-1"><b><i><u>Bill of Materials</u></i></b></p>
+                                    <p class="mb-4">Before assembling anything, I laid out every component and checked it against my wiring plan, so that I would not run into any surprises once the soldering iron was hot. The table below lists everything that goes into the airframe. I grouped the core stack and power components first, followed by the radio and video hardware that is still sitting on the bench and marked as such.</p>
+                                    <div class="bom-wrap">
+                                        <table class="bom-table">
+                                            <caption>Quad &middot; core components</caption>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="bom-idx">#</th>
+                                                    <th scope="col">Component</th>
+                                                    <th scope="col">Part / spec</th>
+                                                    <th scope="col" class="bom-qty">Qty</th>
+                                                    <th scope="col">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="bom-idx">01</td>
+                                                    <td class="bom-comp">Frame</td>
+                                                    <td>5-inch carbon-fiber freestyle deck, replaceable arms</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">02</td>
+                                                    <td class="bom-comp">Flight controller</td>
+                                                    <td>SpeedyBee F405, Betaflight target</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">03</td>
+                                                    <td class="bom-comp">ESC</td>
+                                                    <td>Corvon 50A 8-bit, 4-in-1</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">04</td>
+                                                    <td class="bom-comp">Motors</td>
+                                                    <td>2205-class brushless, plus spares</td>
+                                                    <td class="bom-qty">4</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">05</td>
+                                                    <td class="bom-comp">Power filter</td>
+                                                    <td>HG 1000&micro;F / 35&nbsp;V low-ESR capacitor</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">06</td>
+                                                    <td class="bom-comp">Power input</td>
+                                                    <td>XT60 pigtail</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">07</td>
+                                                    <td class="bom-comp">Navigation</td>
+                                                    <td>GPS / compass module, for the later autonomy work</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-on">Installed</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">08</td>
+                                                    <td class="bom-comp">Radio link</td>
+                                                    <td>Serial RC receiver</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-bench">On the bench</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">09</td>
+                                                    <td class="bom-comp">FPV camera</td>
+                                                    <td>RunCam analog camera</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-bench">On the bench</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bom-idx">10</td>
+                                                    <td class="bom-comp">Video transmitter</td>
+                                                    <td>5.8&nbsp;GHz VTX with IPEX antenna</td>
+                                                    <td class="bom-qty">1</td>
+                                                    <td><span class="bom-status is-bench">On the bench</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p class="mb-1"><b><i><u>Power Stage and the Capacitor</u></i></b></p>
+                                    <p>The first components I installed on the frame were the ESC and the XT60 power lead. Before soldering on the battery connector, however, I added the capacitor, because it is the part that builders most often skip and yet it does a great deal to protect the electronics. The HG 1000&micro;F / 35&nbsp;V low-ESR capacitor solders directly across the battery pads, where it absorbs the voltage spikes that the motors push back into the power rail during hard throttle changes. On a 4S or 6S setup, those spikes are a very common cause of a failed ESC, which is a lesson I had unfortunately already learned on a previous build.</p>
+                                    <p class="mb-4">In order to keep the capacitor working as intended, I kept both the leads and the capacitor legs as short as I could, since long legs add inductance and reduce how well it filters. I also pre-tinned both battery pads before attaching the XT60. There is nothing especially complicated about this stage, but clean joints and the correct part in the correct place make a large difference in how reliable the quad is later on.</p>
+                                    <p class="mb-1"><b><i><u>The Stack and Motor Wiring</u></i></b></p>
+                                    <p>The SpeedyBee F405 flight controller sits above the Corvon ESC on soft-mount grommets, which I used so that vibration from the propellers and the frame does not travel directly into the gyroscope and affect how the quad flies. I ran the four motor phases to pads one through four, following the layout printed on the ESC silkscreen. Because the direction of each motor is set later in software, the order of the phase wires does not matter electrically, so I focused instead on keeping the runs tidy and the wires the same length on each arm.</p>
+                                    <p class="mb-4">Prior to connecting any power, I checked every joint for both continuity and shorts. One habit that I find worth keeping is to never test a freshly soldered stack on an actual flight battery first. Instead, I powered it from a current-limited bench supply and watched to make sure that the ESC was not drawing any more current than it should. This way, a mistake shows up as a small reading on the supply rather than as smoke.</p>
+                                    <p class="mb-1"><b><i><u>Firmware and Setup</u></i></b></p>
+                                    <p class="mb-4">With the wiring finished, I flashed Betaflight onto the F405 target and mapped the ports, then confirmed that the ESC was communicating correctly on the 8-bit BLHeli side. I set and verified each motor direction in the motors tab with the propellers removed, and then made a pass through the basic configuration, including the gyro orientation, the ESC protocol, and the battery voltage scaling. The flight rates and filtering are still at their default values for the moment, since I would prefer to fine-tune those once the video link is installed and I can actually see how the quad behaves in the air.</p>
+                                    <p class="mb-1"><b><i><u>Radio Link and Receiver</u></i></b></p>
+                                    <p>The radio receiver is the small board pictured below in Figure 3.2. It is not yet wired into the quad, as I have it set aside on the bench while I finish the rest of the build, but I have included it here to explain where it goes and what it does.</p>
+                                    <a href="assets/img/portfolio/drone-receiver.jpg" target="_blank">
+                                        <img width="4032" height="3024" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/drone-receiver.jpg" alt="Serial RC receiver held in hand, three-pin board" />
+                                    </a>
+                                    <p class="fullscreen-hint"><b>Figure 3.2 </b>(Click the image to view fullscreen)</p>
+                                    <p>The receiver mounts to a spare UART on the SpeedyBee F405 using three wires, which are 5&nbsp;V, ground, and the receiver's signal line into the flight controller's RX pad. Physically, it tucks under the canopy against the top plate, with the antennas routed out and away from the ESC and the video transmitter so that they do not interfere with the link. A small amount of hot glue on the connector provides strain relief. Its purpose is to carry the control link from my transmitter, meaning every stick and switch input that the quad receives, and to send telemetry such as link quality, signal strength, and battery voltage back to be shown on the on-screen display. It also manages the failsafe behavior, so that if the link is ever lost, the flight controller moves to a safe state instead of flying away.</p>
+                                    <p class="mb-4">For the transmitter side, the controller I plan to buy is a RadioMaster Boxer in the ELRS version, which currently costs around $139. I chose it because it has ExpressLRS built in, uses good Hall-effect gimbals, and runs EdgeTX, which is the software that most tutorials assume you are using. If this particular receiver turns out to be an ELRS board, it will bind directly to that radio. If it instead turns out to be a FrSky or D16 style receiver, I would use the RadioMaster TX16S MKII with its 4-in-1 multiprotocol module, which can bind to FrSky, Crossfire, ELRS, and several other protocols. Either way, I am staying within the RadioMaster and EdgeTX ecosystem so that my bind setups carry across every model that I build in the future.</p>
+                                    <p class="mb-1"><b><i><u>Video System, Camera and Transmitter</u></i></b></p>
+                                    <p>The video system is in the same situation as the radio, in that the RunCam analog camera and the small 5.8&nbsp;GHz video transmitter, pictured together in Figure 3.3, are not installed on the quad yet. I have laid out my plan for both of them below.</p>
+                                    <a href="assets/img/portfolio/drone-camera.jpg" target="_blank">
+                                        <img width="4032" height="3024" loading="lazy" decoding="async" class="img-fluid rounded mb-3" src="assets/img/portfolio/drone-camera.jpg" alt="RunCam analog FPV camera and 5.8 GHz video transmitter board" onerror="this.style.display='none';this.closest('a').nextElementSibling.style.display='block';" />
+                                    </a>
+                                    <div class="cam-pending" style="display:none;padding:1rem 1.15rem;margin-bottom:1rem;border:1px dashed rgba(127,214,244,0.5);color:rgba(183,231,245,0.85);font-size:0.9rem;line-height:1.5;">Photo pending: save the RunCam and VTX shot as <b>assets/img/portfolio/drone-camera.jpg</b> and it will appear here.</div>
+                                    <p class="fullscreen-hint"><b>Figure 3.3 </b>(Click the image to view fullscreen)</p>
+                                    <p>The camera mounts into the front of the frame on the tilt bracket, and I will set its angle based on how I intend to fly, since a greater tilt allows for faster forward flight. The video transmitter sits at the back of the stack, bolted down and kept away from the flight controller, with its antenna extending out the rear of the frame so that the propellers cannot chop the signal. It draws its power from a filtered rail, and the camera's video output, along with the on-screen display line, feeds into the flight controller so that the telemetry is drawn over the live picture. In use, the camera streams a real-time analog view of what the quad sees, the transmitter broadcasts that feed on 5.8&nbsp;GHz to a receiver on the ground, and the flight controller overlays information such as the battery voltage, the link quality, and a flight timer directly onto the image.</p>
+                                    <p class="mb-4">In order to actually watch that feed, I will need a set of FPV goggles, or at a minimum a ground monitor. A box-style goggle with a built-in analog receiver and a DVR is the most affordable way to start, and it works well with this camera and transmitter, while a set with a diversity receiver gives cleaner reception once I begin flying at longer range. As long as I match the video band on the goggles to the transmitter, that completes the video side of the build.</p>
+                                    <p class="mb-1"><b><i><u>What Comes Next</u></i></b></p>
+                                    <p class="mb-4">In the short term, my next steps are to wire in the receiver, finish installing the video system, and then complete a careful first flight followed by proper tuning. In the longer term, I intend to use this quad as the platform for the autonomy work that I keep returning to. The GPS module is already installed, and the next stage would be to add a companion computer along with ArduPilot in order to experiment with position holding and waypoint navigation. Building the airframe itself was the straightforward part, and the more interesting challenge begins once the quad is able to hold its own position in the air without my input.</p>
+                                    <h2 class="portfolio-modal-title mb-3"><a style="color: orangered;">Issues:</a></h2>
+                                    <p class="mb-4">On the power and mechanical side, the build has gone smoothly, and I have not had any failures on the stack this time, which I largely credit to installing the capacitor first and to bench-testing the ESC on a current-limited supply before ever connecting a battery. The main open issue is less a fault than it is unfinished work, in that the receiver and the video system are both still uninstalled, so the quad cannot yet be flown either line-of-sight or in FPV. A second and smaller uncertainty is the exact protocol of the receiver board itself, since I will not know for certain whether it is an ELRS or a FrSky style board until I power it and attempt to bind it to a transmitter. I planned for both possibilities in the radio section above, so that either outcome will be straightforward to resolve. Once the radio and video are installed and I have flown the maiden, I intend to update this page with how the tuning and the first flights actually went.</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
